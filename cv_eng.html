@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV | Iaroslav Zhakun | PPC Specialist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-white: #FFFFFF;
+            --text-dark: #000000;
+            --text-gray: #4A4A4A;
+            --accent-brand: #C00000;
+            --font-heading: 'Frank Ruhl Libre', serif;
+            --font-main: 'Merriweather', serif;
+            --font-sans: -apple-system, system-ui, sans-serif;
+        }
+
+        @media print {
+            @page { margin: 15mm; }
+            .no-print { display: none !important; }
+            body { font-size: 10pt; background: #fff !important; }
+            .container { max-width: 100% !important; padding: 0 !important; }
+            a { text-decoration: none !important; color: #000 !important; }
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-dark);
+            background-color: #f4f4f4;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            padding: 60px 80px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 0; }
+            .container { padding: 40px 24px; }
+        }
+
+        .header {
+            border-bottom: 2px solid #000;
+            padding-bottom: 32px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 2.75rem;
+            margin: 0 0 8px;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a {
+            color: var(--text-dark);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent-brand);
+        }
+
+        section { margin-bottom: 40px; }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            border-bottom: 1px solid #000;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .summary p {
+            font-size: 1.05rem;
+            color: var(--text-gray);
+            margin: 0;
+        }
+
+        .experience-item {
+            margin-bottom: 32px;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .company {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .date {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-gray);
+            text-transform: uppercase;
+        }
+
+        .role {
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--accent-brand);
+            margin-bottom: 12px;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px 40px;
+        }
+
+        .skill-item {
+            font-size: 0.95rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 4px;
+        }
+
+        .footer-nav {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+
+        .btn-back {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            color: var(--text-gray);
+            border: 1px solid #eee;
+            padding: 10px 20px;
+            transition: all 0.2s;
+        }
+
+        .btn-back:hover {
+            border-color: #000;
+            color: #000;
+        }
+
+        .print-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .achievements-box {
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            padding: 24px;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container animate-fade">
+        <button class="print-btn no-print" onclick="window.print()">Print to PDF</button>
+
+        <header class="header">
+            <h1>Iaroslav Zhakun</h1>
+            <div class="subtitle">PPC Specialist | Google Ads | Performance Marketing | E-commerce</div>
+            <div class="contact-info">
+                 <a href="mailto:yaroslav.zhakun@gmail.com">yaroslav.zhakun@gmail.com</a>
+                 <span>+30 697 439 58 95 (Athens)</span>
+                 <a href="https://www.linkedin.com/in/iaroslav-zhakun-399550271/" target="_blank">LinkedIn Profile</a>
+                 <a href="https://yaroslav775-eng.github.io/portfolio/" class="no-print">Portfolio Website</a>
+            </div>
+        </header>
+
+        <section class="summary">
+            <h2>Professional Summary</h2>
+            <p>
+                PPC Specialist with solid hands-on experience building and optimizing Google Ads campaigns. Focused on campaign architecture, conversion tracking setup, feed management, and data-driven performance optimization. Managed monthly budgets of $50,000+ across e-commerce and lead generation. Deep technical expertise in GMC, GTM, GA4, Performance Max, and Looker Studio.
+            </p>
+        </section>
+
+        <section class="achievements-box">
+            <h2>Key Achievements</h2>
+            <ul>
+                <li>Managed monthly advertising budgets of <strong>$50,000+</strong></li>
+                <li>Launched and managed <strong>50+ projects</strong> from scratch</li>
+                <li>Increased conversion rate from <strong>1.0% to 3.5%</strong></li>
+                <li>Reduced inefficient ad spend by <strong>30%</strong></li>
+                <li>Increased annual sales among assigned clients by <strong>15%</strong> (Royal Canin)</li>
+                <li>Launched MVP with <strong>$5 CAC</strong> and 30% repeat purchase rate</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Professional Experience</h2>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company">Channel Factory</span>
+                    <span class="date">Aug 2025 – Sep 2025</span>
+                </div>
+                <div class="role">AdOps Manager for International Brands | YouTube Ads</div>
+                <ul>
+                    <li>Supported QA and AdOps processes for international YouTube and Google Ads campaigns.</li>
+                    <li>Reviewed campaign naming conventions, budgets, flight dates, and setup accuracy.</li>
+                    <li>Gained practical experience in Brand Safety standards and programmatic advertising workflows.</li>
+                    <li>Used Salesforce and Google Ads Editor for workflow tracking and structure review.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company">Locomotive.ua</span>
+                    <span class="date">Feb 2025 – Aug 2025</span>
+                </div>
+                <div class="role">PPC Specialist</div>
+                <ul>
+                    <li>Managed and optimized Performance Max and Google Shopping campaigns for e-commerce.</li>
+                    <li>Configured GMC including product feed setup and attribute management.</li>
+                    <li>Set up GA4 and GTM for accurate conversion tracking and UX/CRO analysis.</li>
+                    <li>Created Looker Studio dashboards and implemented click-fraud protection.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company">Cifra Internet</span>
+                    <span class="date">Jan 2015 – Present</span>
+                </div>
+                <div class="role">Media Buyer | Performance Marketing Lead</div>
+                <ul>
+                    <li>Launched and managed 50+ projects across services and e-commerce stores.</li>
+                    <li>Managed monthly budgets of $50,000+ with 30% reduction in inefficient spend.</li>
+                    <li>Led a team of 5+ people focused on campaign execution and technical delivery.</li>
+                    <li>Supported landing page optimization and prepared technical briefs/media plans.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company">Royal Canin Ukraine</span>
+                    <span class="date">May 2016 – Jul 2023</span>
+                </div>
+                <div class="role">E-commerce Manager</div>
+                <ul>
+                    <li>Developed and implemented e-commerce channel growth strategy for international brand.</li>
+                    <li>Coordinated contractors for content and website improvements on partner platforms.</li>
+                    <li>Increased annual sales among assigned clients by 15% through data-driven initiatives.</li>
+                    <li>Monitored competitors and maintained long-term relationships with key clients.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company">Skillsetter.io</span>
+                    <span class="date">May 2022 – Dec 2022</span>
+                </div>
+                <div class="role">Product Manager (Program)</div>
+                <ul>
+                    <li>Worked on product development, CJM, prototyping, and Agile workflows.</li>
+                    <li>Achieved MVP metrics: $5 CAC, $40 Revenue/Order, $30 Profit/Order.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education & Training</h2>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company">Skillsetter.io</span>
+                    <span class="date">2022</span>
+                </div>
+                <div class="role">Product Manager Program</div>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company">The Open University (UK)</span>
+                    <span class="date">2011</span>
+                </div>
+                <div class="role">Professional Certificate in Management (MBA Program)</div>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company">Kherson State University</span>
+                    <span class="date">1999</span>
+                </div>
+                <div class="role">Manager-Economist (Degree)</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Languages</h2>
+            <div class="skills-grid">
+                <div class="skill-item"><strong>Ukrainian:</strong> Fluent (Native)</div>
+                <div class="skill-item"><strong>Russian:</strong> Fluent</div>
+                <div class="skill-item"><strong>English:</strong> Intermediate (Technical reading/writing proficient; Spoken comms via AI-enhanced tools)</div>
+            </div>
+        </section>
+
+        <div class="footer-nav no-print">
+            <a href="index.html" class="btn-back">← Back to Portfolio</a>
+        </div>
+    </div>
+
+</body>
+</html>

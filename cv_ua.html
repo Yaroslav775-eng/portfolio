@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV | Ярослав Жакун | PPC Спеціаліст</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-white: #FFFFFF;
+            --text-dark: #000000;
+            --text-gray: #4A4A4A;
+            --accent-brand: #C00000;
+            --font-heading: 'Frank Ruhl Libre', serif;
+            --font-main: 'Merriweather', serif;
+            --font-sans: -apple-system, system-ui, sans-serif;
+        }
+
+        @media print {
+            @page { margin: 15mm; }
+            .no-print { display: none !important; }
+            body { font-size: 10pt; background: #fff !important; }
+            .container { max-width: 100% !important; padding: 0 !important; }
+            a { text-decoration: none !important; color: #000 !important; }
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-dark);
+            background-color: #f4f4f4;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            padding: 60px 80px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 0; }
+            .container { padding: 40px 24px; }
+        }
+
+        .header {
+            border-bottom: 2px solid #000;
+            padding-bottom: 32px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 2.75rem;
+            margin: 0 0 8px;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a {
+            color: var(--text-dark);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent-brand);
+        }
+
+        section { margin-bottom: 40px; }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            border-bottom: 1px solid #000;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .summary p {
+            font-size: 1.05rem;
+            color: var(--text-gray);
+            margin: 0;
+        }
+
+        .experience-item {
+            margin-bottom: 32px;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .company {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .date {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-gray);
+            text-transform: uppercase;
+        }
+
+        .role {
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--accent-brand);
+            margin-bottom: 12px;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px 40px;
+        }
+
+        .skill-item {
+            font-size: 0.95rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 4px;
+        }
+
+        .footer-nav {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+
+        .btn-back {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            color: var(--text-gray);
+            border: 1px solid #eee;
+            padding: 10px 20px;
+            transition: all 0.2s;
+        }
+
+        .btn-back:hover {
+            border-color: #000;
+            color: #000;
+        }
+
+        .print-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .achievements-box {
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            padding: 24px;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container animate-fade">
+        <button class="print-btn no-print" onclick="window.print()">Зберегти в PDF / Друк</button>
+
+        <header class="header">
+            <h1>Ярослав Жакун</h1>
+            <div class="subtitle">PPC Specialist | Google Ads | Performance Marketing | E-commerce</div>
+            <div class="contact-info">
+                 <a href="mailto:yaroslav.zhakun@gmail.com">yaroslav.zhakun@gmail.com</a>
+                 <span>+30 697 439 58 95 (Афіни)</span>
+                 <a href="https://www.linkedin.com/in/iaroslav-zhakun-399550271/" target="_blank">LinkedIn Profile</a>
+                 <a href="https://yaroslav775-eng.github.io/portfolio/ua.html" class="no-print">Сайт-портфоліо</a>
+            </div>
+        </header>
+
+        <section class="summary">
+            <h2>Професійне резюме</h2>
+            <p>
+                PPC-спеціаліст із ґрунтовним практичним досвідом побудови та оптимізації кампаній Google Ads. Фокусуюся на архітектурі кампаній, налаштуванні відстеження конверсій, управлінні фідами та оптимізації на основі даних. Керував щомісячними рекламними бюджетами понад $50,000 в e-commerce та lead generation. Глибока технічна експертиза: GMC, GTM, GA4, Performance Max та Looker Studio.
+            </p>
+        </section>
+
+        <section class="achievements-box">
+            <h2>Ключові досягнення</h2>
+            <ul>
+                <li>Керував щомісячними рекламними бюджетами понад <strong>$50,000</strong></li>
+                <li>Запустив та супроводжував понад <strong>50 проектів</strong> "з нуля"</li>
+                <li>Збільшив коефіцієнт конверсії з <strong>1.0% до 3.5%</strong></li>
+                <li>Зменшив неефективні витрати на рекламу на <strong>30%</strong></li>
+                <li>Збільшив річні продажі серед призначених клієнтів на <strong>15%</strong> (Royal Canin)</li>
+                <li>Запустив MVP з <strong>$5 CAC</strong> та 30% повторних покупок</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Професійний досвід</h2>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company">Channel Factory</span>
+                    <span class="date">Серп 2025 – Верес 2025</span>
+                </div>
+                <div class="role">AdOps Manager for International Brands | YouTube Ads</div>
+                <ul>
+                    <li>Підтримка процесів QA та AdOps для міжнародних кампаній YouTube та Google Ads.</li>
+                    <li>Перевірка угод про найменування кампаній, бюджетів, дат та точності налаштувань.</li>
+                    <li>Отримав практичний досвід роботи зі стандартами Brand Safety та програмними рекламними процесами.</li>
+                    <li>Використовував Salesforce та Google Ads Editor для відстеження робочого процесу та аналізу структури.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company">Locomotive.ua</span>
+                    <span class="date">Лют 2025 – Серп 2025</span>
+                </div>
+                <div class="role">PPC Specialist</div>
+                <ul>
+                    <li>Управління та оптимізація кампаній Performance Max та Google Shopping для e-commerce.</li>
+                    <li>Налаштування Google Merchant Center, включаючи роботу з фідами та атрибутами товарів.</li>
+                    <li>Налаштування GA4 та GTM для точного відстеження конверсій та аналізу UX/CRO.</li>
+                    <li>Створення дашбордів у Looker Studio та впровадження захисту від клікфроду.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company">Cifra Internet</span>
+                    <span class="date">Січ 2015 – Теперішній час</span>
+                </div>
+                <div class="role">Media Buyer | Performance Marketing Lead</div>
+                <ul>
+                    <li>Запустив та супроводжував понад 50 проектів у сфері послуг та e-commerce.</li>
+                    <li>Керував щомісячними бюджетами $50,000+ зі зниженням неефективних витрат на 30%.</li>
+                    <li>Керував командою з 5+ осіб, сфокусованою на виконанні кампаній та технічній частині.</li>
+                    <li>Супровід оптимізації лендінгів, підготовка технічних брифів та медіа-планів.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company">Royal Canin Ukraine</span>
+                    <span class="date">Трав 2016 – Лип 2023</span>
+                </div>
+                <div class="role">E-commerce Manager</div>
+                <ul>
+                    <li>Розробка та впровадження стратегії зростання каналу e-commerce для міжнародного бренду.</li>
+                    <li>Координація підрядників з контенту та покращення сайтів на платформах партнерів.</li>
+                    <li>Збільшив річні продажі на 15% за рахунок ініціатив на основі аналізу даних.</li>
+                    <li>Моніторинг конкурентів та підтримання довгострокових відносин з ключовими клієнтами.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company">Skillsetter.io</span>
+                    <span class="date">Трав 2022 – Груд 2022</span>
+                </div>
+                <div class="role">Product Manager (Program)</div>
+                <ul>
+                    <li>Робота над розробкою продукту, CJM, прототипуванням та Agile воркфлоу.</li>
+                    <li>Досягнуто метрик MVP: $5 CAC, $40 дохід/замовлення, $30 прибуток/замовлення.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Освіта та навчання</h2>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company">Skillsetter.io</span>
+                    <span class="date">2022</span>
+                </div>
+                <div class="role">Product Manager Program</div>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company">The Open University (UK)</span>
+                    <span class="date">2011</span>
+                </div>
+                <div class="role">Professional Certificate in Management (MBA Program)</div>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="company">Херсонський державний університет</span>
+                    <span class="date">1999</span>
+                </div>
+                <div class="role">Диплом: Менеджер-економіст</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Мови</h2>
+            <div class="skills-grid">
+                <div class="skill-item"><strong>Українська:</strong> Рідна (Fluent)</div>
+                <div class="skill-item"><strong>Російська:</strong> Вільно</div>
+                <div class="skill-item"><strong>Англійська:</strong> Intermediate (Технічне читання/письмо; комунікація в реальному часі через AI-інструменти)</div>
+            </div>
+        </section>
+
+        <div class="footer-nav no-print">
+            <a href="ua.html" class="btn-back">← Назад до портфоліо</a>
+        </div>
+    </div>
+
+</body>
+</html>
