@@ -177,14 +177,6 @@
         .quiz-label { font-size: 0.9rem; text-transform: uppercase; color: var(--text-gray); margin-bottom: 8px; display: block; letter-spacing: 0.05em;}
         .quiz-footer { margin-top: 32px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--accent-muted); padding-top: 24px;}
         .quiz-progress { font-size: 0.85rem; color: var(--text-gray); }
-
-        /* Google Translate Overrides */
-        .VIpgJd-ZVi9od-ORHb-OEVmcd { display: none !important; }
-        .goog-te-combo { background-color: #000; color: #fff; border: 1px solid #333; padding: 4px 8px; font-family: var(--font-sans); outline: none; font-size: 0.8rem; text-transform: uppercase; cursor: pointer; }
-        .goog-te-gadget { color: transparent !important; font-size: 0px !important; }
-        .goog-te-gadget .goog-te-combo { margin: 0; }
-        .goog-te-gadget span { display: none; }
-        body { top: 0 !important; } /* Prevents the site from being pushed down by Google banner */
     </style>
 </head>
 <body>
@@ -192,8 +184,12 @@
     <!-- TOP BAR -->
     <div style="background-color: #000; padding: 12px 0;">
         <div class="container" style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-sans); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; flex-wrap: wrap; gap: 16px;">
-            <div style="display: flex; gap: 12px; align-items: center;">
-                <div id="google_translate_element"></div>
+            <div style="display: flex; gap: 12px;">
+                <span style="color: #fff; text-decoration: underline;">EN</span>
+                <span style="color: #666;">|</span>
+                <a href="ua.html" style="color: #888; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">UA</a>
+                <span style="color: #666;">|</span>
+                <a href="ru.html" style="color: #888; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">RU</a>
             </div>
             <div style="display: flex; gap: 24px; flex-wrap: wrap;">
                 <a href="mailto:yaroslav.zhakun@gmail.com" style="color: #fff; text-decoration: none;">yaroslav.zhakun@gmail.com</a>
@@ -753,17 +749,6 @@
             
             document.getElementById('quizMailtoBtn').href = `mailto:yaroslav.zhakun@gmail.com?subject=Requesting Technical Audit&body=${encodeURIComponent(bodyText)}`;
         }
-
-        // Google Translate Initialization
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,uk,ru',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
     </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
