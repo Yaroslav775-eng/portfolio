@@ -619,34 +619,42 @@
                 <span class="section-label" style="margin-bottom: 24px;">Discovery Framework</span>
                 
                 <div class="quiz-step active" id="quiz-step-1">
-                    <h2 style="font-size: 2rem;">What is your current monthly ad spend?</h2>
-                    <p style="color: var(--text-gray);">This ensures we have enough data velocity for a mathematical analysis.</p>
+                    <h2 style="font-size: 2rem;">Phase 1: Scope & Territory</h2>
+                    <p style="color: var(--text-gray);">Define the basic parameters of the audit.</p>
                     <div style="margin-top: 32px;">
-                        <div class="quiz-option" onclick="qSelect('spend', 'Under €10,000')">Under €10,000</div>
-                        <div class="quiz-option" onclick="qSelect('spend', '€10,000 - €30,000')">€10,000 - €30,000</div>
-                        <div class="quiz-option" onclick="qSelect('spend', '€30,000+')">€30,000+</div>
+                        <label class="quiz-label">Website URL</label>
+                        <input type="text" id="qWebsite" class="quiz-input" placeholder="https://domain.com" />
+                        
+                        <label class="quiz-label">Advertising Region(s)</label>
+                        <input type="text" id="qRegion" class="quiz-input" placeholder="e.g. US, UK, EU-wide" />
+                        
+                        <label class="quiz-label">Target KPIs (ROAS, CPA, Leads)</label>
+                        <input type="text" id="qKPIs" class="quiz-input" placeholder="e.g. 500% ROAS or Target CPA €15" />
                     </div>
+                    <button class="btn btn-primary" style="width: 100%; border: none; margin-top: 16px;" onclick="qNext()">Next Phase &rarr;</button>
                 </div>
 
                 <div class="quiz-step" id="quiz-step-2">
-                    <h2 style="font-size: 2rem;">Where is the primary budget leakage?</h2>
-                    <p style="color: var(--text-gray);">Select the biggest structural bottleneck preventing scale.</p>
+                    <h2 style="font-size: 2rem;">Phase 2: The Challenge</h2>
+                    <p style="color: var(--text-gray);">Detail the specific bottlenecks we are investigating.</p>
                     <div style="margin-top: 32px;">
-                        <div class="quiz-option" onclick="qSelect('challenge', 'PMax cannibalizing branded search')">PMax cannibalizing branded search</div>
-                        <div class="quiz-option" onclick="qSelect('challenge', 'CPA spikes during scaling attempts')">CPA spikes during scaling attempts</div>
-                        <div class="quiz-option" onclick="qSelect('challenge', 'Low quality B2B lead influx')">Low quality B2B lead influx</div>
-                        <div class="quiz-option" onclick="qSelect('challenge', 'Other structural issue')">Other structural issue</div>
+                        <label class="quiz-label">Main problems or wishes</label>
+                        <textarea id="qProblems" class="quiz-input" style="height: 80px; resize: none;" placeholder="What is breaking? What do you want to achieve?"></textarea>
+                        
+                        <label class="quiz-label">Main Competitors</label>
+                        <input type="text" id="qCompetitors" class="quiz-input" placeholder="Who are we fighting in the auction?" />
                     </div>
+                    <button class="btn btn-primary" style="width: 100%; border: none; margin-top: 16px;" onclick="qNext()">Next Phase &rarr;</button>
                 </div>
 
                 <div class="quiz-step" id="quiz-step-3">
-                    <h2 style="font-size: 2rem;">Target Acquisition</h2>
-                    <p style="color: var(--text-gray);">Where are we directing the data extraction?</p>
+                    <h2 style="font-size: 2rem;">Phase 3: Data Access</h2>
+                    <p style="color: var(--text-gray);">Can you provide Read-Only access to Google Ads, Analytics, and Merchant Center?</p>
                     <div style="margin-top: 32px;">
-                        <label class="quiz-label">Website URL</label>
-                        <input type="text" id="qWebsite" class="quiz-input" placeholder="https://your-domain.com" />
+                        <div class="quiz-option" onclick="qSelect('access', 'Yes, ready to provide access')">Yes, ready to provide access</div>
+                        <div class="quiz-option" onclick="qSelect('access', 'Yes, but need an NDA first')">Yes, but need an NDA first</div>
+                        <div class="quiz-option" onclick="qSelect('access', 'Hard to provide access right now')">Hard to provide access right now</div>
                     </div>
-                    <button class="btn btn-primary" style="width: 100%; border: none;" onclick="qFinish()">Compile & Review</button>
                 </div>
 
                 <div class="quiz-step" id="quiz-step-4">
@@ -683,11 +691,15 @@
         }
 
         // Quiz Logic
-        let qState = { step: 1, spend: '', challenge: '', website: '' };
+        let qState = { step: 1, access: '' };
         
         function startQuiz() {
-            qState.step = 1;
+            qState = { step: 1, access: '' };
             document.getElementById('qWebsite').value = '';
+            document.getElementById('qRegion').value = '';
+            document.getElementById('qKPIs').value = '';
+            document.getElementById('qProblems').value = '';
+            document.getElementById('qCompetitors').value = '';
             updateQuizUI();
             document.getElementById('quizModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -699,25 +711,34 @@
         function updateQuizUI() {
             document.querySelectorAll('.quiz-step').forEach(el => el.classList.remove('active'));
             document.getElementById('quiz-step-' + qState.step).classList.add('active');
-            document.getElementById('quizProgressText').innerText = qState.step < 4 ? `Step ${qState.step} of 3` : 'Ready for Transmission';
+            document.getElementById('quizProgressText').innerText = qState.step < 4 ? `Phase ${qState.step} of 3` : 'Ready for Transmission';
             document.getElementById('qPrevBtn').style.display = qState.step > 1 && qState.step < 4 ? 'block' : 'none';
+        }
+        function qNext() {
+            qState.step++;
+            updateQuizUI();
         }
         function qSelect(key, value) {
             qState[key] = value;
             qState.step++;
+            if(qState.step === 4) {
+               compileEmail();
+            }
             updateQuizUI();
         }
         function qPrev() {
             if(qState.step > 1) { qState.step--; updateQuizUI(); }
         }
-        function qFinish() {
-            qState.website = document.getElementById('qWebsite').value || 'Not provided';
-            qState.step = 4;
+        function compileEmail() {            
+            let w = document.getElementById('qWebsite').value || 'N/A';
+            let r = document.getElementById('qRegion').value || 'N/A';
+            let k = document.getElementById('qKPIs').value || 'N/A';
+            let p = document.getElementById('qProblems').value || 'N/A';
+            let c = document.getElementById('qCompetitors').value || 'N/A';
             
-            let bodyText = `Hi Iaroslav,\n\nI would like to request an analytical audit of my account.\n\nWebsite: ${qState.website}\nCurrent Monthly Spend: ${qState.spend}\nPrimary Leakage Challenge: ${qState.challenge}\n\nPlease let me know the next steps for providing read-only access.\n\nBest,`;
+            let bodyText = `Hi Iaroslav,\n\nI would like to request a technical audit. Here is our data:\n\n-- SCOPE --\nWebsite: ${w}\nRegion: ${r}\nKPIs/Goals: ${k}\n\n-- CHALLENGE --\nMain Problems: ${p}\nCompetitors: ${c}\n\n-- LOGISTICS --\nData Access: ${qState.access}\n\nPlease review and let me know the estimated timeline for the audit.\n\nBest,`;
             
             document.getElementById('quizMailtoBtn').href = `mailto:yaroslav.zhakun@gmail.com?subject=Requesting Technical Audit&body=${encodeURIComponent(bodyText)}`;
-            updateQuizUI();
         }
     </script>
 </body>
