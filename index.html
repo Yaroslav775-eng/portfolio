@@ -164,6 +164,19 @@
         .modal-metric { display: flex; flex-direction: column; }
         .modal-metric-val { font-size: 2rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; font-family: var(--font-heading);}
         .modal-metric-lbl { font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); letter-spacing: 0.05em;}
+
+        /* Quiz Styles */
+        .quiz-step { display: none; animation: fadeIn 0.3s ease; }
+        .quiz-step.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .quiz-option { border: 1px solid var(--text-dark); padding: 16px 24px; margin-bottom: 12px; cursor: pointer; transition: all 0.2s; font-size: 1.1rem; display: flex; align-items: center; justify-content: space-between;}
+        .quiz-option:hover { background: var(--text-dark); color: #fff; }
+        .quiz-option.selected { background: var(--text-dark); color: #fff; border-color: #000; box-shadow: 4px 4px 0 #000;}
+        .quiz-input { width: 100%; border: border: 1px solid var(--accent-muted); border-bottom: 2px solid var(--text-dark); padding: 16px; font-size: 1.1rem; margin-bottom: 24px; outline: none; transition: border-color 0.2s;}
+        .quiz-input:focus { border-color: var(--accent-brand); }
+        .quiz-label { font-size: 0.9rem; text-transform: uppercase; color: var(--text-gray); margin-bottom: 8px; display: block; letter-spacing: 0.05em;}
+        .quiz-footer { margin-top: 32px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--accent-muted); padding-top: 24px;}
+        .quiz-progress { font-size: 0.85rem; color: var(--text-gray); }
     </style>
 </head>
 <body>
@@ -444,7 +457,7 @@
                         <li style="padding: 12px 0; font-size: 0.95rem; border-bottom: 1px solid var(--accent-muted); display:flex; gap:12px;"><b>2.</b> Provide Read-Only Google Ads Access</li>
                         <li style="padding: 12px 0; font-size: 0.95rem; border-bottom: none; display:flex; gap:12px;"><b>3.</b> I analyze performance layers to locate your budget leaks</li>
                     </ul>
-                    <a href="mailto:yaroslav.zhakun@gmail.com?subject=Requesting%20Technical%20Audit&body=Hi%20Iaroslav,%0A%0AI%20would%20like%20to%20request%20an%20audit.%0A%0AWebsite%20URL:%20%0ACurrent%20Monthly%20Spend:%20%0AMain%20challenge/goal:%20" class="btn btn-primary" style="display: block; text-align: center;">Email to Request Audit</a>
+                    <button class="btn btn-primary" style="width: 100%; border: none; font-size: 1.1rem; padding: 18px;" onclick="startQuiz()">Launch Discovery Quiz</button>
                     <p style="font-size: 0.8rem; text-align: center; margin-top: 16px; color: var(--text-gray); font-style: italic;">* Reserved for accounts currently spending €10,000+/mo.</p>
                 </div>
             </div>
@@ -598,8 +611,63 @@
         </div>
     </div>
 
+    <!-- QUIZ MODAL HTML -->
+    <div class="modal-overlay" id="quizModal">
+        <div class="modal-window">
+            <button class="modal-close" onclick="closeQuiz()">✕</button>
+            <div class="modal-content-area" id="quizContainer">
+                <span class="section-label" style="margin-bottom: 24px;">Discovery Framework</span>
+                
+                <div class="quiz-step active" id="quiz-step-1">
+                    <h2 style="font-size: 2rem;">What is your current monthly ad spend?</h2>
+                    <p style="color: var(--text-gray);">This ensures we have enough data velocity for a mathematical analysis.</p>
+                    <div style="margin-top: 32px;">
+                        <div class="quiz-option" onclick="qSelect('spend', 'Under €10,000')">Under €10,000</div>
+                        <div class="quiz-option" onclick="qSelect('spend', '€10,000 - €30,000')">€10,000 - €30,000</div>
+                        <div class="quiz-option" onclick="qSelect('spend', '€30,000+')">€30,000+</div>
+                    </div>
+                </div>
+
+                <div class="quiz-step" id="quiz-step-2">
+                    <h2 style="font-size: 2rem;">Where is the primary budget leakage?</h2>
+                    <p style="color: var(--text-gray);">Select the biggest structural bottleneck preventing scale.</p>
+                    <div style="margin-top: 32px;">
+                        <div class="quiz-option" onclick="qSelect('challenge', 'PMax cannibalizing branded search')">PMax cannibalizing branded search</div>
+                        <div class="quiz-option" onclick="qSelect('challenge', 'CPA spikes during scaling attempts')">CPA spikes during scaling attempts</div>
+                        <div class="quiz-option" onclick="qSelect('challenge', 'Low quality B2B lead influx')">Low quality B2B lead influx</div>
+                        <div class="quiz-option" onclick="qSelect('challenge', 'Other structural issue')">Other structural issue</div>
+                    </div>
+                </div>
+
+                <div class="quiz-step" id="quiz-step-3">
+                    <h2 style="font-size: 2rem;">Target Acquisition</h2>
+                    <p style="color: var(--text-gray);">Where are we directing the data extraction?</p>
+                    <div style="margin-top: 32px;">
+                        <label class="quiz-label">Website URL</label>
+                        <input type="text" id="qWebsite" class="quiz-input" placeholder="https://your-domain.com" />
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; border: none;" onclick="qFinish()">Compile & Review</button>
+                </div>
+
+                <div class="quiz-step" id="quiz-step-4">
+                    <h2 style="font-size: 2rem;">Audit Framework Prepared</h2>
+                    <p style="color: var(--text-gray);">The necessary pre-flight details have been captured. Click below to securely transfer your data to my personal inbox.</p>
+                    <div style="margin-top: 32px;">
+                        <a id="quizMailtoBtn" href="#" class="btn btn-primary" style="display: block; text-align: center; width: 100%;">Transmit Data via Email</a>
+                    </div>
+                </div>
+
+                <div class="quiz-footer">
+                    <span class="quiz-progress" id="quizProgressText">Step 1 of 3</span>
+                    <button class="btn btn-ghost" style="border: none; padding: 8px 16px; min-width: auto; font-size: 0.9rem; display: none;" id="qPrevBtn" onclick="qPrev()">&larr; Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- MAIN JS Logic -->
     <script>
+        // Modal Logic
         function openModal(caseId) {
             const dataElement = document.getElementById('data-' + caseId);
             if (!dataElement) return;
@@ -612,6 +680,44 @@
                 document.getElementById('caseModal').classList.remove('active');
                 document.body.style.overflow = ''; 
             }
+        }
+
+        // Quiz Logic
+        let qState = { step: 1, spend: '', challenge: '', website: '' };
+        
+        function startQuiz() {
+            qState.step = 1;
+            document.getElementById('qWebsite').value = '';
+            updateQuizUI();
+            document.getElementById('quizModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeQuiz() {
+            document.getElementById('quizModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function updateQuizUI() {
+            document.querySelectorAll('.quiz-step').forEach(el => el.classList.remove('active'));
+            document.getElementById('quiz-step-' + qState.step).classList.add('active');
+            document.getElementById('quizProgressText').innerText = qState.step < 4 ? `Step ${qState.step} of 3` : 'Ready for Transmission';
+            document.getElementById('qPrevBtn').style.display = qState.step > 1 && qState.step < 4 ? 'block' : 'none';
+        }
+        function qSelect(key, value) {
+            qState[key] = value;
+            qState.step++;
+            updateQuizUI();
+        }
+        function qPrev() {
+            if(qState.step > 1) { qState.step--; updateQuizUI(); }
+        }
+        function qFinish() {
+            qState.website = document.getElementById('qWebsite').value || 'Not provided';
+            qState.step = 4;
+            
+            let bodyText = `Hi Iaroslav,\n\nI would like to request an analytical audit of my account.\n\nWebsite: ${qState.website}\nCurrent Monthly Spend: ${qState.spend}\nPrimary Leakage Challenge: ${qState.challenge}\n\nPlease let me know the next steps for providing read-only access.\n\nBest,`;
+            
+            document.getElementById('quizMailtoBtn').href = `mailto:yaroslav.zhakun@gmail.com?subject=Requesting Technical Audit&body=${encodeURIComponent(bodyText)}`;
+            updateQuizUI();
         }
     </script>
 </body>
