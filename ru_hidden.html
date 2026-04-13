@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ярослав Жакун — Частный специалист по контекстной рекламе, интернет-маркетингу и разработке конверсионных сайтов.">
+    <meta name="keywords" content="Google Ads, PPC, Создание сайтов, Контекстная реклама, Landing Page, Ярослав Жакун">
+    <meta name="author" content="Iaroslav Zhakun">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph for LinkedIn / Twitter sharing -->
+    <meta property="og:title" content="Ярослав Жакун | Специалист по контекстной рекламе">
+    <meta property="og:description" content="Сокращаю ваши расходы на рекламу и увеличиваю доходы. Опыт в маркетинге с 2013 года.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    
+    <title>Ярослав Жакун | Специалист по Google Ads</title>
+    <link rel="canonical" href="https://yaroslav775-eng.github.io/portfolio/ru.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chifra:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-white: #FFFFFF;
+            --bg-offwhite: #F9F9F9;
+            --bg-tint: #F0F0F0;
+            --bg-dark: #000000;
+            --text-dark: #000000;
+            --text-gray: #4A4A4A;
+            --text-light: #FFFFFF;
+            --accent-muted: #D3D3D3;
+            --accent-brand: #C00000;
+            --font-heading: 'Frank Ruhl Libre', serif;
+            --font-main: 'Merriweather', serif;
+            --font-sans: -apple-system, system-ui, sans-serif;
+            --radius-md: 0px;
+            --shadow-soft: none;
+            --shadow-btn: none;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        ::selection { background: #000; color: #fff; }
+        body { font-family: var(--font-main); color: var(--text-dark); background-color: var(--bg-white); line-height: 1.7; -webkit-font-smoothing: antialiased; letter-spacing: -0.01em; }
+        
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
+        @media (max-width: 768px) { .container { padding: 0 24px; } }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade { opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+
+        h1, h2, h3, h4, .font-heading { font-family: var(--font-heading); font-weight: 700; letter-spacing: -0.02em; color: var(--text-dark); }
+        p { color: var(--text-gray); }
+
+        .section-title { font-size: 3rem; margin-bottom: 48px; border-bottom: 3px double #000; padding-bottom: 16px; }
+        @media (max-width: 768px) { .section-title { font-size: 2.25rem; } }
+        
+        .section-label { font-size: 0.75rem; font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-dark); margin-bottom: 16px; display: block; font-weight: 600; }
+
+        .hero-section { background-color: var(--bg-white); padding: 100px 0 60px; border-bottom: 4px solid var(--text-dark); border-top: 1px solid var(--text-dark); border-bottom: 3px double #000;}
+        .hero-grid { display: grid; grid-template-columns: 1fr; gap: 0px; align-items: start; max-width: 800px; margin: 0 auto; text-align: center;}
+        
+        .hero-content h1 { font-size: clamp(3rem, 6vw, 5rem); line-height: 1.05; margin-bottom: 24px; margin-top: 16px; font-weight: 700;}
+        .hero-content h1 i { font-style: italic; color: var(--text-dark); font-weight: 400; }
+        .hero-content p { font-size: 1.15rem; max-width: 700px; margin: 0 auto 40px; font-weight: 400; }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; border-radius: 0; font-family: var(--font-sans); font-weight: 600; font-size: 0.85rem; text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.2s; cursor: pointer; border: 1px solid var(--text-dark); }
+        .btn-primary { background: var(--text-dark); color: var(--bg-white); }
+        .btn-primary:hover { background: var(--bg-white); color: var(--text-dark); }
+        .btn-ghost { background-color: transparent; color: var(--text-dark); }
+        .btn-ghost:hover { background-color: var(--text-dark); color: var(--bg-white); }
+
+        .hero-proof { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 24px; padding-top: 40px; margin-top: 40px; border-top: 1px solid var(--accent-muted); width: 100%;}
+        .proof-item { display: flex; align-items: center; gap: 12px; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 500; color: var(--text-dark); line-height: 1.4; border-right: 1px solid var(--accent-muted); padding-right: 24px;}
+        .proof-item:last-child { border-right: none; }
+        .proof-icon { width: 18px; height: 18px; color: var(--text-dark); flex-shrink: 0;}
+
+        .cert-pill { display: inline-flex; align-items: center; gap: 8px; border-bottom: 2px solid #000; padding: 4px 8px; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-dark); margin-bottom: 16px;}
+
+        .facts-strip { background-color: var(--bg-white); padding: 80px 0 40px; }
+        .facts-container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; border-top: 1px solid var(--accent-muted); border-bottom: 1px solid var(--accent-muted); padding: 40px 0; }
+        .fact-box h3 { font-size: 3rem; font-family: var(--font-heading); color: var(--accent-brand); margin-bottom: 4px; }
+        .fact-box p { text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; font-weight: 600; color: var(--text-gray); }
+
+        .section-white { background-color: var(--bg-white); padding: 60px 0 80px; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 60px 40px; }
+        .feature-card h3 { font-size: 1.5rem; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+
+        .philosophy-banner { background-color: var(--bg-tint); padding: 60px 40px; margin: 80px auto 0; border-left: 6px solid var(--text-dark); max-width: 1000px; }
+        .philosophy-banner h3 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; color: var(--text-gray); font-family: var(--font-main); }
+        .philosophy-banner p { font-size: 1.5rem; line-height: 1.4; color: var(--text-dark); font-family: var(--font-heading); font-style: italic; font-weight: 500; }
+
+        .section-cases { background-color: var(--bg-white); padding: 80px 0; border-top: 4px solid #000;}
+        .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 1px solid var(--text-dark); }
+        @media (max-width: 900px) { .cases-grid { grid-template-columns: 1fr; border-bottom: none;} }
+        
+        .case-card { background-color: var(--bg-white); padding: 40px; display: flex; flex-direction: column; transition: background 0.2s; border: 1px solid var(--text-dark); margin: -1px; cursor: pointer; position: relative;}
+        .case-card:hover { background-color: var(--bg-offwhite); z-index: 5;}
+        
+        .case-title { font-size: 1.85rem; margin-bottom: 16px; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; font-family: var(--font-heading); line-height: 1.2;}
+        .case-tag { font-size: 0.7rem; font-family: var(--font-sans); text-transform: uppercase; padding: 4px 8px; border: 1px solid var(--text-dark); color: var(--text-dark); font-weight: 600; letter-spacing: 0.05em; }
+        .case-teaser { font-size: 1.05rem; margin-bottom: 24px; color: var(--text-dark); line-height: 1.6; flex-grow: 1; font-weight: 400;}
+
+        .metrics-chips { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 24px; border-top: 1px dotted var(--text-dark); }
+        .chip { border: 1px solid var(--text-dark); padding: 6px 12px; font-family: var(--font-sans); font-size: 0.75rem; color: var(--text-dark); display: inline-flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.05em;}
+        .chip strong { font-weight: 700; font-size: 0.9rem; }
+        .chip-accent { background-color: var(--text-dark); color: #fff; }
+        .chip-accent strong { color: #fff; }
+
+        .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; padding: 120px 0;}
+        @media (max-width: 768px) { .split-grid { grid-template-columns: 1fr; gap: 60px; } }
+        .info-block { margin-bottom: 32px; border-bottom: 1px solid var(--accent-muted); padding-bottom: 24px; }
+        .info-block h4 { font-size: 1.5rem; margin-bottom: 12px; font-family: var(--font-heading);}
+        .clean-list { list-style: none; }
+        .clean-list li { padding: 16px 0; border-bottom: 1px solid var(--accent-muted); font-size: 1.05rem; display: flex; gap: 16px; align-items: flex-start; color: var(--text-dark); }
+        .clean-list li:first-child { border-top: 1px solid var(--accent-muted); }
+        .clean-list li::before { content: "—"; color: var(--accent-brand); font-weight: bold; }
+
+        .cta-section { background-color: var(--bg-dark); color: var(--text-light); padding: 120px 0; text-align: center; }
+        .cta-section .section-label { color: #8A92A3; }
+        .cta-section h2 { font-size: 3rem; margin-bottom: 24px; color: var(--text-light); line-height: 1.1; max-width: 800px; margin-inline: auto;}
+        .cta-section p { font-size: 1.25rem; color: #A1A8B8; margin-bottom: 40px; max-width: 600px; margin-inline: auto;}
+
+        footer { padding: 40px 0; text-align: center; background-color: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.05);}
+        footer p { font-size: 0.85rem; color: #5C6270; }
+        svg { display: inline-block; vertical-align: middle; flex-shrink: 0; }
+
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(4px); display: flex; align-items: flex-start; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; overflow-y: auto;}
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-window { background: var(--bg-white); width: 100%; max-width: 800px; border: 1px solid #000; margin-top: 40px; margin-bottom: 40px; position: relative; box-shadow: 10px 10px 0px rgba(0,0,0,1); padding: 64px; }
+        @media (max-width: 768px) { .modal-window { padding: 40px 24px; margin: 20px; box-shadow: 4px 4px 0px rgba(0,0,0,1); } }
+        .modal-close { position: absolute; top: 16px; right: 16px; background: #000; color: #fff; border: none; width: 32px; height: 32px; cursor: pointer; font-family: var(--font-sans); display: flex; align-items: center; justify-content: center; transition: all 0.2s;}
+        .modal-close:hover { background: var(--accent-brand); }
+        
+        .modal-content-area h4 { font-family: var(--font-heading); font-size: 1.4rem; color: var(--text-dark); margin-bottom: 12px; margin-top: 40px; border-bottom: 1px solid #000; padding-bottom: 8px;}
+        .modal-content-area h2 { font-size: 2.5rem; margin-bottom: 16px; margin-top: 0; font-family: var(--font-heading);}
+        .modal-content-area p { margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; color: var(--text-dark); }
+        .modal-content-area .highlight-box { background: var(--bg-offwhite); border-left: 4px solid var(--accent-brand); padding: 24px 32px; margin: 32px 0; font-size: 1.1rem; font-style: italic; font-family: var(--font-heading); color: var(--text-dark);}
+        .modal-content-area ul { list-style: none; margin-bottom: 32px; }
+        .modal-content-area ul li { padding-left: 20px; position: relative; margin-bottom: 12px; font-size: 1.1rem; color: var(--text-dark);}
+        .modal-content-area ul li::before { content: "—"; position: absolute; left: 0; color: var(--accent-brand); font-weight: bold;}
+        
+        .modal-metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 24px; margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--accent-muted);}
+        .modal-metric { display: flex; flex-direction: column; }
+        .modal-metric-val { font-size: 2rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; font-family: var(--font-heading);}
+        .modal-metric-lbl { font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); letter-spacing: 0.05em;}
+
+        .quiz-step { display: none; animation: fadeIn 0.3s ease; }
+        .quiz-step.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .quiz-option { border: 1px solid var(--text-dark); padding: 16px 24px; margin-bottom: 12px; cursor: pointer; transition: all 0.2s; font-size: 1.1rem; display: flex; align-items: center; justify-content: space-between;}
+        .quiz-option:hover { background: var(--text-dark); color: #fff; }
+        .quiz-input { width: 100%; border: border: 1px solid var(--accent-muted); border-bottom: 2px solid var(--text-dark); padding: 16px; font-size: 1.1rem; margin-bottom: 24px; outline: none; transition: border-color 0.2s;}
+        .quiz-input:focus { border-color: var(--accent-brand); }
+        .quiz-label { font-size: 0.9rem; text-transform: uppercase; color: var(--text-gray); margin-bottom: 8px; display: block; letter-spacing: 0.05em;}
+        .quiz-footer { margin-top: 32px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--accent-muted); padding-top: 24px;}
+        .quiz-progress { font-size: 0.85rem; color: var(--text-gray); }
+    </style>
+</head>
+<body>
+
+    <!-- TOP BAR -->
+    <div style="background-color: #000; padding: 12px 0;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-sans); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; flex-wrap: wrap; gap: 16px;">
+            <div style="display: flex; gap: 12px;">
+                <a href="index.html" style="color: #888; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">EN</a>
+                <span style="color: #666;">|</span>
+                <a href="ua.html" style="color: #888; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">UA</a>
+            </div>
+            <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                <a href="mailto:yaroslav.zhakun@gmail.com" style="color: #fff; text-decoration: none;">yaroslav.zhakun@gmail.com</a>
+                <span style="color: #666;">|</span>
+                <a href="https://t.me/Yaroslav797" target="_blank" style="color: #fff; text-decoration: none;">Telegram</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <header class="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="cert-pill animate-fade">✓ Google Certified &middot; E-commerce (B2C) & LeadGen (B2B/B2C)</span>
+                <span class="section-label animate-fade" style="margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dark);">Ярослав Жакун &mdash; Афины, Греция</span>
+                <h1 class="animate-fade delay-1" style="font-size: 3.5rem;">Google Ads как система спроса, <i>а не набор кампаний.</i></h1>
+                <p class="animate-fade delay-2">Собираю понятную структуру из Search, Performance Max, Shopping и DSA: убираю шум, разделяю интент и усиливаю направления, которые можно масштабировать.</p>
+                <div class="hero-buttons animate-fade delay-3">
+                    <a href="#cases" class="btn btn-primary">Смотреть кейсы</a>
+                    <a href="https://t.me/Yaroslav797" target="_blank" class="btn btn-ghost" style="margin-left: 12px;">Telegram</a>
+                </div>
+            </div>
+            <div class="hero-proof">
+                <div class="proof-item">
+                    <svg class="proof-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    <span>ЧТО ДЕЛАЮ:<br><b>Разбираю структуру аккаунта</b></span>
+                </div>
+                <div class="proof-item">
+                    <svg class="proof-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span>АРХИТЕКТУРА:<br><b>Пересобираю Search / PMax / Shopping</b></span>
+                </div>
+                <div class="proof-item">
+                    <svg class="proof-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    <span>БИЗНЕС-ЦЕЛЬ:<br><b>Нахожу точки роста без хаоса бюджета</b></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- PLATFORM & TOOLS GRID -->
+    <section style="background-color: var(--bg-white); padding: 80px 0 40px;">
+        <div class="container">
+            <span class="section-label" style="text-align: center; margin-bottom: 40px;">Технологический Стек</span>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
+                <div style="padding: 16px 28px; background: var(--bg-offwhite); border: 1px solid var(--accent-muted); border-radius: 100px; font-weight: 600; font-size: 1.05rem; color: var(--text-dark);">Google Ads</div>
+                <div style="padding: 16px 28px; background: var(--bg-offwhite); border: 1px solid var(--accent-muted); border-radius: 100px; font-weight: 600; font-size: 1.05rem; color: var(--text-dark);">Google Analytics 4</div>
+                <div style="padding: 16px 28px; background: var(--bg-offwhite); border: 1px solid var(--accent-muted); border-radius: 100px; font-weight: 600; font-size: 1.05rem; color: var(--text-dark);">Google Tag Manager</div>
+                <div style="padding: 16px 28px; background: var(--bg-offwhite); border: 1px solid var(--accent-muted); border-radius: 100px; font-weight: 600; font-size: 1.05rem; color: var(--text-dark);">Looker Studio</div>
+                <div style="padding: 16px 28px; background: var(--bg-offwhite); border: 1px solid var(--accent-muted); border-radius: 100px; font-weight: 600; font-size: 1.05rem; color: var(--text-dark);">Merchant Center</div>
+                <div style="padding: 16px 28px; background: var(--bg-offwhite); border: 1px solid var(--accent-muted); border-radius: 100px; font-weight: 600; font-size: 1.05rem; color: var(--text-dark);">TripleWhale</div>
+                <div style="padding: 16px 28px; background: var(--bg-offwhite); border: 1px solid var(--accent-muted); border-radius: 100px; font-weight: 600; font-size: 1.05rem; color: var(--text-dark);">Shopify</div>
+                <div style="padding: 16px 28px; background: var(--bg-offwhite); border: 1px solid var(--accent-muted); border-radius: 100px; font-weight: 600; font-size: 1.05rem; color: var(--text-dark);">Zapier / Make</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAREER IMPACT (HARD FACTS) -->
+    <section class="facts-strip">
+        <div class="container">
+            <div class="facts-container" style="justify-content: space-around;">
+                <div class="fact-box">
+                    <h3>2013</h3>
+                    <p>Старт в интернет-маркетинге</p>
+                </div>
+                <div class="fact-box">
+                    <h3>80+</h3>
+                    <p>Реализованных проектов</p>
+                </div>
+                <div class="fact-box">
+                    <h3>10k+</h3>
+                    <p>SKU в управлении (E-com)</p>
+                </div>
+                <div class="fact-box">
+                    <h3>E-com & Услуги</h3>
+                    <p>B2C / B2B Экспертиза</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASES -->
+    <section id="cases" class="section-cases">
+        <div class="container">
+            <span class="section-label">Доказательства</span>
+            <h2 class="section-title">Практические Кейсы</h2>
+            <div class="cases-grid">
+                <div class="case-card" onclick="openModal('case-1')">
+                    <div class="case-title">E-commerce: зоотовары<span class="case-tag">Архитектура</span></div>
+                    <p class="case-teaser">Превратили хаотичный рост в управляемую систему. Внедрена гибридная воронка: Search + PMax + Shopping со строгой сегментацией спроса.</p>
+                    <div class="metrics-chips">
+                        <span class="chip chip-accent"><strong>€13.9k</strong> Расход</span>
+                        <span class="chip"><strong>2,485</strong> Конв.</span>
+                    </div>
+                    <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">Системный Вид <span>&rarr;</span></button>
+                </div>
+                <div class="case-card" onclick="openModal('case-2')">
+                    <div class="case-title">E-commerce: товары для гриля<span class="case-tag">Масштабирование</span></div>
+                    <p class="case-teaser">Масштабирование категорий на основе приоритетов. Оптимизировали охват инвентаря: PMax для емкости и Search для маржинального спроса.</p>
+                    <div class="metrics-chips">
+                        <span class="chip chip-accent"><strong>€157.6k</strong> Value</span>
+                        <span class="chip"><strong>1,693</strong> Конв.</span>
+                    </div>
+                    <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">Системный Вид <span>&rarr;</span></button>
+                </div>
+                <div class="case-card" onclick="openModal('case-3')">
+                    <div class="case-title">B2B: Логистика<span class="case-tag">Лидогенерация</span></div>
+                    <p class="case-teaser">Изолировали B2B-интент от общего объема. Построили прозрачную систему лидогенерации с изоляцией бренда и DSA-наполнением.</p>
+                    <div class="metrics-chips">
+                        <span class="chip chip-accent"><strong>€10.3k</strong> Расход</span>
+                        <span class="chip"><strong>1,090</strong> Конв.</span>
+                    </div>
+                    <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">Системный Вид <span>&rarr;</span></button>
+                </div>
+                <div class="case-card" onclick="openModal('case-4')">
+                    <div class="case-title">E-commerce: электротовары<span class="case-tag">Технический</span></div>
+                    <p class="case-teaser">Многоуровневое масштабирование инвентаря. Усилили видимость PMax для топовых групп при контроле брендового поиска.</p>
+                    <div class="metrics-chips">
+                        <span class="chip chip-accent"><strong>€51.6k</strong> Value</span>
+                        <span class="chip"><strong>1,178</strong> Конв.</span>
+                    </div>
+                    <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">Системный Вид <span>&rarr;</span></button>
+                </div>
+                <div class="case-card" onclick="openModal('case-5')">
+                    <div class="case-title">Услуги: Ремонт техники<span class="case-tag">Эффективность</span></div>
+                    <p class="case-teaser">Гиперлокальная радиусная стратегия. Защитили CPA в перегретой нише через точечный гео-таргетинг и Сall-центричную воронку.</p>
+                    <div class="metrics-chips">
+                        <span class="chip chip-accent"><strong>€12</strong> Avg. CPA</span>
+                        <span class="chip"><strong>850</strong> Звонков</span>
+                    </div>
+                    <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">Системный Вид <span>&rarr;</span></button>
+                </div>
+                <div class="case-card" onclick="openModal('case-6')">
+                    <div class="case-title">Industrial B2B: Обородувание<span class="case-tag">Стратегия</span></div>
+                    <p class="case-teaser">Supply-chain фильтрация интента. Жесткая логика исключения розничного шума для захвата профессиональных покупателей.</p>
+                    <div class="metrics-chips">
+                        <span class="chip chip-accent"><strong>320</strong> Лидов</span>
+                        <span class="chip"><strong>€45</strong> CPA</span>
+                    </div>
+                    <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">Системный Вид <span>&rarr;</span></button>
+                </div>
+        </div>
+    </section>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; margin-bottom: 32px;">
+                    <div>
+                        <h4 style="font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 12px; margin-top: 32px; border-bottom: 1px solid var(--accent-muted); padding-bottom: 8px;">Образование и статус</h4>
+                        <ul class="clean-list" style="padding-left: 0; font-size: 0.95rem;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--accent-muted);"><strong>Образование:</strong> Менеджер-экономист</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--accent-muted);"><strong>Сертификат:</strong> Google Search Campaigns</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--accent-muted);"><strong>Сертификат:</strong> Shopping & Performance Max</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--accent-muted);"><strong>Soft Skills:</strong> Проактивность, аргументация решений на языке бизнеса.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 12px; margin-top: 32px; border-bottom: 1px solid var(--accent-muted); padding-bottom: 8px;">Tech Stack & Tools</h4>
+                        <ul class="clean-list" style="padding-left: 0; font-size: 0.95rem;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--accent-muted);"><strong>Advertising:</strong> Google Ads, Merchant Center</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--accent-muted);"><strong>Analytics:</strong> Google Analytics 4, GTM</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--accent-muted);"><strong>Reporting:</strong> Looker Studio, Excel / Google Sheets</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--accent-muted);"><strong>CRO:</strong> Microsoft Clarity, базовый HTML/CSS</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                    <a href="https://t.me/Yaroslav797" target="_blank" class="btn btn-primary" style="text-decoration: none;">Связаться в Telegram</a>
+                    <a href="#" class="btn btn-outline" style="border: 1px solid var(--accent-brand); color: var(--accent-brand); background: transparent; text-decoration: none;" download>Скачать CV (PDF)</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METHODOLOGY -->
+    <section class="section-white">
+        <div class="container">
+            <span class="section-label">Как Я Работаю</span>
+            <h2 class="section-title">Карта Спроса</h2>
+            <div class="split-grid" style="padding: 0; gap: 40px;">
+                <div class="info-block" style="border:none;">
+                    <h4>1. Фиксирую Ситуацию</h4>
+                    <p style="font-size: 1.15rem; line-height: 1.7;">Сначала фиксирую карту спроса: где есть горячий интент, где бренд, какие кампании реально тянут результат и что можно масштабировать без лишнего шума.</p>
+                </div>
+                <div class="info-block" style="border:none;">
+                    <h4>2. Собираю Систему</h4>
+                    <p style="font-size: 1.15rem; line-height: 1.7;">Затем собираю архитектуру: разделяю типы спроса, убираю пересечения интента, усиливаю рабочие направления и оставляю понятные точки роста, которыми можно управлять дальше.</p>
+                </div>
+            </div>
+
+            <!-- PHILOSOPHY BANNER -->
+            <div class="philosophy-banner" style="margin-top: 40px;">
+                <h3>Главный Принцип</h3>
+                <p>"Делаю управление рекламным аккаунтом понятным и устойчивым, уходя от хаотичного расширения бюджета к управляемому росту."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CROSS-CHANNEL CAPABILITIES -->
+    <section style="background-color: var(--bg-white); padding: 0 0 120px;">
+        <div class="container">
+            <span class="section-label">Портфолио Экспертизы</span>
+            <h2 class="section-title">Что Я Улучшаю</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+                <div style="padding: 32px; border: 1px solid var(--accent-muted); background: var(--bg-offwhite);">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 12px; color: var(--accent-brand);">Управляемость E-com</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-dark);">Выстраиваю строгую структуру для интернет-магазинов и lead generation аккаунтов, чтобы каждая группа товаров работала на маржу.</p>
+                </div>
+                <div style="padding: 32px; border: 1px solid var(--text-dark); background: var(--bg-white);">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 12px; color: var(--text-dark);">Связки Search / PMax</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-gray);">Внедряю грамотную связку Search, Performance Max, Shopping и DSA, убирая автоматический мусор и дублирование.</p>
+                </div>
+                <div style="padding: 32px; border: 1px solid var(--accent-muted); background: var(--bg-offwhite);">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 12px; color: var(--accent-brand);">Изоляция Интента</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-dark);">Жестко разделяю брендовый и небрендовый спрос, не позволяя Google съедать маржу на людях, которые и так вас искали.</p>
+                </div>
+                <div style="padding: 32px; border: 1px solid var(--accent-muted); background: var(--bg-offwhite);">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 12px; color: var(--accent-brand);">Приоритезация</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-dark);">Расставляю приоритеты по категориям, услугам и направлениям на основе аналитики конверсий.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- EMPLOYER FIT SECTION -->
+    <div style="background-color: var(--bg-offwhite);">
+        <div class="container split-grid">
+            <div>
+                <span class="section-label">Зона ответственности</span>
+                <h2 class="section-title">Что Я Приношу В Команду</h2>
+                <ul class="clean-list">
+                    <li><strong>Прозрачная аналитика:</strong> Настрою корректное отслеживание (GA4, GTM) и атрибуцию.</li>
+                    <li><strong>Управляемое масштабирование:</strong> Переведу аккаунт от хаотичных трат к контролируемому увеличению бюджета.</li>
+                    <li><strong>Кросс-функциональность:</strong> Готов составлять ТЗ для разработчиков, верстальщиков и аналитиков.</li>
+                    <li><strong>Понятный репортинг:</strong> Построю дашборды в Looker Studio, понятные C-level и руководителям.</li>
+                </ul>
+            </div>
+
+            <div>
+                <span class="section-label">Форматы работы</span>
+                <h2 class="section-title">Кого Я Ищу</h2>
+                <ul class="clean-list">
+                    <li><strong>Инхаус-команды:</strong> E-commerce проекты (B2C) с широким ассортиментом или B2B-компании.</li>
+                    <li><strong>Performance агентства:</strong> Готов присоединиться к сильной команде для работы с пулом клиентов.</li>
+                    <li><strong>Стартапы:</strong> Где нужен человек, который возьмет ответственность за Paid Search.</li>
+                    <li><strong>Цель:</strong> Долгосрочное сотрудничество, с глубоким погружением в продукт и метрики.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- DISCOVERY ENGAGEMENT (CTA PORTFOLIO) -->
+    <section class="section-audit" style="background-color: var(--bg-tint); padding: 80px 0; border-top: 2px solid #000;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; align-items: start;">
+                <div>
+                    <span class="section-label" style="margin-bottom: 16px;">Следующий Шаг</span>
+                    <h2 style="font-family: var(--font-heading); font-size: 2.2rem; color: var(--text-dark); margin-bottom: 24px; line-height: 1.1;">Ищете системного PPC специалиста?</h2>
+                    <p style="font-size: 1.15rem; color: var(--text-dark); line-height: 1.7; margin-bottom: 16px;">Я открыт к предложениям и готов присоединиться к вашей команде (Full-time / Part-time / Project).</p>
+                    <p style="font-size: 1.15rem; color: var(--text-dark); line-height: 1.7;">Моя цель — взять на себя ответственность за привлечение трафика, выстроить прозрачную систему и разговаривать с бизнесом на языке цифр и ROI.</p>
+                </div>
+                <div style="border: 1px solid var(--text-dark); background: var(--bg-white); padding: 48px;">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 24px; text-align: center;">Назначить интервью</h3>
+                    <p style="text-align: center; margin-bottom: 32px; font-size: 1.05rem;">Напишите мне в Telegram или на почту, чтобы договориться о знакомстве и обсудить ваши актуальные задачи.</p>
+                    <a href="https://t.me/Yaroslav797" class="btn btn-primary" style="width: 100%; border: none; font-size: 1.1rem; padding: 18px; text-decoration: none;">Написать в Telegram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA: INTERVIEW -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <span class="section-label" style="color: #8A92A3;">Контакты</span>
+            <h2>Готовы обсудить ваш проект?</h2>
+            <p>Давайте поговорим о том, как я могу внедрить системный подход в ваш бизнес и стабилизировать целевой трафик.</p>
+            
+            <div style="display: flex; gap: 16px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
+                <a href="mailto:yaroslav.zhakun@gmail.com" class="btn-primary btn" style="text-decoration: none;">yaroslav.zhakun@gmail.com</a>
+                <a href="https://t.me/Yaroslav797" target="_blank" class="btn-ghost btn" style="border-color: rgba(255,255,255,0.3); color: #fff;">Написать в Telegram</a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 40px 0; text-align: center; background-color: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <p style="font-size: 0.85rem; color: #5C6270;; margin-bottom: 16px;">&copy; 2026 Ярослав Жакун. Все права защищены.</p>
+        </div>
+    </footer>
+
+        <div style="display: none;">
+        <div id="data-case-1">
+            <h2 style="margin-bottom: 8px;">E-commerce: зоотовары</h2>
+            <div class="highlight-box">Goal: Стабилизировать архитектуру и создать точки масштабирования.</div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Стратегическая архитектура</h4>
+            <p><strong>Гибридный захват спроса: Search + PMax + Shopping.</strong></p>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Техническая реализация</h4>
+            <ul><li>Сегментация по группам спроса.</li><li>Аудит фидов для GMC.</li><li>Изоляция брендового трафика.</li></ul>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результаты</h4>
+            <div class="modal-metrics-grid">
+                <div class="modal-metric"><span class="modal-metric-val">1.2 млн</span><span class="modal-metric-lbl">Показов</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€13.9k</span><span class="modal-metric-lbl">Расход</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">2,485</span><span class="modal-metric-lbl">Конверсий</span></div>
+            </div>
+        </div>
+        <div id="data-case-2">
+            <h2 style="margin-bottom: 8px;">E-commerce: товары для гриля</h2>
+            <div class="highlight-box">Goal: Масштабировать приоритетные категории в пик сезона.</div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Стратегическая архитектура</h4>
+            <p><strong>Приоритетное масштабирование: Фокус на маржу в PMax.</strong></p>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Техническая реализация</h4>
+            <ul><li>Пересборка под маржинальные группы.</li><li>DSA для сезонного спроса.</li><li>Уточнение отслеживания событий.</li></ul>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результаты</h4>
+            <div class="modal-metrics-grid">
+                <div class="modal-metric"><span class="modal-metric-val">6.1 млн</span><span class="modal-metric-lbl">Показов</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€157.6k</span><span class="modal-metric-lbl">Value</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">1,693</span><span class="modal-metric-lbl">Конверсии</span></div>
+            </div>
+        </div>
+        <div id="data-case-3">
+            <h2 style="margin-bottom: 8px;">B2B: Логистика</h2>
+            <div class="highlight-box">Goal: Отсечь розничный (B2C) шум и стабилизировать заявки.</div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Стратегическая архитектура</h4>
+            <p><strong>B2B-фильтр интента: Глубокая логика минус-слов.</strong></p>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Техническая реализация</h4>
+            <ul><li>Изоляция бренда.</li><li>DSA для низкочастотных услуг.</li><li>Оптимизация воронки лида.</li></ul>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результаты</h4>
+            <div class="modal-metrics-grid">
+                <div class="modal-metric"><span class="modal-metric-val">1.9 млн</span><span class="modal-metric-lbl">Показов</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€10.3k</span><span class="modal-metric-lbl">Расход</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">1,090</span><span class="modal-metric-lbl">B2B Лидов</span></div>
+            </div>
+        </div>
+        <div id="data-case-4">
+            <h2 style="margin-bottom: 8px;">E-commerce: электротовары</h2>
+            <div class="highlight-box">Goal: Повысить управляемость на большом массиве SKU.</div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Стратегическая архитектура</h4>
+            <p><strong>ROAS-стратегия: Группировка товаров по эффективности.</strong></p>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Техническая реализация</h4>
+            <ul><li>Выделение приоритетов.</li><li>PMax + Search для топов.</li><li>Ремаркетинг для корзин.</li></ul>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результаты</h4>
+            <div class="modal-metrics-grid">
+                <div class="modal-metric"><span class="modal-metric-val">4.3 млн</span><span class="modal-metric-lbl">Показов</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€51.6k</span><span class="modal-metric-lbl">Value</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">1,178</span><span class="modal-metric-lbl">Конверсий</span></div>
+            </div>
+        </div>
+        <div id="data-case-5">
+            <h2 style="margin-bottom: 8px;">Услуги: Ремонт бытовой техники</h2>
+            <div class="highlight-box">Goal: Защитить CPA в перегретых локальных аукционах.</div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Стратегическая архитектура</h4>
+            <p><strong>Радиусная стратегия: Точный гео-таргетинг.</strong></p>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Техническая реализация</h4>
+            <ul><li>Call-Only кампании.</li><li>Агрессивные минус-слова.</li><li>Оптимизация по часам пик.</li></ul>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результаты</h4>
+            <div class="modal-metrics-grid">
+                <div class="modal-metric"><span class="modal-metric-val">€12</span><span class="modal-metric-lbl">Avg. CPA</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€10.2k</span><span class="modal-metric-lbl">Расход</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">850</span><span class="modal-metric-lbl">Звонков</span></div>
+            </div>
+        </div>
+        <div id="data-case-6">
+            <h2 style="margin-bottom: 8px;">Industrial B2B: Обородувание</h2>
+            <div class="highlight-box">Goal: Создать воронку под цепочки поставок.</div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Стратегическая архитектура</h4>
+            <p><strong>Supply-Chain фокус: Оптовые и индустриальные кластеры.</strong></p>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Техническая реализация</h4>
+            <ul><li>Изоляция профи-запросов.</li><li>Ремаркетинг на прайс-листы.</li><li>Отслеживание B2B-форм.</li></ul>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результаты</h4>
+            <div class="modal-metrics-grid">
+                <div class="modal-metric"><span class="modal-metric-val">320</span><span class="modal-metric-lbl">Квал. лидов</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€45</span><span class="modal-metric-lbl">Target CPA</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€14.4k</span><span class="modal-metric-lbl">Расход</span></div>
+            </div>
+        </div></div>
+    <!-- MODAL POPUP HTML -->
+    <div class="modal-overlay" id="caseModal" onclick="closeModal(event)">
+        <div class="modal-window">
+            <button class="modal-close" onclick="closeModal(event, true)">✕</button>
+            <div class="modal-content-area" id="modalContentInner"></div>
+        </div>
+    </div>
+
+    <!-- QUIZ MODAL HTML -->
+    <div class="modal-overlay" id="quizModal">
+        <div class="modal-window">
+            <button class="modal-close" onclick="closeQuiz()">✕</button>
+            <div class="modal-content-area" id="quizContainer">
+                <span class="section-label" style="margin-bottom: 24px;">Дискавери Фреймворк</span>
+                
+                <div class="quiz-step active" id="quiz-step-1">
+                    <h2 style="font-size: 2rem;">Фаза 1: Оценка и Территория</h2>
+                    <p style="color: var(--text-gray);">Определите базовые параметры для аналитики.</p>
+                    <div style="margin-top: 32px;">
+                        <label class="quiz-label">Website URL портала</label>
+                        <input type="text" id="qWebsite" class="quiz-input" placeholder="https://domain.com" />
+                        
+                        <label class="quiz-label">Регион(ы) работы (ГЕО)</label>
+                        <input type="text" id="qRegion" class="quiz-input" placeholder="Например: US, UK, EU" />
+                        
+                        <label class="quiz-label">Целевые метрики (Target ROAS, CPA)</label>
+                        <input type="text" id="qKPIs" class="quiz-input" placeholder="Например: Target CPA €15" />
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; border: none; margin-top: 16px;" onclick="qNext()">Следующая Фаза &rarr;</button>
+                </div>
+
+                <div class="quiz-step" id="quiz-step-2">
+                    <h2 style="font-size: 2rem;">Фаза 2: Вызов</h2>
+                    <p style="color: var(--text-gray);">Укажите проблематику, ломающую вашу юнит-экономику.</p>
+                    <div style="margin-top: 32px;">
+                        <label class="quiz-label">Главные боли или запросы</label>
+                        <textarea id="qProblems" class="quiz-input" style="height: 80px; resize: none;" placeholder="Что не работает? Чего хотите достичь?"></textarea>
+                        
+                        <label class="quiz-label">Основные Конкуренты</label>
+                        <input type="text" id="qCompetitors" class="quiz-input" placeholder="С кем мы бьемся в аукционе?" />
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; border: none; margin-top: 16px;" onclick="qNext()">Следующая Фаза &rarr;</button>
+                </div>
+
+                <div class="quiz-step" id="quiz-step-3">
+                    <h2 style="font-size: 2rem;">Фаза 3: Доступ</h2>
+                    <p style="color: var(--text-gray);">Есть ли возможность дать Read-Only доступы в Google Ads, Analytics 4 и GMC?</p>
+                    <div style="margin-top: 32px;">
+                        <div class="quiz-option" onclick="qSelect('access', 'Да, готов дать доступ')">Да, готов дать доступ</div>
+                        <div class="quiz-option" onclick="qSelect('access', 'Да, но необходимо NDA')">Да, но необходимо NDA</div>
+                        <div class="quiz-option" onclick="qSelect('access', 'Пока не готов')">Пока не готов</div>
+                    </div>
+                </div>
+
+                <div class="quiz-step" id="quiz-step-4">
+                    <h2 style="font-size: 2rem;">Фреймворк Сформирован</h2>
+                    <p style="color: var(--text-gray);">Ваши вводные данные вшиты в запрос исследования. Нажмите на кнопку, чтобы безопасно отправить запрос на почту.</p>
+                    <div style="margin-top: 32px;">
+                        <a id="quizMailtoBtn" href="#" class="btn btn-primary" style="display: block; text-align: center; width: 100%;">Отправить Данные Запроса</a>
+                    </div>
+                </div>
+
+                <div class="quiz-footer">
+                    <span class="quiz-progress" id="quizProgressText">Фаза 1 из 3</span>
+                    <button class="btn btn-ghost" style="border: none; padding: 8px 16px; min-width: auto; font-size: 0.9rem; display: none;" id="qPrevBtn" onclick="qPrev()">&larr; Назад</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN JS Logic -->
+    <script>
+        function openModal(caseId) {
+            const dataElement = document.getElementById('data-' + caseId);
+            if (!dataElement) return;
+            document.getElementById('modalContentInner').innerHTML = dataElement.innerHTML;
+            document.getElementById('caseModal').classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        }
+        function closeModal(event, force = false) {
+            if (force || event.target === document.getElementById('caseModal')) {
+                document.getElementById('caseModal').classList.remove('active');
+                document.body.style.overflow = ''; 
+            }
+        }
+
+        let qState = { step: 1, access: '' };
+        
+        function startQuiz() {
+            qState = { step: 1, access: '' };
+            document.getElementById('qWebsite').value = '';
+            document.getElementById('qRegion').value = '';
+            document.getElementById('qKPIs').value = '';
+            document.getElementById('qProblems').value = '';
+            document.getElementById('qCompetitors').value = '';
+            updateQuizUI();
+            document.getElementById('quizModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeQuiz() {
+            document.getElementById('quizModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function updateQuizUI() {
+            document.querySelectorAll('.quiz-step').forEach(el => el.classList.remove('active'));
+            document.getElementById('quiz-step-' + qState.step).classList.add('active');
+            document.getElementById('quizProgressText').innerText = qState.step < 4 ? `Фаза ${qState.step} из 3` : 'Передача Файлов';
+            document.getElementById('qPrevBtn').style.display = qState.step > 1 && qState.step < 4 ? 'block' : 'none';
+        }
+        function qNext() {
+            qState.step++;
+            updateQuizUI();
+        }
+        function qSelect(key, value) {
+            qState[key] = value;
+            qState.step++;
+            if(qState.step === 4) {
+               compileEmail();
+            }
+            updateQuizUI();
+        }
+        function qPrev() {
+            if(qState.step > 1) { qState.step--; updateQuizUI(); }
+        }
+        function compileEmail() {            
+            let w = document.getElementById('qWebsite').value || 'N/A';
+            let r = document.getElementById('qRegion').value || 'N/A';
+            let k = document.getElementById('qKPIs').value || 'N/A';
+            let p = document.getElementById('qProblems').value || 'N/A';
+            let c = document.getElementById('qCompetitors').value || 'N/A';
+            
+            let bodyText = `Hi Iaroslav,\n\nI would like to request a technical audit. Here is our data:\n\n-- SCOPE --\nWebsite: ${w}\nRegion: ${r}\nKPIs/Goals: ${k}\n\n-- CHALLENGE --\nMain Problems: ${p}\nCompetitors: ${c}\n\n-- LOGISTICS --\nData Access: ${qState.access}\n\nPlease review and let me know the estimated timeline for the audit.\n\nBest,`;
+            
+            document.getElementById('quizMailtoBtn').href = `mailto:yaroslav.zhakun@gmail.com?subject=Requesting Technical Audit&body=${encodeURIComponent(bodyText)}`;
+        }
+    </script>
+</body>
+</html>
