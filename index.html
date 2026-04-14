@@ -123,11 +123,12 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--text-gray);
-            transition: color 0.2s;
+            color: var(--text-dark); /* More visible color */
+            transition: all 0.2s;
             display: flex;
             align-items: center;
             gap: 8px;
+            opacity: 0.7;
         }
         
         .case-meta { 
@@ -364,6 +365,7 @@
                         <span><strong>819k UAH</strong> Value</span>
                         <span><strong>420</strong> Conv.</span>
                     </div>
+                    <div class="case-cta">Read Strategy →</div>
                 </div>
                 <!-- Case 2 -->
                 <div class="case-card" onclick="openModal('case-2')">
