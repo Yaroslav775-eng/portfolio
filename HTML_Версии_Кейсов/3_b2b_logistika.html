@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кейс</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: auto; padding: 20px; background: #f5f7fa; }
+        .container { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        pre, code { background: #f1f2f6; padding: 4px; border-radius: 4px; font-family: 'Consolas', monospace;}
+        pre { padding: 15px; overflow-x: auto; font-size: 0.9em; background: #2f3640; color: #f5f6fa;}
+        pre code { background: transparent; color: inherit; padding: 0; }
+        h1, h2, h3 { color: #2c3e50; }
+        h1 { border-bottom: 2px solid #ecf0f1; padding-bottom: 10px; margin-top: 0; }
+        blockquote { border-left: 4px solid #3498db; margin: 0 0 15px 0; padding-left: 15px; color: #555; background: #f9fbfe; padding: 10px 15px;}
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #e1e8ed; padding: 12px; text-align: left; }
+        th { background: #f8f9fa; }
+        ul, ol { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+<div class="container" id="content">Загрузка...</div>
+<script type="text/markdown" id="raw-markdown" style="display:none;">
+# B2B: логистика
+
+## Контекст
+B2B-проект с поисковым спросом по услугам, направлениям и брендовым запросам. Для такого аккаунта важна не только генерация обращений, но и прозрачность структуры: что именно приводит качественный спрос, а что создаёт шум.
+
+## Задача
+Усилить поток целевых обращений и сделать структуру спроса более прозрачной и управляемой.
+
+## Что сделали
+- разделили брендовый и общий спрос
+- выделили приоритетные направления услуг
+- усилили Search как основной канал high-intent спроса
+- использовали DSA и Performance Max как дополнительный слой охвата
+- собрали более понятную логику по направлениям и типам интента
+
+## Метрики
+- 1.9 млн показов
+- 45 тыс. кликов
+- ~€10.3k расхода
+- 1 090 конверсий
+
+## Итог
+Получили более прозрачную структуру спроса, усилили приоритетные направления и создали основу для дальнейшей оптимизации.
+
+</script>
+<script>
+    document.getElementById('content').innerHTML = marked.parse(document.getElementById('raw-markdown').innerText);
+</script>
+</body>
+</html>
