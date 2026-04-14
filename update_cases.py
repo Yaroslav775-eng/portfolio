@@ -3,7 +3,7 @@ import re
 
 # Regex patterns to find correct injection points
 cases_grid_regex = re.compile(r'<div class="cases-grid">.*?</div>\s*</div>\s*</section>', re.DOTALL)
-modals_regex = re.compile(r'<!-- MODAL POPUPS .*?-->\s*<div style="display: none;">.*?</div>\s*<!-- MODAL POPUP HTML -->', re.DOTALL)
+modals_regex = re.compile(r'<div style="display: none;">.*?</div>\s*<!-- MODAL POPUP HTML -->', re.DOTALL)
 
 def replace_in_file(filepath, grid_content, modals_content, read_encoding='utf-8'):
     if not os.path.exists(filepath):
@@ -33,6 +33,33 @@ def replace_in_file(filepath, grid_content, modals_content, read_encoding='utf-8
 def get_tag(text):
     return f'<span class="case-tag">{text}</span>'
 
+# --- PERFORMANCE LOGIC VISUALIZER (CSS BASED) ---
+def gen_perf_visual(type="growth", label="Scale"):
+    if type == "growth":
+        return f"""
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">Performance Logic: {label}</span>
+                <div style="display: flex; align-items: flex-end; gap: 8px; height: 60px;">
+                    <div style="flex: 1; background: #eee; height: 30%;"></div>
+                    <div style="flex: 1; background: #ccc; height: 45%;"></div>
+                    <div style="flex: 1; background: #999; height: 65%;"></div>
+                    <div style="flex: 1; background: #000; height: 100%;"></div>
+                </div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">Systematic Ramp-up (90 Day Optimization Cycle)</p>
+            </div>
+        """
+    elif type == "funnel":
+        return f"""
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">PMax & Search Architecture</span>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 100%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 65%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #C00000; width: 25%; height: 100%;"></div></div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">Demand Capture Layers: Brand / Category / PMax</p>
+            </div>
+        """
+    return ""
+
 # --- GRID CARD GEN ---
 def gen_grid_card(title, tag_text, teaser, m1_val, m1_lbl, m2_val, m2_lbl, case_id, btn_text):
     return f"""
@@ -47,14 +74,16 @@ def gen_grid_card(title, tag_text, teaser, m1_val, m1_lbl, m2_val, m2_lbl, case_
                 </div>"""
 
 # --- MODAL GEN ---
-def gen_modal(title, goal, arch_title, arch_desc, exec_title, exec_list, results_title, m1_val, m1_lbl, m2_val, m2_lbl, m3_val, m3_lbl, case_id):
+def gen_modal(title, goal, arch_title, arch_desc, perf_type, perf_label, exec_title, exec_list, results_title, m1_val, m1_lbl, m2_val, m2_lbl, m3_val, m3_lbl, case_id):
     exec_items = "".join([f"<li>{item}</li>" for item in exec_list])
+    visual = gen_perf_visual(perf_type, perf_label)
     return f"""
         <div id="data-case-{case_id}">
             <h2 style="margin-bottom: 8px;">{title}</h2>
             <div class="highlight-box">Goal: {goal}</div>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">{arch_title}</h4>
             <p><strong>{arch_desc}</strong></p>
+            {visual}
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">{exec_title}</h4>
             <ul>{exec_items}</ul>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">{results_title}</h4>
@@ -76,12 +105,12 @@ en_cards = [
 ]
 en_grid = '<div class="cases-grid">' + "".join([gen_grid_card(*c) for c in en_cards])
 en_modals = '<div style="display: none;">' + \
-    gen_modal("E-commerce: Pet Supplies", "Stabilize architecture and establish clear points of scaling.", "Strategic Architecture", "Hybrid Demand Capture: Integration of Search, PMax, and Shopping.", "Technical Execution", ["Segmented campaigns by demand groups.", "Audited product feeds for attribute accuracy.", "Implemented brand/non-brand separation."], "Performance Results", "1.2M", "Impressions", "€13.9k", "Ad Spend", "2,485", "Conversions", 1) + \
-    gen_modal("E-commerce: BBQ Grills", "Scale priority categories during seasonal peak.", "Strategic Architecture", "Priority-Driven Allocation: High-margin focus in PMax.", "Technical Execution", ["Reorganized inventory by margin groups.", "DSA layers for seasonal queries.", "Enhanced GA4 tracking accuracy."], "Performance Results", "6.1M", "Impressions", "€157.6k", "Sales Value", "1,693", "Conversions", 2) + \
-    gen_modal("B2B: Logistics", "Cleanliness of B2B intent and lead flow stabilization.", "Strategic Architecture", "B2B Intent Filter: Rigorous negative keyword logic.", "Technical Execution", ["Brand traffic isolation.", "DSA for long-tail service queries.", "Streamlined lead funneling."], "Performance Results", "1.9M", "Impressions", "€10.3k", "Ad Spend", "1,090", "Inquiries", 3) + \
-    gen_modal("E-commerce: Electronics", "Maximize manageability across large SKU set.", "Strategic Architecture", "Tiered Performance Strategy: Grouped by ROAS performance.", "Technical Execution", ["Segmented priority segments.", "Robust Search for top-sellers.", "Remarketing for high-value carts."], "Performance Results", "4.3M", "Impressions", "€51.6k", "Sales Value", "1,178", "Conversions", 4) + \
-    gen_modal("Local Services: Repair", "Defend target CPA in hyper-competitive local auction.", "Strategic Architecture", "Hyper-Local Radius Strategy: Precision zone targeting.", "Technical Execution", ["Call-Only mobile campaigns.", "Aggressive negative keyword exclusion.", "Bid optimization for peak hours."], "Performance Results", "€12", "Avg. CPA", "€10.2k", "Ad Spend", "850", "Phone Calls", 5) + \
-    gen_modal("Industrial B2B: Tools", "Establish supply-chain focused funnel for wholesale.", "Strategic Architecture", "Supply-Chain Intent Focus: Wholesale & Industrial clusters.", "Technical Execution", ["Professional term isolation.", "Remarketing on technical price lists.", "B2B form mission tracking."], "Performance Results", "320", "Qualified Leads", "€45", "Target CPA", "€14.4k", "Ad Spend", 6) + \
+    gen_modal("E-commerce: Pet Supplies", "Stabilize architecture and establish clear points of scaling.", "Strategic Architecture", "Hybrid Demand Capture: Integration of Search, PMax, and Shopping.", "funnel", "Search + PMax Integration", "Technical Execution", ["Segmented campaigns by demand groups.", "Audited product feeds for attribute accuracy.", "Implemented brand/non-brand separation."], "Performance Results", "1.2M", "Impressions", "€13.9k", "Ad Spend", "2,485", "Conversions", 1) + \
+    gen_modal("E-commerce: BBQ Grills", "Scale priority categories during seasonal peak.", "Strategic Architecture", "Priority-Driven Allocation: High-margin focus in PMax.", "growth", "Scaling Velocity", "Technical Execution", ["Reorganized inventory by margin groups.", "DSA layers for seasonal queries.", "Enhanced GA4 tracking accuracy."], "Performance Results", "6.1M", "Impressions", "€157.6k", "Sales Value", "1,693", "Conversions", 2) + \
+    gen_modal("B2B: Logistics", "Cleanliness of B2B intent and lead flow stabilization.", "Strategic Architecture", "B2B Intent Filter: Rigorous negative keyword logic.", "funnel", "B2B Lead Funnel", "Technical Execution", ["Brand traffic isolation.", "DSA for long-tail service queries.", "Streamlined lead funneling."], "Performance Results", "1.9M", "Impressions", "€10.3k", "Ad Spend", "1,090", "Inquiries", 3) + \
+    gen_modal("E-commerce: Electronics", "Maximize manageability across large SKU set.", "Strategic Architecture", "Tiered Performance Strategy: Grouped by ROAS performance.", "growth", "Inventory Growth", "Technical Execution", ["Segmented priority segments.", "Robust Search for top-sellers.", "Remarketing for high-value carts."], "Performance Results", "4.3M", "Impressions", "€51.6k", "Sales Value", "1,178", "Conversions", 4) + \
+    gen_modal("Local Services: Repair", "Defend target CPA in hyper-competitive local auction.", "Strategic Architecture", "Hyper-Local Radius Strategy: Precision zone targeting.", "funnel", "Geo-Targeting Logic", "Technical Execution", ["Call-Only mobile campaigns.", "Aggressive negative keyword exclusion.", "Bid optimization for peak hours."], "Performance Results", "€12", "Avg. CPA", "€10.2k", "Ad Spend", "850", "Phone Calls", 5) + \
+    gen_modal("Industrial B2B: Tools", "Establish supply-chain focused funnel for wholesale.", "Strategic Architecture", "Supply-Chain Intent Focus: Wholesale & Industrial clusters.", "funnel", "Quality Filtering", "Technical Execution", ["Professional term isolation.", "Remarketing on technical price lists.", "B2B form mission tracking."], "Performance Results", "320", "Qualified Leads", "€45", "Target CPA", "€14.4k", "Ad Spend", 6) + \
     "</div>"
 
 # --- RUSSIAN ---
@@ -95,12 +124,12 @@ ru_cards = [
 ]
 ru_grid = '<div class="cases-grid">' + "".join([gen_grid_card(*c) for c in ru_cards])
 ru_modals = '<div style="display: none;">' + \
-    gen_modal("E-commerce: зоотовары", "Стабилизировать архитектуру и создать точки масштабирования.", "Стратегическая архитектура", "Гибридный захват спроса: Search + PMax + Shopping.", "Техническая реализация", ["Сегментация по группам спроса.", "Аудит фидов для GMC.", "Изоляция брендового трафика."], "Результаты", "1.2 млн", "Показов", "€13.9k", "Расход", "2,485", "Конверсий", 1) + \
-    gen_modal("E-commerce: товары для гриля", "Масштабировать приоритетные категории в пик сезона.", "Стратегическая архитектура", "Приоритетное масштабирование: Фокус на маржу в PMax.", "Техническая реализация", ["Пересборка под маржинальные группы.", "DSA для сезонного спроса.", "Уточнение отслеживания событий."], "Результаты", "6.1 млн", "Показов", "€157.6k", "Value", "1,693", "Конверсии", 2) + \
-    gen_modal("B2B: Логистика", "Отсечь розничный (B2C) шум и стабилизировать заявки.", "Стратегическая архитектура", "B2B-фильтр интента: Глубокая логика минус-слов.", "Техническая реализация", ["Изоляция бренда.", "DSA для низкочастотных услуг.", "Оптимизация воронки лида."], "Результаты", "1.9 млн", "Показов", "€10.3k", "Расход", "1,090", "B2B Лидов", 3) + \
-    gen_modal("E-commerce: электротовары", "Повысить управляемость на большом массиве SKU.", "Стратегическая архитектура", "ROAS-стратегия: Группировка товаров по эффективности.", "Техническая реализация", ["Выделение приоритетов.", "PMax + Search для топов.", "Ремаркетинг для корзин."], "Результаты", "4.3 млн", "Показов", "€51.6k", "Value", "1,178", "Конверсий", 4) + \
-    gen_modal("Услуги: Ремонт бытовой техники", "Защитить CPA в перегретых локальных аукционах.", "Стратегическая архитектура", "Радиусная стратегия: Точный гео-таргетинг.", "Техническая реализация", ["Call-Only кампании.", "Агрессивные минус-слова.", "Оптимизация по часам пик."], "Результаты", "€12", "Avg. CPA", "€10.2k", "Расход", "850", "Звонков", 5) + \
-    gen_modal("Industrial B2B: Обородувание", "Создать воронку под цепочки поставок.", "Стратегическая архитектура", "Supply-Chain фокус: Оптовые и индустриальные кластеры.", "Техническая реализация", ["Изоляция профи-запросов.", "Ремаркетинг на прайс-листы.", "Отслеживание B2B-форм."], "Результаты", "320", "Квал. лидов", "€45", "Target CPA", "€14.4k", "Расход", 6) + \
+    gen_modal("E-commerce: зоотовары", "Стабилизировать архитектуру и создать точки масштабирования.", "Стратегическая архитектура", "Гибридный захват спроса: Search + PMax + Shopping.", "funnel", "Интеграция Search + PMax", "Техническая реализация", ["Сегментация по группам спроса.", "Аудит фидов для GMC.", "Изоляция брендового трафика."], "Результаты", "1.2 млн", "Показов", "€13.9k", "Расход", "2,485", "Конверсий", 1) + \
+    gen_modal("E-commerce: товары для гриля", "Масштабировать приоритетные категории в пик сезона.", "Стратегическая архитектура", "Приоритетное масштабирование: Фокус на маржу в PMax.", "growth", "Динамика роста", "Техническая реализация", ["Пересборка под маржинальные группы.", "DSA для сезонного попиту.", "Уточнение отслеживания событий."], "Результаты", "6.1 млн", "Показов", "€157.6k", "Value", "1,693", "Конверсии", 2) + \
+    gen_modal("B2B: Логистика", "Отсечь розничный (B2C) шум и стабилизировать заявки.", "Стратегическая архитектура", "B2B-фильтр интента: Глубокая логика минус-слов.", "funnel", "B2B Лид-воронка", "Техническая реализация", ["Изоляция бренда.", "DSA для низкочастотных услуг.", "Оптимизация воронки лида."], "Результаты", "1.9 млн", "Показов", "€10.3k", "Расход", "1,090", "B2B Лидов", 3) + \
+    gen_modal("E-commerce: электротовары", "Повысить управляемость на большом массиве SKU.", "Стратегическая архитектура", "ROAS-стратегия: Группировка товаров по эффективности.", "growth", "Масштабирование SKU", "Техническая реализация", ["Выделение приоритетов.", "PMax + Search для топов.", "Ремаркетинг для корзин."], "Результаты", "4.3 млн", "Показов", "€51.6k", "Value", "1,178", "Конверсий", 4) + \
+    gen_modal("Услуги: Ремонт бытовой техники", "Защитить CPA в перегретых локальных аукционах.", "Стратегическая архитектура", "Радиусная стратегия: Точный гео-таргетинг.", "funnel", "Логика Гео-таргетинга", "Техническая реализация", ["Call-Only кампании.", "Агрессивные минус-слова.", "Оптимизация по часам пик."], "Результаты", "€12", "Avg. CPA", "€10.2k", "Расход", "850", "Звонков", 5) + \
+    gen_modal("Industrial B2B: Обородувание", "Создать воронку под цепочки поставок.", "Стратегическая архитектура", "Supply-Chain фокус: Оптовые и индустриальные кластеры.", "funnel", "Фильтрация качества", "Техническая реализация", ["Изоляция профи-запросов.", "Ремаркетинг на прайс-листы.", "Отслеживание B2B-форм."], "Результаты", "320", "Квал. лидов", "€45", "Target CPA", "€14.4k", "Расход", 6) + \
     "</div>"
 
 # --- UKRAINIAN ---
@@ -114,12 +143,12 @@ ua_cards = [
 ]
 ua_grid = '<div class="cases-grid">' + "".join([gen_grid_card(*c) for c in ua_cards])
 ua_modals = '<div style="display: none;">' + \
-    gen_modal("E-commerce: зоотовари", "Стабілізувати архітектуру та створити точки масштабування.", "Стратегічна архітектура", "Гібридний захват попиту: Search + PMax + Shopping.", "Технічна реалізація", ["Сегментація за групами попиту.", "Аудит фідів для GMC.", "Ізоляція брендового трафіку."], "Результати", "1.2 млн", "Показів", "€13.9k", "Витрати", "2,485", "Конверсій", 1) + \
-    gen_modal("E-commerce: товари для гриля", "Масштабувати пріоритетні категорії у пік сезону.", "Стратегічна архітектура", "Пріоритетне масштабування: Фокус на маржу в PMax.", "Технічна реалізація", ["Перезбирання під маржинальні групи.", "DSA для сезонного попиту.", "Уточнення відстеження подій."], "Результати", "6.1 млн", "Показів", "€157.6k", "Value", "1,693", "Конверсії", 2) + \
-    gen_modal("B2B: Логістика", "Відсікти роздрібний (B2C) шум та стабілізувати заявки.", "Стратегічна архітектура", "B2B-фільтр інтенту: Глибока логіка мінус-слів.", "Технічна реалізація", ["Ізоляція бренду.", "DSA для низькочастотних послус.", "Оптимізація воронки ліда."], "Результати", "1.9 млн", "Показів", "€10.3k", "Витрати", "1,090", "B2B Лідів", 3) + \
-    gen_modal("E-commerce: електротовари", "Підвищити керованість на великому масиві SKU.", "Стратегічна архітектура", "ROAS-стратегія: Групування товарів за ефективністю.", "Технічна реалізація", ["Виділення пріоритетів.", "PMax + Search для топів.", "Ремаркетинг для кошиків."], "Результати", "4.3 млн", "Показів", "€51.6k", "Value", "1,178", "Конверсій", 4) + \
-    gen_modal("Послуги: Ремонт побутової техніки", "Захистити CPA у перегрітих локальних аукціонах.", "Стратегічна архітектура", "Радіусна стратегія: Точний гео-таргетинг.", "Технічна реалізація", ["Call-Only кампанії.", "Агресивні мінус-слова.", "Оптимізація за годинами пік."], "Результати", "€12", "Avg. CPA", "€10.2k", "Витрати", "850", "Дзвінків", 5) + \
-    gen_modal("Industrial B2B: Обладнання", "Створити воронку під ланцюжки поставок.", "Стратегічна архітектура", "Supply-Chain фокус: Оптові та індустріальні кластери.", "Технічна реалізація", ["Ізоляція профі-запитів.", "Ремаркетинг на прайс-листи.", "Відстеження B2B-форм."], "Результати", "320", "Квал. лідів", "€45", "Target CPA", "€14.4k", "Витрати", 6) + \
+    gen_modal("E-commerce: зоотовари", "Стабілізувати архітектуру та створити точки масштабування.", "Стратегічна архітектура", "Гібридний захват попиту: Search + PMax + Shopping.", "funnel", "Інтеграція Search + PMax", "Технічна реалізація", ["Сегментація за групами попиту.", "Аудит фідів для GMC.", "Ізоляція брендового трафіку."], "Результаты", "1.2 млн", "Показів", "€13.9k", "Витрати", "2,485", "Конверсій", 1) + \
+    gen_modal("E-commerce: товари для гриля", "Масштабувати пріоритетні категорії у пік сезону.", "Стратегічна архитектура", "Пріоритетне масштабування: Фокус на маржу в PMax.", "growth", "Динаміка росту", "Технічна реалізація", ["Перезбирання під маржинальні групи.", "DSA для сезонного попиту.", "Уточнення відстеження подій."], "Результати", "6.1 млн", "Показів", "€157.6k", "Value", "1,693", "Конверсії", 2) + \
+    gen_modal("B2B: Логістика", "Відсікти роздрібний (B2C) шум та стабілізувати заявки.", "Стратегічна архітектура", "B2B-фільтр інтенту: Глибока логіка мінус-слів.", "funnel", "B2B Лід-воронка", "Технічна реалізація", ["Ізоляція бренду.", "DSA для низькочастотних послус.", "Оптимізація воронки ліда."], "Результати", "1.9 млн", "Показів", "€10.3k", "Витрати", "1,090", "B2B Лідів", 3) + \
+    gen_modal("E-commerce: електротовари", "Підвищити керованість на великому масиві SKU.", "Стратегічна архітектура", "ROAS-стратегія: Групування товарів за ефективністю.", "growth", "Масштабування SKU", "Технічна реалізація", ["Виділення пріоритетів.", "PMax + Search для топів.", "Ремаркетинг для кошиків."], "Результати", "4.3 млн", "Показів", "€51.6k", "Value", "1,178", "Конверсій", 4) + \
+    gen_modal("Послуги: Ремонт побутової техніки", "Захистити CPA у перегрітих локальних аукціонах.", "Стратегічна архітектура", "Радіусна стратегія: Точний гео-таргетинг.", "funnel", "Логіка Гео-таргетингу", "Технічна реалізація", ["Call-Only кампанії.", "Агрессивні мінус-слова.", "Оптимізація за годинами пік."], "Результати", "€12", "Avg. CPA", "€10.2k", "Витрати", "850", "Дзвінків", 5) + \
+    gen_modal("Industrial B2B: Обладнання", "Створити воронку під ланцюжки поставок.", "Стратегічна архітектура", "Supply-Chain фокус: Оптові та індустріальні кластери.", "funnel", "Фільтрація якості", "Технічна реалізація", ["Ізоляція профі-запитів.", "Ремаркетинг на прайс-листи.", "Відстеження B2B-форм."], "Результати", "320", "Квал. лідів", "€45", "Target CPA", "€14.4k", "Витрати", 6) + \
     "</div>"
 
 # --- EXECUTION ---
@@ -127,4 +156,4 @@ replace_in_file('c:/Users/User/Кейсы/index.html', en_grid, en_modals, read_
 replace_in_file('c:/Users/User/Кейсы/ru_hidden.html', ru_grid, ru_modals, read_encoding='utf-8')
 replace_in_file('c:/Users/User/Кейсы/ua.html', ua_grid, ua_modals, read_encoding='utf-8')
 
-print("All language versions updated successfully.")
+print("All language versions updated successfully with visual anchors.")

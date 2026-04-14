@@ -160,6 +160,26 @@
         .quiz-label { font-size: 0.9rem; text-transform: uppercase; color: var(--text-gray); margin-bottom: 8px; display: block; letter-spacing: 0.05em;}
         .quiz-footer { margin-top: 32px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--accent-muted); padding-top: 24px;}
         .quiz-progress { font-size: 0.85rem; color: var(--text-gray); }
+
+        /* New Premium Components */
+        .tool-strip { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--accent-muted); }
+        .tool-icon { display: flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; color: var(--text-dark); opacity: 0.7; transition: opacity 0.2s; }
+        .tool-icon:hover { opacity: 1; }
+        .tool-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-brand); }
+
+        .compare-table { width: 100%; border-collapse: collapse; margin: 48px 0; border: 1px solid var(--text-dark); font-family: var(--font-sans); }
+        .compare-table th { background: var(--bg-tint); padding: 20px; text-align: left; border-bottom: 1px solid var(--text-dark); border-right: 1px solid var(--text-dark); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em; }
+        .compare-table td { padding: 20px; border-bottom: 1px solid var(--accent-muted); border-right: 1px solid var(--text-dark); font-size: 0.95rem; vertical-align: top; }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table .val-plus { color: var(--accent-brand); font-weight: bold; }
+
+        .methodology-flow { display: flex; gap: 20px; margin-top: 48px; flex-wrap: wrap; }
+        .flow-step { flex: 1; min-width: 250px; background: var(--bg-white); border: 1px solid var(--text-dark); padding: 32px; position: relative; }
+        .flow-num { position: absolute; top: -15px; left: 20px; background: var(--text-dark); color: #fff; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem; }
+        .flow-step h4 { margin-top: 8px; margin-bottom: 12px; }
+
+        .reveal-on-scroll { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-on-scroll.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
@@ -193,24 +213,63 @@
                     <a href="https://t.me/Yaroslav797" target="_blank" class="btn btn-ghost" style="margin-left: 12px;">Telegram</a>
                 </div>
             </div>
-            <div class="hero-proof">
-                <div class="proof-item">
-                    <svg class="proof-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                    <span>ЧТО ДЕЛАЮ:<br><b>Разбираю структуру аккаунта</b></span>
-                </div>
-                <div class="proof-item">
-                    <svg class="proof-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    <span>АРХИТЕКТУРА:<br><b>Пересобираю Search / PMax / Shopping</b></span>
-                </div>
-                <div class="proof-item">
-                    <svg class="proof-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                    <span>БИЗНЕС-ЦЕЛЬ:<br><b>Нахожу точки роста без хаоса бюджета</b></span>
-                </div>
+            <div class="tool-strip animate-fade delay-3">
+                <div class="tool-icon"><div class="tool-dot"></div>Google Ads</div>
+                <div class="tool-icon"><div class="tool-dot"></div>GA4 / GTM</div>
+                <div class="tool-icon"><div class="tool-dot"></div>Merchant Center</div>
+                <div class="tool-icon"><div class="tool-dot"></div>Looker Studio</div>
+                <div class="tool-icon"><div class="tool-dot"></div>Salesforce / CRM</div>
             </div>
         </div>
     </header>
 
-    <!-- PLATFORM & TOOLS GRID -->
+    <!-- THE PROFESSIONAL STANDARD (COMPARISON) -->
+    <section style="background-color: var(--bg-white); padding: 80px 0;">
+        <div class="container">
+            <span class="section-label">Стратегическая ценность</span>
+            <h2 class="section-title">Управление рекламой vs. Архитектура рекламы</h2>
+            <p style="font-size: 1.1rem; color: var(--text-gray); max-width: 600px; margin-bottom: 24px;">Почему системный подход выигрывает у обычной закупки трафика за счет фокуса на инфраструктуре роста.</p>
+            
+            <table class="compare-table reveal-on-scroll">
+                <thead>
+                    <tr>
+                        <th>Функция</th>
+                        <th>Стандартное управление</th>
+                        <th>Системная архитектура</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Главная цель</strong></td>
+                        <td>Максимизация объема трафика</td>
+                        <td class="val-plus">Максимизация чистой прибыли</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Стратегия PMax</strong></td>
+                        <td>"Black Box" автоматизация</td>
+                        <td class="val-plus">Стратегическое управление и изоляция бренда</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Отслеживание</strong></td>
+                        <td>Поверхностные конверсии</td>
+                        <td class="val-plus">GTM / Server-side / Маржинальность</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Масштабирование</strong></td>
+                        <td>Повышение ставок "вслепую"</td>
+                        <td class="val-plus">Tier-модель на основе ROAS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Коммуникация</strong></td>
+                        <td>CTR / CPC / Показы</td>
+                        <td class="val-plus">Бизнес-метрики (POAS / CAC / ROI)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- CREDENTIALS & TRACK RECORD -->
     <section style="background-color: var(--bg-white); padding: 80px 0 40px;">
         <div class="container">
             <span class="section-label" style="text-align: center; margin-bottom: 40px;">Технологический Стек</span>
@@ -348,14 +407,21 @@
         <div class="container">
             <span class="section-label">Как Я Работаю</span>
             <h2 class="section-title">Карта Спроса</h2>
-            <div class="split-grid" style="padding: 0; gap: 40px;">
-                <div class="info-block" style="border:none;">
-                    <h4>1. Фиксирую Ситуацию</h4>
-                    <p style="font-size: 1.15rem; line-height: 1.7;">Сначала фиксирую карту спроса: где есть горячий интент, где бренд, какие кампании реально тянут результат и что можно масштабировать без лишнего шума.</p>
+            <div class="methodology-flow">
+                <div class="flow-step reveal-on-scroll">
+                    <div class="flow-num">1</div>
+                    <h4>Анализ Ситуации</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">Аудит GTM и маппинг ландшафта спроса. Определяем, где живет коммерческий интент, а где "прячется" бренд.</p>
                 </div>
-                <div class="info-block" style="border:none;">
-                    <h4>2. Собираю Систему</h4>
-                    <p style="font-size: 1.15rem; line-height: 1.7;">Затем собираю архитектуру: разделяю типы спроса, убираю пересечения интента, усиливаю рабочие направления и оставляю понятные точки роста, которыми можно управлять дальше.</p>
+                <div class="flow-step reveal-on-scroll">
+                    <div class="flow-num">2</div>
+                    <h4>Разработка Системы</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">Жесткое разделение типов спроса. Убираем пересечения и строим прозрачную архитектуру аккаунта.</p>
+                </div>
+                <div class="flow-step reveal-on-scroll">
+                    <div class="flow-num">3</div>
+                    <h4>Контролируемый Рост</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">Тестирование инкрементальности и масштабирование бюджета на основе юнит-экономики и маржи.</p>
                 </div>
             </div>
 
@@ -467,6 +533,15 @@
             <div class="highlight-box">Goal: Стабилизировать архитектуру и создать точки масштабирования.</div>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Стратегическая архитектура</h4>
             <p><strong>Гибридный захват спроса: Search + PMax + Shopping.</strong></p>
+            
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">PMax & Search Architecture</span>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 100%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 65%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #C00000; width: 25%; height: 100%;"></div></div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">Demand Capture Layers: Brand / Category / PMax</p>
+            </div>
+        
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Техническая реализация</h4>
             <ul><li>Сегментация по группам спроса.</li><li>Аудит фидов для GMC.</li><li>Изоляция брендового трафика.</li></ul>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результаты</h4>
@@ -481,8 +556,20 @@
             <div class="highlight-box">Goal: Масштабировать приоритетные категории в пик сезона.</div>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Стратегическая архитектура</h4>
             <p><strong>Приоритетное масштабирование: Фокус на маржу в PMax.</strong></p>
+            
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">Performance Logic: Динамика роста</span>
+                <div style="display: flex; align-items: flex-end; gap: 8px; height: 60px;">
+                    <div style="flex: 1; background: #eee; height: 30%;"></div>
+                    <div style="flex: 1; background: #ccc; height: 45%;"></div>
+                    <div style="flex: 1; background: #999; height: 65%;"></div>
+                    <div style="flex: 1; background: #000; height: 100%;"></div>
+                </div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">Systematic Ramp-up (90 Day Optimization Cycle)</p>
+            </div>
+        
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Техническая реализация</h4>
-            <ul><li>Пересборка под маржинальные группы.</li><li>DSA для сезонного спроса.</li><li>Уточнение отслеживания событий.</li></ul>
+            <ul><li>Пересборка под маржинальные группы.</li><li>DSA для сезонного попиту.</li><li>Уточнение отслеживания событий.</li></ul>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результаты</h4>
             <div class="modal-metrics-grid">
                 <div class="modal-metric"><span class="modal-metric-val">6.1 млн</span><span class="modal-metric-lbl">Показов</span></div>
@@ -495,6 +582,15 @@
             <div class="highlight-box">Goal: Отсечь розничный (B2C) шум и стабилизировать заявки.</div>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Стратегическая архитектура</h4>
             <p><strong>B2B-фильтр интента: Глубокая логика минус-слов.</strong></p>
+            
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">PMax & Search Architecture</span>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 100%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 65%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #C00000; width: 25%; height: 100%;"></div></div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">Demand Capture Layers: Brand / Category / PMax</p>
+            </div>
+        
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Техническая реализация</h4>
             <ul><li>Изоляция бренда.</li><li>DSA для низкочастотных услуг.</li><li>Оптимизация воронки лида.</li></ul>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результаты</h4>
@@ -509,6 +605,18 @@
             <div class="highlight-box">Goal: Повысить управляемость на большом массиве SKU.</div>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Стратегическая архитектура</h4>
             <p><strong>ROAS-стратегия: Группировка товаров по эффективности.</strong></p>
+            
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">Performance Logic: Масштабирование SKU</span>
+                <div style="display: flex; align-items: flex-end; gap: 8px; height: 60px;">
+                    <div style="flex: 1; background: #eee; height: 30%;"></div>
+                    <div style="flex: 1; background: #ccc; height: 45%;"></div>
+                    <div style="flex: 1; background: #999; height: 65%;"></div>
+                    <div style="flex: 1; background: #000; height: 100%;"></div>
+                </div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">Systematic Ramp-up (90 Day Optimization Cycle)</p>
+            </div>
+        
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Техническая реализация</h4>
             <ul><li>Выделение приоритетов.</li><li>PMax + Search для топов.</li><li>Ремаркетинг для корзин.</li></ul>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результаты</h4>
@@ -523,6 +631,15 @@
             <div class="highlight-box">Goal: Защитить CPA в перегретых локальных аукционах.</div>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Стратегическая архитектура</h4>
             <p><strong>Радиусная стратегия: Точный гео-таргетинг.</strong></p>
+            
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">PMax & Search Architecture</span>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 100%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 65%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #C00000; width: 25%; height: 100%;"></div></div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">Demand Capture Layers: Brand / Category / PMax</p>
+            </div>
+        
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Техническая реализация</h4>
             <ul><li>Call-Only кампании.</li><li>Агрессивные минус-слова.</li><li>Оптимизация по часам пик.</li></ul>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результаты</h4>
@@ -537,6 +654,15 @@
             <div class="highlight-box">Goal: Создать воронку под цепочки поставок.</div>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Стратегическая архитектура</h4>
             <p><strong>Supply-Chain фокус: Оптовые и индустриальные кластеры.</strong></p>
+            
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">PMax & Search Architecture</span>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 100%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 65%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #C00000; width: 25%; height: 100%;"></div></div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">Demand Capture Layers: Brand / Category / PMax</p>
+            </div>
+        
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Техническая реализация</h4>
             <ul><li>Изоляция профи-запросов.</li><li>Ремаркетинг на прайс-листы.</li><li>Отслеживание B2B-форм.</li></ul>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результаты</h4>
@@ -618,6 +744,18 @@
 
     <!-- MAIN JS Logic -->
     <script>
+        // Intersection Observer for reveal-on-scroll
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
         function openModal(caseId) {
             const dataElement = document.getElementById('data-' + caseId);
             if (!dataElement) return;
