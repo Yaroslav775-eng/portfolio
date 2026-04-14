@@ -318,10 +318,10 @@
             <div class="cases-grid">
                 <div class="case-card" onclick="openModal('case-1')">
                     <div class="case-title">E-commerce: зоотовары<span class="case-tag">Архитектура</span></div>
-                    <p class="case-teaser">Превратили хаотичный рост в управляемую систему. Внедрена гибридная воронка: Search + PMax + Shopping со строгой сегментацией спроса.</p>
+                    <p class="case-teaser">Трансформировали хаотичные траты в систему управления спросом. Изолировали прибыльный Search от широкого Shopping для стабилизации ROAS.</p>
                     <div class="metrics-chips">
-                        <span class="chip chip-accent"><strong>€13.9k</strong> Расход</span>
-                        <span class="chip"><strong>2,485</strong> Конв.</span>
+                        <span class="chip chip-accent"><strong>4 068</strong> Кликов</span>
+                        <span class="chip"><strong>819k</strong> Value (грн)</span>
                     </div>
                     <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">Системный Вид <span>&rarr;</span></button>
                 </div>
@@ -530,9 +530,9 @@
         <div style="display: none;">
         <div id="data-case-1">
             <h2 style="margin-bottom: 8px;">E-commerce: зоотовары</h2>
-            <div class="highlight-box">Goal: Стабилизировать архитектуру и создать точки масштабирования.</div>
+            <div class="highlight-box">Goal: Пересобрать архитектуру аккаунта для приоритета подтвержденного результата над широким охватом каталога.</div>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Стратегическая архитектура</h4>
-            <p><strong>Гибридный захват спроса: Search + PMax + Shopping.</strong></p>
+            <p><strong>Распределение ролей: Search (сформированный спрос), Shopping (каталог), PMax (масштабирование). Изоляция категорий «Собаки/Кошки» для точечного управления.</strong></p>
             
             <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
                 <span class="section-label" style="margin-bottom: 12px; display:block;">PMax & Search Architecture</span>
@@ -543,12 +543,12 @@
             </div>
         
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Техническая реализация</h4>
-            <ul><li>Сегментация по группам спроса.</li><li>Аудит фидов для GMC.</li><li>Изоляция брендового трафика.</li></ul>
-            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результаты</h4>
+            <ul><li>Анализ выявил перерасход в широком Shopping. Бюджет переведен в Search-слои.</li><li>Изоляция бренда от общего шума архитектуры.</li><li>Точечное управление приоритетами (Собаки/Кошки) вместо работы со всей массой ассортимента.</li></ul>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результаты (Янв-Апр 2023 - Search)</h4>
             <div class="modal-metrics-grid">
-                <div class="modal-metric"><span class="modal-metric-val">1.2 млн</span><span class="modal-metric-lbl">Показов</span></div>
-                <div class="modal-metric"><span class="modal-metric-val">€13.9k</span><span class="modal-metric-lbl">Расход</span></div>
-                <div class="modal-metric"><span class="modal-metric-val">2,485</span><span class="modal-metric-lbl">Конверсий</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">4 068</span><span class="modal-metric-lbl">Кликов</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">819 247</span><span class="modal-metric-lbl">Value (грн)</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">420</span><span class="modal-metric-lbl">Конверсий</span></div>
             </div>
         </div>
         <div id="data-case-2">
@@ -569,7 +569,7 @@
             </div>
         
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Техническая реализация</h4>
-            <ul><li>Пересборка под маржинальные группы.</li><li>DSA для сезонного попиту.</li><li>Уточнение отслеживания событий.</li></ul>
+            <ul><li>Пересборка под маржинальные группы.</li><li>DSA для сезонного спроса.</li><li>Уточнение отслеживания событий.</li></ul>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результаты</h4>
             <div class="modal-metrics-grid">
                 <div class="modal-metric"><span class="modal-metric-val">6.1 млн</span><span class="modal-metric-lbl">Показов</span></div>
@@ -581,7 +581,7 @@
             <h2 style="margin-bottom: 8px;">B2B: Логистика</h2>
             <div class="highlight-box">Goal: Отсечь розничный (B2C) шум и стабилизировать заявки.</div>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Стратегическая архитектура</h4>
-            <p><strong>B2B-фильтр интента: Глубокая логика минус-слов.</strong></p>
+            <p><strong>B2B-фильтр интента: Глибокая логика минус-слов.</strong></p>
             
             <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
                 <span class="section-label" style="margin-bottom: 12px; display:block;">PMax & Search Architecture</span>
@@ -618,7 +618,7 @@
             </div>
         
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Техническая реализация</h4>
-            <ul><li>Выделение приоритетов.</li><li>PMax + Search для топов.</li><li>Ремаркетинг для корзин.</li></ul>
+            <ul><li>Выделиление приоритетов.</li><li>PMax + Search для топов.</li><li>Ремаркетинг для корзин.</li></ul>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результаты</h4>
             <div class="modal-metrics-grid">
                 <div class="modal-metric"><span class="modal-metric-val">4.3 млн</span><span class="modal-metric-lbl">Показов</span></div>

@@ -255,10 +255,10 @@
             <div class="cases-grid">
                 <div class="case-card" onclick="openModal('case-1')">
                     <div class="case-title">E-commerce: зоотовари<span class="case-tag">Архітектура</span></div>
-                    <p class="case-teaser">Перетворили хаотичне зростання на керовану систему. Впроваджено гібридну воронку: Search + PMax + Shopping зі строгою сегментацією попиту.</p>
+                    <p class="case-teaser">Трансформували хаотичні витрати в систему управління попитом. Ізолювали прибутковий Search від широкого Shopping для стабілізації ROAS.</p>
                     <div class="metrics-chips">
-                        <span class="chip chip-accent"><strong>€13.9k</strong> Витрати</span>
-                        <span class="chip"><strong>2,485</strong> Конв.</span>
+                        <span class="chip chip-accent"><strong>4 068</strong> Кліків</span>
+                        <span class="chip"><strong>819k</strong> Value (грн)</span>
                     </div>
                     <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">Системний Вигляд <span>&rarr;</span></button>
                 </div>
@@ -612,9 +612,9 @@
     <div style="display: none;">
         <div id="data-case-1">
             <h2 style="margin-bottom: 8px;">E-commerce: зоотовари</h2>
-            <div class="highlight-box">Goal: Стабілізувати архітектуру та створити точки масштабування.</div>
+            <div class="highlight-box">Goal: Трансформувати хаотичний акаунт у прозору систему пріоритезації підтвердженого прибутку.</div>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Стратегічна архітектура</h4>
-            <p><strong>Гібридний захват попиту: Search + PMax + Shopping.</strong></p>
+            <p><strong>Розподіл ролей: Search (Гарячий попит), Shopping (Каталог), PMax (Масштабування). Сегментація Собаки/Коти в ізольовані кампанії.</strong></p>
             
             <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
                 <span class="section-label" style="margin-bottom: 12px; display:block;">PMax & Search Architecture</span>
@@ -625,12 +625,12 @@
             </div>
         
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Технічна реалізація</h4>
-            <ul><li>Сегментація за групами попиту.</li><li>Аудит фідів для GMC.</li><li>Ізоляція брендового трафіку.</li></ul>
-            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результаты</h4>
+            <ul><li>Аналіз виявив перевитрати у широкому Shopping. Бюджет переведений у Search-шари.</li><li>Ізоляція брендового попиту для запобігання розмиттю маржі.</li><li>Точкове управління категоріями (Собаки/Коти) замість роботи з усією масою асортименту.</li></ul>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результати (Січ-Квіт 2023 - Search)</h4>
             <div class="modal-metrics-grid">
-                <div class="modal-metric"><span class="modal-metric-val">1.2 млн</span><span class="modal-metric-lbl">Показів</span></div>
-                <div class="modal-metric"><span class="modal-metric-val">€13.9k</span><span class="modal-metric-lbl">Витрати</span></div>
-                <div class="modal-metric"><span class="modal-metric-val">2,485</span><span class="modal-metric-lbl">Конверсій</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">4 068</span><span class="modal-metric-lbl">Кліків</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">819 247</span><span class="modal-metric-lbl">Value (грн)</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">420</span><span class="modal-metric-lbl">Конверсій</span></div>
             </div>
         </div>
         <div id="data-case-2">
@@ -735,7 +735,7 @@
             <h2 style="margin-bottom: 8px;">Industrial B2B: Обладнання</h2>
             <div class="highlight-box">Goal: Створити воронку під ланцюжки поставок.</div>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Стратегічна архітектура</h4>
-            <p><strong>Supply-Chain фокус: Оптові та індустріальні кластери.</strong></p>
+            <p><strong>Supply-Chain фокус: Оптові та індустріальні кластеры.</strong></p>
             
             <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
                 <span class="section-label" style="margin-bottom: 12px; display:block;">PMax & Search Architecture</span>
@@ -746,7 +746,7 @@
             </div>
         
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Технічна реалізація</h4>
-            <ul><li>Ізоляція профі-запитів.</li><li>Ремаркетинг на прайс-листи.</li><li>Відстеження B2B-форм.</li></ul>
+            <ul><li>Ізоляція профі-запутів.</li><li>Ремаркетинг на прайс-листи.</li><li>Відстеження B2B-форм.</li></ul>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результати</h4>
             <div class="modal-metrics-grid">
                 <div class="modal-metric"><span class="modal-metric-val">320</span><span class="modal-metric-lbl">Квал. лідів</span></div>
