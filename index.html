@@ -197,6 +197,21 @@
 
         .reveal-on-scroll { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal-on-scroll.active { opacity: 1; transform: translateY(0); }
+
+        /* Credential Section Redesign */
+        .cred-section { padding: 100px 0; background: var(--bg-white); }
+        .cred-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        @media (max-width: 900px) { .cred-grid { grid-template-columns: 1fr; gap: 48px; } }
+        
+        .cred-item { margin-bottom: 24px; display: flex; gap: 20px; align-items: flex-start; }
+        .cred-icon { width: 48px; height: 48px; background: var(--bg-tint); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; }
+        .cred-info h4 { font-size: 1.05rem; margin-bottom: 4px; line-height: 1.3; }
+        .cred-info p { font-size: 0.9rem; color: var(--text-gray); line-height: 1.5; }
+
+        .stack-group { margin-top: 32px; }
+        .stack-group h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-gray); margin-bottom: 16px; border-bottom: 1px solid var(--accent-muted); padding-bottom: 8px; }
+        .stack-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .stack-tag { padding: 6px 12px; background: var(--bg-offwhite); border: 1px solid var(--accent-muted); font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600; color: var(--text-dark); }
     </style>
 </head>
 <body>
@@ -373,39 +388,69 @@
     </section>
 
     <!-- CREDENTIALS & TRACK RECORD -->
-    <section style="background-color: var(--bg-white); padding: 80px 0 40px;">
+    <section class="cred-section">
         <div class="container">
-            <div style="background: var(--bg-tint); border-left: 4px solid var(--accent-brand); padding: 48px 64px;">
-                <span class="section-label" style="margin-bottom: 16px; display: block;">Professional Resume</span>
-                <h2 style="font-size: 2rem; font-family: var(--font-heading); color: var(--text-dark); margin-bottom: 24px;">Background & Certifications</h2>
-                <p style="font-size: 1.15rem; color: var(--text-dark); line-height: 1.7; margin-bottom: 24px;">Iaroslav Zhakun — Google Ads Specialist with a background as an Economist-Manager. I began my career in digital marketing in 2013, specializing deeply in Google Ads architecture and performance optimization since 2017. Over the past decade, I have successfully managed over 80 projects across B2C E-commerce and B2B lead generation sectors.</p>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; margin-bottom: 32px;">
-                    <div>
-                        <h4 style="font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 12px; margin-top: 32px; border-bottom: 1px solid var(--accent-muted); padding-bottom: 8px;">Education & Credentials</h4>
-                        <ul class="clean-list" style="padding-left: 0; font-size: 0.95rem;">
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--accent-muted);"><strong>Certificate:</strong> Google Search Campaigns</li>
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--accent-muted);"><strong>Certificate:</strong> Shopping &amp; Performance Max</li>
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--accent-muted);"><strong>Degree:</strong> Manager-Economist &mdash; Kherson State University (1999)</li>
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--accent-muted);"><strong>MBA Program:</strong> Professional Certificate in Management &mdash; <a href="https://www.open.ac.uk" target="_blank" style="color: var(--accent-brand);">The Open University (UK)</a> (2011)</li>
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--accent-muted);"><strong>Product Manager Program:</strong> <a href="https://skillsetter.io" target="_blank" style="color: var(--accent-brand);">Skillsetter.io</a> (2022)</li>
-                            <li style="padding: 8px 0;"><strong>Soft Skills:</strong> Proactive, data-driven reasoning, communicates in business language.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 style="font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 12px; margin-top: 32px; border-bottom: 1px solid var(--accent-muted); padding-bottom: 8px;">Tech Stack & Tools</h4>
-                        <ul class="clean-list" style="padding-left: 0; font-size: 0.95rem;">
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--accent-muted);"><strong>Advertising:</strong> Google Ads, Merchant Center</li>
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--accent-muted);"><strong>Analytics:</strong> Google Analytics 4, GTM</li>
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--accent-muted);"><strong>Reporting:</strong> Looker Studio, Excel / Google Sheets</li>
-                            <li style="padding: 8px 0; border-bottom: 1px solid var(--accent-muted);"><strong>CRO:</strong> Microsoft Clarity, basic HTML/CSS</li>
-                        </ul>
+            <div class="cred-grid">
+                <!-- Left: Bio & Buttons -->
+                <div>
+                    <span class="section-label">Professional Resume</span>
+                    <h2 class="section-title" style="font-size: 2.5rem; border-bottom: none; margin-bottom: 24px; padding-bottom: 0;">Background & Credentials</h2>
+                    <p style="font-size: 1.15rem; color: var(--text-dark); line-height: 1.7; margin-bottom: 40px;">Iaroslav Zhakun — Google Ads Specialist with a background as an Economist-Manager. I began my career in digital marketing in 2013, specializing deeply in Google Ads architecture and performance optimization since 2017. Over the past decade, I have successfully managed over 80 projects across B2C E-commerce and B2B lead generation sectors.</p>
+                    
+                    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                        <a href="https://t.me/Yaroslav797" target="_blank" class="btn btn-primary" style="text-decoration: none;">Connect on Telegram</a>
+                        <a href="cv_eng.html" class="btn btn-outline" style="border: 1px solid #000; color: #000; background: transparent; text-decoration: none; font-weight: 700;">View Full Resume →</a>
                     </div>
                 </div>
-                
-                <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-                    <a href="https://t.me/Yaroslav797" target="_blank" class="btn btn-primary" style="text-decoration: none;">Connect on Telegram</a>
-                    <a href="cv_eng.html" class="btn btn-outline" style="border: 2px solid var(--accent-brand); color: var(--accent-brand); background: transparent; text-decoration: none; font-weight: 700;">View Full Resume →</a>
+
+                <!-- Right: Credentials List -->
+                <div>
+                    <!-- Education & Status -->
+                    <div style="margin-bottom: 48px;">
+                        <div class="cred-item reveal-on-scroll">
+                            <div class="cred-icon">🎓</div>
+                            <div class="cred-info">
+                                <h4>МВА Professional Certificate</h4>
+                                <p>Management & Strategy — The Open University (UK)</p>
+                            </div>
+                        </div>
+                        <div class="cred-item reveal-on-scroll">
+                            <div class="cred-icon">📜</div>
+                            <div class="cred-info">
+                                <h4>Google Certified Expert</h4>
+                                <p>Search, Shopping & Performance Max Architecture</p>
+                            </div>
+                        </div>
+                        <div class="cred-item reveal-on-scroll">
+                            <div class="cred-icon">⚡</div>
+                            <div class="cred-info">
+                                <h4>Product Manager Program</h4>
+                                <p>Systematic Product Thinking — Skillsetter.io</p>
+                            </div>
+                        </div>
+                        <div class="cred-item reveal-on-scroll">
+                            <div class="cred-icon">🏛️</div>
+                            <div class="cred-info">
+                                <h4>Higher Education</h4>
+                                <p>Manager-Economist — Kherson State University</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack & Tools -->
+                    <div class="stack-group">
+                        <h4>Tech Stack & Tools</h4>
+                        <div class="stack-tags reveal-on-scroll">
+                            <span class="stack-tag">Google Ads</span>
+                            <span class="stack-tag">GMC</span>
+                            <span class="stack-tag">GA4</span>
+                            <span class="stack-tag">GTM</span>
+                            <span class="stack-tag">Looker Studio</span>
+                            <span class="stack-tag">Clarity</span>
+                            <span class="stack-tag">Salesforce</span>
+                            <span class="stack-tag">HTML/CSS</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
