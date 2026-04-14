@@ -106,11 +106,31 @@
             display: flex; 
             flex-direction: column; 
             border: 1px solid #ECECEC; 
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             height: 100%;
+            cursor: pointer;
         }
-        .case-card:hover { border-color: var(--text-dark); box-shadow: 6px 6px 0px rgba(0,0,0,0.02); }
+        .case-card:hover { 
+            border-color: var(--text-dark); 
+            box-shadow: 20px 20px 0px rgba(0,0,0,0.05); 
+            transform: translateY(-4px);
+        }
+        .case-card:hover .case-cta { color: var(--accent-brand); }
+        
+        .case-cta {
+            margin-top: 24px;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-gray);
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
         
         .case-meta { 
             font-family: var(--font-sans); 
@@ -350,6 +370,7 @@
                         <span><strong>819k UAH</strong> Value</span>
                         <span><strong>420</strong> Конв.</span>
                     </div>
+                    <div class="case-cta">Читати стратегію →</div>
                 </div>
                 <!-- Case 2 -->
                 <div class="case-card" onclick="openModal('case-2')">
@@ -369,6 +390,7 @@
                         <span><strong>€157.6k</strong> Value</span>
                         <span><strong>1,693</strong> Конв.</span>
                     </div>
+                    <div class="case-cta">Читати стратегію →</div>
                 </div>
                 <!-- Case 3 -->
                 <div class="case-card" onclick="openModal('case-3')">
@@ -388,6 +410,7 @@
                         <span><strong>€10.3k</strong> Витрати</span>
                         <span><strong>1,090</strong> Запитів</span>
                     </div>
+                    <div class="case-cta">Читати стратегію →</div>
                 </div>
                 <!-- Case 4 -->
                 <div class="case-card" onclick="openModal('case-4')">
@@ -407,6 +430,7 @@
                         <span><strong>€51.6k</strong> Value</span>
                         <span><strong>1,178</strong> Конв.</span>
                     </div>
+                    <div class="case-cta">Читати стратегію →</div>
                 </div>
                 <!-- Case 5 -->
                 <div class="case-card" onclick="openModal('case-5')">
@@ -426,6 +450,7 @@
                         <span><strong>€10.2k</strong> Витрати</span>
                         <span><strong>850</strong> Дзвінків</span>
                     </div>
+                    <div class="case-cta">Читати стратегію →</div>
                 </div>
                 <!-- Case 6 -->
                 <div class="case-card" onclick="openModal('case-6')">
@@ -445,6 +470,7 @@
                         <span><strong>€45</strong> CPA</span>
                         <span><strong>€14.4k</strong> Витрати</span>
                     </div>
+                    <div class="case-cta">Читати стратегію →</div>
                 </div>
 
                 <!-- Scale Proof Card -->
