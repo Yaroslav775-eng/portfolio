@@ -57,6 +57,10 @@ c = c.replace(
 # HERO
 # =============================================
 c = c.replace(
+    '&#10003; Available for New Projects &middot; Google Ads Specialist',
+    '&#10003; Відкритий до нових проектів &middot; Спеціаліст Google Ads'
+)
+c = c.replace(
     '&#10003; Open to Opportunities &middot; Google Ads Specialist',
     '&#10003; Відкритий до пропозицій &middot; Спеціаліст Google Ads'
 )
@@ -65,13 +69,23 @@ c = c.replace(
     'Ярослав Жакун &mdash; Спеціаліст Google Ads'
 )
 c = c.replace(
+    'I turn ad budgets into predictable, measurable revenue',
+    'Перетворюю рекламні бюджети на передбачуваний, вимірюваний дохід'
+)
+c = c.replace(
     'Google Ads Specialist &mdash; helping businesses get more from their ad budget',
     'Спеціаліст Google Ads &mdash; допомагаю бізнесу отримувати більше від рекламного бюджету'
+)
+c = c.replace(
+    'I work with agencies and direct clients. I take an account, build a system, and report in business numbers &mdash; not clicks and CTR. No hand-holding needed.',
+    'Працюю з агенціями та прямими клієнтами. Беру акаунт, будую систему, звітую бізнес-цифрами &mdash; не кліками та CTR. Без необхідності постійного контролю.'
 )
 c = c.replace(
     'I manage Google Ads campaigns for e-commerce and lead generation. My focus is always on your result: steady sales growth, controlled costs, and reports you can actually understand.',
     'Веду рекламні кампанії для інтернет-магазинів та генерації лідів. Мій пріоритет — ваш результат: стабільне зростання продажів, контроль над витратами та зрозуміла звітність.'
 )
+c = c.replace('>See Case Results &darr;<', '>Переглянути кейси &darr;<')
+c = c.replace('>Message on Telegram &rarr;<', '>Написати в Telegram &rarr;<')
 c = c.replace('>View My CV<', '>Переглянути CV<')
 c = c.replace('>See Results<', '>Переглянути результати<')
 
@@ -87,7 +101,59 @@ c = c.replace('>Active Projects Cap<', '>Паралельних проектів
 c = c.replace('>Track Record &amp; Proof<', '>Досвід та Результати<')
 c = c.replace('>Selected Case Studies<', '>Вибрані кейси<')
 
-# Case titles and teasers
+# "Before" lines for each case
+c = c.replace(
+    'Before: ROAS stuck at 150%, budget burning with no clarity',
+    'До: ROAS застряг на 150%, бюджет горів без розуміння'
+)
+c = c.replace(
+    'Before: 400+ SKUs in one flat campaign, peak season wasted',
+    'До: 400+ SKU в одній плоскій кампанії, пік сезону змарновано'
+)
+c = c.replace(
+    'Before: volume fine, quality catastrophic &mdash; wrong audience calling',
+    'До: об\'єм є, якість катастрофічна &mdash; телефонує не та аудиторія'
+)
+c = c.replace(
+    'Before: thousands of SKUs, equal budget, zero priority logic',
+    'До: тисячі SKU, рівний бюджет, нульова логіка пріоритетів'
+)
+c = c.replace(
+    'Before: &euro;350+ CPA, paying for clicks from 3 cities away',
+    'До: &euro;350+ CPA, оплата кліків від людей за три міста'
+)
+c = c.replace(
+    'Before: leads coming in, but all from wrong audience',
+    'До: ліди є, але всі від неправильної аудиторії'
+)
+
+# Case teasers (new versions after content plan)
+c = c.replace(
+    'Rebuilt the account around a single rule: one campaign, one job. Isolated Search, Shopping and PMax into separate demand layers for predictable ROI.',
+    'Перебудували акаунт навколо одного правила: одна кампанія, одне завдання. Ізолювали Search, Shopping та PMax у окремі шари попиту для передбачуваного ROI.'
+)
+c = c.replace(
+    'Rebuilt around margin tiers. Premium grills got dedicated PMax. DSA caught long-tail seasonal intent. GA4 reconfigured for accurate purchase value.',
+    'Перебудували навколо маржинальних рівнів. Преміум-грилі отримали виділені PMax. DSA ловив довгохвостовий сезонний інтент. GA4 переналаштовано для точної вартості покупки.'
+)
+c = c.replace(
+    'Treated keywords as a traffic filter, not a driver. Negative keyword audit eliminated consumer queries. DSA surfaced real B2B service intent.',
+    'Ставилися до ключових слів як до фільтра трафіку, а не джерела. Аудит мінус-слів усунув споживчі запити. DSA виявив реальний B2B-інтент.'
+)
+c = c.replace(
+    'Divided catalog into 3 performance tiers. PMax to priority segments. Branded Search walled off from PMax cannibalization.',
+    'Розділили каталог на 3 рівні ефективності. PMax — на пріоритетні сегменти. Брендовий Search захищено від канібалізації PMax.'
+)
+c = c.replace(
+    'Precision radius strategy: tight geo zones, Call-Only campaigns, complete negative keyword rebuild. Bids adjusted to peak booking windows.',
+    'Точна радіусна стратегія: жорсткі гео-зони, Call-Only кампанії, повне перебудування мінус-слів. Ставки налаштовано на пікові вікна бронювань.'
+)
+c = c.replace(
+    'Rebuilt around supply-chain intent. Identified language of professional buyers. Remarketing to spec-page visitors. B2B forms tracked as micro-conversions.',
+    'Перебудували навколо supply-chain інтенту. Визначили мову профійних закупників. Ремаркетинг на відвідувачів сторінок специфікацій. Форми B2B відстежено як мікро-конверсії.'
+)
+
+# Old teasers (kept as fallback)
 c = c.replace(
     '>E-commerce: Pet Supplies<span class="case-tag">Architecture</span>',
     '>E-commerce: Зоотовари<span class="case-tag">Архітектура</span>'
@@ -332,9 +398,28 @@ c = c.replace(
 )
 
 # =============================================
+# DUAL-AUDIENCE BLOCK
+# =============================================
+c = c.replace('&#9642; For Agencies', '&#9642; Для агентств')
+c = c.replace('>Need a specialist who runs accounts independently?<', '>Потрібен спеціаліст, який веде акаунти самостійно?<')
+c = c.replace('&#10003;&nbsp; I take accounts without hand-holding &mdash; audit in week one', '&#10003;&nbsp; Беру акаунти без онбордингу &mdash; аудит у перший тиждень')
+c = c.replace('&#10003;&nbsp; Client-ready reports in business language, not CTR', '&#10003;&nbsp; Звіти для клієнта бізнес-мовою, не CTR')
+c = c.replace('&#10003;&nbsp; Managed $5k &ndash; $50k+/mo budgets independently', '&#10003;&nbsp; Самостійно керував бюджетами $5k &ndash; $50k+/міс')
+c = c.replace('&#10003;&nbsp; Communicate at ROI level, not interface metrics', '&#10003;&nbsp; Комунікую на рівні ROI, а не інтерфейсних метрик')
+c = c.replace('>Discuss Collaboration &rarr;<', '>Обговорити співпрацю &rarr;<')
+c = c.replace('&#9642; For Direct Clients', '&#9642; Для прямих клієнтів')
+c = c.replace('>Spending on ads but unclear where the money goes?<', '>Витрачаєте на рекламу, але незрозуміло куди йдуть гроші?<')
+c = c.replace('&#10003;&nbsp; I explain everything without technical jargon', '&#10003;&nbsp; Пояснюю все без технічного жаргону')
+c = c.replace('&#10003;&nbsp; Start with a free audit &mdash; you see the state before paying', '&#10003;&nbsp; Починаємо з безкоштовного аудиту &mdash; бачите стан до оплати')
+c = c.replace('&#10003;&nbsp; Fixed accountability &mdash; I own the result, not just the tasks', '&#10003;&nbsp; Фіксована відповідальність &mdash; я відповідаю за результат, не тільки задачі')
+c = c.replace('&#10003;&nbsp; You always know what&rsquo;s happening and why', '&#10003;&nbsp; Ви завжди знаєте, що відбувається і чому')
+c = c.replace('>Request a Free Audit &rarr;<', '>Запросити безкоштовний аудит &rarr;<')
+
+# =============================================
 # DISCOVERY / CTA
 # =============================================
 c = c.replace('>Next Step<', '>Наступний крок<')
+
 c = c.replace(
     '>Looking for a System-Driven PPC Specialist?<',
     '>Шукаєте системного PPC-спеціаліста?<'
