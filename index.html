@@ -272,10 +272,13 @@
         .scale-chip { background: #222; border: 1px solid #444; padding: 10px 16px; font-size: 0.85rem; font-weight: 600; font-family: var(--font-sans); }
 
         /* Metric chips — editorial stat style */
-        .metrics-chips { display: flex; gap: 40px; margin-top: auto; padding-top: 20px; border-top: 2px solid var(--text-dark); }
-        .chip { display: flex; flex-direction: column; gap: 3px; font-family: var(--font-sans); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-gray); font-weight: 600; }
-        .chip strong { font-family: var(--font-heading); font-size: 1.75rem; font-weight: 700; color: var(--text-dark); line-height: 1; display: block; }
+        .metrics-chips { display: flex; gap: 48px; margin-top: auto; padding-top: 20px; border-top: 2px solid #000; }
+        .chip { display: inline-flex; flex-direction: column; align-items: flex-start; font-family: var(--font-sans); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-gray); font-weight: 600; }
+        .chip strong { font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--text-dark); line-height: 1; display: block; margin-bottom: 6px; }
         .chip-accent strong { color: var(--accent-brand); }
+
+        /* Case "Before" situation line — quiet, editorial */
+        .case-before { font-size: 0.72rem; color: #aaa; font-family: var(--font-sans); font-weight: 500; margin-bottom: 10px; font-style: italic; text-transform: none; letter-spacing: 0; }
 
         /* Dark CTA Section */
         .cta-section { background-color: var(--bg-dark); color: var(--text-light); padding: 120px 0; text-align: center; }
@@ -452,7 +455,7 @@
             <div class="cases-grid">
                 <div class="case-card" onclick="openModal('case-1')">
                     <div class="case-title">E-commerce: Pet Supplies<span class="case-tag">Architecture</span></div>
-                    <p style="font-size: 0.8rem; color: var(--accent-brand); font-family: var(--font-sans); font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.04em;">Before: ROAS stuck at 150%, budget burning with no clarity</p>
+                    <p class="case-before">Before: ROAS stuck at 150%, budget burning with no clarity</p>
                     <p class="case-teaser">Rebuilt the account around a single rule: one campaign, one job. Isolated Search, Shopping and PMax into separate demand layers for predictable ROI.</p>
                     <div class="metrics-chips">
                         <span class="chip chip-accent"><strong>800-1200%</strong> ROAS</span>
@@ -462,7 +465,7 @@
                 </div>
                 <div class="case-card" onclick="openModal('case-2')">
                     <div class="case-title">E-commerce: BBQ Grills<span class="case-tag">Scaling</span></div>
-                    <p style="font-size: 0.8rem; color: var(--accent-brand); font-family: var(--font-sans); font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.04em;">Before: 400+ SKUs in one flat campaign, peak season wasted</p>
+                    <p class="case-before">Before: 400+ SKUs in one flat campaign, peak season wasted</p>
                     <p class="case-teaser">Rebuilt around margin tiers. Premium grills got dedicated PMax. DSA caught long-tail seasonal intent. GA4 reconfigured for accurate purchase value.</p>
                     <div class="metrics-chips">
                         <span class="chip chip-accent"><strong>679%</strong> ROAS</span>
@@ -472,7 +475,7 @@
                 </div>
                 <div class="case-card" onclick="openModal('case-3')">
                     <div class="case-title">B2B: Logistics<span class="case-tag">LeadGen</span></div>
-                    <p style="font-size: 0.8rem; color: var(--accent-brand); font-family: var(--font-sans); font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.04em;">Before: volume fine, quality catastrophic &mdash; wrong audience calling</p>
+                    <p class="case-before">Before: volume fine, quality catastrophic &mdash; wrong audience calling</p>
                     <p class="case-teaser">Treated keywords as a traffic filter, not a driver. Negative keyword audit eliminated consumer queries. DSA surfaced real B2B service intent.</p>
                     <div class="metrics-chips">
                         <span class="chip chip-accent"><strong>&euro;11.5</strong> Target CPL</span>
@@ -482,7 +485,7 @@
                 </div>
                 <div class="case-card" onclick="openModal('case-4')">
                     <div class="case-title">E-commerce: Electronics<span class="case-tag">Technical</span></div>
-                    <p style="font-size: 0.8rem; color: var(--accent-brand); font-family: var(--font-sans); font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.04em;">Before: thousands of SKUs, equal budget, zero priority logic</p>
+                    <p class="case-before">Before: thousands of SKUs, equal budget, zero priority logic</p>
                     <p class="case-teaser">Divided catalog into 3 performance tiers. PMax to priority segments. Branded Search walled off from PMax cannibalization.</p>
                     <div class="metrics-chips">
                         <span class="chip chip-accent"><strong>653%</strong> ROAS</span>
@@ -492,7 +495,7 @@
                 </div>
                 <div class="case-card" onclick="openModal('case-5')">
                     <div class="case-title">Local Services: Repair<span class="case-tag">Efficiency</span></div>
-                    <p style="font-size: 0.8rem; color: var(--accent-brand); font-family: var(--font-sans); font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.04em;">Before: &euro;350+ CPA, paying for clicks from 3 cities away</p>
+                    <p class="case-before">Before: &euro;350+ CPA, paying for clicks from 3 cities away</p>
                     <p class="case-teaser">Precision radius strategy: tight geo zones, Call-Only campaigns, complete negative keyword rebuild. Bids adjusted to peak booking windows.</p>
                     <div class="metrics-chips">
                         <span class="chip chip-accent"><strong>&euro;12</strong> Avg. CPA</span>
@@ -502,7 +505,7 @@
                 </div>
                 <div class="case-card" onclick="openModal('case-6')">
                     <div class="case-title">Industrial B2B: Tools<span class="case-tag">Strategy</span></div>
-                    <p style="font-size: 0.8rem; color: var(--accent-brand); font-family: var(--font-sans); font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.04em;">Before: leads coming in, but all from wrong audience</p>
+                    <p class="case-before">Before: leads coming in, but all from wrong audience</p>
                     <p class="case-teaser">Rebuilt around supply-chain intent. Identified language of professional buyers. Remarketing to spec-page visitors. B2B forms tracked as micro-conversions.</p>
                     <div class="metrics-chips">
                         <span class="chip chip-accent"><strong>320</strong> Leads</span>
