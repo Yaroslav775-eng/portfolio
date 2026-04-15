@@ -9,22 +9,22 @@
       gtag('js', new Date());
       gtag('config', 'G-Z52JJMBTQM');
     </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Спеціаліст Google Ads | Ярослав Жакун</title>
+    <title>Google Ads Specialist | Iaroslav Zhakun</title>
     <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
-    <meta name="description" content="Спеціаліст Google Ads. Веду рекламні кампанії для інтернет-магазинів та генерації лідів. Стабільне зростання продажів та контроль над витратами.">
+    <meta name="description" content="Google Ads Specialist. I manage Google Ads campaigns for e-commerce and lead generation. Steady sales growth and controlled costs.">
     <meta charset="UTF-8">
-    <meta name="keywords" content="Google Ads, PPC, Створення сайтів, Контекстна реклама, Landing Page, Ярослав Жакун">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Google Ads, PPC, Website Creation, Contextual Advertising, Landing Page, Iaroslav Zhakun">
     <meta name="author" content="Iaroslav Zhakun">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph for LinkedIn / Twitter sharing -->
-    <meta property="og:title" content="Ярослав Жакун | Фахівець з контекстної реклами">
-    <meta property="og:description" content="Зменшую ваші витрати на рекламу та збільшую доходи. Досвід у маркетингу з 2013 року.">
+    <meta property="og:title" content="Iaroslav Zhakun | Google Ads Specialist">
+    <meta property="og:description" content="Reducing your advertising costs and increasing revenue. Marketing experience since 2013.">
     <meta property="og:type" content="website">
-    <meta property="og:locale" content="uk_UA">
+    <meta property="og:locale" content="en_US">
     
-    <link rel="canonical" href="https://yaroslav775-eng.github.io/portfolio/ua.html">
+    <link rel="canonical" href="https://yaroslav775-eng.github.io/portfolio/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chifra:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -34,15 +34,26 @@
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Ярослав Жакун",
-      "jobTitle": "Спеціаліст Google Ads",
-      "url": "https://yaroslav775-eng.github.io/portfolio/ua.html",
+      "name": "Iaroslav Zhakun",
+      "jobTitle": "Google Ads Specialist",
+      "url": "https://yaroslav775-eng.github.io/portfolio/",
       "sameAs": [
         "https://t.me/Yaroslav797",
-        "https://www.linkedin.com/in/iaroslav-zhakun-399550271/",
         "mailto:yaroslav.zhakun@gmail.com"
       ],
-      "knowsAbout": ["Google Ads", "Performance Marketing", "PPC Architecture", "Lead Generation", "E-commerce"]
+      "knowsAbout": ["Google Ads", "Performance Marketing", "PPC Architecture", "Lead Generation", "E-commerce Growth"]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Google Ads Management",
+      "provider": {
+        "@type": "Person",
+        "name": "Iaroslav Zhakun"
+      },
+      "description": "Engineering high-performance Google Ads architectures integrated with custom AI/LLM automation flows."
     }
     </script>
     <style>
@@ -65,13 +76,15 @@
             --font-sans: -apple-system, system-ui, sans-serif;
             
             --radius-md: 0px; /* Zero radius for print feel */
+            --shadow-soft: none;
+            --shadow-btn: none;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         ::selection { background: #000; color: #fff; }
         body { font-family: var(--font-main); color: var(--text-dark); background-color: var(--bg-white); line-height: 1.7; -webkit-font-smoothing: antialiased; letter-spacing: -0.01em; }
         
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
         @media (max-width: 768px) { .container { padding: 0 24px; } }
 
         /* Animations */
@@ -85,153 +98,255 @@
         .delay-3 { animation-delay: 0.3s; }
 
         /* Typography */
-        h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; letter-spacing: -0.02em; color: var(--text-dark); }
-        
+        h1, h2, h3, h4, .font-heading { font-family: var(--font-heading); font-weight: 700; letter-spacing: -0.02em; color: var(--text-dark); }
+        p { color: var(--text-gray); }
+
         .section-title { font-size: 3rem; margin-bottom: 48px; border-bottom: 3px double #000; padding-bottom: 16px; }
+        @media (max-width: 768px) { .section-title { font-size: 2.25rem; } }
+        
         .section-label { font-size: 0.75rem; font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-dark); margin-bottom: 16px; display: block; font-weight: 600; }
 
-        /* Sticky Nav Bar */
-        .sticky-nav {
-            position: sticky;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: #000;
-            border-bottom: 2px solid var(--accent-brand);
-            transition: all 0.3s;
-        }
-        .nav-link {
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: opacity 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .nav-link:hover { opacity: 0.7; }
-        .nav-link.phone {
-            color: #fff;
-            background: rgba(255,255,255,0.1);
-            padding: 4px 10px;
-            border-radius: 4px;
-        }
-
         /* Hero */
-        .hero-section { background-color: var(--bg-white); background-image: radial-gradient(#e5e5e5 1px, transparent 1px); background-size: 20px 20px; padding: 100px 0 60px; border-bottom: 4px solid var(--text-dark); }
+        .hero-section { background-color: var(--bg-white); background-image: radial-gradient(#e5e5e5 1px, transparent 1px); background-size: 20px 20px; padding: 100px 0 60px; border-bottom: 4px solid var(--text-dark); border-top: 1px solid var(--text-dark); }
         .hero-grid { display: grid; grid-template-columns: 1fr; gap: 0px; align-items: start; max-width: 800px; margin: 0 auto; text-align: center;}
         
-        .hero-content h1 { font-size: clamp(3rem, 6vw, 5rem); line-height: 1.05; margin-bottom: 24px; margin-top: 16px;}
-        .hero-content p { font-size: 1.15rem; max-width: 700px; margin: 0 auto 40px; }
+        .hero-content h1 { font-size: clamp(3rem, 6vw, 5rem); line-height: 1.05; margin-bottom: 24px; margin-top: 16px; font-weight: 700;}
+        .hero-content h1 i { font-style: italic; color: var(--text-dark); font-weight: 400; }
+        .hero-content p { font-size: 1.15rem; max-width: 700px; margin: 0 auto 40px; font-weight: 400; }
 
         .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; border-radius: 0; font-family: var(--font-sans); font-weight: 600; font-size: 0.85rem; text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.2s; cursor: pointer; border: 1px solid var(--text-dark); }
         .btn-primary { background: var(--text-dark); color: var(--bg-white); }
         .btn-primary:hover { background: var(--bg-white); color: var(--text-dark); }
         .btn-ghost { background-color: transparent; color: var(--text-dark); }
         .btn-ghost:hover { background-color: var(--text-dark); color: var(--bg-white); }
-        
+        .btn-outline { border: 1px solid var(--text-dark); color: var(--text-dark); background: transparent; font-weight: 700; }
+        .btn-outline:hover { background: var(--bg-offwhite); }
+
         .cert-pill { display: inline-flex; align-items: center; gap: 8px; border-bottom: 2px solid #000; padding: 4px 8px; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-dark); margin-bottom: 16px;}
 
-        /* Cases Grid & Cards */
+        /* Cases Grid & Cards (Fact-Dense) */
         .section-cases { background-color: var(--bg-white); padding: 80px 0; border-top: 4px solid #000;}
         .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; padding-top: 32px; }
         @media (max-width: 900px) { .cases-grid { grid-template-columns: 1fr; } }
         
         .case-card { 
             background-color: var(--bg-white); 
-            padding: 40px; 
+            padding: 32px; 
             display: flex; 
             flex-direction: column; 
-            border: 1px solid #000; 
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid #ECECEC; 
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             height: 100%;
             cursor: pointer;
         }
         .case-card:hover { 
-            box-shadow: 15px 15px 0px var(--accent-brand); 
-            transform: translate(-5px, -5px);
+            border-color: var(--text-dark); 
+            box-shadow: 20px 20px 0px rgba(0,0,0,0.05); 
+            transform: translateY(-4px);
+        }
+        .case-card:hover .case-cta { color: var(--accent-brand); }
+        
+        .case-cta {
+            margin-top: 24px;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #990000; /* Deep mature red */
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* STICKY HEADER & GLASS */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+        
+        /* FLOATING CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            background: #24A1DE;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(36,161,222,0.4);
+            text-decoration: none;
+            transition: transform 0.3s;
+            animation: pulse-tg 2s infinite;
+        }
+        .floating-cta:hover { transform: scale(1.1); }
+        @keyframes pulse-tg {
+            0% { box-shadow: 0 0 0 0 rgba(36,161,222, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(36,161,222, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(36,161,222, 0); }
         }
         
         .case-meta { 
             font-family: var(--font-sans); 
             font-size: 0.75rem; 
-            color: var(--accent-brand); 
+            color: #888; 
             margin-bottom: 12px; 
             text-transform: uppercase; 
-            letter-spacing: 0.1em; 
-            font-weight: 700;
+            letter-spacing: 0.05em; 
         }
-        .case-title { font-size: 1.75rem; margin-bottom: 20px; font-family: var(--font-heading); line-height: 1.2; color: var(--text-dark); font-weight: 700; }
+        .case-title { font-size: 1.5rem; margin-bottom: 20px; font-family: var(--font-heading); line-height: 1.25; color: var(--text-dark); }
         
-        .case-result-box { 
-            background-color: var(--bg-offwhite); 
-            padding: 24px; 
-            margin-top: auto;
-            border: 1px solid #000;
-            position: relative;
+        .case-bullets { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0 0 24px 0; 
+            flex-grow: 1;
         }
-        .case-result-box::before {
-            content: "РЕЗУЛЬТАТ";
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            background: #000;
-            color: #fff;
-            padding: 2px 8px;
-            font-size: 0.65rem;
-            font-weight: 800;
-            font-family: var(--font-sans);
+        .case-bullets li { 
+            position: relative; 
+            padding-left: 20px; 
+            margin-bottom: 12px; 
+            font-size: 0.95rem; 
+            color: var(--text-dark); 
+            line-height: 1.5; 
         }
-        .case-result-box strong { font-size: 1.4rem; color: #000; display: block; margin-bottom: 4px; }
-        .case-result-box span { font-size: 0.9rem; color: var(--text-gray); }
+        .case-bullets li::before { 
+            content: "•"; 
+            position: absolute; 
+            left: 0; 
+            color: var(--accent-brand); 
+            font-weight: bold; 
+        }
 
-        .case-cta {
-            margin-top: 24px;
-            font-family: var(--font-sans);
-            font-size: 0.9rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-dark);
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-bottom: 2px solid transparent;
-            width: fit-content;
+        .case-result-box { 
+            background-color: #F0F7FF; 
+            padding: 20px; 
+            margin-bottom: 24px; 
+            font-size: 0.95rem; 
+            line-height: 1.5;
+            border-left: 4px solid #0056b3;
         }
-        .case-card:hover .case-cta { border-bottom-color: var(--accent-brand); color: var(--accent-brand); }
+        .case-result-box strong { color: #0056b3; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em; margin-right: 8px; }
+
+        .case-footer { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 16px; 
+            padding-top: 20px; 
+            border-top: 1px solid #EEE; 
+            font-family: var(--font-sans); 
+            font-size: 0.8rem; 
+            color: #666; 
+        }
+        .case-footer span strong { color: var(--text-dark); font-weight: 700; margin-right: 4px; }
+
+        /* Scale Proof Card (Black) */
+        .scale-proof-card { background-color: var(--bg-dark); color: var(--text-light); border: none; padding: 40px; }
+        .scale-proof-card .case-meta { color: #555; }
+        .scale-proof-card .case-title { color: var(--text-light); font-size: 1.75rem; }
+        .scale-proof-card .case-footer { border-top-color: #333; color: #888; }
+        .scale-proof-card .case-footer span strong { color: var(--text-light); }
+        .scale-proof-card .case-bullets li { color: #CCC; }
+        
+        .scale-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+        .scale-chip { background: #222; border: 1px solid #444; padding: 10px 16px; font-size: 0.85rem; font-weight: 600; font-family: var(--font-sans); }
+
+        /* Dark CTA Section */
+        .cta-section { background-color: var(--bg-dark); color: var(--text-light); padding: 120px 0; text-align: center; }
+        .cta-section .section-label { color: #8A92A3; }
+        .cta-section h2 { font-size: 3rem; margin-bottom: 24px; color: var(--text-light); line-height: 1.1; max-width: 800px; margin-inline: auto;}
+        .cta-section p { font-size: 1.25rem; color: #A1A8B8; margin-bottom: 40px; max-width: 600px; margin-inline: auto;}
 
         /* Modal Styles */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(4px); display: flex; align-items: flex-start; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; overflow-y: auto;}
         .modal-overlay.active { opacity: 1; pointer-events: all; }
         .modal-window { background: var(--bg-white); width: 100%; max-width: 800px; border: 1px solid #000; margin-top: 40px; margin-bottom: 40px; position: relative; box-shadow: 10px 10px 0px rgba(0,0,0,1); padding: 64px; }
         @media (max-width: 768px) { .modal-window { padding: 40px 24px; margin: 20px; box-shadow: 4px 4px 0px rgba(0,0,0,1); } }
-        .modal-close { position: absolute; top: 16px; right: 16px; background: #000; color: #fff; border: none; width: 32px; height: 32px; cursor: pointer; font-family: var(--font-sans); display: flex; align-items: center; justify-content: center; }
+        .modal-close { position: absolute; top: 16px; right: 16px; background: #000; color: #fff; border: none; width: 32px; height: 32px; cursor: pointer; font-family: var(--font-sans); display: flex; align-items: center; justify-content: center; transition: all 0.2s;}
+        .modal-close:hover { background: var(--accent-brand); }
         
         .modal-content-area h4 { font-family: var(--font-heading); font-size: 1.4rem; color: var(--text-dark); margin-bottom: 12px; margin-top: 40px; border-bottom: 1px solid #000; padding-bottom: 8px;}
         .modal-content-area h2 { font-size: 2.5rem; margin-bottom: 16px; margin-top: 0; font-family: var(--font-heading);}
         .modal-content-area p { margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; color: var(--text-dark); }
         .modal-content-area .highlight-box { background: var(--bg-offwhite); border-left: 4px solid var(--accent-brand); padding: 24px 32px; margin: 32px 0; font-size: 1.1rem; font-style: italic; font-family: var(--font-heading); color: var(--text-dark);}
+        .modal-content-area ul { list-style: none; margin-bottom: 32px; }
+        .modal-content-area ul li { padding-left: 20px; position: relative; margin-bottom: 12px; font-size: 1.1rem; color: var(--text-dark);}
+        .modal-content-area ul li::before { content: "—"; position: absolute; left: 0; color: var(--accent-brand); font-weight: bold;}
         
         .modal-metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 24px; margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--accent-muted);}
         .modal-metric { display: flex; flex-direction: column; }
         .modal-metric-val { font-size: 2rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; font-family: var(--font-heading);}
         .modal-metric-lbl { font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); letter-spacing: 0.05em;}
 
-        /* Tool Strip */
+        /* Quiz Styles */
+        .quiz-step { display: none; animation: fadeIn 0.3s ease; }
+        .quiz-step.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .quiz-option { border: 1px solid var(--text-dark); padding: 16px 24px; margin-bottom: 12px; cursor: pointer; transition: all 0.2s; font-size: 1.1rem; display: flex; align-items: center; justify-content: space-between;}
+        .quiz-option:hover { background: var(--text-dark); color: #fff; }
+        .quiz-option.selected { background: var(--text-dark); color: #fff; border-color: #000; box-shadow: 4px 4px 0 #000;}
+        .quiz-input { width: 100%; border: 1px solid var(--accent-muted); border-bottom: 2px solid var(--text-dark); padding: 16px; font-size: 1.1rem; margin-bottom: 24px; outline: none; transition: border-color 0.2s;}
+        .quiz-input:focus { border-color: var(--accent-brand); }
+        .quiz-label { font-size: 0.9rem; text-transform: uppercase; color: var(--text-gray); margin-bottom: 8px; display: block; letter-spacing: 0.05em;}
+        .quiz-footer { margin-top: 32px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--accent-muted); padding-top: 24px;}
+        .quiz-progress { font-size: 0.85rem; color: var(--text-gray); }
+
+        /* Premium Layout Components */
         .tool-strip { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--accent-muted); }
-        .tool-icon { display: flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; color: var(--text-dark); opacity: 0.7; }
+        .tool-icon { display: flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; color: var(--text-dark); opacity: 0.7; transition: opacity 0.2s; }
+        .tool-icon:hover { opacity: 1; }
         .tool-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-brand); }
+
+        .compare-table { width: 100%; border-collapse: collapse; margin: 48px 0; border: 1px solid var(--text-dark); font-family: var(--font-sans); }
+        .compare-table th { background: var(--bg-tint); padding: 20px; text-align: left; border-bottom: 1px solid var(--text-dark); border-right: 1px solid var(--text-dark); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em; }
+        .compare-table td { padding: 20px; border-bottom: 1px solid var(--accent-muted); border-right: 1px solid var(--text-dark); font-size: 0.95rem; vertical-align: top; }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table .val-plus { color: var(--accent-brand); font-weight: bold; }
+
+        .philosophy-banner { background-color: var(--bg-tint); padding: 60px 40px; margin: 80px auto 0; border-left: 6px solid var(--text-dark); max-width: 1000px; }
+        .philosophy-banner h3 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; color: var(--text-gray); font-family: var(--font-main); }
+        .philosophy-banner p { font-size: 1.5rem; line-height: 1.4; color: var(--text-dark); font-family: var(--font-heading); font-style: italic; font-weight: 500; }
+        @media(max-width:768px) { .philosophy-banner p { font-size: 1.25rem; } .philosophy-banner { padding: 32px 24px; } }
+
+        .methodology-flow { display: flex; gap: 20px; margin-top: 48px; flex-wrap: wrap; }
+        .flow-step { flex: 1; min-width: 250px; background: var(--bg-white); border: 1px solid var(--text-dark); padding: 32px; position: relative; }
+        .flow-num { position: absolute; top: -15px; left: 20px; background: var(--text-dark); color: #fff; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem; }
+        .flow-step h4 { margin-top: 8px; margin-bottom: 12px; }
 
         .reveal-on-scroll { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal-on-scroll.active { opacity: 1; transform: translateY(0); }
 
-        .cta-section { background-color: var(--bg-dark); color: var(--text-light); padding: 120px 0; text-align: center; }
-        .cta-section h2 { font-size: 3rem; margin-bottom: 24px; color: var(--text-light); line-height: 1.1; max-width: 800px; margin-inline: auto;}
+        /* Credential Section Redesign */
+        .cred-section { padding: 100px 0; background: var(--bg-white); }
+        .cred-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        @media (max-width: 900px) { .cred-grid { grid-template-columns: 1fr; gap: 48px; } }
+        
+        .cred-item { margin-bottom: 24px; display: flex; gap: 20px; align-items: flex-start; }
+        .cred-icon { width: 48px; height: 48px; background: var(--bg-tint); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; }
+        .cred-info h4 { font-size: 1.05rem; margin-bottom: 4px; line-height: 1.3; }
+        .cred-info p { font-size: 0.9rem; color: var(--text-gray); line-height: 1.5; }
+
+        .stack-group { margin-top: 32px; }
+        .stack-group h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-gray); margin-bottom: 16px; border-bottom: 1px solid var(--accent-muted); padding-bottom: 8px; }
+        .stack-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .stack-tag { padding: 6px 12px; background: var(--bg-offwhite); border: 1px solid var(--accent-muted); font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600; color: var(--text-dark); }
+        
+        .section-white { background-color: var(--bg-white); padding: 80px 0; }
     </style>
 </head>
 <body>
@@ -267,13 +382,34 @@
     <header class="hero-section">
         <div class="container hero-grid">
             <div class="hero-content">
-                <span class="cert-pill animate-fade">&#10003; Відкритий до пропозицій &middot; Спеціаліст Google Ads</span>
-                <span class="section-label animate-fade" style="margin-bottom: 8px;">Ярослав Жакун &mdash; Спеціаліст Google Ads</span>
-                <h1 class="animate-fade delay-1">Performance-перша архітектура Google Ads</h1>
-                <p class="animate-fade delay-2">Веду рекламні кампанії для інтернет-магазинів та генерації лідів. Мій пріоритет — ваш результат: стабільне зростання продажів, контроль над витратами та зрозуміла звітність.</p>
+                <span class="cert-pill animate-fade">&#10003; Open to Opportunities &middot; Google Ads Specialist</span>
+                <span class="section-label animate-fade" style="margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dark);">Iaroslav Zhakun &mdash; Google Ads Specialist</span>
+                <h1 class="animate-fade delay-1" style="font-size: clamp(2.5rem, 5vw, 4rem);">Google Ads Specialist &mdash; helping businesses get more from their ad budget</h1>
+                <p class="animate-fade delay-2" style="max-width: 800px;">I manage Google Ads campaigns for e-commerce and lead generation. My focus is always on your result: steady sales growth, controlled costs, and reports you can actually understand.</p>
                 <div class="hero-buttons animate-fade delay-3">
-                    <a href="cv_ua.html" class="btn btn-primary">Переглянути CV</a>
-                    <a href="#cases" class="btn btn-ghost" style="margin-left: 12px;">Кейси та результати</a>
+                    <a href="cv_eng.html" class="btn btn-primary" style="font-weight: 700;">View My CV</a>
+                    <a href="#cases" class="btn btn-ghost" style="margin-left: 12px;">See Results</a>
+
+                </div>
+            </div>
+            
+            <!-- DETAILED FACTUAL BLOCK (HIRING MANAGER VIEW) -->
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--accent-muted); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; text-align: left;" class="animate-fade delay-3">
+                <div class="fact-mini">
+                    <strong style="display: block; font-size: 1.5rem; color: var(--accent-brand);">10+ Years</strong>
+                    <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); font-weight: 600;">Marketing Experience</span>
+                </div>
+                <div class="fact-mini">
+                    <strong style="display: block; font-size: 1.5rem; color: var(--text-dark);">80+ Projects</strong>
+                    <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); font-weight: 600;">Launched from Scratch</span>
+                </div>
+                <div class="fact-mini">
+                    <strong style="display: block; font-size: 1.5rem; color: var(--text-dark);">$5k &ndash; $50k+</strong>
+                    <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); font-weight: 600;">Monthly Budgets Managed</span>
+                </div>
+                <div class="fact-mini">
+                    <strong style="display: block; font-size: 1.5rem; color: var(--text-dark);">5 &ndash; 10</strong>
+                    <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); font-weight: 600;">Active Projects Cap</span>
                 </div>
             </div>
             
@@ -282,92 +418,530 @@
                 <div class="tool-icon"><div class="tool-dot"></div>GA4 / GTM</div>
                 <div class="tool-icon"><div class="tool-dot"></div>Merchant Center</div>
                 <div class="tool-icon"><div class="tool-dot"></div>Looker Studio</div>
+                <div class="tool-icon"><div class="tool-dot"></div>Salesforce / CRM</div>
             </div>
         </div>
     </header>
 
-    <!-- CASES -->
+    <!-- CASES (MOVED UP FOR IMMEDIATE PROOF) -->
     <section id="cases" class="section-cases">
         <div class="container">
-            <span class="section-label">Досвід та Результати</span>
-            <h2 class="section-title">Вибрані кейси</h2>
+            <span class="section-label">Досвід та Докази</span>
+            <h2 class="section-title">Вибрані Кейси</h2>
             <div class="cases-grid">
-                <div class="case-card reveal-on-scroll" onclick="openModal('case-1')">
-                    <span class="case-meta">E-commerce / Архітектура</span>
-                    <h3 class="case-title">Зоотовари: Масштабована екосистема Search & PMax</h3>
-                    <div class="case-result-box">
-                        <strong>800–1200% ROAS</strong>
-                        <span>Стабільна щомісячна ефективність із CPA €4.35.</span>
+                <div class="case-card" onclick="openModal('case-1')">
+                    <div class="case-title">E-commerce: Pet Supplies<span class="case-tag">Architecture</span></div>
+                    <p class="case-teaser">Replaced chaotic catalog spend with structured demand capture layers. Isolated high-value Search from broad Shopping for predictable ROI.</p>
+                    <div class="metrics-chips">
+                        <span class="chip chip-accent"><strong>800-1200%</strong> ROAS</span>
+                        <span class="chip"><strong>€4.35</strong> CPA</span>
                     </div>
-                    <div class="case-cta">Системний огляд <span>&rarr;</span></div>
+                    <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">System View <span>&rarr;</span></button>
                 </div>
-                <div class="case-card reveal-on-scroll" onclick="openModal('case-2')">
-                    <span class="case-meta">E-commerce / Масштабування</span>
-                    <h3 class="case-title">Товари для гриля: Захоплення сезонного попиту</h3>
-                    <div class="case-result-box">
-                        <strong>679% ROAS</strong>
-                        <span>Фокус на високомаржинальних товарах у пік сезону.</span>
+                <div class="case-card" onclick="openModal('case-2')">
+                    <div class="case-title">E-commerce: BBQ Grills<span class="case-tag">Scaling</span></div>
+                    <p class="case-teaser">Priority-driven category scaling. Optimized inventory exposure using PMax for reach and Search for capturing high-margin intent.</p>
+                    <div class="metrics-chips">
+                        <span class="chip chip-accent"><strong>679%</strong> ROAS</span>
+                        <span class="chip"><strong>€13.7</strong> CPA</span>
                     </div>
-                    <div class="case-cta">Системний огляд <span>&rarr;</span></div>
+                    <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">System View <span>&rarr;</span></button>
                 </div>
-                <div class="case-card reveal-on-scroll" onclick="openModal('case-3')">
-                    <span class="case-meta">B2B / Лідогенерація</span>
-                    <h3 class="case-title">Логістика: Фільтрація інтенту та DSA-шари</h3>
-                    <div class="case-result-box">
-                        <strong>€11.5 CPL</strong>
-                        <span>1,090 кваліфікованих бізнес-лідів за 90 днів.</span>
+                <div class="case-card" onclick="openModal('case-3')">
+                    <div class="case-title">B2B: Logistics<span class="case-tag">LeadGen</span></div>
+                    <p class="case-teaser">Isolated B2B intent from generic volume. Built a transparent lead-gen system with brand isolation and DSA gap filling.</p>
+                    <div class="metrics-chips">
+                        <span class="chip chip-accent"><strong>€11.5</strong> Target CPL</span>
+                        <span class="chip"><strong>1,090</strong> Leads</span>
                     </div>
-                    <div class="case-cta">Системний огляд <span>&rarr;</span></div>
+                    <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">System View <span>&rarr;</span></button>
                 </div>
-                <div class="case-card reveal-on-scroll" onclick="openModal('case-4')">
-                    <span class="case-meta">E-commerce / Технічний</span>
-                    <h3 class="case-title">Електроніка: Багаторівневе масштабування інвентарю</h3>
-                    <div class="case-result-box">
-                        <strong>653% ROAS</strong>
-                        <span>Динамічний розподіл бюджету на основі маржі.</span>
+                <div class="case-card" onclick="openModal('case-4')">
+                    <div class="case-title">E-commerce: Electronics<span class="case-tag">Technical</span></div>
+                    <p class="case-teaser">Tiered inventory scaling. Strengthened PMax visibility for top-performing product groups while preserving branded Search control.</p>
+                    <div class="metrics-chips">
+                        <span class="chip chip-accent"><strong>653%</strong> ROAS</span>
+                        <span class="chip"><strong>€6.7</strong> CPA</span>
                     </div>
-                    <div class="case-cta">Системний огляд <span>&rarr;</span></div>
+                    <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">System View <span>&rarr;</span></button>
                 </div>
-                <div class="case-card reveal-on-scroll" onclick="openModal('case-5')">
-                    <span class="case-meta">Послуги / Ефективність</span>
-                    <h3 class="case-title">Ремонт: Гіперлокальна радіусна стратегія</h3>
-                    <div class="case-result-box">
-                        <strong>€12 CPA</strong>
-                        <span>850 заброньованих робіт через Call-Only воронки.</span>
+                <div class="case-card" onclick="openModal('case-5')">
+                    <div class="case-title">Local Services: Repair<span class="case-tag">Efficiency</span></div>
+                    <p class="case-teaser">Hyper-local radius strategy. Defended CPA in an overheated niche via precision zone targeting and mobile call-centric funnels.</p>
+                    <div class="metrics-chips">
+                        <span class="chip chip-accent"><strong>€12</strong> Avg. CPA</span>
+                        <span class="chip"><strong>850</strong> Calls</span>
                     </div>
-                    <div class="case-cta">Системний огляд <span>&rarr;</span></div>
+                    <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">System View <span>&rarr;</span></button>
                 </div>
-                <div class="case-card reveal-on-scroll" onclick="openModal('case-6')">
-                    <span class="case-meta">Industrial B2B / Стратегія</span>
-                    <h3 class="case-title">Обладнання: Supply-Chain фільтр інтенту</h3>
-                    <div class="case-result-box">
-                        <strong>320 Лідів</strong>
-                        <span>Видалення роздрібного шуму для захоплення опту.</span>
+                <div class="case-card" onclick="openModal('case-6')">
+                    <div class="case-title">Industrial B2B: Tools<span class="case-tag">Strategy</span></div>
+                    <p class="case-teaser">Supply-chain intent filtering. Rigorous keyword exclusion logic to eliminate retail noise and capture professional buyers.</p>
+                    <div class="metrics-chips">
+                        <span class="chip chip-accent"><strong>320</strong> Leads</span>
+                        <span class="chip"><strong>€45</strong> CPA</span>
                     </div>
-                    <div class="case-cta">Системний огляд <span>&rarr;</span></div>
+                    <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">System View <span>&rarr;</span></button>
                 </div>
         </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="cta-section">
+    <!-- THE PROFESSIONAL STANDARD (COMPARISON) -->
+    <section style="background-color: var(--bg-white); padding: 80px 0;">
         <div class="container">
-            <span class="section-label" style="color: #8A92A3;">Наступні кроки</span>
-            <h2>Почнемо професійний діалог</h2>
-            <div style="display: flex; gap: 16px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
-                <a href="tel:+380505580953" class="btn btn-primary" style="background: var(--accent-brand); border-color: var(--accent-brand);">Зателефонувати (UA)</a>
-                <a href="mailto:yaroslav.zhakun@gmail.com" class="btn btn-ghost" style="color: #fff; border-color: rgba(255,255,255,0.3);">Написати на пошту</a>
+            <span class="section-label">Strategic Value</span>
+            <h2 class="section-title">Ad Management vs. Ad Architecture</h2>
+            <p style="font-size: 1.1rem; color: var(--text-gray); max-width: 600px; margin-bottom: 24px;">Why a "System-Driven" approach outperforms traditional media buying by focusing on the infrastructure of growth.</p>
+            
+            <table class="compare-table reveal-on-scroll">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Standard Management</th>
+                        <th>Systematic Architecture</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Primary Goal</strong></td>
+                        <td>Maximize traffic volume</td>
+                        <td class="val-plus">Maximize incremental profit</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PMax Strategy</strong></td>
+                        <td>"Black Box" automation</td>
+                        <td class="val-plus">Strategic steering & brand isolation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tracking</strong></td>
+                        <td>Surface-level conversions</td>
+                        <td class="val-plus">GTM / Server-side / Margin-based</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Scaling</strong></td>
+                        <td>Raising bids by "feel"</td>
+                        <td class="val-plus">Data-backed ROAS tiering</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Communication</strong></td>
+                        <td>Interface metrics (CTR/CPC)</td>
+                        <td class="val-plus">Business metrics (ROI / POAS / CAC)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- CREDENTIALS & TRACK RECORD -->
+    <section class="cred-section">
+        <div class="container">
+            <div class="cred-grid">
+                <!-- Left: Bio & Buttons -->
+                <div>
+                    <span class="section-label">Professional Resume</span>
+                    <h2 class="section-title" style="font-size: 2.5rem; border-bottom: none; margin-bottom: 24px; padding-bottom: 0;">Background & Credentials</h2>
+                    <p style="font-size: 1.15rem; color: var(--text-dark); line-height: 1.7; margin-bottom: 40px;">Iaroslav Zhakun — Google Ads Specialist with a background as an Economist-Manager. I began my career in digital marketing in 2013, specializing deeply in Google Ads architecture and performance optimization since 2017. Over the past decade, I have successfully managed over 80 projects across B2C E-commerce and B2B lead generation sectors.</p>
+                    
+                    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                        <a href="https://t.me/Yaroslav797" target="_blank" class="btn btn-primary" style="text-decoration: none;">Connect on Telegram</a>
+                        <a href="cv_eng.html" class="btn btn-outline" style="border: 1px solid #000; color: #000; background: transparent; text-decoration: none; font-weight: 700;">View Full Resume →</a>
+                    </div>
+                </div>
+
+                <!-- Right: Credentials List -->
+                <div>
+                    <!-- Education & Status -->
+                    <div style="margin-bottom: 48px;">
+                        <div class="cred-item reveal-on-scroll">
+                            <div class="cred-icon">🎓</div>
+                            <div class="cred-info">
+                                <h4>МВА Professional Certificate</h4>
+                                <p>Management & Strategy — The Open University (UK)</p>
+                            </div>
+                        </div>
+                        <div class="cred-item reveal-on-scroll">
+                            <div class="cred-icon">📜</div>
+                            <div class="cred-info">
+                                <h4>Google Certified Expert</h4>
+                                <p>Search, Shopping & Performance Max Architecture</p>
+                            </div>
+                        </div>
+                        <div class="cred-item reveal-on-scroll">
+                            <div class="cred-icon">⚡</div>
+                            <div class="cred-info">
+                                <h4>Product Manager Program</h4>
+                                <p>Systematic Product Thinking — Skillsetter.io</p>
+                            </div>
+                        </div>
+                        <div class="cred-item reveal-on-scroll">
+                            <div class="cred-icon">🏛️</div>
+                            <div class="cred-info">
+                                <h4>Higher Education</h4>
+                                <p>Manager-Economist — Kherson State University</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack & Tools -->
+                    <div class="stack-group">
+                        <h4>Tech Stack & Tools</h4>
+                        <div class="stack-tags reveal-on-scroll">
+                            <span class="stack-tag">Google Ads</span>
+                            <span class="stack-tag">GMC</span>
+                            <span class="stack-tag">GA4</span>
+                            <span class="stack-tag">GTM</span>
+                            <span class="stack-tag">Looker Studio</span>
+                            <span class="stack-tag">Clarity</span>
+                            <span class="stack-tag">Salesforce</span>
+                            <span class="stack-tag">HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer style="padding: 40px 0; text-align: center; background-color: var(--bg-dark);">
+    <!-- PROFESSIONAL EXPERIENCE TIMELINE -->
+    <section style="background-color: var(--bg-offwhite); padding: 80px 0;">
         <div class="container">
-            <p style="font-size: 0.85rem; color: #5C6270;">&copy; 2026 Ярослав Жакун. Всі права захищені.</p>
+            <span class="section-label">Professional Experience</span>
+            <h2 class="section-title">Career Journey</h2>
+            
+            <div style="border-left: 2px solid var(--accent-muted); padding-left: 40px; margin-left: 10px;">
+                <!-- Item 1 -->
+                <div style="position: relative; margin-bottom: 48px;">
+                    <div style="position: absolute; left: -51px; top: 0; width: 20px; height: 20px; background: var(--accent-brand); border: 4px solid var(--bg-offwhite);"></div>
+                    <div style="font-family: var(--font-sans); font-size: 0.85rem; font-weight: 700; color: var(--accent-brand); text-transform: uppercase; margin-bottom: 8px;">Aug 2025 – Sep 2025</div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 4px;">Channel Factory</h3>
+                    <div style="font-weight: 600; font-size: 1rem; color: var(--text-dark); margin-bottom: 12px;">AdOps Manager for International Brands | YouTube Ads</div>
+                    <p style="font-size: 1rem; color: var(--text-gray); max-width: 700px;">Supported QA and AdOps processes for international YouTube and Google Ads campaigns. Focused on Brand Safety standards and programmatic advertising workflows using Salesforce and Ads Editor.</p>
+                </div>
+
+                <!-- Item 2 -->
+                <div style="position: relative; margin-bottom: 48px;">
+                    <div style="position: absolute; left: -51px; top: 0; width: 20px; height: 20px; background: var(--text-dark); border: 4px solid var(--bg-offwhite);"></div>
+                    <div style="font-family: var(--font-sans); font-size: 0.85rem; font-weight: 700; color: var(--text-gray); text-transform: uppercase; margin-bottom: 8px;">Feb 2025 – Aug 2025</div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 4px;">Locomotive.ua</h3>
+                    <div style="font-weight: 600; font-size: 1rem; color: var(--text-dark); margin-bottom: 12px;">PPC Specialist</div>
+                    <p style="font-size: 1rem; color: var(--text-gray); max-width: 700px;">Managed and optimized Performance Max and Google Shopping campaigns for e-commerce. Configured GA4, GTM, and Merchant Center for deep tracking and UX/CRO analysis.</p>
+                </div>
+
+                <!-- Item 3 -->
+                <div style="position: relative; margin-bottom: 48px;">
+                    <div style="position: absolute; left: -51px; top: 0; width: 20px; height: 20px; background: var(--text-dark); border: 4px solid var(--bg-offwhite);"></div>
+                    <div style="font-family: var(--font-sans); font-size: 0.85rem; font-weight: 700; color: var(--text-gray); text-transform: uppercase; margin-bottom: 8px;">2015 – Present</div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 4px;">Cifra Internet</h3>
+                    <div style="font-weight: 600; font-size: 1rem; color: var(--text-dark); margin-bottom: 12px;">Performance Marketing Lead / Media Buyer</div>
+                    <p style="font-size: 1rem; color: var(--text-gray); max-width: 700px;">Led performance marketing for 50+ projects from scratch. Managed portfolios with monthly budgets of $50k+, consistently reducing inefficient spend by 30%.</p>
+                </div>
+
+                <!-- Item 4 -->
+                <div style="position: relative; margin-bottom: 48px;">
+                    <div style="position: absolute; left: -51px; top: 0; width: 20px; height: 20px; background: var(--text-dark); border: 4px solid var(--bg-offwhite);"></div>
+                    <div style="font-family: var(--font-sans); font-size: 0.85rem; font-weight: 700; color: var(--text-gray); text-transform: uppercase; margin-bottom: 8px;">2016 – 2023</div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 4px;">Royal Canin Ukraine</h3>
+                    <div style="font-weight: 600; font-size: 1rem; color: var(--text-dark); margin-bottom: 12px;">E-commerce Manager</div>
+                    <p style="font-size: 1rem; color: var(--text-gray); max-width: 700px;">Developed and implemented e-commerce growth strategies for a global brand. Increased annual sales among assigned clients by 15% through data-driven initiatives.</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; text-align: center;">
+                <a href="cv_eng.html" style="color: var(--accent-brand); font-family: var(--font-sans); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; text-decoration: none; border-bottom: 2px solid var(--accent-brand); padding-bottom: 4px;">View Detailed Education & Case History in Full CV →</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- METHODOLOGY -->
+    <section class="section-white">
+        <div class="container">
+            <div class="methodology-flow">
+                <div class="flow-step reveal-on-scroll">
+                    <div class="flow-num">1</div>
+                    <h4>Map the Situation</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">GTM audit and demand landscape mapping. Identifying where commercial intent lives and where branded traffic hides.</p>
+                </div>
+                <div class="flow-step reveal-on-scroll">
+                    <div class="flow-num">2</div>
+                    <h4>Build the System</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">Strict separation of demand types. Eliminating intent overlaps and building a transparent, manageable architecture.</p>
+                </div>
+                <div class="flow-step reveal-on-scroll">
+                    <div class="flow-num">3</div>
+                    <h4>Scale with Control</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">Incrementality testing and budget expansion based on unit economics and margin-level profitability.</p>
+                </div>
+            </div>
+
+            <!-- PHILOSOPHY BANNER -->
+            <div class="philosophy-banner">
+                <h3>Strategic Approach</h3>
+                <p>"Automated systems like Performance Max require strategic steering to protect margins. By isolating branded intent and integrating offline conversion signals, we force the algorithm to deliver incremental growth rather than just cannibalizing existing demand."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CROSS-CHANNEL CAPABILITIES -->
+    <section style="background-color: var(--bg-white); padding: 0 0 120px;">
+        <div class="container">
+            <span class="section-label">Expertise Map</span>
+            <h2 class="section-title">Поза межами інтерфейсу Ads</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+                <div style="padding: 32px; border: 1px solid var(--accent-muted); background: var(--bg-offwhite);">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 12px; color: var(--accent-brand);">E-com & Feed Strategy</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-dark);">Engineering complex Google Merchant Center setups with Custom Labels and margin-based bidding to ensure profitability at scale.</p>
+                </div>
+                <div style="padding: 32px; border: 1px solid var(--text-dark); background: var(--bg-white);">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 12px; color: var(--text-dark);">Technical Infrastructure</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-gray);">Implementing deterministic tracking via GTM and GA4: micro-conversions, server-side tagging, and CRM data integration.</p>
+                </div>
+                <div style="padding: 32px; border: 1px solid var(--accent-muted); background: var(--bg-offwhite);">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 12px; color: var(--accent-brand);">B2B Lead Acquisition</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-dark);">Designing high-intent Search structures for long sales cycles: precision negative keyword libraries and lead quality filtering.</p>
+                </div>
+                <div style="padding: 32px; border: 1px solid var(--accent-muted); background: var(--bg-offwhite);">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 12px; color: var(--accent-brand);">Reporting & Data Science</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-dark);">Building Looker Studio dashboards focused on business-level KPIs: Blended CAC, Net Margin, and channel incrementality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADJACENT CAPABILITIES STRIP -->
+    <section style="background-color: var(--bg-tint); padding: 48px 0; border-top: 1px solid var(--accent-muted);">
+        <div class="container">
+            <span class="section-label" style="margin-bottom: 16px; display: block;">Adjacent Capabilities</span>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
+                <div style="display: flex; gap: 16px; align-items: flex-start;">
+                    <span style="font-size: 1.5rem; flex-shrink: 0;">🗺️</span>
+                    <div>
+                        <strong style="font-family: var(--font-heading); font-size: 1rem; display: block; margin-bottom: 4px;">Go-To-Market Стратегія</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-gray); margin: 0; line-height: 1.5;">Market analysis, competitive positioning and full-funnel architecture planning before campaign launch.</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; align-items: flex-start;">
+                    <span style="font-size: 1.5rem; flex-shrink: 0;">🤖</span>
+                    <div>
+                        <strong style="font-family: var(--font-heading); font-size: 1rem; display: block; margin-bottom: 4px; color: var(--accent-brand);">LLM & API Automation</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-gray); margin: 0; line-height: 1.5;">Python scripts & LLM-driven flows for offline conversion uploads & automated campaign steering.</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; align-items: flex-start;">
+                    <span style="font-size: 1.5rem; flex-shrink: 0;">📍</span>
+                    <div>
+                        <strong style="font-family: var(--font-heading); font-size: 1rem; display: block; margin-bottom: 4px;">Local SEO (Map-Pack)</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-gray); margin: 0; line-height: 1.5;">Syncing Google Business Profile with strict paid search boundaries to monopolize high-intent local traffic.</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; align-items: flex-start;">
+                    <span style="font-size: 1.5rem; flex-shrink: 0;">🤝</span>
+                    <div>
+                        <strong style="font-family: var(--font-heading); font-size: 1rem; display: block; margin-bottom: 4px;">Управління Проектами</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-gray); margin: 0; line-height: 1.5;">Acting as the central node between developers, designers and C-level to launch campaigns without delays.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMPLOYER FIT SECTION -->
+    <div style="background-color: var(--bg-offwhite);">
+        <div class="container split-grid">
+            <div>
+                <span class="section-label">Area of Responsibility</span>
+                <h2 class="section-title">What I Bring to the Team</h2>
+                <ul class="clean-list">
+                    <li><span><strong>Transparent Analytics:</strong> I set up precise tracking (GA4, GTM) and attribution to ensure data-driven decisions.</span></li>
+                    <li><span><strong>Controlled Scaling:</strong> Transitioning ad accounts from chaotic spending to predictable, ROI-positive budget expansion.</span></li>
+                    <li><span><strong>Cross-functionality:</strong> Proficient in drafting technical specs for developers, designers, and data analysts.</span></li>
+                    <li><span><strong>Clear Reporting:</strong> Building Looker Studio dashboards that make complex performance metrics accessible to C-level management.</span></li>
+                </ul>
+            </div>
+
+            <div>
+                <span class="section-label">Working Formats</span>
+                <h2 class="section-title">Who I am Looking For</h2>
+                <ul class="clean-list">
+                    <li><span><strong>In-house Teams:</strong> E-commerce projects (B2C) with broad catalogs or B2B companies with complex sales cycles.</span></li>
+                    <li><span><strong>Performance Agencies:</strong> Ready to join a strong team to manage a dedicated pool of clients.</span></li>
+                    <li><span><strong>Startups:</strong> Needing a dedicated specialist to take full ownership of Paid Search acquisition.</span></li>
+                    <li><span><strong>Goal:</strong> Long-term collaboration where I can deeply embed myself into the product and its metrics.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- DISCOVERY ENGAGEMENT (LEAD MAGNET) -->
+    <section class="section-audit" style="background-color: var(--bg-tint); padding: 80px 0; border-top: 2px solid #000;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; align-items: start;">
+                <div>
+                    <span class="section-label" style="margin-bottom: 16px;">Next Step</span>
+                    <h2 style="font-family: var(--font-heading); font-size: 2.2rem; color: var(--text-dark); margin-bottom: 24px; line-height: 1.1;">Looking for a System-Driven PPC Specialist?</h2>
+                    <p style="font-size: 1.15rem; color: var(--text-dark); line-height: 1.7; margin-bottom: 16px;">I am open to new opportunities and ready to join your team (Full-time / Part-time / Project basis).</p>
+                    <p style="font-size: 1.15rem; color: var(--text-dark); line-height: 1.7;">My goal is to take ownership of your Paid Search acquisition, build a transparent system, and communicate with the business solely through the lens of concrete numbers and ROI.</p>
+                </div>
+                <div style="border: 1px solid var(--text-dark); background: var(--bg-white); padding: 48px;">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 24px; text-align: center;">Schedule an Interview</h3>
+                    <p style="text-align: center; margin-bottom: 32px; font-size: 1.05rem;">Message me on Telegram or by email to arrange an introductory call and discuss your current marketing challenges.</p>
+                    <a href="https://t.me/Yaroslav797" class="btn btn-primary" style="width: 100%; border: none; font-size: 1.1rem; padding: 18px; text-decoration: none;">Message on Telegram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA: FINAL DIALOGUE -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <span class="section-label" style="color: #8A92A3;">Наступні Кроки</span>
+            <h2>Let's Start a Professional Dialogue</h2>
+            <p>I am open to exploring how my systematic approach can complement your team. Let's discuss your current challenges and potential synergies.</p>
+            
+            <div style="display: flex; gap: 16px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
+                <a href="mailto:yaroslav.zhakun@gmail.com" class="btn-primary btn" style="text-decoration: none;">Email me</a>
+                <a href="https://t.me/Yaroslav797" target="_blank" class="btn-ghost btn" style="border-color: rgba(255,255,255,0.3); color: #fff;">Telegram</a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 40px 0; text-align: center; background-color: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <p style="font-size: 0.85rem; color: #5C6270;; margin-bottom: 16px;">&copy; 2026 Iaroslav Zhakun. Всі права захищено.</p>
         </div>
     </footer>
 
-    <!-- MODAL POPUP -->
+    <div style="display: none;">
+        <div id="data-case-1">
+            <h2 style="margin-bottom: 8px;">E-commerce: Pet Supplies</h2>
+            <div class="highlight-box">The account had dozens of campaigns running simultaneously, but nobody could explain which ones actually generated profit — and which ones were quietly eating the budget. The client was spending at scale, but flying blind.</div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">What We Did</h4>
+            <p>We restructured the account from scratch around a single principle: <strong>every campaign has one job.</strong> Search captured people ready to buy. Shopping handled catalog visibility. PMax handled incremental reach — but only after being fenced off from the brand terms that were inflating its numbers.</p>
+            <p style="margin-top: 12px;">We then split Dogs and Cats into separate campaign clusters, so budget could follow real demand patterns instead of being averaged across the whole assortment.</p>
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">Account Architecture</span>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 100%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 65%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #C00000; width: 25%; height: 100%;"></div></div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">Search (Brand) / Search (Category) / PMax (Expansion)</p>
+            </div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">The Outcome</h4>
+            <p>Once each layer knew its role, optimization became predictable. ROAS stabilized, CPA dropped to a level that made scaling straightforward rather than risky.</p>
+            <div class="modal-metrics-grid">
+                <div class="modal-metric"><span class="modal-metric-val">800–1200%</span><span class="modal-metric-lbl">ROAS</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€4.35</span><span class="modal-metric-lbl">Avg. CPA</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">34,923</span><span class="modal-metric-lbl">Conversions</span></div>
+            </div>
+        </div>
+        <div id="data-case-2">
+            <h2 style="margin-bottom: 8px;">E-commerce: BBQ Grills</h2>
+            <div class="highlight-box">The client entered peak BBQ season with a single flat Shopping campaign covering 400+ SKUs. Budget was spread equally across premium grills and low-margin accessories — meaning the best products never got the investment they deserved.</div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">What We Did</h4>
+            <p>We rebuilt the account around <strong>margin tiers</strong>. High-value grills got dedicated PMax campaigns optimized for revenue. Supporting accessories ran on lower-priority Shopping, ensuring they didn't compete for the same budget.</p>
+            <p style="margin-top: 12px;">DSA campaigns caught the long-tail seasonal queries that standard keyword research always misses — things people actually type when they're ready to buy. GA4 tracking was reconfigured to capture purchase value accurately, so the bidding algorithm was working from clean data.</p>
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">Revenue Trajectory (Seasonal Window)</span>
+                <div style="display: flex; align-items: flex-end; gap: 8px; height: 60px;">
+                    <div style="flex: 1; background: #eee; height: 30%;"></div>
+                    <div style="flex: 1; background: #ccc; height: 50%;"></div>
+                    <div style="flex: 1; background: #999; height: 75%;"></div>
+                    <div style="flex: 1; background: #000; height: 100%;"></div>
+                </div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">Month-over-month growth during optimization</p>
+            </div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">The Outcome</h4>
+            <p>The peak season produced €157.6k in tracked sales from €23.2k in spend — with the highest ROAS on premium products where it mattered most.</p>
+            <div class="modal-metrics-grid">
+                <div class="modal-metric"><span class="modal-metric-val">679%</span><span class="modal-metric-lbl">ROAS</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€13.7</span><span class="modal-metric-lbl">Avg. CPA</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€157.6k</span><span class="modal-metric-lbl">Sales Value</span></div>
+            </div>
+        </div>
+        <div id="data-case-3">
+            <h2 style="margin-bottom: 8px;">B2B: Logistics</h2>
+            <div class="highlight-box">The company was getting clicks and form submissions — but most of them were from individuals and small operators, not the commercial clients their sales team could actually close. Volume looked fine on paper, quality was a disaster.</div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">What We Did</h4>
+            <p>We treated the keyword strategy as a <strong>traffic filter</strong>, not a traffic driver. An extensive negative keyword audit removed all consumer-intent queries from the account. Brand terms were isolated into their own campaign so PMax couldn't claim credit for organic demand.</p>
+            <p style="margin-top: 12px;">DSA campaigns then surfaced the long-tail B2B service queries that manual keyword research consistently misses — handling, express freight, volume pricing — feeding the forms with people who actually needed a logistics partner.</p>
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">Lead Funnel Architecture</span>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 100%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 65%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #C00000; width: 25%; height: 100%;"></div></div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">B2B Search / Service DSA / Brand Guard</p>
+            </div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">The Outcome</h4>
+            <p>1,090 qualified business inquiries at €11.5 per lead. The sales team stopped complaining about lead quality.</p>
+            <div class="modal-metrics-grid">
+                <div class="modal-metric"><span class="modal-metric-val">€11.5</span><span class="modal-metric-lbl">Cost Per Lead</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">1,090</span><span class="modal-metric-lbl">Qualified Leads</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€10.3k</span><span class="modal-metric-lbl">Ad Spend</span></div>
+            </div>
+        </div>
+        <div id="data-case-4">
+            <h2 style="margin-bottom: 8px;">E-commerce: Electronics</h2>
+            <div class="highlight-box">A large electronics retailer with thousands of SKUs was running budget across the entire catalog equally — no priority logic, no margin weighting. High-ticket items with strong demand were getting the same budget as slow-moving stock nobody searched for.</div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">What We Did</h4>
+            <p>We conducted an inventory audit and divided the product catalog into <strong>three performance tiers</strong> — priority products (high margin, high demand), standard products, and brand defense. Each tier got its own campaign type and budget logic.</p>
+            <p style="margin-top: 12px;">PMax was pointed at priority segments with custom audience signals from past purchases. Standard products ran Smart Shopping with conservative targets. Brand terms were walled off to prevent PMax from cannibalizing organic conversions.</p>
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">Inventory Priority Architecture</span>
+                <div style="display: flex; align-items: flex-end; gap: 8px; height: 60px;">
+                    <div style="flex: 1; background: #eee; height: 30%;"></div>
+                    <div style="flex: 1; background: #ccc; height: 50%;"></div>
+                    <div style="flex: 1; background: #999; height: 75%;"></div>
+                    <div style="flex: 1; background: #000; height: 100%;"></div>
+                </div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">Budget allocation follows margin priority</p>
+            </div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">The Outcome</h4>
+            <p>€51.6k in revenue from €7.9k spend over 90 days — with the business finally able to see which product groups were driving growth and adjust inventory decisions accordingly.</p>
+            <div class="modal-metrics-grid">
+                <div class="modal-metric"><span class="modal-metric-val">653%</span><span class="modal-metric-lbl">ROAS</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€6.7</span><span class="modal-metric-lbl">Avg. CPA</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€51.6k</span><span class="modal-metric-lbl">Sales Value</span></div>
+            </div>
+        </div>
+        <div id="data-case-5">
+            <h2 style="margin-bottom: 8px;">Local Services: Repair</h2>
+            <div class="highlight-box">A repair service was paying €350+ per booked job through Google Ads, with CPA climbing every month. The local auction was overheated and the broad match strategy meant they were paying for clicks from people three cities away.</div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">What We Did</h4>
+            <p>We switched to a <strong>precision radius strategy</strong>: tight geographic zones, Call-Only campaigns targeting mobile users during working hours, and a complete negative keyword rebuild to eliminate irrelevant searches. Bid adjustments were set to maximize exposure during the peak booking windows we identified from conversion data.</p>
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">Local Intent Capture Layers</span>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 100%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 65%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #C00000; width: 25%; height: 100%;"></div></div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">Radius Zones / Call-Only Mobile / Hour-of-Day Bidding</p>
+            </div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">The Outcome</h4>
+            <p>CPA dropped from €350 to €12. 850 booked calls from €10.2k in spend. The campaign stabilized and the client stopped questioning whether Google Ads was worth running.</p>
+            <div class="modal-metrics-grid">
+                <div class="modal-metric"><span class="modal-metric-val">€12</span><span class="modal-metric-lbl">Avg. CPA</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€10.2k</span><span class="modal-metric-lbl">Ad Spend</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">850</span><span class="modal-metric-lbl">Booked Calls</span></div>
+            </div>
+        </div>
+        <div id="data-case-6">
+            <h2 style="margin-bottom: 8px;">Industrial B2B: Tools & Equipment</h2>
+            <div class="highlight-box">A wholesale tools supplier was generating leads — but the leads came from end consumers, not the procurement managers and contractors they needed to reach. Retail noise was drowning out serious buyers.</div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">What We Did</h4>
+            <p>The entire campaign was rebuilt around <strong>supply-chain search intent</strong>. We identified the language professional buyers actually use — wholesale pricing, bulk orders, technical specifications — and built keyword clusters around those terms exclusively.</p>
+            <p style="margin-top: 12px;">Remarketing campaigns targeted users who had visited pricing or specification pages — a strong signal of procurement intent. B2B form submissions were tracked as micro-conversions so the algorithm could learn what a good lead looked like.</p>
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">B2B Intent Filter Architecture</span>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 100%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 65%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #C00000; width: 25%; height: 100%;"></div></div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">Procurement Search / Spec-Page Remarketing / Form Tracking</p>
+            </div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">The Outcome</h4>
+            <p>320 qualified wholesale inquiries at a controlled €45 CPA. The sales pipeline went from cluttered to manageable.</p>
+            <div class="modal-metrics-grid">
+                <div class="modal-metric"><span class="modal-metric-val">320</span><span class="modal-metric-lbl">Qualified Leads</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€45</span><span class="modal-metric-lbl">Target CPA</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€14.4k</span><span class="modal-metric-lbl">Ad Spend</span></div>
+            </div>
+        </div></div>
+    <!-- MODAL POPUP HTML -->
     <div class="modal-overlay" id="caseModal" onclick="closeModal(event)">
         <div class="modal-window">
             <button class="modal-close" onclick="closeModal(event, true)">✕</button>
@@ -375,65 +949,83 @@
         </div>
     </div>
 
-    <div style="display: none;">
-        <div id="data-case-1">
-            <h2>E-commerce: Зоотовари</h2>
-            <div class="highlight-box">Трансформували хаотичні витрати каталогу в системні шари захоплення попиту. Відокремили прибутковий Search від Shopping для стабілізації ROI.</div>
-            <h4>Результат</h4>
-            <div class="modal-metrics-grid">
-                <div class="modal-metric"><span class="modal-metric-val">800–1200%</span><span class="modal-metric-lbl">ROAS</span></div><div class="modal-metric"><span class="modal-metric-val">€4.35</span><span class="modal-metric-lbl">Середній CPA</span></div><div class="modal-metric"><span class="modal-metric-val">34.9k</span><span class="modal-metric-lbl">Конверсій</span></div>
+    <!-- QUIZ MODAL HTML -->
+    <div class="modal-overlay" id="quizModal">
+        <div class="modal-window">
+            <button class="modal-close" onclick="closeQuiz()">✕</button>
+            <div class="modal-content-area" id="quizContainer">
+                <span class="section-label" style="margin-bottom: 24px;">Discovery Framework</span>
+                
+                <div class="quiz-step active" id="quiz-step-1">
+                    <h2 style="font-size: 2rem;">Phase 1: Scope & Territory</h2>
+                    <p style="color: var(--text-gray);">Define the basic parameters of the audit.</p>
+                    <div style="margin-top: 32px;">
+                        <label class="quiz-label">Website URL</label>
+                        <input type="text" id="qWebsite" class="quiz-input" placeholder="https://domain.com" />
+                        
+                        <label class="quiz-label">Advertising Region(s)</label>
+                        <input type="text" id="qRegion" class="quiz-input" placeholder="e.g. US, UK, EU-wide" />
+                        
+                        <label class="quiz-label">Target KPIs (ROAS, CPA, Leads)</label>
+                        <input type="text" id="qKPIs" class="quiz-input" placeholder="e.g. 500% ROAS or Target CPA €15" />
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; border: none; margin-top: 16px;" onclick="qNext()">Next Phase &rarr;</button>
+                </div>
+
+                <div class="quiz-step" id="quiz-step-2">
+                    <h2 style="font-size: 2rem;">Phase 2: The Challenge</h2>
+                    <p style="color: var(--text-gray);">Detail the specific bottlenecks we are investigating.</p>
+                    <div style="margin-top: 32px;">
+                        <label class="quiz-label">Main problems or wishes</label>
+                        <textarea id="qProblems" class="quiz-input" style="height: 80px; resize: none;" placeholder="What is breaking? What do you want to achieve?"></textarea>
+                        
+                        <label class="quiz-label">Main Competitors</label>
+                        <input type="text" id="qCompetitors" class="quiz-input" placeholder="Who are we fighting in the auction?" />
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; border: none; margin-top: 16px;" onclick="qNext()">Next Phase &rarr;</button>
+                </div>
+
+                <div class="quiz-step" id="quiz-step-3">
+                    <h2 style="font-size: 2rem;">Phase 3: Data Access</h2>
+                    <p style="color: var(--text-gray);">Can you provide Read-Only access to Google Ads, Analytics, and Merchant Center?</p>
+                    <div style="margin-top: 32px;">
+                        <div class="quiz-option" onclick="qSelect('access', 'Yes, ready to provide access')">Yes, ready to provide access</div>
+                        <div class="quiz-option" onclick="qSelect('access', 'Yes, but need an NDA first')">Yes, but need an NDA first</div>
+                        <div class="quiz-option" onclick="qSelect('access', 'Hard to provide access right now')">Hard to provide access right now</div>
+                    </div>
+                </div>
+
+                <div class="quiz-step" id="quiz-step-4">
+                    <h2 style="font-size: 2rem;">Audit Framework Prepared</h2>
+                    <p style="color: var(--text-gray);">The necessary pre-flight details have been captured. Click below to securely transfer your data to my personal inbox.</p>
+                    <div style="margin-top: 32px;">
+                        <a id="quizMailtoBtn" href="#" class="btn btn-primary" style="display: block; text-align: center; width: 100%;">Transmit Data via Email</a>
+                    </div>
+                </div>
+
+                <div class="quiz-footer">
+                    <span class="quiz-progress" id="quizProgressText">Step 1 of 3</span>
+                    <button class="btn btn-ghost" style="border: none; padding: 8px 16px; min-width: auto; font-size: 0.9rem; display: none;" id="qPrevBtn" onclick="qPrev()">&larr; Back</button>
+                </div>
             </div>
         </div>
-        <div id="data-case-2">
-            <h2>E-commerce: Товари для гриля</h2>
-            <div class="highlight-box">Пріоритетне масштабування категорій. Оптимізували охоплення інвентарю: PMax для ємності та Search для маржинального попиту.</div>
-            <h4>Результат</h4>
-            <div class="modal-metrics-grid">
-                <div class="modal-metric"><span class="modal-metric-val">679%</span><span class="modal-metric-lbl">ROAS</span></div><div class="modal-metric"><span class="modal-metric-val">€13.7</span><span class="modal-metric-lbl">Середній CPA</span></div><div class="modal-metric"><span class="modal-metric-val">€157.6k</span><span class="modal-metric-lbl">Виручка</span></div>
-            </div>
-        </div>
-        <div id="data-case-3">
-            <h2>B2B: Логістика</h2>
-            <div class="highlight-box">Компанія отримувала кліки від приватних осіб, а не комерційних клієнтів. Ми побудували фільтр трафіку через мінус-слова та DSA-захоплення довгих хвостів.</div>
-            <h4>Результат</h4>
-            <div class="modal-metrics-grid">
-                <div class="modal-metric"><span class="modal-metric-val">€11.5</span><span class="modal-metric-lbl">Ціна ліда</span></div><div class="modal-metric"><span class="modal-metric-val">1,090</span><span class="modal-metric-lbl">Кваліф. лідів</span></div><div class="modal-metric"><span class="modal-metric-val">€10.3k</span><span class="modal-metric-lbl">Витрати</span></div>
-            </div>
-        </div>
-        <div id="data-case-4">
-            <h2>E-commerce: Електроніка</h2>
-            <div class="highlight-box">Розділили каталог на рівні ефективності. Високомаржинальні товари отримали пріоритетний PMax-бюджет, залежалі залишки перейшли в Shopping.</div>
-            <h4>Результат</h4>
-            <div class="modal-metrics-grid">
-                <div class="modal-metric"><span class="modal-metric-val">653%</span><span class="modal-metric-lbl">ROAS</span></div><div class="modal-metric"><span class="modal-metric-val">€6.7</span><span class="modal-metric-lbl">Середній CPA</span></div><div class="modal-metric"><span class="modal-metric-val">€51.6k</span><span class="modal-metric-lbl">Виручка</span></div>
-            </div>
-        </div>
-        <div id="data-case-5">
-            <h2>Послуги: Ремонт техінки</h2>
-            <div class="highlight-box">Перейшли на точну радіусну стратегію: щільні гео-зони, Call-Only мобільна реклама в робочий час та жорсткі ставки на локальні кластери.</div>
-            <h4>Результат</h4>
-            <div class="modal-metrics-grid">
-                <div class="modal-metric"><span class="modal-metric-val">€12</span><span class="modal-metric-lbl">Середній CPA</span></div><div class="modal-metric"><span class="modal-metric-val">850</span><span class="modal-metric-lbl">Дзвінків</span></div><div class="modal-metric"><span class="modal-metric-val">€10.2k</span><span class="modal-metric-lbl">Витрати</span></div>
-            </div>
-        </div>
-        <div id="data-case-6">
-            <h2>Industrial B2B: Інструменти</h2>
-            <div class="highlight-box">Фокус на пошукових намірах ланцюжків поставок. Визначили мову професійних закупників (опт, bulk, специфікації) та відфільтрували роздріб.</div>
-            <h4>Результат</h4>
-            <div class="modal-metrics-grid">
-                <div class="modal-metric"><span class="modal-metric-val">320</span><span class="modal-metric-lbl">Квал. лідів</span></div><div class="modal-metric"><span class="modal-metric-val">€45</span><span class="modal-metric-lbl">Target CPA</span></div><div class="modal-metric"><span class="modal-metric-val">€14.4k</span><span class="modal-metric-lbl">Витрати</span></div>
-            </div>
-        </div></div>
-    <!-- JS Logic -->
+    </div>
+
+    <!-- MAIN JS Logic -->
     <script>
+        // Intersection Observer for reveal-on-scroll
         const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
             });
         }, observerOptions);
+
         document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
 
+        // Modal Logic
         function openModal(caseId) {
             const dataElement = document.getElementById('data-' + caseId);
             if (!dataElement) return;
@@ -446,6 +1038,57 @@
                 document.getElementById('caseModal').classList.remove('active');
                 document.body.style.overflow = ''; 
             }
+        }
+
+        // Quiz Logic
+        let qState = { step: 1, access: '' };
+        
+        function startQuiz() {
+            qState = { step: 1, access: '' };
+            document.getElementById('qWebsite').value = '';
+            document.getElementById('qRegion').value = '';
+            document.getElementById('qKPIs').value = '';
+            document.getElementById('qProblems').value = '';
+            document.getElementById('qCompetitors').value = '';
+            updateQuizUI();
+            document.getElementById('quizModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeQuiz() {
+            document.getElementById('quizModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function updateQuizUI() {
+            document.querySelectorAll('.quiz-step').forEach(el => el.classList.remove('active'));
+            document.getElementById('quiz-step-' + qState.step).classList.add('active');
+            document.getElementById('quizProgressText').innerText = qState.step < 4 ? `Phase ${qState.step} of 3` : 'Ready for Transmission';
+            document.getElementById('qPrevBtn').style.display = qState.step > 1 && qState.step < 4 ? 'block' : 'none';
+        }
+        function qNext() {
+            qState.step++;
+            updateQuizUI();
+        }
+        function qSelect(key, value) {
+            qState[key] = value;
+            qState.step++;
+            if(qState.step === 4) {
+               compileEmail();
+            }
+            updateQuizUI();
+        }
+        function qPrev() {
+            if(qState.step > 1) { qState.step--; updateQuizUI(); }
+        }
+        function compileEmail() {            
+            let w = document.getElementById('qWebsite').value || 'N/A';
+            let r = document.getElementById('qRegion').value || 'N/A';
+            let k = document.getElementById('qKPIs').value || 'N/A';
+            let p = document.getElementById('qProblems').value || 'N/A';
+            let c = document.getElementById('qCompetitors').value || 'N/A';
+            
+            let bodyText = `Hi Iaroslav,\n\nI would like to request a technical audit. Here is our data:\n\n-- SCOPE --\nWebsite: ${w}\nRegion: ${r}\nKPIs/Goals: ${k}\n\n-- CHALLENGE --\nMain Problems: ${p}\nCompetitors: ${c}\n\n-- LOGISTICS --\nData Access: ${qState.access}\n\nPlease review and let me know the estimated timeline for the audit.\n\nBest,`;
+            
+            document.getElementById('quizMailtoBtn').href = `mailto:yaroslav.zhakun@gmail.com?subject=Requesting Technical Audit&body=${encodeURIComponent(bodyText)}`;
         }
     </script>
 </body>
