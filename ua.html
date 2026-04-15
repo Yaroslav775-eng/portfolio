@@ -1151,5 +1151,100 @@
             document.getElementById('quizMailtoBtn').href = `mailto:yaroslav.zhakun@gmail.com?subject=Requesting Technical Audit&body=${encodeURIComponent(bodyText)}`;
         }
     </script>
+
+    <!-- GA4 Event Tracking: Conversions & Engagement -->
+    <script>
+        // ── HELPERS ──────────────────────────────────────────────────
+        function gta(event, params) {
+            if (typeof gtag === 'function') {
+                gtag('event', event, params);
+            }
+        }
+
+        // ── 1. TELEGRAM CTA CLICKS ────────────────────────────────────
+        document.querySelectorAll('a[href*="t.me/Yaroslav797"]').forEach(function(el) {
+            el.addEventListener('click', function() {
+                // Determine which button was clicked by parent context
+                var label = 'telegram_generic';
+                if (el.closest('nav'))            label = 'navbar_lets_talk';
+                else if (el.closest('.hero-section')) label = 'hero_message_telegram';
+                else if (el.closest('.cta-section'))  label = 'footer_cta';
+                else if (el.textContent.includes('AUDIT')) label = 'dual_audience_audit';
+                else if (el.textContent.includes('COLLAB')) label = 'dual_audience_collab';
+                else if (el.closest('.floating-cta')) label = 'floating_button';
+
+                gta('cta_click', {
+                    event_category: 'conversion',
+                    event_label: label,
+                    method: 'telegram'
+                });
+            });
+        });
+
+        // ── 2. LINKEDIN CLICKS ────────────────────────────────────────
+        document.querySelectorAll('a[href*="linkedin.com"]').forEach(function(el) {
+            el.addEventListener('click', function() {
+                gta('linkedin_click', {
+                    event_category: 'engagement',
+                    event_label: el.textContent.trim() || 'linkedin_link'
+                });
+            });
+        });
+
+        // ── 3. PHONE CLICKS ───────────────────────────────────────────
+        document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+            el.addEventListener('click', function() {
+                gta('phone_click', {
+                    event_category: 'conversion',
+                    phone_number: el.href.replace('tel:', '')
+                });
+            });
+        });
+
+        // ── 4. CASE STUDY MODAL OPENS ─────────────────────────────────
+        document.querySelectorAll('.btn-text.case-cta').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                // Get case title from the parent card
+                var card = btn.closest('.case-card');
+                var titleEl = card ? card.querySelector('.case-title') : null;
+                var caseName = titleEl ? titleEl.textContent.trim().replace(/\s+/g, ' ').substring(0, 60) : 'unknown_case';
+
+                gta('case_study_open', {
+                    event_category: 'engagement',
+                    event_label: caseName,
+                    case_name: caseName
+                });
+            });
+        });
+
+        // ── 5. SCROLL DEPTH MILESTONES ────────────────────────────────
+        var scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
+        window.addEventListener('scroll', function() {
+            var scrollTop = window.scrollY || document.documentElement.scrollTop;
+            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            var pct = Math.round((scrollTop / docHeight) * 100);
+
+            [25, 50, 75, 100].forEach(function(m) {
+                if (!scrollMilestones[m] && pct >= m) {
+                    scrollMilestones[m] = true;
+                    gta('scroll_depth', {
+                        event_category: 'engagement',
+                        event_label: m + '%',
+                        scroll_percent: m
+                    });
+                }
+            });
+        }, { passive: true });
+
+        // ── 6. LANGUAGE SWITCH ────────────────────────────────────────
+        document.querySelectorAll('a[href="ua.html"], a[href="index.html"]').forEach(function(el) {
+            el.addEventListener('click', function() {
+                gta('language_switch', {
+                    event_category: 'navigation',
+                    target_language: el.href.includes('ua.html') ? 'uk' : 'en'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
