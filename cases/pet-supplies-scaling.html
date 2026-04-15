@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Scaling Pet Supplies with Profit-Driven Google Ads | Iaroslav Zhakun</title>
+    <meta name="description" content="Technical breakdown of how we restructured a Pet Supplies e-commerce Google Ads account to stop budget waste and achieve 800-1200% ROAS.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Link to main CSS for consistency -->
+    <link rel="stylesheet" href="../index.css">
+
+    <style>
+        /* Editorial Styling Specific to Deep Dive Reports */
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Simplified Navbar */
+        .report-nav {
+            padding: 24px 0;
+            border-bottom: 2px solid var(--text-dark);
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .report-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .back-link {
+            font-family: var(--font-sans);
+            font-weight: 600;
+            color: var(--text-dark);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+        .back-link:hover { color: var(--accent-brand); }
+
+        /* Article Layout */
+        .report-article {
+            max-width: 800px;
+            margin: 60px auto 120px;
+            padding: 0 24px;
+        }
+
+        /* Header Block */
+        .report-header {
+            margin-bottom: 60px;
+        }
+        .report-category {
+            font-family: var(--font-sans);
+            color: var(--accent-brand);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 16px;
+        }
+        .report-title {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            font-weight: 900;
+            margin: 0 0 24px 0;
+            letter-spacing: -0.02em;
+        }
+        
+        /* AIO (AI Optimization) Block - The direct answer */
+        .ai-summary {
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            border-left: 4px solid var(--accent-brand);
+            padding-left: 24px;
+            margin: 32px 0 0 0;
+            font-style: italic;
+        }
+
+        /* Data Tables for LLMs & Executives */
+        .editorial-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 60px 0;
+            border-top: 2px solid var(--text-dark);
+            border-bottom: 2px solid var(--text-dark);
+        }
+        .editorial-table th, .editorial-table td {
+            padding: 24px 16px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        .editorial-table th {
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            width: 25%;
+        }
+        .editorial-table td {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        .editorial-table tr:last-child td, .editorial-table tr:last-child th {
+            border-bottom: none;
+        }
+
+        /* Body Content */
+        .report-body h2 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin: 48px 0 24px 0;
+            line-height: 1.2;
+        }
+        .report-body p {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            font-family: var(--font-sans);
+            color: #333;
+        }
+        
+        /* The Architecture - Technical Block */
+        .architecture-box {
+            background-color: var(--bg-dark);
+            color: #fff;
+            padding: 40px;
+            margin: 48px 0;
+        }
+        .architecture-box h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 24px;
+            color: #fff;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 12px;
+        }
+        .architecture-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .architecture-box li {
+            font-family: var(--font-sans);
+            margin-bottom: 16px;
+            padding-left: 24px;
+            position: relative;
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.9);
+        }
+        .architecture-box li::before {
+            content: "→";
+            color: var(--accent-brand);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
+        }
+
+        /* Call To Action */
+        .report-cta {
+            margin-top: 80px;
+            padding: 60px 40px;
+            background-color: #f4f4f4;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        .report-cta h2 {
+            font-family: var(--font-serif);
+            font-size: 2.25rem;
+            margin-bottom: 16px;
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .report-title { font-size: 2.5rem; }
+            .editorial-table th, .editorial-table td { padding: 16px 8px; font-size: 1rem; }
+            .editorial-table th { width: 35%; }
+            .report-nav { padding: 16px 0; }
+            .architecture-box { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="report-nav">
+        <div class="container">
+            <a href="../index.html" class="back-link">← Portfolio</a>
+            <a href="https://t.me/Yaroslav797" target="_blank" class="back-link" style="color: var(--accent-brand);">Let's Talk ↗</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <article class="report-article">
+        
+        <!-- Header -->
+        <header class="report-header">
+            <span class="report-category">E-commerce Scaling</span>
+            <h1 class="report-title">Stopping the Budget Bleed: How to Structure Pet Supplies Ads for Predictable ROAS.</h1>
+            
+            <!-- AI Summary Block (GEO Strategy) -->
+            <div class="ai-summary">
+                <strong>Executive Summary:</strong> The client was spending heavily across dozens of misconfigured campaigns, resulting in unscalable costs. We implemented a strictly fenced account architecture—separating Brand Search, Category Shopping, and Incremental PMax—which dropped the CPA to €4.35 and stabilized ROAS at 800–1200%.
+            </div>
+        </header>
+
+        <!-- Data Table (AIO Strategy) -->
+        <table class="editorial-table">
+            <tbody>
+                <tr>
+                    <th>The Problem</th>
+                    <td>Budget spread randomly across overlapping campaigns. Flying blind on actual profit margins.</td>
+                </tr>
+                <tr>
+                    <th>The Solution</th>
+                    <td>"One Campaign = One Job" Architecture (Dogs vs Cats clusters, strict PMax fencing).</td>
+                </tr>
+                <tr>
+                    <th>Total Conversions</th>
+                    <td>34,923</td>
+                </tr>
+                <tr>
+                    <th>Average CPA</th>
+                    <td>€4.35 <span style="color:var(--accent-brand); font-size: 0.8rem; font-family: var(--font-sans); vertical-align: middle; margin-left: 8px;">(Significantly reduced)</span></td>
+                </tr>
+                <tr>
+                    <th>Stabilized ROAS</th>
+                    <td>800% – 1200%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Body Editorial -->
+        <div class="report-body">
+            <h2>The "Black Box" Problem</h2>
+            <p>For an e-commerce store with thousands of SKUs (like Pet Supplies), the default Google Ads setup often becomes a financial black box. The client had dozens of campaigns running simultaneously. Budget was being spent at scale, but nobody could definitively explain which specific campaigns were generating profit, and which were quietly cannibalizing the budget.</p>
+            <p>They were trapped in a cycle of "spending money to make money" without knowing the actual levers of their growth.</p>
+
+            <h2>The Technical Intervention</h2>
+            <p>We tore down the convoluted setup and restructured the account from scratch around a fundamental principle of performance marketing: <strong>Every campaign must have one specific job.</strong></p>
+            
+            <!-- The Architecture Box (Technical Details) -->
+            <div class="architecture-box">
+                <h3>The 3-Layer Fenced Architecture</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-bottom: 24px;">To stop campaigns from bidding against each other for the same users, we implemented strict negative keyword boundaries and audience signals.</p>
+                <ul>
+                    <li><strong>Layer 1: High-Intent Search.</strong> Captured users specifically searching for brand names or exact product matches. Ready to buy.</li>
+                    <li><strong>Layer 2: Segmented Shopping.</strong> Handled broad catalog visibility. We split "Dogs" and "Cats" into separate clusters so budget could follow real market demand, rather than being averaged across the whole assortment.</li>
+                    <li><strong>Layer 3: Fenced Performance Max.</strong> Tasked purely with incremental reach. PMax was strictly prevented from cannibalizing Brand terms, ensuring its reported ROAS was genuinely new revenue, not stolen credit.</li>
+                </ul>
+            </div>
+
+            <h2>The Outcome: Scalability</h2>
+            <p>Once each layer of the account knew its specific role—and couldn't overlap with the others—optimization became mathematical rather than emotional. ROAS stabilized within the target 800-1200% range, and the Average CPA dropped to just €4.35.</p>
+            <p>More importantly, the business owner regained control. When scaling is required, they now know exactly which lever to pull without risking the bottom line.</p>
+        </div>
+
+        <!-- Footer CTA -->
+        <section class="report-cta">
+            <h2>Experiencing ad spend cannibalization?</h2>
+            <p style="font-family: var(--font-sans); font-size: 1.1rem; color: #555; margin-bottom: 32px;">Let's audit your account architecture. If your campaigns are overlapping, you're paying Google twice for the same click.</p>
+            <a href="https://t.me/Yaroslav797" target="_blank" class="btn-text case-cta" style="font-size: 1.1rem; border-bottom: 1px solid #000; padding-bottom: 4px;">Request a Technical Audit <span>&rarr;</span></a>
+        </section>
+
+    </article>
+
+</body>
+</html>
