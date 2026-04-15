@@ -7,8 +7,9 @@
       gtag('js', new Date());
       gtag('config', 'G-Z52JJMBTQM');
     </script>
-    <title>Google Ads & Performance Expert | Iaroslav Zhakun</title>
-    <meta name="description" content="Portfolio of a Senior Google Ads Specialist with a metric-driven approach to E-commerce and B2B LeadGen. Case studies on scaling ROAS and stabilizing lead costs.">
+    <title>Senior Google Ads Strategist & AI Automation Expert | Iaroslav Zhakun</title>
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+    <meta name="description" content="Portfolio of a Senior Google Ads Specialist & AI Automation Expert. Scaling E-commerce and B2B LeadGen through strategic architecture and LLM automation.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Google Ads, PPC, Website Creation, Contextual Advertising, Landing Page, Iaroslav Zhakun">
@@ -25,6 +26,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chifra:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- JSON-LD Microdata -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Iaroslav Zhakun",
+      "jobTitle": "Senior Google Ads Strategist & AI Automation Expert",
+      "url": "https://yaroslav775-eng.github.io/portfolio/",
+      "sameAs": [
+        "https://t.me/Yaroslav797",
+        "mailto:yaroslav.zhakun@gmail.com"
+      ],
+      "knowsAbout": ["Google Ads", "Performance Marketing", "PPC Architecture", "LLM Automation", "AI for Marketing", "E-commerce Growth"]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "PPC Strategy & AI Automation",
+      "provider": {
+        "@type": "Person",
+        "name": "Iaroslav Zhakun"
+      },
+      "description": "Engineering high-performance Google Ads architectures integrated with custom AI/LLM automation flows."
+    }
+    </script>
     <style>
         :root {
             /* NYT Editorial Palette */
@@ -128,6 +157,46 @@
             display: flex;
             align-items: center;
             gap: 8px;
+        }
+
+        /* STICKY HEADER & GLASS */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+        
+        /* FLOATING CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            background: #24A1DE;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(36,161,222,0.4);
+            text-decoration: none;
+            transition: transform 0.3s;
+            animation: pulse-tg 2s infinite;
+        }
+        .floating-cta:hover { transform: scale(1.1); }
+        @keyframes pulse-tg {
+            0% { box-shadow: 0 0 0 0 rgba(36,161,222, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(36,161,222, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(36,161,222, 0); }
         }
         
         .case-meta { 
@@ -280,9 +349,9 @@
 </head>
 <body>
 
-    <!-- TOP BAR -->
-    <div style="background-color: #000; padding: 12px 0;">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center; font-family: var(--font-sans); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; flex-wrap: wrap; gap: 16px;">
+    <!-- STICKY TOP BAR -->
+    <nav class="sticky-nav">
+        <div class="container" style="padding: 12px 40px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-sans); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; flex-wrap: wrap; gap: 16px;">
             <div style="display: flex; gap: 12px;">
                 <span style="color: #fff; text-decoration: underline;">EN</span>
                 <span style="color: #666;">|</span>
@@ -291,19 +360,22 @@
             <div style="display: flex; gap: 24px; flex-wrap: wrap;">
                 <a href="mailto:yaroslav.zhakun@gmail.com" style="color: #fff; text-decoration: none;">yaroslav.zhakun@gmail.com</a>
                 <span style="color: #666;">|</span>
-                <a href="https://t.me/Yaroslav797" target="_blank" style="color: #fff; text-decoration: none;">Telegram</a>
+                <a href="https://t.me/Yaroslav797" target="_blank" style="color: #fff; text-decoration: none; display: flex; align-items: center; gap: 6px;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.69-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.35-.49.96-.75 3.78-1.65 6.31-2.74 7.58-3.27 3.61-1.51 4.35-1.77 4.84-1.78.11 0 .35.03.51.16.13.11.17.22.19.33.02.13.02.26.01.39z"/></svg> 
+                    Telegram
+                </a>
             </div>
         </div>
-    </div>
+    </nav>
 
     <!-- HERO -->
     <header class="hero-section">
         <div class="container hero-grid">
             <div class="hero-content">
-                <span class="cert-pill animate-fade">✓ Hire-Ready Specialist &middot; Senior PPC Strategist</span>
-                <span class="section-label animate-fade" style="margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dark);">Iaroslav Zhakun &mdash; Technical Google Ads Expert</span>
-                <h1 class="animate-fade delay-1" style="font-size: clamp(2.5rem, 5vw, 4rem);">Building <i>Sustainable</i> PPC Systems for E-commerce & Lead Gen</h1>
-                <p class="animate-fade delay-2" style="max-width: 800px;">I specialize in engineering manageable Google Ads architectures (Search, PMax, GMC) that turn data into profit. I focus on structural transparency, attribution accuracy, and predictable scaling.</p>
+                <span class="cert-pill animate-fade">✓ Hire-Ready Specialist &middot; AI & API Automation Expert</span>
+                <span class="section-label animate-fade" style="margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dark);">Iaroslav Zhakun &mdash; Senior PPC Strategist</span>
+                <h1 class="animate-fade delay-1" style="font-size: clamp(2.5rem, 5vw, 4rem);">Transform Your Marketing with <i>Intelligent</i> Ads Systems & <i>LLM</i> Automation</h1>
+                <p class="animate-fade delay-2" style="max-width: 800px;">I engineer high-performance Google Ads architectures (Search, PMax, GMC) integrated with custom LLM-driven scripts and API flows for predictable, automated growth.</p>
                 <div class="hero-buttons animate-fade delay-3">
                     <a href="cv_eng.html" class="btn btn-primary" style="font-weight: 700;">View Professional CV</a>
                     <a href="#cases" class="btn btn-ghost" style="margin-left: 12px;">Review Case Studies</a>
@@ -366,6 +438,11 @@
                     </div>
                     <div class="case-cta">Read Strategy →</div>
                 </div>
+                
+                <!-- Floating Telegram Action -->
+                <a href="https://t.me/Yaroslav797" class="floating-cta" target="_blank" title="Let's Talk on Telegram">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                </a>
                 <!-- Case 2 -->
                 <div class="case-card" onclick="openModal('case-2')">
                     <div class="case-meta">Case 2 · E-commerce (BBQ Grills) · Seasonal</div>
@@ -720,10 +797,10 @@
                     </div>
                 </div>
                 <div style="display: flex; gap: 16px; align-items: flex-start;">
-                    <span style="font-size: 1.5rem; flex-shrink: 0;">⚙️</span>
+                    <span style="font-size: 1.5rem; flex-shrink: 0;">🤖</span>
                     <div>
-                        <strong style="font-family: var(--font-heading); font-size: 1rem; display: block; margin-bottom: 4px;">LLM & API Automation</strong>
-                        <p style="font-size: 0.88rem; color: var(--text-gray); margin: 0; line-height: 1.5;">Python scripts and Make / Zapier flows for offline conversion imports and data-hook integrations.</p>
+                        <strong style="font-family: var(--font-heading); font-size: 1rem; display: block; margin-bottom: 4px; color: var(--accent-brand);">LLM & API Automation</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-gray); margin: 0; line-height: 1.5;">Python scripts & LLM-driven flows for offline conversion uploads & automated campaign steering.</p>
                     </div>
                 </div>
                 <div style="display: flex; gap: 16px; align-items: flex-start;">
