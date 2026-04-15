@@ -25,7 +25,7 @@
     <link rel="canonical" href="https://yaroslav775-eng.github.io/portfolio/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Chifra:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chifra:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <!-- JSON-LD Microdata -->
     <script type="application/ld+json">
@@ -71,7 +71,7 @@
             
             --font-heading: 'Frank Ruhl Libre', serif;
             --font-main: 'Merriweather', serif;
-            --font-sans: 'Inter', -apple-system, system-ui, sans-serif;
+            --font-sans: -apple-system, system-ui, sans-serif;
             
             --radius-md: 0px; /* Zero radius for print feel */
             --shadow-soft: none;
@@ -96,10 +96,8 @@
         .delay-3 { animation-delay: 0.3s; }
 
         /* Typography */
-        h1, h2, h3, h4, .font-heading { font-family: var(--font-heading); font-weight: 700; letter-spacing: 0; color: var(--text-dark); }
+        h1, h2, h3, h4, .font-heading { font-family: var(--font-heading); font-weight: 700; letter-spacing: -0.02em; color: var(--text-dark); }
         p { color: var(--text-gray); }
-
-        .case-teaser { font-size: 1.05rem; line-height: 1.65; color: var(--text-gray); margin-bottom: 0; }
 
         .section-title { font-size: 3rem; margin-bottom: 48px; border-bottom: 3px double #000; padding-bottom: 16px; }
         @media (max-width: 768px) { .section-title { font-size: 2.25rem; } }
@@ -107,7 +105,7 @@
         .section-label { font-size: 0.75rem; font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-dark); margin-bottom: 16px; display: block; font-weight: 600; }
 
         /* Hero */
-        .hero-section { background-color: var(--bg-white); padding: 100px 0 60px; border-bottom: 4px solid var(--text-dark); border-top: 1px solid var(--text-dark); }
+        .hero-section { background-color: var(--bg-white); background-image: radial-gradient(#e5e5e5 1px, transparent 1px); background-size: 20px 20px; padding: 100px 0 60px; border-bottom: 4px solid var(--text-dark); border-top: 1px solid var(--text-dark); }
         .hero-grid { display: grid; grid-template-columns: 1fr; gap: 0px; align-items: start; max-width: 800px; margin: 0 auto; text-align: center;}
         
         .hero-content h1 { font-size: clamp(3rem, 6vw, 5rem); line-height: 1.05; margin-bottom: 24px; margin-top: 16px; font-weight: 700;}
@@ -126,8 +124,6 @@
 
         /* Cases Grid & Cards (Fact-Dense) */
         .section-cases { background-color: var(--bg-white); padding: 80px 0; border-top: 4px solid #000;}
-        .section-white { background-color: var(--bg-white); padding: 80px 0; border-top: 4px solid #000; }
-        .cred-section { padding: 100px 0; background: var(--bg-white); border-top: 4px solid #000; }
         .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; padding-top: 32px; }
         @media (max-width: 900px) { .cases-grid { grid-template-columns: 1fr; } }
         
@@ -156,7 +152,7 @@
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--text-dark);
+            color: #990000; /* Deep mature red */
             transition: all 0.2s;
             display: flex;
             align-items: center;
@@ -170,13 +166,11 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: #ffffff;
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
-            border-bottom: 1px solid #e0e0e0;
-            border-top: 3px solid #C00000;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             transition: all 0.3s;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
         }
         
         /* FLOATING CTA */
@@ -213,8 +207,7 @@
             text-transform: uppercase; 
             letter-spacing: 0.05em; 
         }
-        .case-title { font-size: 1.5rem; margin-bottom: 20px; font-family: var(--font-heading); line-height: 1.25; color: var(--text-dark); display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
-        .case-tag { font-family: var(--font-sans); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; background: var(--accent-brand); padding: 3px 8px; flex-shrink: 0; align-self: flex-start; margin-top: 6px; }
+        .case-title { font-size: 1.5rem; margin-bottom: 20px; font-family: var(--font-heading); line-height: 1.25; color: var(--text-dark); }
         
         .case-bullets { 
             list-style: none; 
@@ -231,10 +224,10 @@
             line-height: 1.5; 
         }
         .case-bullets li::before { 
-            content: "—";
+            content: "•"; 
             position: absolute; 
             left: 0; 
-            color: var(--text-dark); 
+            color: var(--accent-brand); 
             font-weight: bold; 
         }
 
@@ -270,15 +263,6 @@
         
         .scale-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
         .scale-chip { background: #222; border: 1px solid #444; padding: 10px 16px; font-size: 0.85rem; font-weight: 600; font-family: var(--font-sans); }
-
-        /* Metric chips — editorial stat style */
-        .metrics-chips { display: flex; gap: 48px; margin-top: auto; padding-top: 20px; border-top: 2px solid #000; }
-        .chip { display: inline-flex; flex-direction: column; align-items: flex-start; font-family: var(--font-sans); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-gray); font-weight: 600; }
-        .chip strong { font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--text-dark); line-height: 1; display: block; margin-bottom: 6px; }
-        .chip-accent strong { color: var(--text-dark); }
-
-        /* Case "Before" situation line — quiet, editorial */
-        .case-before { font-size: 0.72rem; color: #aaa; font-family: var(--font-sans); font-weight: 500; margin-bottom: 10px; font-style: italic; text-transform: none; letter-spacing: 0; }
 
         /* Dark CTA Section */
         .cta-section { background-color: var(--bg-dark); color: var(--text-light); padding: 120px 0; text-align: center; }
@@ -327,10 +311,8 @@
         .tool-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-brand); }
 
         .compare-table { width: 100%; border-collapse: collapse; margin: 48px 0; border: 1px solid var(--text-dark); font-family: var(--font-sans); }
-        .compare-table th { background: var(--bg-white); padding: 20px; text-align: left; border-bottom: 2px solid var(--text-dark); border-right: 1px solid #ddd; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.08em; font-weight: 700; }
-        .compare-table th:first-child { background: var(--bg-offwhite); }
-        .compare-table td { padding: 16px 20px; border-bottom: 1px solid #eee; border-right: 1px solid #eee; font-size: 0.95rem; vertical-align: top; color: var(--text-gray); }
-        .compare-table td:first-child { color: var(--text-dark); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; background: var(--bg-offwhite); }
+        .compare-table th { background: var(--bg-tint); padding: 20px; text-align: left; border-bottom: 1px solid var(--text-dark); border-right: 1px solid var(--text-dark); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em; }
+        .compare-table td { padding: 20px; border-bottom: 1px solid var(--accent-muted); border-right: 1px solid var(--text-dark); font-size: 0.95rem; vertical-align: top; }
         .compare-table tr:last-child td { border-bottom: none; }
         .compare-table .val-plus { color: var(--accent-brand); font-weight: bold; }
 
@@ -363,41 +345,38 @@
         .stack-tag { padding: 6px 12px; background: var(--bg-offwhite); border: 1px solid var(--accent-muted); font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600; color: var(--text-dark); }
         
         .section-white { background-color: var(--bg-white); padding: 80px 0; }
-
-        /* MOBILE NAV — hide socials, keep phone + CTA */
-        @media (max-width: 640px) {
-            .nav-socials { display: none !important; }
-            .nav-phone { font-size: 0.78rem !important; }
-        }
     </style>
 </head>
 <body>
 
     <!-- STICKY TOP BAR -->
-    <nav class="sticky-nav">
-        <div class="container" style="max-width: 1400px; padding: 10px 24px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; flex-wrap: wrap; gap: 16px;">
-            <div style="display: flex; gap: 12px; align-items: center;">
-                <span style="color: #000; text-decoration: underline; text-underline-offset: 3px;">EN</span>
-                <span style="color: #ccc;">|</span>
-                <a href="ua.html" style="color: #999; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#999'">UA</a>
+    <nav class="sticky-nav" style="border-bottom: 2px solid #C00000;">
+        <div class="container" style="max-width: 1400px; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-sans); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; flex-wrap: wrap; gap: 16px;">
+            <div style="display: flex; gap: 12px;">
+                <span style="color: #fff; text-decoration: underline;">EN</span>
+                <span style="color: #666;">|</span>
+                <a href="ua.html" style="color: #888; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'">UA</a>
             </div>
             <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-                <!-- PHONE -->
-                <a class="nav-phone" href="tel:+306974395895" title="Greek Number" style="color: #222; text-decoration: none; font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 5px; padding: 4px 12px; transition: color 0.2s; border-right: 1px solid #e0e0e0; padding-right: 18px; margin-right: 4px;" onmouseover="this.style.color='#C00000'" onmouseout="this.style.color='#222'">
-                    <span style="font-size: 1rem;">🇬🇷</span> +30 697 439 58 95
-                </a>
+                <!-- PHONES -->
+                <div style="display: flex; gap: 10px; border-right: 1px solid #333; padding-right: 14px; margin-right: 4px;">
+                    <a href="tel:+306974395895" title="Greek Number" style="color: #fff; text-decoration: none; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 4px; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+                        <span style="font-size: 1rem;">🇬🇷</span> +30 697 439 58 95
+                    </a>
+                    <a href="tel:+380505580953" title="Ukrainian Number" style="color: #fff; text-decoration: none; font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 4px; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+                        <span style="font-size: 1rem;">🇺🇦</span> +38 050 558 09 53
+                    </a>
+                </div>
                 <!-- SOCIALS -->
-                <div class="nav-socials" style="display: flex; gap: 12px; align-items: center;">
-                <a href="https://t.me/Yaroslav797" target="_blank" style="color: #333; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: color 0.2s;" onmouseover="this.style.color='#C00000'" onmouseout="this.style.color='#333'" title="Telegram">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.69-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.35-.49.96-.75 3.78-1.65 6.31-2.74 7.58-3.27 3.61-1.51 4.35-1.77 4.84-1.78.11 0 .35.03.51.16.13.11.17.22.19.33.02.13.02.26.01.39z"/></svg>
+                <a href="https://t.me/Yaroslav797" target="_blank" style="color: #fff; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'" title="Telegram">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.69-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.35-.49.96-.75 3.78-1.65 6.31-2.74 7.58-3.27 3.61-1.51 4.35-1.77 4.84-1.78.11 0 .35.03.51.16.13.11.17.22.19.33.02.13.02.26.01.39z"/></svg>
                     Telegram
                 </a>
-                <a href="https://www.linkedin.com/in/iaroslav-zhakun-399550271/" target="_blank" style="color: #333; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: color 0.2s;" onmouseover="this.style.color='#C00000'" onmouseout="this.style.color='#333'" title="LinkedIn">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                <a href="https://www.linkedin.com/in/iaroslav-zhakun-399550271/" target="_blank" style="color: #fff; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'" title="LinkedIn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                     LinkedIn
                 </a>
-                </div>
-                <a href="https://t.me/Yaroslav797" target="_blank" style="background: #C00000; color: #fff; text-decoration: none; padding: 7px 16px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; transition: background 0.2s;" onmouseover="this.style.background='#990000'" onmouseout="this.style.background='#C00000'">Let's Talk &rarr;</a>
+                <a href="mailto:yaroslav.zhakun@gmail.com" style="background: #C00000; color: #fff; text-decoration: none; padding: 8px 16px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; transition: background 0.2s;" onmouseover="this.style.background='#990000'" onmouseout="this.style.background='#C00000'">Let's Talk &rarr;</a>
             </div>
         </div>
     </nav>
@@ -406,13 +385,13 @@
     <header class="hero-section">
         <div class="container hero-grid">
             <div class="hero-content">
-                <span class="cert-pill animate-fade">&#10003; Available for New Projects &middot; Google Ads Specialist</span>
+                <span class="cert-pill animate-fade">&#10003; Open to Opportunities &middot; Google Ads Specialist</span>
                 <span class="section-label animate-fade" style="margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dark);">Iaroslav Zhakun &mdash; Google Ads Specialist</span>
-                <h1 class="animate-fade delay-1">I turn ad budgets into predictable, measurable revenue</h1>
-                <p class="animate-fade delay-2" style="max-width: 800px;">I work with agencies and direct clients. I take an account, build a system, and report in business numbers &mdash; not clicks and CTR. No hand-holding needed.</p>
+                <h1 class="animate-fade delay-1" style="font-size: clamp(2.5rem, 5vw, 4rem);">Google Ads Specialist &mdash; helping businesses get more from their ad budget</h1>
+                <p class="animate-fade delay-2" style="max-width: 800px;">I manage Google Ads campaigns for e-commerce and lead generation. My focus is always on your result: steady sales growth, controlled costs, and reports you can actually understand.</p>
                 <div class="hero-buttons animate-fade delay-3">
-                    <a href="#cases" class="btn btn-primary" style="font-weight: 700;">See Case Results &darr;</a>
-                    <a href="https://t.me/Yaroslav797" target="_blank" class="btn btn-ghost" style="margin-left: 12px;">Message on Telegram &rarr;</a>
+                    <a href="cv_eng.html" class="btn btn-primary" style="font-weight: 700;">View My CV</a>
+                    <a href="#cases" class="btn btn-ghost" style="margin-left: 12px;">See Results</a>
 
                 </div>
             </div>
@@ -455,99 +434,66 @@
             <div class="cases-grid">
                 <div class="case-card" onclick="openModal('case-1')">
                     <div class="case-title">E-commerce: Pet Supplies<span class="case-tag">Architecture</span></div>
-                    <p class="case-before">Before: ROAS stuck at 150%, budget burning with no clarity</p>
-                    <p class="case-teaser">Rebuilt the account around a single rule: one campaign, one job. Isolated Search, Shopping and PMax into separate demand layers for predictable ROI.</p>
+                    <p class="case-teaser">Replaced chaotic catalog spend with structured demand capture layers. Isolated high-value Search from broad Shopping for predictable ROI.</p>
                     <div class="metrics-chips">
                         <span class="chip chip-accent"><strong>800-1200%</strong> ROAS</span>
-                        <span class="chip"><strong>&euro;4.35</strong> CPA</span>
+                        <span class="chip"><strong>€4.35</strong> CPA</span>
                     </div>
-                    <button class="btn-text case-cta">System View <span>&rarr;</span></button>
+                    <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">System View <span>&rarr;</span></button>
                 </div>
                 <div class="case-card" onclick="openModal('case-2')">
                     <div class="case-title">E-commerce: BBQ Grills<span class="case-tag">Scaling</span></div>
-                    <p class="case-before">Before: 400+ SKUs in one flat campaign, peak season wasted</p>
-                    <p class="case-teaser">Rebuilt around margin tiers. Premium grills got dedicated PMax. DSA caught long-tail seasonal intent. GA4 reconfigured for accurate purchase value.</p>
+                    <p class="case-teaser">Priority-driven category scaling. Optimized inventory exposure using PMax for reach and Search for capturing high-margin intent.</p>
                     <div class="metrics-chips">
                         <span class="chip chip-accent"><strong>679%</strong> ROAS</span>
-                        <span class="chip"><strong>&euro;13.7</strong> CPA</span>
+                        <span class="chip"><strong>€13.7</strong> CPA</span>
                     </div>
-                    <button class="btn-text case-cta">System View <span>&rarr;</span></button>
+                    <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">System View <span>&rarr;</span></button>
                 </div>
                 <div class="case-card" onclick="openModal('case-3')">
                     <div class="case-title">B2B: Logistics<span class="case-tag">LeadGen</span></div>
-                    <p class="case-before">Before: volume fine, quality catastrophic &mdash; wrong audience calling</p>
-                    <p class="case-teaser">Treated keywords as a traffic filter, not a driver. Negative keyword audit eliminated consumer queries. DSA surfaced real B2B service intent.</p>
+                    <p class="case-teaser">Isolated B2B intent from generic volume. Built a transparent lead-gen system with brand isolation and DSA gap filling.</p>
                     <div class="metrics-chips">
-                        <span class="chip chip-accent"><strong>&euro;11.5</strong> Target CPL</span>
+                        <span class="chip chip-accent"><strong>€11.5</strong> Target CPL</span>
                         <span class="chip"><strong>1,090</strong> Leads</span>
                     </div>
-                    <button class="btn-text case-cta">System View <span>&rarr;</span></button>
+                    <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">System View <span>&rarr;</span></button>
                 </div>
                 <div class="case-card" onclick="openModal('case-4')">
                     <div class="case-title">E-commerce: Electronics<span class="case-tag">Technical</span></div>
-                    <p class="case-before">Before: thousands of SKUs, equal budget, zero priority logic</p>
-                    <p class="case-teaser">Divided catalog into 3 performance tiers. PMax to priority segments. Branded Search walled off from PMax cannibalization.</p>
+                    <p class="case-teaser">Tiered inventory scaling. Strengthened PMax visibility for top-performing product groups while preserving branded Search control.</p>
                     <div class="metrics-chips">
                         <span class="chip chip-accent"><strong>653%</strong> ROAS</span>
-                        <span class="chip"><strong>&euro;6.7</strong> CPA</span>
+                        <span class="chip"><strong>€6.7</strong> CPA</span>
                     </div>
-                    <button class="btn-text case-cta">System View <span>&rarr;</span></button>
+                    <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">System View <span>&rarr;</span></button>
                 </div>
                 <div class="case-card" onclick="openModal('case-5')">
                     <div class="case-title">Local Services: Repair<span class="case-tag">Efficiency</span></div>
-                    <p class="case-before">Before: &euro;350+ CPA, paying for clicks from 3 cities away</p>
-                    <p class="case-teaser">Precision radius strategy: tight geo zones, Call-Only campaigns, complete negative keyword rebuild. Bids adjusted to peak booking windows.</p>
+                    <p class="case-teaser">Hyper-local radius strategy. Defended CPA in an overheated niche via precision zone targeting and mobile call-centric funnels.</p>
                     <div class="metrics-chips">
-                        <span class="chip chip-accent"><strong>&euro;12</strong> Avg. CPA</span>
+                        <span class="chip chip-accent"><strong>€12</strong> Avg. CPA</span>
                         <span class="chip"><strong>850</strong> Calls</span>
                     </div>
-                    <button class="btn-text case-cta">System View <span>&rarr;</span></button>
+                    <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">System View <span>&rarr;</span></button>
                 </div>
                 <div class="case-card" onclick="openModal('case-6')">
                     <div class="case-title">Industrial B2B: Tools<span class="case-tag">Strategy</span></div>
-                    <p class="case-before">Before: leads coming in, but all from wrong audience</p>
-                    <p class="case-teaser">Rebuilt around supply-chain intent. Identified language of professional buyers. Remarketing to spec-page visitors. B2B forms tracked as micro-conversions.</p>
+                    <p class="case-teaser">Supply-chain intent filtering. Rigorous keyword exclusion logic to eliminate retail noise and capture professional buyers.</p>
                     <div class="metrics-chips">
                         <span class="chip chip-accent"><strong>320</strong> Leads</span>
-                        <span class="chip"><strong>&euro;45</strong> CPA</span>
+                        <span class="chip"><strong>€45</strong> CPA</span>
                     </div>
-                    <button class="btn-text case-cta">System View <span>&rarr;</span></button>
+                    <button class="btn-text" style="color:var(--accent-brand); background:transparent; border:none; text-align:left; font-weight:bold; cursor:pointer; font-family:var(--font-sans);text-transform:uppercase;font-size:0.8rem; margin-top: 16px;">System View <span>&rarr;</span></button>
                 </div>
-        </div>
-        <!-- WHO I WORK WITH -->
-        <div style="margin-top: 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0; border: 2px solid var(--text-dark);">
-            <!-- AGENCIES -->
-            <div style="padding: 40px; border-right: 1px solid var(--text-dark);">
-                <div style="font-family: var(--font-sans); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-brand); margin-bottom: 16px;">&#9642; For Agencies</div>
-                <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 20px; line-height: 1.2;">Need a specialist who runs accounts independently?</h3>
-                <ul style="list-style: none; padding: 0; margin: 0 0 28px;">
-                    <li style="padding: 10px 0; border-bottom: 1px solid var(--accent-muted); font-size: 0.95rem; color: var(--text-dark);">&#10003;&nbsp; I take accounts without hand-holding &mdash; audit in week one</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid var(--accent-muted); font-size: 0.95rem; color: var(--text-dark);">&#10003;&nbsp; Client-ready reports in business language, not CTR</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid var(--accent-muted); font-size: 0.95rem; color: var(--text-dark);">&#10003;&nbsp; Managed $5k &ndash; $50k+/mo budgets independently</li>
-                    <li style="padding: 10px 0; font-size: 0.95rem; color: var(--text-dark);">&#10003;&nbsp; Communicate at ROI level, not interface metrics</li>
-                </ul>
-                <a href="https://t.me/Yaroslav797" target="_blank" style="display: inline-block; background: var(--text-dark); color: #fff; text-decoration: none; padding: 12px 24px; font-family: var(--font-sans); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; transition: background 0.2s;" onmouseover="this.style.background='#333'" onmouseout="this.style.background='var(--text-dark)'">Discuss Collaboration &rarr;</a>
-            </div>
-            <!-- DIRECT CLIENTS -->
-            <div style="padding: 40px; background: var(--bg-offwhite);">
-                <div style="font-family: var(--font-sans); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-gray); margin-bottom: 16px;">&#9642; For Direct Clients</div>
-                <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 20px; line-height: 1.2;">Spending on ads but unclear where the money goes?</h3>
-                <ul style="list-style: none; padding: 0; margin: 0 0 28px;">
-                    <li style="padding: 10px 0; border-bottom: 1px solid var(--accent-muted); font-size: 0.95rem; color: var(--text-dark);">&#10003;&nbsp; I explain everything without technical jargon</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid var(--accent-muted); font-size: 0.95rem; color: var(--text-dark);">&#10003;&nbsp; Start with a free audit &mdash; you see the state before paying</li>
-                    <li style="padding: 10px 0; border-bottom: 1px solid var(--accent-muted); font-size: 0.95rem; color: var(--text-dark);">&#10003;&nbsp; Fixed accountability &mdash; I own the result, not just the tasks</li>
-                    <li style="padding: 10px 0; font-size: 0.95rem; color: var(--text-dark);">&#10003;&nbsp; You always know what&rsquo;s happening and why</li>
-                </ul>
-                <a href="https://t.me/Yaroslav797" target="_blank" style="display: inline-block; background: #C00000; color: #fff; text-decoration: none; padding: 12px 24px; font-family: var(--font-sans); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; transition: background 0.2s;" onmouseover="this.style.background='#990000'" onmouseout="this.style.background='#C00000'">Request a Free Audit &rarr;</a>
-            </div>
         </div>
     </section>
 
     <!-- THE PROFESSIONAL STANDARD (COMPARISON) -->
     <section style="background-color: var(--bg-white); padding: 80px 0;">
         <div class="container">
-            <span class="section-label">The System Advantage</span>
-            <h2 class="section-title">Standard Specialist vs. System-Driven Approach</h2>
+            <span class="section-label">Strategic Value</span>
+            <h2 class="section-title">Ad Management vs. Ad Architecture</h2>
             <p style="font-size: 1.1rem; color: var(--text-gray); max-width: 600px; margin-bottom: 24px;">Why a "System-Driven" approach outperforms traditional media buying by focusing on the infrastructure of growth.</p>
             
             <table class="compare-table reveal-on-scroll">
@@ -562,27 +508,27 @@
                     <tr>
                         <td><strong>Primary Goal</strong></td>
                         <td>Maximize traffic volume</td>
-                        <td style="font-weight:700; color: var(--text-dark);">Maximize incremental profit</td>
+                        <td class="val-plus">Maximize incremental profit</td>
                     </tr>
                     <tr>
                         <td><strong>PMax Strategy</strong></td>
                         <td>"Black Box" automation</td>
-                        <td style="font-weight:700; color: var(--text-dark);">Strategic steering & brand isolation</td>
+                        <td class="val-plus">Strategic steering & brand isolation</td>
                     </tr>
                     <tr>
                         <td><strong>Tracking</strong></td>
                         <td>Surface-level conversions</td>
-                        <td style="font-weight:700; color: var(--text-dark);">GTM / Server-side / Margin-based</td>
+                        <td class="val-plus">GTM / Server-side / Margin-based</td>
                     </tr>
                     <tr>
                         <td><strong>Scaling</strong></td>
                         <td>Raising bids by "feel"</td>
-                        <td style="font-weight:700; color: var(--text-dark);">Data-backed ROAS tiering</td>
+                        <td class="val-plus">Data-backed ROAS tiering</td>
                     </tr>
                     <tr>
                         <td><strong>Communication</strong></td>
                         <td>Interface metrics (CTR/CPC)</td>
-                        <td style="font-weight:700; color: var(--text-dark);">Business metrics (ROI / POAS / CAC)</td>
+                        <td class="val-plus">Business metrics (ROI / POAS / CAC)</td>
                     </tr>
                 </tbody>
             </table>
@@ -668,7 +614,7 @@
                 <!-- Item 1 -->
                 <div style="position: relative; margin-bottom: 48px;">
                     <div style="position: absolute; left: -51px; top: 0; width: 20px; height: 20px; background: var(--accent-brand); border: 4px solid var(--bg-offwhite);"></div>
-                    <div style="font-family: var(--font-sans); font-size: 0.85rem; font-weight: 700; color: var(--text-gray); text-transform: uppercase; margin-bottom: 8px;">Aug 2025 – Sep 2025</div>
+                    <div style="font-family: var(--font-sans); font-size: 0.85rem; font-weight: 700; color: var(--accent-brand); text-transform: uppercase; margin-bottom: 8px;">Aug 2025 – Sep 2025</div>
                     <h3 style="font-size: 1.5rem; margin-bottom: 4px;">Channel Factory</h3>
                     <div style="font-weight: 600; font-size: 1rem; color: var(--text-dark); margin-bottom: 12px;">AdOps Manager for International Brands | YouTube Ads</div>
                     <p style="font-size: 1rem; color: var(--text-gray); max-width: 700px;">Supported QA and AdOps processes for international YouTube and Google Ads campaigns. Focused on Brand Safety standards and programmatic advertising workflows using Salesforce and Ads Editor.</p>
