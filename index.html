@@ -25,7 +25,7 @@
     <link rel="canonical" href="https://yaroslav775-eng.github.io/portfolio/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chifra:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Chifra:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <!-- JSON-LD Microdata -->
     <script type="application/ld+json">
@@ -71,7 +71,7 @@
             
             --font-heading: 'Frank Ruhl Libre', serif;
             --font-main: 'Merriweather', serif;
-            --font-sans: -apple-system, system-ui, sans-serif;
+            --font-sans: 'Inter', -apple-system, system-ui, sans-serif;
             
             --radius-md: 0px; /* Zero radius for print feel */
             --shadow-soft: none;
@@ -96,8 +96,10 @@
         .delay-3 { animation-delay: 0.3s; }
 
         /* Typography */
-        h1, h2, h3, h4, .font-heading { font-family: var(--font-heading); font-weight: 700; letter-spacing: -0.02em; color: var(--text-dark); }
+        h1, h2, h3, h4, .font-heading { font-family: var(--font-heading); font-weight: 700; letter-spacing: 0; color: var(--text-dark); }
         p { color: var(--text-gray); }
+
+        .case-teaser { font-size: 1.05rem; line-height: 1.65; color: var(--text-gray); margin-bottom: 0; }
 
         .section-title { font-size: 3rem; margin-bottom: 48px; border-bottom: 3px double #000; padding-bottom: 16px; }
         @media (max-width: 768px) { .section-title { font-size: 2.25rem; } }
@@ -391,7 +393,7 @@
             <div class="hero-content">
                 <span class="cert-pill animate-fade">&#10003; Available for New Projects &middot; Google Ads Specialist</span>
                 <span class="section-label animate-fade" style="margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dark);">Iaroslav Zhakun &mdash; Google Ads Specialist</span>
-                <h1 class="animate-fade delay-1" style="font-size: clamp(2.5rem, 5vw, 4rem);">I turn ad budgets into predictable, measurable revenue</h1>
+                <h1 class="animate-fade delay-1">I turn ad budgets into predictable, measurable revenue</h1>
                 <p class="animate-fade delay-2" style="max-width: 800px;">I work with agencies and direct clients. I take an account, build a system, and report in business numbers &mdash; not clicks and CTR. No hand-holding needed.</p>
                 <div class="hero-buttons animate-fade delay-3">
                     <a href="#cases" class="btn btn-primary" style="font-weight: 700;">See Case Results &darr;</a>
