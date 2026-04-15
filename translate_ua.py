@@ -385,7 +385,199 @@ c = c.replace('>Qualified Leads<', '>Квал. лідів<')
 c = c.replace('>Ad Spend<', '>Витрати на рекламу<')
 c = c.replace('>Booked Calls<', '>Дзвінків<')
 
+# =============================================
+# QUICK CTA BLOCK (new EN strings)
+# =============================================
+c = c.replace('>Want results like these?<', '>Хочете такі ж результати?<')
+c = c.replace(">Let's discuss your project. Free. No commitment.<", '>Обговоримо ваш проект — безкоштовно. Без зобов\u2019язань.<')
+c = c.replace('>Message on Telegram &rarr;<', '>Написати в Telegram &rarr;<')
+
+# COMPARISON TABLE HEADING
+c = c.replace('>The System Advantage<', '>Системна перевага<')
+c = c.replace('>Standard Specialist vs. System-Driven Approach<', '>Звичайний спеціаліст vs. Системний підхід<')
+c = c.replace(
+    'Why a "System-Driven" approach outperforms traditional media buying by focusing on the infrastructure of growth.',
+    'Чому системний підхід перевершує традиційну закупку медіа, зосередившись на інфраструктурі зростання.'
+)
+
+# =============================================
+# CASE MODALS — all 6 case study modal texts
+# =============================================
+
+# --- CASE 1: Pet Supplies ---
+c = c.replace(
+    '<h2 style="margin-bottom: 8px;">E-commerce: Pet Supplies</h2>',
+    '<h2 style="margin-bottom: 8px;">E-commerce: Зоотовари</h2>'
+)
+c = c.replace(
+    'The account had dozens of campaigns running simultaneously, but nobody could explain which ones actually generated profit — and which ones were quietly eating the budget. The client was spending at scale, but flying blind.',
+    'В акаунті одночасно працювали десятки кампаній, але ніхто не міг пояснити, які з них реально генерують прибуток — а які тихо спалюють бюджет. Клієнт витрачав на масштабі, але наосліп.'
+)
+c = c.replace(
+    'We restructured the account from scratch around a single principle: <strong>every campaign has one job.</strong> Search captured people ready to buy. Shopping handled catalog visibility. PMax handled incremental reach — but only after being fenced off from the brand terms that were inflating its numbers.',
+    'Ми реструктурували акаунт з нуля навколо одного принципу: <strong>кожна кампанія має одне завдання.</strong> Search захоплював людей, готових купити. Shopping відповідав за видимість каталогу. PMax — за інкрементне охоплення, але лише після ізоляції від брендових запитів, які роздували цифри.'
+)
+c = c.replace(
+    'We then split Dogs and Cats into separate campaign clusters, so budget could follow real demand patterns instead of being averaged across the whole assortment.',
+    'Потім ми розділили категорії Собак і Котів на окремі кластери кампаній, щоб бюджет слідував реальним патернам попиту, а не усереднювався по всьому асортименту.'
+)
+c = c.replace('>Account Architecture<', '>Архітектура акаунту<')
+c = c.replace(
+    'Once each layer knew its role, optimization became predictable. ROAS stabilized, CPA dropped to a level that made scaling straightforward rather than risky.',
+    'Коли кожен шар знав свою роль, оптимізація стала передбачуваною. ROAS стабілізувався, CPA впав до рівня, що зробив масштабування простим, а не ризикованим.'
+)
+
+# --- CASE 2: BBQ Grills ---
+c = c.replace(
+    '<h2 style="margin-bottom: 8px;">E-commerce: BBQ Grills</h2>',
+    '<h2 style="margin-bottom: 8px;">E-commerce: Товари для гриля</h2>'
+)
+c = c.replace(
+    'The client entered peak BBQ season with a single flat Shopping campaign covering 400+ SKUs. Budget was spread equally across premium grills and low-margin accessories — meaning the best products never got the investment they deserved.',
+    'Клієнт зайшов у пік BBQ-сезону з однією плоскою Shopping-кампанією на 400+ SKU. Бюджет розподілявся рівномірно між преміум-грилями та низькомаржинальними аксесуарами — найкращі товари ніколи не отримували вкладень, яких заслуговували.'
+)
+c = c.replace(
+    'We rebuilt the account around <strong>margin tiers</strong>. High-value grills got dedicated PMax campaigns optimized for revenue. Supporting accessories ran on lower-priority Shopping, ensuring they didn\'t compete for the same budget.',
+    'Ми перебудували акаунт навколо <strong>маржинальних рівнів</strong>. Дорогі грилі отримали виділені PMax-кампанії, оптимізовані під виручку. Аксесуари працювали на Shopping з нижчим пріоритетом, щоб не конкурувати за той самий бюджет.'
+)
+c = c.replace(
+    'DSA campaigns caught the long-tail seasonal queries that standard keyword research always misses — things people actually type when they\'re ready to buy. GA4 tracking was reconfigured to capture purchase value accurately, so the bidding algorithm was working from clean data.',
+    'DSA-кампанії ловили довгохвостові сезонні запити, які стандартне дослідження ключових слів завжди пропускає — те, що люди реально пишуть, коли готові купити. Трекінг GA4 переналаштували для точного захоплення вартості покупки, щоб алгоритм ставок працював з чистими даними.'
+)
+c = c.replace('>Revenue Trajectory (Seasonal Window)<', '>Динаміка виручки (сезонне вікно)<')
+c = c.replace('>Month-over-month growth during optimization<', '>Зростання місяць до місяця під час оптимізації<')
+c = c.replace(
+    'The peak season produced €157.6k in tracked sales from €23.2k in spend — with the highest ROAS on premium products where it mattered most.',
+    'Пік сезону дав €157.6k відстежених продажів з €23.2k витрат — з найвищим ROAS на преміум-товарах там, де це мало найбільше значення.'
+)
+
+# --- CASE 3: Logistics ---
+c = c.replace(
+    '<h2 style="margin-bottom: 8px;">B2B: Logistics</h2>',
+    '<h2 style="margin-bottom: 8px;">B2B: Логістика</h2>'
+)
+c = c.replace(
+    'The company was getting clicks and form submissions — but most of them were from individuals and small operators, not the commercial clients their sales team could actually close. Volume looked fine on paper, quality was a disaster.',
+    'Компанія отримувала кліки та заявки — але більшість від приватних осіб та дрібних операторів, а не від комерційних клієнтів, яких відділ продажів міг реально закрити. На папері — об\'єм є, по факту — якість катастрофічна.'
+)
+c = c.replace(
+    'We treated the keyword strategy as a <strong>traffic filter</strong>, not a traffic driver. An extensive negative keyword audit removed all consumer-intent queries from the account. Brand terms were isolated into their own campaign so PMax couldn\'t claim credit for organic demand.',
+    'Ми поставилися до стратегії ключових слів як до <strong>фільтра трафіку</strong>, а не джерела трафіку. Масштабний аудит мінус-слів видалив усі споживчі запити з акаунту. Брендові терміни ізолювали в окрему кампанію, щоб PMax не привласнював органічний попит.'
+)
+c = c.replace(
+    'DSA campaigns then surfaced the long-tail B2B service queries that manual keyword research consistently misses — handling, express freight, volume pricing — feeding the forms with people who actually needed a logistics partner.',
+    'DSA-кампанії потім виявили довгохвостові B2B-запити, які ручне дослідження постійно пропускає — перевалка, експрес-вантаж, оптові тарифи — подаючи у форми людей, яким дійсно потрібен логістичний партнер.'
+)
+c = c.replace('>Lead Funnel Architecture<', '>Архітектура лід-воронки<')
+c = c.replace(
+    '1,090 qualified business inquiries at €11.5 per lead. The sales team stopped complaining about lead quality.',
+    '1,090 кваліфікованих бізнес-запитів по €11.5 за лід. Відділ продажів перестав скаржитися на якість лідів.'
+)
+c = c.replace('>Cost Per Lead<', '>Вартість ліда<')
+
+# --- CASE 4: Electronics ---
+c = c.replace(
+    '<h2 style="margin-bottom: 8px;">E-commerce: Electronics</h2>',
+    '<h2 style="margin-bottom: 8px;">E-commerce: Електроніка</h2>'
+)
+c = c.replace(
+    'A large electronics retailer with thousands of SKUs was running budget across the entire catalog equally — no priority logic, no margin weighting. High-ticket items with strong demand were getting the same budget as slow-moving stock nobody searched for.',
+    'Великий ритейлер електроніки з тисячами SKU розподіляв бюджет по всьому каталогу рівномірно — без логіки пріоритетів, без врахування маржинальності. Дорогі товари з сильним попитом отримували той самий бюджет, що й неходові позиції.'
+)
+c = c.replace(
+    'We conducted an inventory audit and divided the product catalog into <strong>three performance tiers</strong> — priority products (high margin, high demand), standard products, and brand defense. Each tier got its own campaign type and budget logic.',
+    'Ми провели аудит інвентарю і розділили каталог на <strong>три рівні ефективності</strong> — пріоритетні товари (висока маржа, високий попит), стандартні товари та захист бренду. Кожен рівень отримав свій тип кампанії та бюджетну логіку.'
+)
+c = c.replace(
+    'PMax was pointed at priority segments with custom audience signals from past purchases. Standard products ran Smart Shopping with conservative targets. Brand terms were walled off to prevent PMax from cannibalizing organic conversions.',
+    'PMax спрямували на пріоритетні сегменти з кастомними аудиторними сигналами з минулих покупок. Стандартні товари працювали на Smart Shopping з консервативними цілями. Брендові терміни огородили, щоб PMax не канібалізував органічні конверсії.'
+)
+c = c.replace('>Inventory Priority Architecture<', '>Архітектура пріоритетів інвентарю<')
+c = c.replace('>Budget allocation follows margin priority<', '>Розподіл бюджету за маржинальним пріоритетом<')
+c = c.replace(
+    '€51.6k in revenue from €7.9k spend over 90 days — with the business finally able to see which product groups were driving growth and adjust inventory decisions accordingly.',
+    '€51.6k виручки з €7.9k витрат за 90 днів — і бізнес нарешті побачив, які групи товарів рухають зростання, та скоригував рішення щодо інвентарю.'
+)
+
+# --- CASE 5: Repair ---
+c = c.replace(
+    '<h2 style="margin-bottom: 8px;">Local Services: Repair</h2>',
+    '<h2 style="margin-bottom: 8px;">Послуги: Ремонт</h2>'
+)
+c = c.replace(
+    'A repair service was paying €350+ per booked job through Google Ads, with CPA climbing every month. The local auction was overheated and the broad match strategy meant they were paying for clicks from people three cities away.',
+    'Сервіс ремонту платив €350+ за кожне замовлення через Google Ads, і CPA зростав щомісяця. Локальний аукціон перегрівся, а стратегія широкої відповідності означала оплату кліків від людей за три міста.'
+)
+c = c.replace(
+    'We switched to a <strong>precision radius strategy</strong>: tight geographic zones, Call-Only campaigns targeting mobile users during working hours, and a complete negative keyword rebuild to eliminate irrelevant searches. Bid adjustments were set to maximize exposure during the peak booking windows we identified from conversion data.',
+    'Перейшли на <strong>точну радіусну стратегію</strong>: жорсткі географічні зони, Call-Only кампанії на мобільних користувачів у робочі години та повне перебудування мінус-слів. Коригування ставок налаштували на максимальне охоплення у пікові вікна бронювання, виявлені з даних конверсій.'
+)
+c = c.replace('>Local Intent Capture Layers<', '>Шари захоплення локального інтенту<')
+c = c.replace('>Radius Zones / Call-Only Mobile / Hour-of-Day Bidding<', '>Радіусні зони / Call-Only мобайл / Ставки по годинах<')
+c = c.replace(
+    'CPA dropped from €350 to €12. 850 booked calls from €10.2k in spend. The campaign stabilized and the client stopped questioning whether Google Ads was worth running.',
+    'CPA впав з €350 до €12. 850 забронйованих дзвінків з €10.2k витрат. Кампанія стабілізувалась, і клієнт перестав сумніватися, чи варто взагалі запускати Google Ads.'
+)
+
+# --- CASE 6: Industrial B2B ---
+c = c.replace(
+    '<h2 style="margin-bottom: 8px;">Industrial B2B: Tools &amp; Equipment</h2>',
+    '<h2 style="margin-bottom: 8px;">Промисловий B2B: Інструменти та обладнання</h2>'
+)
+c = c.replace(
+    'A wholesale tools supplier was generating leads — but the leads came from end consumers, not the procurement managers and contractors they needed to reach. Retail noise was drowning out serious buyers.',
+    'Оптовий постачальник інструментів генерував ліди — але вони надходили від кінцевих споживачів, а не закупників та підрядників. Роздрібний шум заглушував серйозних покупців.'
+)
+c = c.replace(
+    'The entire campaign was rebuilt around <strong>supply-chain search intent</strong>. We identified the language professional buyers actually use — wholesale pricing, bulk orders, technical specifications — and built keyword clusters around those terms exclusively.',
+    'Всю кампанію перебудували навколо <strong>supply-chain пошукового інтенту</strong>. Ми визначили мову, якою реально користуються профійні закупники — оптові ціни, великі замовлення, технічні специфікації — і побудували кластери ключових слів виключно навколо цих термінів.'
+)
+c = c.replace(
+    'Remarketing campaigns targeted users who had visited pricing or specification pages — a strong signal of procurement intent. B2B form submissions were tracked as micro-conversions so the algorithm could learn what a good lead looked like.',
+    'Ремаркетинг-кампанії цілились на користувачів, які відвідували сторінки цін або специфікацій — сильний сигнал закупівельного інтенту. Форми B2B відстежувались як мікро-конверсії, щоб алгоритм навчався розпізнавати якісний лід.'
+)
+c = c.replace('>B2B Intent Filter Architecture<', '>Архітектура фільтрації B2B-інтенту<')
+c = c.replace('>Procurement Search / Spec-Page Remarketing / Form Tracking<', '>Закупівельний пошук / Ремаркетинг / Трекінг форм<')
+c = c.replace(
+    '320 qualified wholesale inquiries at a controlled €45 CPA. The sales pipeline went from cluttered to manageable.',
+    '320 кваліфікованих оптових запитів при контрольованому CPA €45. Воронка продажів перетворилася з захаращеної на керовану.'
+)
+c = c.replace('>Target CPA<', '>Цільовий CPA<')
+
+# Common modal labels
+c = c.replace('>What We Did<', '>Що ми зробили<')
+c = c.replace('>The Outcome<', '>Результат<')
+
+# =============================================
+# QUIZ (modal form)
+# =============================================
+c = c.replace('>Discovery Framework<', '>Процес знайомства<')
+c = c.replace('>Phase 1: Scope &amp; Territory<', '>Фаза 1: Масштаб і охоплення<')
+c = c.replace('>Define the basic parameters of the audit.<', '>Визначте основні параметри аудиту.<')
+c = c.replace('>Website URL<', '>URL вебсайту<')
+c = c.replace('>Advertising Region(s)<', '>Регіон(и) реклами<')
+c = c.replace('placeholder="e.g. US, UK, EU-wide"', 'placeholder="наприклад Україна, ЄС, Греція"')
+c = c.replace('>Target KPIs (ROAS, CPA, Leads)<', '>Цільові KPI (ROAS, CPA, Ліди)<')
+c = c.replace('placeholder="e.g. 500% ROAS or Target CPA €15"', 'placeholder="наприклад 500% ROAS або цільовий CPA €15"')
+c = c.replace('>Next Phase &rarr;<', '>Наступна фаза &rarr;<')
+c = c.replace('>Phase 2: The Challenge<', '>Фаза 2: Виклик<')
+c = c.replace('>Detail the specific bottlenecks we are investigating.<', '>Опишіть конкретні вузькі місця, які ми досліджуємо.<')
+c = c.replace('>Main problems or wishes<', '>Основні проблеми або побажання<')
+c = c.replace('placeholder="What is breaking? What do you want to achieve?"', 'placeholder="Що не працює? Чого хочете досягти?"')
+c = c.replace('>Main Competitors<', '>Основні конкуренти<')
+c = c.replace('placeholder="Who are we fighting in the auction?"', 'placeholder="З ким воюємо на аукціоні?"')
+c = c.replace('>Phase 3: Data Access<', '>Фаза 3: Доступ до даних<')
+c = c.replace('>Can you provide Read-Only access to Google Ads, Analytics, and Merchant Center?<', '>Чи можете надати Read-Only доступ до Google Ads, Analytics та Merchant Center?<')
+c = c.replace('>Yes, ready to provide access<', '>Так, готовий надати доступ<')
+c = c.replace('>Yes, but need an NDA first<', '>Так, але спочатку потрібен NDA<')
+c = c.replace('>Hard to provide access right now<', '>Зараз важко надати доступ<')
+c = c.replace('>Audit Framework Prepared<', '>Фрейм аудиту підготовлено<')
+c = c.replace('>The necessary pre-flight details have been captured. Click below to securely transfer your data to my personal inbox.<', '>Необхідні деталі зібрано. Натисніть нижче, щоб безпечно передати дані до мого поштового ящика.<')
+c = c.replace('>Transmit Data via Email<', '>Надіслати дані електронною поштою<')
+c = c.replace('>&larr; Back<', '>&larr; Назад<')
+
 with open('ua.html', 'w', encoding='utf-8') as f:
     f.write(c)
 
 print('UA translation complete. Size:', len(c), 'chars')
+
