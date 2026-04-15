@@ -253,6 +253,15 @@ c = c.replace('>Tech Stack &amp; Tools<', '>Технічний стек та і�
 # =============================================
 c = c.replace('>Professional Experience<', '>Професійний досвід<')
 c = c.replace('>Career Journey<', '>Кар\'єрний шлях<')
+# Job titles (kept partially in EN as industry standard, but localize what makes sense)
+c = c.replace(
+    '>AdOps Manager для міжнародних брендів | YouTube Ads<',
+    '>AdOps Manager для міжнародних брендів | YouTube Ads<'
+)
+c = c.replace('>PPC Specialist<', '>PPC-спеціаліст<')
+c = c.replace('>Performance Marketing Lead / Media Buyer<', '>Керівник Performance Marketing / Media Buyer<')
+c = c.replace('>E-commerce Manager<', '>E-commerce Менеджер<')
+c = c.replace('Brand Safety', 'Brand Safety (безпека бренду)')
 c = c.replace(
     '>AdOps Manager for International Brands | YouTube Ads<',
     '>AdOps Manager для міжнародних брендів | YouTube Ads<'
