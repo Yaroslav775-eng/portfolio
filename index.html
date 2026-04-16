@@ -152,6 +152,28 @@
             transform: translateY(-4px);
         }
         .case-card:hover .case-cta { color: var(--accent-brand); }
+
+        /* Expert Solutions Hub */
+        .section-solutions { background-color: var(--bg-tint); padding: 80px 0; border-top: 4px solid #000; }
+        .solutions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding-top: 32px; }
+        @media (max-width: 900px) { .solutions-grid { grid-template-columns: 1fr; } }
+        
+        .solution-card { 
+            background-color: var(--bg-white); 
+            padding: 40px; 
+            border: 1px solid #000;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: transform 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        .solution-card:hover { transform: translateY(-4px); box-shadow: 8px 8px 0px #000; }
+        .solution-card h3 { font-size: 1.5rem; margin: 0; }
+        .solution-card p { font-size: 0.95rem; margin: 0; color: var(--text-gray); }
+        .solution-tag { font-family: var(--font-sans); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--accent-brand); letter-spacing: 0.05em; }
         
         /* Reset browser button default — used for System View inline links */
         .btn-text { background: none; border: none; padding: 0; margin: 0; cursor: pointer; width: auto; display: inline-flex; align-items: center; gap: 6px; }
@@ -454,6 +476,31 @@
         </div>
     </header>
 
+     <!-- STRATEGIC SOLUTIONS (EXPERT HUB) -->
+    <section id="solutions" class="section-solutions">
+        <div class="container">
+            <span class="section-label">Core Capabilities</span>
+            <h2 class="section-title">Strategic Solutions</h2>
+            <div class="solutions-grid">
+                <a href="cases/pet-supplies-scaling.html" class="solution-card">
+                    <span class="solution-tag">Scale & ROI</span>
+                    <h3>E-commerce Architecture</h3>
+                    <p>Building profit-driven account structures that scale budget without breaking ROAS. Modular campaigns for modular growth.</p>
+                </a>
+                <a href="solutions/click-fraud-protection.html" class="solution-card">
+                    <span class="solution-tag">Security & Protection</span>
+                    <h3>Click Fraud Defense</h3>
+                    <p>A multi-layered technical shield to stop competitors and bots from draining your budget in high-CPC niches.</p>
+                </a>
+                <a href="#cases" class="solution-card">
+                    <span class="solution-tag">Audit & Diagnostics</span>
+                    <h3>Technical Audits</h3>
+                    <p>Deep-dive forensic audits of account history, GA4 signal integrity, and PMax cannibalization scripts.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- CASES (MOVED UP FOR IMMEDIATE PROOF) -->
     <section id="cases" class="section-cases">
         <div class="container">
@@ -470,7 +517,7 @@
                     </div>
                     <button class="btn-text case-cta">Read Strategy Report <span>&rarr;</span></button>
                 </div>
-                <div class="case-card" onclick="openModal('case-2')">
+                <div class="case-card" onclick="window.location.href='cases/bbq-grills-scaling.html'" style="cursor: pointer;">
                     <div class="case-title">E-commerce: BBQ Grills<span class="case-tag">Scaling</span></div>
                     <p class="case-before">Before: 400+ SKUs in one flat campaign, peak season wasted</p>
                     <p class="case-teaser">Rebuilt around margin tiers. Premium grills got dedicated PMax. DSA caught long-tail seasonal intent. GA4 reconfigured for accurate purchase value.</p>
@@ -478,7 +525,7 @@
                         <span class="chip chip-accent"><strong>679%</strong> ROAS</span>
                         <span class="chip"><strong>&euro;13.7</strong> CPA</span>
                     </div>
-                    <button class="btn-text case-cta">System View <span>&rarr;</span></button>
+                    <button class="btn-text case-cta">Read Strategy Report <span>&rarr;</span></button>
                 </div>
                 <div class="case-card" onclick="openModal('case-3')">
                     <div class="case-title">B2B: Logistics<span class="case-tag">LeadGen</span></div>
@@ -500,7 +547,7 @@
                     </div>
                     <button class="btn-text case-cta">System View <span>&rarr;</span></button>
                 </div>
-                <div class="case-card" onclick="openModal('case-5')">
+                <div class="case-card" onclick="window.location.href='cases/repair-service-efficiency.html'" style="cursor: pointer;">
                     <div class="case-title">Local Services: Repair<span class="case-tag">Efficiency</span></div>
                     <p class="case-before">Before: &euro;350+ CPA, paying for clicks from 3 cities away</p>
                     <p class="case-teaser">Precision radius strategy: tight geo zones, Call-Only campaigns, complete negative keyword rebuild. Bids adjusted to peak booking windows.</p>
@@ -508,7 +555,7 @@
                         <span class="chip chip-accent"><strong>&euro;12</strong> Avg. CPA</span>
                         <span class="chip"><strong>850</strong> Calls</span>
                     </div>
-                    <button class="btn-text case-cta">System View <span>&rarr;</span></button>
+                    <button class="btn-text case-cta">Read Strategy Report <span>&rarr;</span></button>
                 </div>
                 <div class="case-card" onclick="openModal('case-6')">
                     <div class="case-title">Industrial B2B: Tools<span class="case-tag">Strategy</span></div>
