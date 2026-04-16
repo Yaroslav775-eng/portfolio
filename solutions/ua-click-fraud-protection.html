@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рішення: Захист від скликивання та охорона бюджету | Ярослав Жакун</title>
+    <meta name="description" content="Технічний аудит та автоматизовані системи захисту Google Ads для зупинки клік-фроду конкурентів, бот-трафіку та нецільових витрат у нішах з високою ціною кліку.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../index.css">
+
+    <style>
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; margin: 0; padding: 0; }
+        .report-nav { padding: 24px 0; border-bottom: 2px solid var(--text-dark); background: #fff; position: sticky; top: 0; z-index: 100; }
+        .report-nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 800px; margin: 0 auto; padding: 0 24px; }
+        .back-link { font-family: var(--font-sans); font-weight: 600; color: var(--text-dark); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em; }
+        .back-link:hover { color: var(--accent-brand); }
+        .report-article { max-width: 800px; margin: 60px auto 120px; padding: 0 24px; }
+        .report-header { margin-bottom: 60px; }
+        .report-category { font-family: var(--font-sans); color: var(--accent-brand); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; display: block; margin-bottom: 16px; }
+        .report-title { font-family: var(--font-serif); font-size: 3.5rem; line-height: 1.1; font-weight: 900; margin: 0 0 24px 0; letter-spacing: -0.02em; }
+        .ai-summary { font-family: var(--font-sans); font-size: 1.1rem; color: var(--text-muted); border-left: 4px solid var(--accent-brand); padding-left: 24px; margin: 32px 0 0 0; font-style: italic; }
+        .shield-stack { margin: 60px 0; display: flex; flex-direction: column; gap: 12px; }
+        .shield-layer { border: 2px solid var(--text-dark); padding: 32px; position: relative; overflow: hidden; }
+        .shield-layer:nth-child(1) { background-color: #f9f9f9; }
+        .shield-layer:nth-child(2) { background-color: #f0f0f0; }
+        .shield-layer:nth-child(3) { background-color: #e0e0e0; border-color: var(--accent-brand); }
+        .layer-num { position: absolute; right: 24px; top: 24px; font-family: var(--font-serif); font-size: 3rem; font-weight: 900; opacity: 0.1; }
+        .layer-title { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; display: block; }
+        .layer-desc { font-family: var(--font-sans); color: #555; max-width: 500px; margin: 0; }
+        .report-body h2 { font-family: var(--font-serif); font-size: 2.25rem; margin: 64px 0 24px 0; line-height: 1.1; }
+        .report-body p { font-size: 1.2rem; margin-bottom: 24px; font-family: var(--font-sans); color: #333; }
+        .case-preview { border: 1px solid #ddd; padding: 40px; margin: 60px 0; display: flex; flex-direction: column; gap: 24px; }
+        .case-preview-label { font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-brand); }
+        .case-preview h3 { font-family: var(--font-serif); font-size: 1.75rem; margin: 0; }
+        .report-cta { margin-top: 80px; padding: 60px 40px; background-color: var(--bg-dark); color: #fff; text-align: center; }
+        .report-cta h2 { font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 16px; margin-top: 0; color: #fff; }
+
+        @media (max-width: 768px) {
+            .report-title { font-size: 2.5rem; }
+            .shield-layer { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="report-nav">
+        <div class="container">
+            <a href="../ua.html" class="back-link">← Портфоліо</a>
+            <a href="https://t.me/Yaroslav797" target="_blank" class="back-link" style="color: var(--accent-brand);">Безкоштовний аудит ↗</a>
+        </div>
+    </nav>
+
+    <article class="report-article">
+        <header class="report-header">
+            <span class="report-category">Просунуте технічне рішення</span>
+            <h1 class="report-title">"Податок на рекламу" — це опціонально: зупиніть конкурентів та ботів, що вимивають ваш бюджет.</h1>
+            <div class="ai-summary">
+                <strong>Executive Summary:</strong> Клік-фрод (скликивання) — це не просто неприємність; у нішах з високою ціною кліку це тихий вбивця бюджету, на який припадає до 30% витрат. Ми впроваджуємо багаторівневу стратегію захисту — кастомні скрипти, софт у реальному часі та глибокий аналіз логів — щоб ви платили лише за реальних клієнтів.
+            </div>
+        </header>
+
+        <section class="report-body">
+            <h2>Механіку скликивання</h2>
+            <p>Якщо ви перебуваєте в конкурентній ніші, такій як домашні послуги, юриспруденція або B2B софт, ваші конкуренти мають всі стимули "вибити вас з аукціону". Це високоефективно для них, дешево і катастрофічно для вас. Більшість маркетологів сподіваються, що внутрішня система Google Ads все виявить. Реальність? Google ловить лише найочевидніші бот-ферми, залишаючи вам рахунок за все інше.</p>
+            
+            <p>Наша методологія переходить від пасивного спостереження до <strong>активної оборони периметра</strong>.</p>
+
+            <div class="shield-stack">
+                <div class="shield-layer">
+                    <span class="layer-num">01</span>
+                    <span class="layer-title">Технічний периметр (Скрипти)</span>
+                    <p class="layer-desc">Кастомні скрипти виключення IP, що моніторять поведінку в реальному часі. Ми автоматично блокуємо IP-адреси, що демонструють патерни ботів, перш ніж вони зможуть клікнути знову.</p>
+                </div>
+                <div class="shield-layer">
+                    <span class="layer-num">02</span>
+                    <span class="layer-title">Активний моніторинг (Software)</span>
+                    <p class="layer-desc">Інтеграція з індустріальними інструментами на кшталт ClickCease або Lunio, але з експертним наглядом. Ми налаштовуємо правила так, щоб уникати помилкових спрацювань, які вбивають реальні продажі.</p>
+                </div>
+                <div class="shield-layer">
+                    <span class="layer-num">03</span>
+                    <span class="layer-title">Ручний аудит логів (Деталізація)</span>
+                    <p class="layer-desc">Періодичні глибокі аудити даних GA4 для пошуку аномалій, які пропускають автоматичні інструменти — наприклад, "клік-ферми", що повільно вичерпують ваш бюджет протягом декількох днів з унікальних IP.</p>
+                </div>
+            </div>
+
+            <h2>Перевірено на практиці</h2>
+            <p>Система захисту хороша лише тоді, коли вона показує результат. Ми розгорнули архітектуру "Щита" в десятках акаунтів, де ціна кліку починається від €10 і сягає €60.</p>
+
+            <div class="case-preview">
+                <span class="case-preview-label">Результат стратегії: LeadGen</span>
+                <h3>Перемога над фродом конкурентів у ніші локального ремонту.</h3>
+                <p style="margin: 0; color: #555;">Як ми втримали CPA на рівні €11.5 для понад 1,000 лідів, відсікаючи понад €3,000/міс бот-трафіку та кліків конкурентів.</p>
+                <a href="../cases/ua-repair-service-efficiency.html" class="btn-text" style="align-self: flex-start; border-bottom: 1px solid #000; padding-bottom: 2px;">Читати техніку розбору <span>&rarr;</span></a>
+            </div>
+
+            <h2>Чому стандартні налаштування не працюють</h2>
+            <p>Більшість агентств просто ставлять "галочку" в налаштуваннях і називають це "захистом". Ми ставимося до цього як до кібербезпеки. Ми будуємо периметри негативних аудиторій, точний геофенсинг для виключення офісів конкурентів та використовуємо пошукові бар'єри для захисту бренду.</p>
+        </section>
+
+        <section class="report-cta">
+            <h2>Ваш бюджет крадуть?</h2>
+            <p style="font-family: var(--font-sans); font-size: 1.1rem; color: rgba(255,255,255,0.7); margin-bottom: 32px;">Припиніть гадати і почніть захищатися. 15-хвилинна діагностика може показати, скільки ви втрачаєте через ботів.</p>
+            <a href="https://t.me/Yaroslav797" target="_blank" class="btn-text" style="font-size: 1.25rem; color: #fff; border-bottom: 1px solid #fff; padding-bottom: 4px;">Отримати безкоштовний аудит <span>&rarr;</span></a>
+        </section>
+    </article>
+
+</body>
+</html>
