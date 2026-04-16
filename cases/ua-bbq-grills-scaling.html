@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кейс: Прибуткове масштабування товарів для гриля та барбекю | Ярослав Жакун</title>
+    <meta name="description" content="Стратегічний розбір того, як сегментація аудиторії та продуктів на основі маржинальності подвоїла сезонний прибуток для великого ритейлера грилів.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../index.css">
+
+    <style>
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; margin: 0; padding: 0; }
+        .report-nav { padding: 24px 0; border-bottom: 2px solid var(--text-dark); background: #fff; position: sticky; top: 0; z-index: 100; }
+        .report-nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 800px; margin: 0 auto; padding: 0 24px; }
+        .back-link { font-family: var(--font-sans); font-weight: 600; color: var(--text-dark); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em; }
+        .back-link:hover { color: var(--accent-brand); }
+        .report-article { max-width: 800px; margin: 60px auto 120px; padding: 0 24px; }
+        .report-header { margin-bottom: 60px; }
+        .report-category { font-family: var(--font-sans); color: var(--accent-brand); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; display: block; margin-bottom: 16px; }
+        .report-title { font-family: var(--font-serif); font-size: 3.5rem; line-height: 1.1; font-weight: 900; margin: 0 0 24px 0; letter-spacing: -0.02em; }
+        .ai-summary { font-family: var(--font-sans); font-size: 1.1rem; color: var(--text-muted); border-left: 4px solid var(--accent-brand); padding-left: 24px; margin: 32px 0 0 0; font-style: italic; }
+        .editorial-table { width: 100%; border-collapse: collapse; margin: 60px 0; border-top: 2px solid var(--text-dark); border-bottom: 2px solid var(--text-dark); }
+        .editorial-table th, .editorial-table td { padding: 24px 16px; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .editorial-table th { font-family: var(--font-sans); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-muted); width: 25%; }
+        .editorial-table td { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; }
+        .report-body h2 { font-family: var(--font-serif); font-size: 2rem; margin: 48px 0 24px 0; line-height: 1.2; }
+        .report-body p { font-size: 1.1rem; margin-bottom: 24px; font-family: var(--font-sans); color: #333; }
+        .architecture-box { background-color: var(--bg-dark); color: #fff; padding: 40px; margin: 48px 0; }
+        .architecture-box h3 { font-family: var(--font-serif); font-size: 1.5rem; margin-top: 0; margin-bottom: 24px; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 12px; }
+        .architecture-box li { font-family: var(--font-sans); margin-bottom: 16px; padding-left: 24px; position: relative; font-size: 1.05rem; color: rgba(255,255,255,0.9); }
+        .architecture-box li::before { content: "→"; color: var(--accent-brand); position: absolute; left: 0; top: 0; font-weight: bold; }
+        .report-cta { margin-top: 80px; padding: 60px 40px; background-color: #f4f4f4; text-align: center; border: 1px solid #ddd; }
+        .report-cta h2 { font-family: var(--font-serif); font-size: 2.25rem; margin-bottom: 16px; margin-top: 0; }
+
+        @media (max-width: 768px) {
+            .report-title { font-size: 2.5rem; }
+            .editorial-table th, .editorial-table td { padding: 16px 8px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="report-nav">
+        <div class="container">
+            <a href="../ua.html" class="back-link">← Портфоліо</a>
+            <a href="https://t.me/Yaroslav797" target="_blank" class="back-link" style="color: var(--accent-brand);">Консультація ↗</a>
+        </div>
+    </nav>
+
+    <article class="report-article">
+        <header class="report-header">
+            <span class="report-category">Масштабування та Прибутковість</span>
+            <h1 class="report-title">Сезонний сплеск: як сегментація на основі маржі врятувала пік сезону ритейлера грилів.</h1>
+            <div class="ai-summary">
+                <strong>Executive Summary:</strong> Під час критичного піку сезону стратегія єдиної кампанії клієнта поглинала прибуток, витрачаючи однаково на дешеві аксесуари та дорогі грилі. Шляхом сегментації акаунту за рівнями маржинальності та впровадження сезонних DSA-шарів ми досягли 679% ROAS та згенерували €157,642 виручки при витратах €23,217.
+            </div>
+        </header>
+
+        <table class="editorial-table">
+            <tbody>
+                <tr>
+                    <th>Критичний недолік</th>
+                    <td>"Пласка" структура Shopping, що ігнорувала прибутковість окремих товарів.</td>
+                </tr>
+                <tr>
+                    <th>Стратегія</th>
+                    <td>Типізація за маржою та реструктуризація PMax (виділення преміум SKU).</td>
+                </tr>
+                <tr>
+                    <th>Загальна виручка</th>
+                    <td>€157,642 <span style="font-size: 0.8rem; font-family: var(--font-sans); color: var(--accent-brand);">(Сезонне вікно)</span></td>
+                </tr>
+                <tr>
+                    <th>Витрати на рекламу</th>
+                    <td>€23,217</td>
+                </tr>
+                <tr>
+                    <th>Фінальний ROAS</th>
+                    <td>679%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="report-body">
+            <h2>Пастка ефективності</h2>
+            <p>Клієнт увійшов у свій найважливіший період продажів із застарілою структурою: 400+ SKU були об'єднані в одну "пласку" Shopping-кампанію. Для алгоритму Google очищувач для гриля за €15 був ідентичним до професійної коптильні за €2,000. Результат? Бюджет тяжіла до дешевих аксесуарів з великим обсягом кліків, тоді як дорогі грилі — реальні драйвери прибутку — залишалися без належного фінансування.</p>
+
+            <h2>Стратегічний поворот</h2>
+            <p>Масштабування e-commerce — це не про те, щоб ставити вищі ставки; це про те, щоб ставити <strong>розумніші</strong> ставки. Ми відмовилися від підходу "все в одному" і перебудували інфраструктуру навколо реальної прибутковості бізнесу.</p>
+            
+            <div class="architecture-box">
+                <h3>Логіка "Спочатку маржа"</h3>
+                <ul>
+                    <li><strong>Рівень 1: Преміум-зірки.</strong> Дорогі грилі були виділені в окремі PMax-кампанії з високими цілями ROAS, що забезпечило їм 70% загального бюджету.</li>
+                    <li><strong>Рівень 2: Шар аксесуарів.</strong> Товари з нижчою маржею перейшли в стандартні Shopping-кампанії з низькими ставками. Вони працювали на "додатковий" дохід, не виснажуючи основний бюджет.</li>
+                    <li><strong>Рівень 3: Long-Tail DSA.</strong> Динамічні пошукові оголошення були розгорнуті для захоплення вузьких сезонних запитів (наприклад, "коптильня з нержавіючої сталі для балкона"), які стандартні ключові слова часто пропускають.</li>
+                </ul>
+            </div>
+
+            <h2>Результати: Масштабування на основі даних</h2>
+            <p>У розпал сезону акаунт не просто витрачав більше — він витрачав краще. Дані GA4 показали, що середній чек (AOV) зріс на 45%, оскільки наш фокус змістився на преміальні продукти. Фінальне вікно принесло €157к виручки зі здоровим показником повернення інвестицій 6.7x, що дозволило клієнту впевнено реінвестувати в подальший розвиток.</p>
+        </div>
+
+        <section class="report-cta">
+            <h2>Ваш бюджет витрачається на неправильні товари?</h2>
+            <p style="font-family: var(--font-sans); font-size: 1.1rem; color: #555; margin-bottom: 32px;">Пласка структура акаунту — найшвидший шлях до прихованих збитків. Давайте проведемо аудит ваших товарних категорій.</p>
+            <a href="https://t.me/Yaroslav797" target="_blank" class="btn-text case-cta" style="font-size: 1.1rem; border-bottom: 1px solid #000; padding-bottom: 4px;">Отримати аудит прибутковості <span>&rarr;</span></a>
+        </section>
+    </article>
+
+</body>
+</html>

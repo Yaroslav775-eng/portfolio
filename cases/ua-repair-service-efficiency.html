@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кейс: Якість понад кількість у лідогенерації для сервісу ремонту | Ярослав Жакун</title>
+    <meta name="description" content="Стратегічний аудит та реструктуризація для локального сервісу ремонту, що заощадили тисячі на рекламному бюджеті шляхом усунення неякісного трафіку та клік-фроду конкурентів.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../index.css">
+
+    <style>
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; margin: 0; padding: 0; }
+        .report-nav { padding: 24px 0; border-bottom: 2px solid var(--text-dark); background: #fff; position: sticky; top: 0; z-index: 100; }
+        .report-nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 800px; margin: 0 auto; padding: 0 24px; }
+        .back-link { font-family: var(--font-sans); font-weight: 600; color: var(--text-dark); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em; }
+        .back-link:hover { color: var(--accent-brand); }
+        .report-article { max-width: 800px; margin: 60px auto 120px; padding: 0 24px; }
+        .report-header { margin-bottom: 60px; }
+        .report-category { font-family: var(--font-sans); color: var(--accent-brand); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; display: block; margin-bottom: 16px; }
+        .report-title { font-family: var(--font-serif); font-size: 3.5rem; line-height: 1.1; font-weight: 900; margin: 0 0 24px 0; letter-spacing: -0.02em; }
+        .ai-summary { font-family: var(--font-sans); font-size: 1.1rem; color: var(--text-muted); border-left: 4px solid var(--accent-brand); padding-left: 24px; margin: 32px 0 0 0; font-style: italic; }
+        .editorial-table { width: 100%; border-collapse: collapse; margin: 60px 0; border-top: 2px solid var(--text-dark); border-bottom: 2px solid var(--text-dark); }
+        .editorial-table th, .editorial-table td { padding: 24px 16px; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .editorial-table th { font-family: var(--font-sans); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-muted); width: 25%; }
+        .editorial-table td { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; }
+        .report-body h2 { font-family: var(--font-serif); font-size: 2rem; margin: 48px 0 24px 0; line-height: 1.2; }
+        .report-body p { font-size: 1.1rem; margin-bottom: 24px; font-family: var(--font-sans); color: #333; }
+        .architecture-box { background-color: var(--bg-dark); color: #fff; padding: 40px; margin: 48px 0; }
+        .architecture-box h3 { font-family: var(--font-serif); font-size: 1.5rem; margin-top: 0; margin-bottom: 24px; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 12px; }
+        .architecture-box li { font-family: var(--font-sans); margin-bottom: 16px; padding-left: 24px; position: relative; font-size: 1.05rem; color: rgba(255,255,255,0.9); }
+        .architecture-box li::before { content: "→"; color: var(--accent-brand); position: absolute; left: 0; top: 0; font-weight: bold; }
+        .report-cta { margin-top: 80px; padding: 60px 40px; background-color: #f4f4f4; text-align: center; border: 1px solid #ddd; }
+        .report-cta h2 { font-family: var(--font-serif); font-size: 2.25rem; margin-bottom: 16px; margin-top: 0; }
+
+        @media (max-width: 768px) {
+            .report-title { font-size: 2.5rem; }
+            .editorial-table th, .editorial-table td { padding: 16px 8px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="report-nav">
+        <div class="container">
+            <a href="../ua.html" class="back-link">← Портфоліо</a>
+            <a href="https://t.me/Yaroslav797" target="_blank" class="back-link" style="color: var(--accent-brand);">Зв'язатися ↗</a>
+        </div>
+    </nav>
+
+    <article class="report-article">
+        <header class="report-header">
+            <span class="report-category">Якість лідів та Анти-Фрод</span>
+            <h1 class="report-title">Захист бюджету: усунення "сміттєвих" лідів та фроду конкурентів для локального сервісу ремонту.</h1>
+            <div class="ai-summary">
+                <strong>Executive Summary:</strong> Обсяг трафіку у клієнта був високим, але якість лідів — катастрофічною: бюджети вимивалися ботами та кліками конкурентів. Ми впровадили захисний периметр "Brand Guard" та багаторівневий протокол анти-фроду, що дало 1,090 кваліфікованих B2B запитів за стабільною ціною €11.5 за лід.
+            </div>
+        </header>
+
+        <table class="editorial-table">
+            <tbody>
+                <tr>
+                    <th>Криза</th>
+                    <td>Великий обсяг кліків, але "сміттєві" ліди та відвертий клік-фрод з боку конкурентів.</td>
+                </tr>
+                <tr>
+                    <th>Рішення</th>
+                    <td>Скриптування негативних IP, периметр Brand Guard та B2B-орієнтовані DSA.</td>
+                </tr>
+                <tr>
+                    <th>Кваліфіковані ліди</th>
+                    <td>1,090 <span style="font-size: 0.8rem; font-family: var(--font-sans); color: var(--accent-brand);">(Чистий трафік)</span></td>
+                </tr>
+                <tr>
+                    <th>Ціна за лід</th>
+                    <td>€11.5</td>
+                </tr>
+                <tr>
+                    <th>Витрати на рекламу</th>
+                    <td>€10,235</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="report-body">
+            <h2>Невидиме спалювання бюджету</h2>
+            <p>У сфері локальних послуг — особливо ремонтних та аварійних — CPC (ціна за клік) традиційно є дуже високою. Це робить акаунти основною мішенню для конкурентів та фейкових запитів. Наш клієнт отримував трафік, але відділ продажів тонув у нерелевантних дзвінках та заявках від ботів, які виглядали як справжні, але ніколи не конвертувалися в замовлення.</p>
+
+            <h2>Стратегія "Захищеного" акаунту</h2>
+            <p>Ми не просто оптимізували ключові слова; ми побудували оборонний периметр. Мета полягала в тому, щоб кожен витрачений євро приносив людину з реальною потребою в ремонті або B2B запит.</p>
+            
+            <div class="architecture-box">
+                <h3>4-рівневий протокол безпеки</h3>
+                <ul>
+                    <li><strong>Рівень 1: Виключення конкурентів.</strong> Кастомні скрипти для ідентифікації та автоматичного бану IP-адрес, що демонструють поведінку ботів або використовують VPN з локацій конкурентів.</li>
+                    <li><strong>Рівень 2: Периметр "Brand Guard".</strong> Спеціальна пошукова стратегія, що не дозволяла конкурентам показувати рекламу за брендовими запитами нашого клієнта.</li>
+                    <li><strong>Рівень 3: DSA з B2B-інтентом.</strong> Динамічні пошукові оголошення були обмежені лише сторінками з послугами високої цінності, відфільтровуючи тих, хто шукає "як зробити самому".</li>
+                    <li><strong>Рівень 4: Верифікація сигналів.</strong> В алгоритм Google як конверсії поверталися лише підтверджені в CRM якісні ліди, навчаючи систему ставок шукати справжніх клієнтів.</li>
+                </ul>
+            </div>
+
+            <h2>Трансформація: Якість замість обсягу</h2>
+            <p>До кінця другого місяця обсяг "сміттєвого" трафіку впав на 65%. Хоча загальна кількість кліків зменшилася, кількість <strong>кваліфікованих</strong> лідів різко зросла. Відділ продажів почав закривати угоди з рекордною швидкістю, тому що вони нарешті спілкувалися з людьми, яким потрібен професійний сервіс. Ми утримали стабільний CPA на рівні €11.5 при більш ніж 1,000 запитах — рівень ефективності, який раніше вважався неможливим у цій ніші.</p>
+        </div>
+
+        <section class="report-cta">
+            <h2>Ваш бюджет "клікають" конкуренти?</h2>
+            <p style="font-family: var(--font-sans); font-size: 1.1rem; color: #555; margin-bottom: 32px;">Конкуренти використовують ботів, щоб знищити ваш ROI. Вам потрібен технічний захист, а не просто маркетинг.</p>
+            <a href="https://t.me/Yaroslav797" target="_blank" class="btn-text case-cta" style="font-size: 1.1rem; border-bottom: 1px solid #000; padding-bottom: 4px;">Замовити аудит клік-фроду <span>&rarr;</span></a>
+        </section>
+    </article>
+
+</body>
+</html>
