@@ -453,8 +453,8 @@
                 <h1 class="animate-fade delay-1">I turn ad budgets into predictable, measurable revenue</h1>
                 <p class="animate-fade delay-2" style="max-width: 800px;">I work with agencies and direct clients. I take an account, build a system, and report in business numbers &mdash; not clicks and CTR. No hand-holding needed.</p>
                 <div class="hero-buttons animate-fade delay-3">
-                    <a href="#" onclick="startQuiz(); return false;" class="btn btn-primary" style="font-weight: 700;">Start Audit &darr;</a>
-                    <a href="https://t.me/Yaroslav797" target="_blank" class="btn btn-ghost" style="margin-left: 12px;">Message on Telegram &rarr;</a>
+                    <a href="#" onclick="startQuiz(); return false;" class="btn btn-primary" style="font-weight: 700;">Get Sales Forecast & Investment Plan &darr;</a>
+                    <a href="https://t.me/Yaroslav797" target="_blank" class="btn btn-ghost" style="margin-left: 12px;">Discuss Collaboration &rarr;</a>
 
                 </div>
             </div>
@@ -1073,52 +1073,91 @@
         <div class="modal-window">
             <button class="modal-close" onclick="closeQuiz()">✕</button>
             <div class="modal-content-area" id="quizContainer">
-                <span class="section-label" style="margin-bottom: 24px;">Discovery Framework</span>
+                <span class="section-label" style="margin-bottom: 24px;">Sales Potential Calculation</span>
                 
-                <div class="quiz-step active" id="quiz-step-1">
-                    <h2 style="font-size: 2rem;">Phase 1: Scope & Territory</h2>
-                    <p style="color: var(--text-gray);">Define the basic parameters of the audit.</p>
+                <!-- Step 0: Business Model Selection -->
+                <div class="quiz-step active" id="quiz-step-0">
+                    <h2 style="font-size: 2rem;">Your Business Model</h2>
+                    <p style="color: var(--text-gray);">Select your model so I can prepare relevant forecasting metrics.</p>
                     <div style="margin-top: 32px;">
-                        <label class="quiz-label">Website URL</label>
-                        <input type="text" id="qWebsite" class="quiz-input" placeholder="https://domain.com" />
-                        
-                        <label class="quiz-label">Advertising Region(s)</label>
-                        <input type="text" id="qRegion" class="quiz-input" placeholder="e.g. US, UK, EU-wide" />
-                        
-                        <label class="quiz-label">Target KPIs (ROAS, CPA, Leads)</label>
-                        <input type="text" id="qKPIs" class="quiz-input" placeholder="e.g. 500% ROAS or Target CPA €15" />
+                        <div class="quiz-option" onclick="qSelect('model', 'ecommerce')">
+                            <span>E-commerce / Product Sales</span>
+                            <span>&rarr;</span>
+                        </div>
+                        <div class="quiz-option" onclick="qSelect('model', 'leadgen')">
+                            <span>Lead Gen / Services & B2B</span>
+                            <span>&rarr;</span>
+                        </div>
                     </div>
-                    <button class="btn btn-primary" style="width: 100%; border: none; margin-top: 16px;" onclick="qNext()">Next Phase &rarr;</button>
                 </div>
 
+                <!-- Step 1: E-commerce Fields -->
+                <div class="quiz-step" id="quiz-step-1-ecommerce">
+                    <h2 style="font-size: 1.8rem;">E-commerce Parameters</h2>
+                    <p style="color: var(--text-gray);">Data for calculating profitability (ROAS/POAS).</p>
+                    <div style="margin-top: 24px;">
+                        <label class="quiz-label">Website & Niche</label>
+                        <input type="text" id="qEcomSite" class="quiz-input" placeholder="myshop.com | Fashion" />
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            <div>
+                                <label class="quiz-label">Avg. Order Value ($)</label>
+                                <input type="number" id="qAOV" class="quiz-input" placeholder="100" />
+                            </div>
+                            <div>
+                                <label class="quiz-label">Margin (%)</label>
+                                <input type="number" id="qMargin" class="quiz-input" placeholder="30" />
+                            </div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            <div>
+                                <label class="quiz-label">Monthly Sales Target</label>
+                                <input type="text" id="qSalesPlan" class="quiz-input" placeholder="$50,000" />
+                            </div>
+                            <div>
+                                <label class="quiz-label">Max. Marketing %</label>
+                                <input type="number" id="qMaxMarketing" class="quiz-input" placeholder="15" />
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; border: none; margin-top: 8px;" onclick="qNext()">Next &rarr;</button>
+                </div>
+
+                <!-- Step 1: Lead Gen Fields -->
+                <div class="quiz-step" id="quiz-step-1-leadgen">
+                    <h2 style="font-size: 1.8rem;">Lead Gen Parameters</h2>
+                    <p style="color: var(--text-gray);">Data for calculating customer acquisition cost (CAC).</p>
+                    <div style="margin-top: 24px;">
+                        <label class="quiz-label">Website & Niche</label>
+                        <input type="text" id="qLeadSite" class="quiz-input" placeholder="services.com | Logistics" />
+                        
+                        <label class="quiz-label">Target leads per month</label>
+                        <input type="number" id="qLeadTarget" class="quiz-input" placeholder="50" />
+                        
+                        <label class="quiz-label">Lead qualification % (Lead to Client)</label>
+                        <input type="number" id="qLeadQual" class="quiz-input" placeholder="20" />
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; border: none; margin-top: 16px;" onclick="qNext()">Next &rarr;</button>
+                </div>
+
+                <!-- Step 2: Access -->
                 <div class="quiz-step" id="quiz-step-2">
-                    <h2 style="font-size: 2rem;">Phase 2: The Challenge</h2>
-                    <p style="color: var(--text-gray);">Detail the specific bottlenecks we are investigating.</p>
+                    <h2 style="font-size: 1.8rem;">Historical Data Access</h2>
+                    <p style="color: var(--text-gray);">Can you provide Read-Only access to Google Ads/GA4 for a more precise forecast?</p>
                     <div style="margin-top: 32px;">
-                        <label class="quiz-label">Main problems or wishes</label>
-                        <textarea id="qProblems" class="quiz-input" style="height: 80px; resize: none;" placeholder="What is breaking? What do you want to achieve?"></textarea>
-                        
-                        <label class="quiz-label">Main Competitors</label>
-                        <input type="text" id="qCompetitors" class="quiz-input" placeholder="Who are we fighting in the auction?" />
+                        <div class="quiz-option" onclick="qSelect('access', 'Yes, ready to provide access')">Yes, ready (most precise)</div>
+                        <div class="quiz-option" onclick="qSelect('access', 'Yes, but after NDA')">Yes, but after NDA</div>
+                        <div class="quiz-option" onclick="qSelect('access', 'Not ready yet')">Not now (market-based forecast)</div>
                     </div>
-                    <button class="btn btn-primary" style="width: 100%; border: none; margin-top: 16px;" onclick="qNext()">Next Phase &rarr;</button>
                 </div>
 
+                <!-- Step 3: Final -->
                 <div class="quiz-step" id="quiz-step-3">
-                    <h2 style="font-size: 2rem;">Phase 3: Data Access</h2>
-                    <p style="color: var(--text-gray);">Can you provide Read-Only access to Google Ads, Analytics, and Merchant Center?</p>
+                    <h2 style="font-size: 1.8rem;">Forecast Request Prepared</h2>
+                    <p style="color: var(--text-gray);">I will analyze your margins and market intent to build an investment model.</p>
                     <div style="margin-top: 32px;">
-                        <div class="quiz-option" onclick="qSelect('access', 'Yes, ready to provide access')">Yes, ready to provide access</div>
-                        <div class="quiz-option" onclick="qSelect('access', 'Yes, but need an NDA first')">Yes, but need an NDA first</div>
-                        <div class="quiz-option" onclick="qSelect('access', 'Hard to provide access right now')">Hard to provide access right now</div>
-                    </div>
-                </div>
-
-                <div class="quiz-step" id="quiz-step-4">
-                    <h2 style="font-size: 2rem;">Audit Framework Prepared</h2>
-                    <p style="color: var(--text-gray);">The necessary pre-flight details have been captured. Click below to securely transfer your data to my personal inbox.</p>
-                    <div style="margin-top: 32px;">
-                        <a id="quizMailtoBtn" href="#" class="btn btn-primary" style="display: block; text-align: center; width: 100%;">Transmit Data via Email</a>
+                        <a id="quizMailtoBtn" href="#" class="btn btn-primary" style="display: block; text-align: center; width: 100%;">Transmit Data to Iaroslav</a>
                     </div>
                 </div>
 
@@ -1160,15 +1199,15 @@
         }
 
         // Quiz Logic
-        let qState = { step: 1, access: '' };
+        let qState = { step: 0, model: '', access: '' };
         
         function startQuiz() {
-            qState = { step: 1, access: '' };
-            document.getElementById('qWebsite').value = '';
-            document.getElementById('qRegion').value = '';
-            document.getElementById('qKPIs').value = '';
-            document.getElementById('qProblems').value = '';
-            document.getElementById('qCompetitors').value = '';
+            qState = { step: 0, model: '', access: '' };
+            // Clear inputs
+            ['qEcomSite', 'qAOV', 'qMargin', 'qSalesPlan', 'qMaxMarketing', 'qLeadSite', 'qLeadTarget', 'qLeadQual'].forEach(id => {
+                const el = document.getElementById(id);
+                if(el) el.value = '';
+            });
             updateQuizUI();
             document.getElementById('quizModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1179,9 +1218,17 @@
         }
         function updateQuizUI() {
             document.querySelectorAll('.quiz-step').forEach(el => el.classList.remove('active'));
-            document.getElementById('quiz-step-' + qState.step).classList.add('active');
-            document.getElementById('quizProgressText').innerText = qState.step < 4 ? `Phase ${qState.step} of 3` : 'Ready for Transmission';
-            document.getElementById('qPrevBtn').style.display = qState.step > 1 && qState.step < 4 ? 'block' : 'none';
+            
+            let targetStepId = 'quiz-step-' + qState.step;
+            if (qState.step === 1) {
+                targetStepId = 'quiz-step-1-' + qState.model;
+            }
+            
+            const stepEl = document.getElementById(targetStepId);
+            if(stepEl) stepEl.classList.add('active');
+            
+            document.getElementById('quizProgressText').innerText = qState.step < 3 ? `Step ${qState.step + 1} of 3` : 'Ready for Transmission';
+            document.getElementById('qPrevBtn').style.display = qState.step > 0 && qState.step < 3 ? 'block' : 'none';
         }
         function qNext() {
             qState.step++;
@@ -1190,24 +1237,35 @@
         function qSelect(key, value) {
             qState[key] = value;
             qState.step++;
-            if(qState.step === 4) {
+            if(qState.step === 3) {
                compileEmail();
             }
             updateQuizUI();
         }
         function qPrev() {
-            if(qState.step > 1) { qState.step--; updateQuizUI(); }
+            if(qState.step > 0) { qState.step--; updateQuizUI(); }
         }
         function compileEmail() {            
-            let w = document.getElementById('qWebsite').value || 'N/A';
-            let r = document.getElementById('qRegion').value || 'N/A';
-            let k = document.getElementById('qKPIs').value || 'N/A';
-            let p = document.getElementById('qProblems').value || 'N/A';
-            let c = document.getElementById('qCompetitors').value || 'N/A';
+            let subject = "Request for Sales Forecast & Investment Plan";
+            let bodyText = `Hi Iaroslav,\n\nI would like to receive a sales forecast and media plan. Here is my business data:\n\n`;
             
-            let bodyText = `Hi Iaroslav,\n\nI would like to request a technical audit. Here is our data:\n\n-- SCOPE --\nWebsite: ${w}\nRegion: ${r}\nKPIs/Goals: ${k}\n\n-- CHALLENGE --\nMain Problems: ${p}\nCompetitors: ${c}\n\n-- LOGISTICS --\nData Access: ${qState.access}\n\nPlease review and let me know the estimated timeline for the audit.\n\nBest,`;
+            if (qState.model === 'ecommerce') {
+                bodyText += `-- MODEL: E-COMMERCE --\n`;
+                bodyText += `Site/Niche: ${document.getElementById('qEcomSite').value || 'N/A'}\n`;
+                bodyText += `Avg. Order Value: ${document.getElementById('qAOV').value || 'N/A'} $\n`;
+                bodyText += `Margin: ${document.getElementById('qMargin').value || 'N/A'} %\n`;
+                bodyText += `Sales Plan: ${document.getElementById('qSalesPlan').value || 'N/A'}\n`;
+                bodyText += `Max. Marketing %: ${document.getElementById('qMaxMarketing').value || 'N/A'} %\n`;
+            } else {
+                bodyText += `-- MODEL: LEAD GENERATION --\n`;
+                bodyText += `Site/Niche: ${document.getElementById('qLeadSite').value || 'N/A'}\n`;
+                bodyText += `Monthly Lead Target: ${document.getElementById('qLeadTarget').value || 'N/A'}\n`;
+                bodyText += `Qualification Rate: ${document.getElementById('qLeadQual').value || 'N/A'} %\n`;
+            }
             
-            document.getElementById('quizMailtoBtn').href = `mailto:yaroslav.zhakun@gmail.com?subject=Requesting Technical Audit&body=${encodeURIComponent(bodyText)}`;
+            bodyText += `\n-- LOGISTICS --\nData Access: ${qState.access}\n\nPlease calculate the media plan and estimated ROAS/CPA for my project.\n\nBest regards,`;
+            
+            document.getElementById('quizMailtoBtn').href = `mailto:yaroslav.zhakun@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
         }
     </script>
 
