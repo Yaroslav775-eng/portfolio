@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Strategic Audit: Relevance Digital S.A. | Comprehensive Analysis by Iaroslav Zhakun</title>
-    <meta name="description" content="A 11-page deep-dive marketing and CRO audit of Relevance Digital S.A. Competitive analysis, persuasion matrix, and strategic roadmap for the Greek market.">
+    <meta name="description" content="A 10-page deep-dive marketing and CRO audit of Relevance Digital S.A. Analyzing above-the-fold friction, USP fragmentation, and persuasion triggers in the Greek market.">
     <meta name="robots" content="index, follow">
     
     <!-- Fonts -->
@@ -41,39 +41,41 @@
 
         .verdict-box { background-color: #f9f9f9; padding: 48px; margin: 60px 0; border: 1px solid var(--border-thin); }
         .verdict-tag { font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--accent-nyt); display: block; margin-bottom: 16px; }
-        .verdict-text { font-family: var(--font-serif); font-size: 1.7rem; line-height: 1.4; color: var(--text-main); font-style: italic; }
+        .verdict-text { font-family: var(--font-serif); font-size: 1.8rem; line-height: 1.4; color: var(--text-main); font-style: italic; }
 
         .module-section { margin-bottom: 120px; }
         .module-num { font-family: var(--font-sans); font-size: 0.8rem; font-weight: 800; color: var(--accent-nyt); display: block; margin-bottom: 8px; }
-        .module-title { font-family: var(--font-serif); font-size: 2.25rem; border-bottom: 3px solid #000; padding-bottom: 12px; margin-bottom: 32px; letter-spacing: -0.01em; }
+        .module-title { font-family: var(--font-serif); font-size: 2.5rem; border-bottom: 3px solid #000; padding-bottom: 12px; margin-bottom: 32px; letter-spacing: -0.02em; }
         
         .nyt-table { width: 100%; border-collapse: collapse; margin: 32px 0; }
         .nyt-table tr { border-bottom: 1px solid var(--border-thin); }
         .nyt-table th, .nyt-table td { padding: 24px 0; text-align: left; vertical-align: top; }
         .nyt-table th { font-family: var(--font-sans); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; color: var(--text-muted); width: 25%; }
-        .nyt-table td { font-size: 1.1rem; padding-left: 32px; }
+        .nyt-table td { font-size: 1.15rem; padding-left: 32px; }
 
         .recommendation-list { list-style: none; padding: 0; margin: 40px 0; }
         .recommendation-item { display: flex; gap: 24px; margin-bottom: 40px; align-items: flex-start; }
         .recommendation-bullet { color: var(--accent-nyt); font-weight: 900; font-size: 1.5rem; line-height: 1; }
-        .recommendation-text strong { display: block; margin-bottom: 8px; font-family: var(--font-serif); font-size: 1.4rem; letter-spacing: -0.01em; }
+        .recommendation-text strong { display: block; margin-bottom: 8px; font-family: var(--font-serif); font-size: 1.5rem; letter-spacing: -0.01em; }
 
-        .quote-block { border-left: 4px solid var(--accent-nyt); padding-left: 32px; margin: 48px 0; font-style: italic; color: var(--text-muted); font-size: 1.2rem; }
+        .status-badge { display: inline-block; padding: 4px 12px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 2px; }
+        .status-present { background: #e8f5e9; color: #2e7d32; }
+        .status-partial { background: #fff3e0; color: #ef6c00; }
+        .status-absent { background: #ffebee; color: #c62828; }
 
-        .strategic-outlook { background-color: #121212; color: #fff; padding: 80px; margin-top: 120px; position: relative; }
-        .strategic-outlook h2 { font-family: var(--font-serif); font-size: 2.75rem; margin-top: 0; color: #fff; letter-spacing: -0.02em; }
-        .strategic-outlook p { color: rgba(255,255,255,0.8); font-size: 1.25rem; }
-        .strategic-outlook::after { content: ""; position: absolute; top: 0; left: 80px; width: 40px; height: 4px; background: var(--accent-nyt); }
+        .transformation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin: 40px 0; }
+        .transformation-card { padding: 24px; border: 1px solid var(--border-thin); background: #fff; }
+        .transformation-label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; display: block; }
+        .transformation-text { font-family: var(--font-serif); font-size: 1.25rem; line-height: 1.4; }
 
-        .feature-benefit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 32px; }
-        .fb-card { padding: 24px; border: 1px solid var(--border-thin); }
-        .fb-card.feature { border-left: 4px solid #888; }
-        .fb-card.benefit { border-left: 4px solid var(--accent-nyt); background: #fff9f9; }
-        .fb-label { text-transform: uppercase; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; margin-bottom: 12px; display: block; }
+        .strategic-weapon { background-color: #121212; color: #fff; padding: 80px; margin-top: 140px; position: relative; }
+        .strategic-weapon h2 { font-family: var(--font-serif); font-size: 3rem; margin-top: 0; color: #fff; letter-spacing: -0.02em; }
+        .strategic-weapon p { color: rgba(255,255,255,0.8); font-size: 1.35rem; font-family: var(--font-serif); }
+        .strategic-weapon::after { content: ""; position: absolute; top: 0; left: 80px; width: 40px; height: 4px; background: var(--accent-nyt); }
 
         @media (max-width: 768px) {
             .audit-title { font-size: 2.75rem; }
-            .feature-benefit-grid { grid-template-columns: 1fr; }
+            .transformation-grid { grid-template-columns: 1fr; }
             .nyt-table th { width: 100%; display: block; padding-bottom: 8px; }
             .nyt-table td { display: block; padding-left: 0; }
         }
@@ -84,169 +86,194 @@
     <nav class="nyt-nav">
         <div class="container">
             <a href="../index.html" class="back-link">← Return to Portfolio</a>
-            <span style="font-family: var(--font-serif); font-weight: 900; font-size: 1.3rem; letter-spacing: -0.03em;">Strategy & Analysis</span>
+            <span style="font-family: var(--font-serif); font-weight: 900; font-size: 1.4rem; letter-spacing: -0.04em;">International Audit Report</span>
         </div>
     </nav>
 
     <div class="editorial-container">
         <header class="audit-header">
-            <span class="audit-label">Special Investigation / Enterprise Agency Audit</span>
-            <h1 class="audit-title">The Anatomy of a Fragmented USP: Examining Relevance Digital S.A.</h1>
+            <span class="audit-label">Special Investigation / Greek Digital Market</span>
+            <h1 class="audit-title">The Fragmented Hero: A 10-Page Audit of Relevance Digital S.A.</h1>
             <div class="audit-meta">
                 <span>By Iaroslav Zhakun</span>
-                <span>April 16, 2026</span>
-                <span>Athens, Greece Market</span>
+                <span>April 2026</span>
+                <span>Athens &middot; Greece</span>
             </div>
         </header>
 
         <div class="verdict-box">
-            <span class="verdict-tag">Executive Summary</span>
-            <p class="verdict-text">"Relevance Digital S.A. positions itself as a Google Premier Partner with 180+ experts, yet its digital storefront fails the '5-second test.' The site suffers from 'Corporate Egoism'—writing 75% about themselves rather than the client's growth, leading to a critical detachment from high-value enterprise leads."</p>
+            <span class="verdict-tag">Executive Verdict</span>
+            <p class="verdict-text">"Relevance Digital S.A. possesses the technical credentials to dominate the EMEA region, yet its digital storefront suffers from 'Corporate Egoism'. By failing the 5-second test and burying its unique differentiators, the agency creates significant friction for enterprise leads, leaving €XX million in potential pipeline on the table."</p>
         </div>
 
-        <!-- MODULE 1: ABOVE THE FOLD -->
         <section class="module-section">
             <span class="module-num">MODULE 01</span>
-            <h2 class="module-title">The Hero Problem</h2>
-            <p>The above-the-fold section is the digital reception of an agency. Currently, it fails to answer two key questions: <em>"What is this?"</em> and <em>"Why do I need it?"</em></p>
+            <h2 class="module-title">The Above-the-Fold Failure</h2>
+            <p>The above-the-fold section fails the '5-second test'. A visitor cannot determine within 5 seconds what the company specifically does or what problem it solves.</p>
             
             <table class="nyt-table">
                 <tr>
                     <th>Headline Analysis</th>
                     <td>&ldquo;We help businesses stay Relevant in an ever evolving digital world.&rdquo;<br>
-                    <small style="color:var(--accent-nyt)">Verdict: Generic phrase at a Wix-template level.</small></td>
+                    <small style="color:var(--accent-nyt)">Verdict: Generic phrase at the level of a Wix template.</small></td>
                 </tr>
                 <tr>
-                    <th>Visual Hierarchy</th>
-                    <td>Split-panel photo of an office reception. Message: &ldquo;We have a nice office.&rdquo;<br>
-                    Required Message: &ldquo;We make you money.&rdquo;</td>
+                    <th>Informational Value</th>
+                    <td>Zero. 'Stay Relevant' is a pun on the brand name, but it delivers no value proposition for an enterprise client with a &euro;50K/month budget.</td>
                 </tr>
                 <tr>
-                    <th>Friction Point</th>
-                    <td>Single CTA 'Contact Us' is premature. There is no intermediate value exchange (Case studies, results, audits).</td>
+                    <th>Visual Conflict</th>
+                    <td>Background image shows an office reception, not results. This says &ldquo;we have a nice office&rdquo;, not &ldquo;we make you money.&rdquo;</td>
                 </tr>
             </table>
+
+            <div class="recommendation-list">
+                <div class="recommendation-item">
+                    <span class="recommendation-bullet">&mdash;</span>
+                    <div class="recommendation-text">
+                        <strong>Structural Redesign</strong>
+                        Replace the headline with: 'We drive measurable growth for Greece's top brands through data-led performance marketing.' 
+                    </div>
+                </div>
+                <div class="recommendation-item">
+                    <span class="recommendation-bullet">&mdash;</span>
+                    <div class="recommendation-text">
+                        <strong>Dual CTA Implementation</strong>
+                        Replace single 'Contact Us' with: Primary &mdash; 'See Our Results' (Social Proof), Secondary &mdash; 'Get a Free Audit' (Low commitment).
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- MODULE 2: USP CONSISTENCY -->
         <section class="module-section">
             <span class="module-num">MODULE 02</span>
-            <h2 class="module-title">The Lost Differentiators</h2>
-            <p>Relevance is the only agency in Greece certified across all 6 Google Marketing Platform tools. This unique fact is buried in a July 2025 blog post.</p>
+            <h2 class="module-title">USP Fragmentation</h2>
+            <p>Relevance is the <em>only</em> agency in Greece certified across all 6 Google Marketing Platform tools. This world-class differentiator is currently invisible to the landing page visitor.</p>
             
             <table class="nyt-table">
                 <tr>
                     <th>USP Element</th>
-                    <th>Current Status</th>
+                    <th>Current Visibility</th>
                     <th>Strategic Risk</th>
                 </tr>
                 <tr>
                     <td>Top 4% EMEA Ranking</td>
                     <td>Badge in footer</td>
-                    <td>80% of users never scroll deep enough to see it.</td>
+                    <td>80% of users never see it. High-intent traffic bounces before reaching the proof.</td>
                 </tr>
                 <tr>
                     <td>6/6 GMP Certification</td>
-                    <td>Blog only</td>
-                    <td>The strongest technical advantage in Greece is invisible on the landing page.</td>
+                    <td>Blog only (July 2025)</td>
+                    <td>Strongest technical advantage is buried in chronos, not logic.</td>
                 </tr>
                 <tr>
                     <td>180+ Experts</td>
-                    <td>Generic stat</td>
-                    <td>Fails to explain HOW these experts affect the client's ROI.</td>
+                    <td>Stats below hero</td>
+                    <td>Factual number with no ROI context. Feels like a 'factory' stat.</td>
                 </tr>
             </table>
         </section>
 
-        <!-- MODULE 4: FEATURES VS BENEFITS -->
         <section class="module-section">
-            <span class="module-num">MODULE 04</span>
-            <h2 class="module-title">Semantic Disconnect</h2>
-            <p>The website copy is 75% focused on 'features' and only 25% on 'benefits'. It reads like a resume, not a sales proposition for a CMΟ.</p>
-
-            <div class="feature-benefit-grid">
-                <div class="fb-card feature">
-                    <span class="fb-label">Current (Feature)</span>
-                    &ldquo;Digital Transformation for Business Growth &mdash; Growth Acceleration Strategies.&rdquo;
-                </div>
-                <div class="fb-card benefit">
-                    <span class="fb-label">Recommended (Benefit)</span>
-                    &ldquo;We grow your revenue through performance channels &mdash; +52% ROAS for our clients in year one.&rdquo;
-                </div>
-            </div>
-
-            <div class="quote-block">
-                &ldquo;Corporate Egoism: Every block starts with 'We', 'Our', or 'Relevance'. Enterprise clients want to hear 'You', 'Your business', 'Your growth'.&rdquo;
-            </div>
+            <span class="module-num">MODULE 03</span>
+            <h2 class="module-title">The Trust Gap: Facelessness</h2>
+            <p>In Greek B2B culture, trust is personal. Relevance positions itself as an anonymous mass of 180 experts, which is a red flag for enterprise clients.</p>
+            
+            <table class="nyt-table">
+                <tr>
+                    <th>Team Faces</th>
+                    <td><span class="status-badge status-absent">Absent</span></td>
+                    <td>No CEO, no Head of Performance. No person to be accountable for the &euro;50K/mo spend.</td>
+                </tr>
+                <tr>
+                    <th>Testimonials</th>
+                    <td><span class="status-badge status-partial">Partial</span></td>
+                    <td>Text-only. No photos, no videos, no LinkedIn profiles. Perceived as potentially fabricated.</td>
+                </tr>
+                <tr>
+                    <th>External Proof</th>
+                    <td><span class="status-badge status-partial">Partial</span></td>
+                    <td>Logos like Novibet are strong, but the actual case studies lack consistent numbers (Value, CPA).</td>
+                </tr>
+            </table>
         </section>
 
-        <!-- MODULE 5: PERSUASION MATRIX -->
+        <section class="module-section">
+            <span class="module-num">MODULE 04</span>
+            <h2 class="module-title">Semantic Focus Analysis</h2>
+            <p>Copy is 75% focused on 'features' (the agency) and only 25% on 'benefits' (the client). This is a classic case of <strong>Corporate Egoism</strong>.</p>
+
+            <div class="transformation-grid">
+                <div class="transformation-card">
+                    <span class="transformation-label">Current (Feature)</span>
+                    <p class="transformation-text">&ldquo;Digital Transformation for Business Growth &mdash; Growth Acceleration Strategies&rdquo;</p>
+                </div>
+                <div class="transformation-card">
+                    <span class="transformation-label">Recommended (Benefit)</span>
+                    <p class="transformation-text" style="color:var(--accent-nyt);">&ldquo;We grow your revenue through performance channels &mdash; on average +52% ROAS in year one.&rdquo;</p>
+                </div>
+            </div>
+
+            <p style="font-style: italic; color: var(--text-muted);">"The enterprise client wants to hear 'You', 'Your business', 'Your growth'. Relevance writes almost exclusively about 'We', 'Our', 'Relevance'."</p>
+        </section>
+
         <section class="module-section">
             <span class="module-num">MODULE 05</span>
             <h2 class="module-title">The Persuasion Matrix</h2>
-            <p>Analysis based on Cialdini's principles reveals that only 1 out of 6 triggers (Social Proof) is used, and it is executed weakly.</p>
+            <p>Of the 6 key trigger levers (Cialdini), only one is used, and it is executed weakly. The site leaks 80-90% of traffic because it has no engagement ladder.</p>
             
+            <table class="nyt-table">
+                <tr>
+                    <th>Reciprocity</th>
+                    <td><span class="status-badge status-absent">Absent</span></td>
+                    <td>No free guides, no audits, no calculators. Visitors leave without receiving any value.</td>
+                </tr>
+                <tr>
+                    <th>Scarcity</th>
+                    <td><span class="status-badge status-absent">Absent</span></td>
+                    <td>Offer feels generic. Recommendation: &ldquo;Onboarding only 3 new enterprise clients per quarter.&rdquo;</td>
+                </tr>
+                <tr>
+                    <th>Authority</th>
+                    <td><span class="status-badge status-partial">Partial</span></td>
+                    <td>Premier Partner badge is hidden in the footer. Move it to the Hero section immediately.</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="module-section">
+            <span class="module-num">MODULE 06</span>
+            <h2 class="module-title">Friction Audit</h2>
+            <p>There is no intermediate step. It is 'All or Nothing' &mdash; either you contact them for a high-value contract, or you leave. There are no micro-conversions.</p>
+
             <div class="recommendation-list">
                 <div class="recommendation-item">
                     <span class="recommendation-bullet">&mdash;</span>
                     <div class="recommendation-text">
-                        <strong>Reciprocity (Absent)</strong>
-                        No free resources, guides, or calculators. Visitors leave without any value exchange. 
+                        <strong>Lead Magnet Deficit</strong>
+                        Implementing a 'Free Express Google Ads Audit' in exchange for an email would increase lead capture by 3-5x.
                     </div>
                 </div>
                 <div class="recommendation-item">
                     <span class="recommendation-bullet">&mdash;</span>
                     <div class="recommendation-text">
-                        <strong>Scarcity (Absent)</strong>
-                        The offer feels like a 'factory line'. Implementing: &ldquo;Onboarding only 3 new enterprise clients per quarter&rdquo; would shift perception from factory to boutique partner.
-                    </div>
-                </div>
-                <div class="recommendation-item">
-                    <span class="recommendation-bullet">&mdash;</span>
-                    <div class="recommendation-text">
-                        <strong>Liking/Affinity (Weak)</strong>
-                        180 anonymous experts. Greeks decide based on personal trust. Show the CEO (Dimitris), show the Performance Leads.
+                        <strong>Cookie Friction</strong>
+                        The cookie popup covers the hero headline on first visit. A critical UX barrier before any interaction.
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- MODULE 6: FRICTION AUDIT -->
-        <section class="module-section">
-            <h2 class="module-title">06. Friction Map</h2>
-            <p>From interest to lead, there are 4 critical friction points that bleed conversion.</p>
-            <table class="nyt-table">
-                <tr>
-                    <th>Micro-conversion gap</th>
-                    <td>Everything is 'All or Nothing'. No intermediate steps like 'Download PDF' or 'Get Checklist'.</td>
-                </tr>
-                <tr>
-                    <th>Trust Signal Decay</th>
-                    <td>Testimonials are text-only. No photos, no video, no LinkedIn profiles. In 2026, text-only reviews are perceived as 'potentially fabricated'.</td>
-                </tr>
-                <tr>
-                    <th>Contact Form Friction</th>
-                    <td>No promise of response SLA. A generic 'We are here' message creates uncertainty.</td>
-                </tr>
-            </table>
-        </section>
-
-        <!-- MODULE 9: STRATEGIC IDEA -->
-        <div class="strategic-outlook">
-            <span class="module-num" style="color:#C00000">STRATEGIC WEAPON</span>
-            <h2>The 'Greek Digital Benchmark' Initiative</h2>
-            <p>Relevance holds data from 300+ clients. No competitor (Globe One, Wizard) can match this data volume. By launching a quarterly <strong>&ldquo;Greek Digital Benchmark Report&rdquo;</strong>, Relevance stops being a vendor and becomes the <em>Source of Truth</em> for the entire Greek market.</p>
-            <div style="margin-top: 24px; font-size: 1rem; color: rgba(255,255,255,0.6);">
-                Impact: Unstoppable authority, effortless backlink generation, and high-intent enterprise lead capture.
-            </div>
+        <div class="strategic-weapon">
+            <span class="audit-label" style="color: var(--accent-nyt);">STRATEGIC WEAPON</span>
+            <h2>The 'Greek Digital Benchmark'</h2>
+            <p>Relevance holds data from 300+ clients. No competitor can match this volume. By launching a quarterly "Greek Digital Benchmark Report," Relevance can stop being a vendor and become the ultimate <strong>Source of Truth</strong> for the entire Greek market.</p>
         </div>
 
-        <section style="margin-top: 100px; text-align: center; border-top: 1px solid var(--border-thin); padding-top: 60px;">
-            <h3 style="font-family: var(--font-serif); font-size: 2rem;">Audit conducted by Iaroslav Zhakun</h3>
-            <p style="color: var(--text-muted); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                This audit utilizes the Cialdini Persuasion Matrix, Fogg Behavior Model, and Nielsen Norman Group UX principles to identify growth opportunities for enterprise-level digital agencies.
-            </p>
-            <a href="https://t.me/Yaroslav797" target="_blank" class="back-link" style="font-size: 1.1rem; color: var(--accent-nyt); border-bottom: 2px solid var(--accent-nyt); padding-bottom: 4px;">Get Strategic Analysis for Your Business &rarr;</a>
+        <section style="margin-top: 100px; text-align: center; border-top: 4px solid #000; padding-top: 60px;">
+            <h3 style="font-family: var(--font-serif); font-size: 2rem;">Audit by Iaroslav Zhakun</h3>
+            <p style="color: var(--text-muted); margin-bottom: 40px;">Specialist in Google Ads Architecture &amp; AI-Driven Performance.</p>
+            <a href="https://t.me/Yaroslav797" target="_blank" class="back-link" style="font-size: 1.1rem; color: var(--accent-nyt); border-bottom: 2px solid var(--accent-nyt);">Consult with the Author &rarr;</a>
         </section>
     </div>
 
