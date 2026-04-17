@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Audit: Relevance Digital S.A. | Analysis by Iaroslav Zhakun</title>
+    <meta name="description" content="A comprehensive marketing and CRO audit of a leading Greek digital agency. Identifying strategic gaps in positioning, trust, and conversion architecture.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../index.css">
+
+    <style>
+        :root {
+            --bg-paper: #ffffff;
+            --text-main: #121212;
+            --text-muted: #555555;
+            --accent-nyt: #C00000;
+            --border-thin: #e2e2e2;
+            --font-serif: 'Frank Ruhl Libre', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+        
+        body { background-color: var(--bg-paper); color: var(--text-main); line-height: 1.8; margin: 0; padding: 0; font-family: var(--font-sans); }
+        
+        .nyt-nav { padding: 32px 0; border-bottom: 1px solid var(--border-thin); background: #fff; position: sticky; top: 0; z-index: 100; }
+        .nyt-nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 850px; margin: 0 auto; padding: 0 24px; }
+        .back-link { font-family: var(--font-sans); font-weight: 600; color: var(--text-main); text-decoration: none; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; border-bottom: 1px solid transparent; transition: all 0.2s; }
+        .back-link:hover { border-bottom-color: var(--accent-nyt); color: var(--accent-nyt); }
+        
+        .editorial-container { max-width: 850px; margin: 80px auto 140px; padding: 0 24px; }
+        
+        .audit-header { margin-bottom: 80px; text-align: center; }
+        .audit-label { font-family: var(--font-sans); color: var(--accent-nyt); font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.75rem; display: block; margin-bottom: 24px; }
+        .audit-title { font-family: var(--font-serif); font-size: 3.5rem; line-height: 1.1; font-weight: 900; margin: 0 0 32px 0; letter-spacing: -0.02em; }
+        .audit-meta { font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border-thin); border-bottom: 1px solid var(--border-thin); padding: 16px 0; display: flex; justify-content: center; gap: 40px; margin-top: 40px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        .verdict-box { background-color: #f9f9f9; padding: 48px; margin: 60px 0; border: 1px solid var(--border-thin); }
+        .verdict-tag { font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--accent-nyt); display: block; margin-bottom: 16px; }
+        .verdict-text { font-family: var(--font-serif); font-size: 1.6rem; line-height: 1.4; color: var(--text-main); font-style: italic; }
+
+        .module-section { margin-bottom: 100px; }
+        .module-title { font-family: var(--font-serif); font-size: 2rem; border-bottom: 2px solid #000; padding-bottom: 12px; margin-bottom: 32px; }
+        
+        .nyt-table { width: 100%; border-collapse: collapse; margin: 32px 0; }
+        .nyt-table tr { border-bottom: 1px solid var(--border-thin); }
+        .nyt-table th, .nyt-table td { padding: 20px 0; text-align: left; vertical-align: top; }
+        .nyt-table th { font-family: var(--font-sans); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; color: var(--text-muted); width: 30%; }
+        .nyt-table td { font-size: 1.05rem; padding-left: 24px; }
+
+        .recommendation-list { list-style: none; padding: 0; margin: 40px 0; }
+        .recommendation-item { display: flex; gap: 20px; margin-bottom: 32px; align-items: flex-start; }
+        .recommendation-bullet { color: var(--accent-nyt); font-weight: 900; font-size: 1.2rem; }
+        .recommendation-text strong { display: block; margin-bottom: 4px; font-family: var(--font-serif); font-size: 1.2rem; }
+
+        .strategic-outlook { background-color: #121212; color: #fff; padding: 60px; margin-top: 100px; }
+        .strategic-outlook h2 { font-family: var(--font-serif); font-size: 2.25rem; margin-top: 0; color: #fff; }
+        .strategic-outlook p { color: rgba(255,255,255,0.8); font-size: 1.15rem; }
+
+        @media (max-width: 768px) {
+            .audit-title { font-size: 2.5rem; }
+            .verdict-box { padding: 32px; }
+            .verdict-text { font-size: 1.3rem; }
+            .nyt-table th { width: 100%; display: block; padding-bottom: 8px; }
+            .nyt-table td { display: block; padding-left: 0; padding-top: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nyt-nav">
+        <div class="container">
+            <a href="../index.html" class="back-link">← Return to Portfolio</a>
+            <span style="font-family: var(--font-serif); font-weight: 900; font-size: 1.2rem; letter-spacing: -0.02em;">Strategy Reports</span>
+        </div>
+    </nav>
+
+    <div class="editorial-container">
+        <header class="audit-header">
+            <span class="audit-label">Marketing Strategy Audit</span>
+            <h1 class="audit-title">The Relevance Barrier: Why even Google Premier Partners fail the 5-second test.</h1>
+            <div class="audit-meta">
+                <span>By Iaroslav Zhakun</span>
+                <span>April 2026</span>
+                <span>Athens, Greece Market</span>
+            </div>
+        </header>
+
+        <div class="verdict-box">
+            <span class="verdict-tag">The Expert Verdict</span>
+            <p class="verdict-text">"Despite holding top-tier certifications, the positioning suffers from 'corporate egoism.' By focusing on their own brand name rather than client outcomes, the agency creates a friction point that leaks high-value enterprise leads."</p>
+        </div>
+
+        <section class="module-section">
+            <h2 class="module-title">01. Above the Fold Failure</h2>
+            <p>A visitor cannot determine within 5 seconds specifically what the company does or what problem it solves. The headline focuses on a brand-name pun rather than a value proposition.</p>
+            
+            <table class="nyt-table">
+                <tr>
+                    <th>Current Headline</th>
+                    <td>&ldquo;We help businesses stay Relevant in an ever evolving digital world.&rdquo;</td>
+                </tr>
+                <tr>
+                    <th>Audit Finding</th>
+                    <td>Generic phrasing. No specificity for enterprise clients with &euro;50k+ monthly budgets. Zero informational value for the CFO/CMO level.</td>
+                </tr>
+                <tr>
+                    <th>The Solution</th>
+                    <td>Transition to data-led performance messaging: &ldquo;We drive measurable growth for Greece's top brands through data-led performance marketing.&rdquo;</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="module-section">
+            <h2 class="module-title">02. The Visibility Paradox</h2>
+            <p>Significant differentiators, like being in the top 4% of Google Premier Partners in EMEA, are buried in the footer or blog. Strategic advantages are treated as footnotes rather than anchors.</p>
+            
+            <div class="recommendation-list">
+                <div class="recommendation-item">
+                    <span class="recommendation-bullet">&mdash;</span>
+                    <div class="recommendation-text">
+                        <strong>Surface the Premier Ranking</strong>
+                        Move the "Top 4% EMEA" badge to the Hero section. In the Greek B2B market, this authority is the primary filter for enterprise selection.
+                    </div>
+                </div>
+                <div class="recommendation-item">
+                    <span class="recommendation-bullet">&mdash;</span>
+                    <div class="recommendation-text">
+                        <strong>Quantify the GMP Advantage</strong>
+                        Certification across all 6 Google Marketing Platform tools is unique for Greece. This deserves a dedicated visual block, not a blog post from 2025.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="module-section">
+            <h2 class="module-title">03. Trust & Personification</h2>
+            <p>In Mediterranean B2B culture, trust is personal. Relevance positions itself as an "anonymous mass" of 180 experts, failing to showcase the leadership team behind the results.</p>
+            
+            <table class="nyt-table">
+                <tr>
+                    <th>Trust Gap</th>
+                    <td>Absence of face-to-face credibility. CEO, Head of Performance, and Account Directors are invisible.</td>
+                </tr>
+                <tr>
+                    <th>Recommendation</th>
+                    <td>Humanize the expertise. Replace generic office photos with team profiles and specific sector leads (e.g., "Our Head of Retail Performance").</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="module-section">
+            <h2 class="module-title">04. Persuasion Architecture</h2>
+            <p>The site ignores the principle of Reciprocity. There are no lead magnets (guides, calculators, audits). Visitors are faced with an 'All or Nothing' model: Contact us or leave.</p>
+            
+            <div class="recommendation-list">
+                <div class="recommendation-item">
+                    <span class="recommendation-bullet">&mdash;</span>
+                    <div class="recommendation-text">
+                        <strong>Micro-Conversion Implementation</strong>
+                        Introduce low-friction CTAs: "Download Retail Benchmark Report" or "Get an Express Ad Audit."
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="strategic-outlook">
+            <h2>The Strategic Weapon</h2>
+            <p>The agency possesses a non-replicable asset: aggregated data from 300+ clients in Greece. By creating a <strong>&ldquo;Greek Digital Benchmark Report,&rdquo;</strong> Relevance can transition from a service provider to the market's "Source of Truth," capturing high-intent enterprise leads months before they enter the RFP stage.</p>
+        </div>
+
+        <section style="margin-top: 80px; text-align: center;">
+            <h3 style="font-family: var(--font-serif); font-size: 1.8rem;">Need a strategic review of your marketing architecture?</h3>
+            <p style="color: var(--text-muted); margin-bottom: 32px;">Let&rsquo;s find the friction points in your funnel.</p>
+            <a href="https://t.me/Yaroslav797" target="_blank" class="back-link" style="font-size: 1rem; color: var(--accent-nyt); border-bottom: 2px solid var(--accent-nyt);">Consult with Iaroslav &rarr;</a>
+        </section>
+    </div>
+
+</body>
+</html>
