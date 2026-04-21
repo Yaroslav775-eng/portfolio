@@ -1212,15 +1212,15 @@
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px;">
                             <div class="quiz-input-group" style="margin-bottom: 0;">
                                 <label class="quiz-label">Ніша / Продукт</label>
-                                <input type="text" id="calcNiche" class="quiz-input" placeholder="Ремонт дахів" oninput="runMagicCalc()" />
+                                <input type="text" id="calcNiche" class="quiz-input" placeholder="Напр.: Послуги / SaaS / Товар" oninput="runMagicCalc()" />
                             </div>
                             <div class="quiz-input-group" style="margin-bottom: 0;">
                                 <label class="quiz-label">Регіон реклами</label>
-                                <input type="text" id="calcRegion" class="quiz-input" placeholder="Лондон" oninput="runMagicCalc()" />
+                                <input type="text" id="calcRegion" class="quiz-input" placeholder="Напр.: Україна / Польща" oninput="runMagicCalc()" />
                             </div>
                             <div class="quiz-input-group" style="grid-column: span 2; margin-bottom: 0;">
                                 <label class="quiz-label">Основні конкуренти</label>
-                                <input type="text" id="calcCompetitors" class="quiz-input" placeholder="Вкажіть, кого хочете обійти" oninput="runMagicCalc()" />
+                                <input type="text" id="calcCompetitors" class="quiz-input" placeholder="Ваші основні конкуренти на ринку" oninput="runMagicCalc()" />
                             </div>
                         </div>
 
@@ -1373,6 +1373,7 @@
                 btnEc.style.boxShadow = 'none';
 
                 lblTarget.innerText = 'Бажана кількість звернень (лідів) на місяць';
+                document.getElementById('calcTarget').placeholder = 'Наприклад: 50';
                 lblAOV.innerText = 'Середній чек (чи LTV) з одного клієнта ($)';
                 grpMargin.style.display = 'none';
                 divOutLeads.style.display = 'block';
@@ -1386,7 +1387,8 @@
                 btnLg.style.color = 'var(--text-gray)';
                 btnLg.style.boxShadow = 'none';
 
-                lblTarget.innerText = 'Бажана виручка на місяць ($)';
+                lblTarget.innerText = 'Бажана місячна виручка ($)';
+                document.getElementById('calcTarget').placeholder = 'Наприклад: 50000';
                 lblAOV.innerText = 'Середній кошик/чек ($)';
                 grpMargin.style.display = 'block';
                 divOutLeads.style.display = 'none';

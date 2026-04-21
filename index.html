@@ -1080,7 +1080,7 @@
                     <div style="padding: 40px; background: #fff;">
                         <span class="section-label" style="margin-bottom: 24px;">Strategic Sales Assessment</span>
                         <h2 style="font-size: 1.8rem; margin-bottom: 8px;">Enter Basic Metrics</h2>
-                        <p style="color: var(--text-gray); margin-bottom: 32px; font-size: 0.95rem;">Fill out these 3 fields to instantly reverse-engineer your required marketing funnel.</p>
+                        <p style="color: var(--text-gray); margin-bottom: 32px; font-size: 0.95rem;">Fill out these fields to instantly reverse-engineer your required marketing funnel.</p>
 
                         <!-- Toggle Business Model -->
                         <div style="display: flex; gap: 8px; margin-bottom: 24px; background: #f0f0f0; padding: 4px; border-radius: 6px;">
@@ -1092,11 +1092,11 @@
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px;">
                             <div class="quiz-input-group" style="margin-bottom: 0;">
                                 <label class="quiz-label">Niche / Product</label>
-                                <input type="text" id="calcNiche" class="quiz-input" placeholder="e.g. Roof Repair" oninput="runMagicCalc()" />
+                                <input type="text" id="calcNiche" class="quiz-input" placeholder="e.g. B2B SaaS / Services" oninput="runMagicCalc()" />
                             </div>
                             <div class="quiz-input-group" style="margin-bottom: 0;">
                                 <label class="quiz-label">Target Region</label>
-                                <input type="text" id="calcRegion" class="quiz-input" placeholder="e.g. London" oninput="runMagicCalc()" />
+                                <input type="text" id="calcRegion" class="quiz-input" placeholder="e.g. USA / Global" oninput="runMagicCalc()" />
                             </div>
                             <div class="quiz-input-group" style="grid-column: span 2; margin-bottom: 0;">
                                 <label class="quiz-label">Main Competitors</label>
@@ -1253,6 +1253,7 @@
                 btnEc.style.boxShadow = 'none';
 
                 lblTarget.innerText = 'Desired number of inquiries (leads) per month';
+                document.getElementById('calcTarget').placeholder = 'Example: 50';
                 lblAOV.innerText = 'Average Check (or LTV) per client ($)';
                 grpMargin.style.display = 'none';
                 divOutLeads.style.display = 'block';
@@ -1267,6 +1268,7 @@
                 btnLg.style.boxShadow = 'none';
 
                 lblTarget.innerText = 'Desired monthly revenue ($)';
+                document.getElementById('calcTarget').placeholder = 'Example: 50000';
                 lblAOV.innerText = 'Average Order Value ($)';
                 grpMargin.style.display = 'block';
                 divOutLeads.style.display = 'none';
