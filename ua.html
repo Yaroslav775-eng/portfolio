@@ -1367,7 +1367,7 @@
                 btnLg.style.color = 'var(--text-gray)';
                 btnLg.style.boxShadow = 'none';
 
-                lblTarget.innerText = 'Бажана кількість продажів (замовлень) на місяць';
+                lblTarget.innerText = 'Бажана виручка на місяць ($)';
                 lblAOV.innerText = 'Середній кошик/чек ($)';
                 grpMargin.style.display = 'block';
                 divOutLeads.style.display = 'none';
@@ -1404,7 +1404,7 @@
 
             if (calcModel === 'leadgen') {
                 // Top-down reverse math for Lead Gen
-                sales = target;
+                sales = target; // target means number of deals
                 leads = Math.ceil(sales / leadToClientCR);
                 clicks = Math.ceil(leads / siteToLeadCR);
                 budget = clicks * avgCPC;
@@ -1415,11 +1415,12 @@
                 document.getElementById('outLeads').innerText = '~' + leads.toLocaleString();
             } else {
                 // Top-down reverse math for E-com
-                sales = target;
+                let targetRevenue = target; // user inputs desired revenue
+                sales = Math.ceil(targetRevenue / aov); // calculate required orders
                 clicks = Math.ceil(sales / ecomSiteCR);
                 avgCPC = 0.80; // slightly cheaper for shopping ads
                 budget = clicks * avgCPC;
-                rev = sales * aov;
+                rev = targetRevenue;
                 cpa = budget / sales;
                 roas = (rev / budget) * 100;
             }
@@ -1439,7 +1440,11 @@
             let bodyText = `Вітаю, Ярославе,\n\nЯ скористався калькулятором на сайті. Мій попередній розрахунок:\n\n`;
             
             bodyText += `-- МОДЕЛЬ: ${calcModel.toUpperCase()} --\n`;
-            bodyText += `Ціль продажів/міс: ${target}\n`;
+            if (calcModel === 'leadgen') {
+                bodyText += `Ціль угод/міс: ${target}\n`;
+            } else {
+                bodyText += `Ціль по виручці/міс: $${target}\n`;
+            }
             bodyText += `Середній чек: $${aov}\n`;
             bodyText += `Поточна конверсія: ${isNaN(cr) ? 'Не вказана (використано бенчмарк)' : cr+'%'}\n`;
             

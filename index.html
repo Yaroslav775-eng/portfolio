@@ -1247,7 +1247,7 @@
                 btnLg.style.color = 'var(--text-gray)';
                 btnLg.style.boxShadow = 'none';
 
-                lblTarget.innerText = 'Desired sales volume (orders) per month';
+                lblTarget.innerText = 'Desired monthly revenue ($)';
                 lblAOV.innerText = 'Average Order Value ($)';
                 grpMargin.style.display = 'block';
                 divOutLeads.style.display = 'none';
@@ -1295,11 +1295,12 @@
                 document.getElementById('outLeads').innerText = '~' + leads.toLocaleString();
             } else {
                 // Top-down reverse math for E-com
-                sales = target;
+                let targetRevenue = target; // user inputs desired revenue
+                sales = Math.ceil(targetRevenue / aov); // calculate required orders
                 clicks = Math.ceil(sales / ecomSiteCR);
                 avgCPC = 0.80; // slightly cheaper generic shopping ads
                 budget = clicks * avgCPC;
-                rev = sales * aov;
+                rev = targetRevenue;
                 cpa = budget / sales;
                 roas = (rev / budget) * 100;
             }
@@ -1319,7 +1320,11 @@
             let bodyText = `Hi Iaroslav,\n\nI just ran the math on your site. Here are my baseline targets:\n\n`;
             
             bodyText += `-- MODEL: ${calcModel.toUpperCase()} --\n`;
-            bodyText += `Target Sales/month: ${target}\n`;
+            if (calcModel === 'leadgen') {
+                bodyText += `Target Deals/month: ${target}\n`;
+            } else {
+                bodyText += `Target Revenue/month: $${target}\n`;
+            }
             bodyText += `Average Check: $${aov}\n`;
             bodyText += `Current Convertion: ${isNaN(cr) ? 'Not specified (used benchmark)' : cr+'%'}\n`;
             
