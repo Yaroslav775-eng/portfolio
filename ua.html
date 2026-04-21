@@ -1188,16 +1188,6 @@
         </div>
     </div>
 
-    <!-- EmailJS SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script>
-        // ── EmailJS CONFIG ─────────────────────────────────────────────
-        const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
-        const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-        const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
-        (function() { emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); })();
-    </script>
-
     <!-- QUIZ MODAL HTML (MAGIC DASHBOARD) -->
     <div class="modal-overlay" id="quizModal">
         <div class="modal-window" style="max-width: 900px;"> <!-- Wider modal for 2 columns -->
@@ -1398,51 +1388,44 @@
             const roas        = document.getElementById('outROAS').innerText || '—';
             const revenue     = document.getElementById('outRev').innerText || '—';
 
-            const templateParams = {
-                model:       calcModel.toUpperCase(),
-                niche:       niche,
-                region:      region,
-                competitors: competitors,
-                target:      target,
-                aov:         '$' + aov,
-                close_rate:  cr + '%',
-                budget:      budget,
-                roas:        roas,
-                revenue:     revenue,
-                page:        'Українська (ua.html)'
-            };
+            const message = [
+                '=== КОНТЕКСТ ===',
+                'Ніша: ' + niche,
+                'Регіон: ' + region,
+                'Конкуренти: ' + competitors,
+                '',
+                '=== МОДЕЛЬ: ' + calcModel.toUpperCase() + ' ===',
+                'Ціль: ' + target,
+                'Середній чек: $' + aov,
+                'Закриття: ' + cr + '%',
+                '',
+                '=== ПРОГНОЗ ===',
+                'Трафік: ' + document.getElementById('outClicks').innerText,
+                'Рекомендований бюджет: ' + budget,
+                'Прогнозна виручка: ' + revenue,
+                'Очікуваний ROAS: ' + roas,
+                '',
+                'Сторінка: Українська (ua.html)'
+            ].join('\n');
 
-            if (EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID') {
-                emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-                    .then(function() { showThankYou(); })
-                    .catch(function(err) {
-                        console.warn('EmailJS error', err);
-                        openMailtoFallback(niche, region, competitors, target, aov, cr, budget, roas);
-                        showThankYou();
-                    });
-            } else {
-                openMailtoFallback(niche, region, competitors, target, aov, cr, budget, roas);
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    access_key: '024929c9-3c2f-471f-8ec3-bd5cbaf34070',
+                    subject: 'Бріф 🎯 ' + niche + ' | ' + region,
+                    from_name: 'Калькулятор на сайті',
+                    message: message
+                })
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
                 showThankYou();
-            }
-        }
-
-        function openMailtoFallback(niche, region, competitors, target, aov, cr, budget, roas) {
-            const subject = encodeURIComponent('Бріф з калькулятора: ' + niche + ' / ' + region);
-            const body = encodeURIComponent(
-                'Вітаю, Ярославе!\n\n' +
-                '-- КОНТЕКСТ --\n' +
-                'Ніша: ' + niche + '\n' +
-                'Регіон: ' + region + '\n' +
-                'Конкуренти: ' + competitors + '\n\n' +
-                '-- МОДЕЛЬ: ' + calcModel.toUpperCase() + ' --\n' +
-                'Ціль: ' + target + '\n' +
-                'Середній чек: $' + aov + '\n' +
-                'Закриття: ' + cr + '\n\n' +
-                '-- ПРОГНОЗ --\n' +
-                'Бюджет: ' + budget + '\n' +
-                'ROAS: ' + roas + '\nПідготуйте стратегію, будь ласка.'
-            );
-            window.open('mailto:yaroslav.zhakun@gmail.com?subject=' + subject + '&body=' + body);
+            })
+            .catch(function(err) {
+                console.warn('Web3Forms error', err);
+                showThankYou();
+            });
         }
 
         function showThankYou() {

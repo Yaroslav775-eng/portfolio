@@ -1068,21 +1068,6 @@
         </div>
     </div>
 
-    <!-- EmailJS SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script>
-        // ── EmailJS CONFIG ─────────────────────────────────────────────
-        // 1. Sign up free at https://www.emailjs.com/
-        // 2. Create a service (Gmail) → copy Service ID
-        // 3. Create a template → copy Template ID
-        // 4. Go to Account → copy Public Key
-        // Then paste the 3 values below:
-        const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // e.g. 'service_abc123'
-        const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // e.g. 'template_xyz456'
-        const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // e.g. 'abcDEF123456'
-        (function() { emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); })();
-    </script>
-
     <!-- QUIZ MODAL HTML (MAGIC DASHBOARD) -->
     <div class="modal-overlay" id="quizModal">
         <div class="modal-window" style="max-width: 900px;"> <!-- Wider modal for 2 columns -->
@@ -1282,53 +1267,42 @@
             const roas        = document.getElementById('outROAS').innerText || '—';
             const revenue     = document.getElementById('outRev').innerText || '—';
 
-            const templateParams = {
-                model:       calcModel.toUpperCase(),
-                niche:       niche,
-                region:      region,
-                competitors: competitors,
-                target:      target,
-                aov:         '$' + aov,
-                close_rate:  cr + '%',
-                budget:      budget,
-                roas:        roas,
-                revenue:     revenue,
-                page:        'English (index.html)'
-            };
+            const message = [
+                '=== CONTEXT ===',
+                'Niche: ' + niche,
+                'Region: ' + region,
+                'Competitors: ' + competitors,
+                '',
+                '=== MODEL: ' + calcModel.toUpperCase() + ' ===',
+                'Target: ' + target,
+                'Avg Check: $' + aov,
+                'Close Rate: ' + cr + '%',
+                '',
+                '=== FORECAST ===',
+                'Traffic needed: ' + document.getElementById('outClicks').innerText,
+                'Recommended Budget: ' + budget,
+                'Projected Revenue: ' + revenue,
+                'Estimated ROAS: ' + roas
+            ].join('\n');
 
-            // Try EmailJS first; fallback to mailto if not configured
-            if (EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID') {
-                emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-                    .then(function() { showThankYou(); })
-                    .catch(function(err) {
-                        console.warn('EmailJS error, falling back to mailto', err);
-                        openMailtoFallback(niche, region, competitors, target, aov, cr, budget, roas);
-                        showThankYou();
-                    });
-            } else {
-                // EmailJS not configured — open mailto as fallback
-                openMailtoFallback(niche, region, competitors, target, aov, cr, budget, roas);
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    access_key: '024929c9-3c2f-471f-8ec3-bd5cbaf34070',
+                    subject: 'Funnel Brief 🎯 ' + niche + ' | ' + region,
+                    from_name: 'Portfolio Calculator',
+                    message: message
+                })
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
                 showThankYou();
-            }
-        }
-
-        function openMailtoFallback(niche, region, competitors, target, aov, cr, budget, roas) {
-            const subject = encodeURIComponent('Funnel Brief: ' + niche + ' / ' + region);
-            const body = encodeURIComponent(
-                'Hi Yaroslav,\n\n' +
-                '-- CONTEXT --\n' +
-                'Niche: ' + niche + '\n' +
-                'Region: ' + region + '\n' +
-                'Competitors: ' + competitors + '\n\n' +
-                '-- MODEL: ' + calcModel.toUpperCase() + ' --\n' +
-                'Target: ' + target + '\n' +
-                'Avg Check: $' + aov + '\n' +
-                'Close Rate: ' + cr + '\n\n' +
-                '-- FORECAST --\n' +
-                'Recommended Budget: ' + budget + '\n' +
-                'Estimated ROAS: ' + roas + '\n\nPlease prepare a custom strategy.'
-            );
-            window.open('mailto:yaroslav.zhakun@gmail.com?subject=' + subject + '&body=' + body);
+            })
+            .catch(function(err) {
+                console.warn('Web3Forms error', err);
+                showThankYou(); // still show thank-you
+            });
         }
 
         function showThankYou() {
