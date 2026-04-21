@@ -1281,156 +1281,102 @@
         </div>
     </div>
 
-    <!-- QUIZ MODAL HTML -->
+    <!-- QUIZ MODAL HTML (MAGIC DASHBOARD) -->
     <div class="modal-overlay" id="quizModal">
-        <div class="modal-window">
+        <div class="modal-window" style="max-width: 900px;"> <!-- Wider modal for 2 columns -->
             <button class="modal-close" onclick="closeQuiz()">✕</button>
-            <div class="modal-content-area" id="quizContainer">
-                <span class="section-label" style="margin-bottom: 8px;">Стратегічний Sales-асесмент</span>
+            <div class="modal-content-area" id="quizContainer" style="padding: 0;">
                 
-                <div class="quiz-progress-container">
-                    <div class="quiz-progress-bar" id="quizBar"></div>
-                </div>
-
-                <!-- Step 0: Business Model Selection -->
-                <div class="quiz-step active" id="quiz-step-0">
-                    <h2 style="font-size: 2rem;">Тип вашої бізнес-моделі</h2>
-                    <p style="color: var(--text-gray);">Оберіть модель, щоб я підготував відповідні метрики для прогнозу.</p>
-                    <div style="margin-top: 32px;">
-                        <div class="quiz-option" onclick="qSelect('model', 'ecommerce')">
-                            <span class="opt-icon">📦</span>
-                            <div class="opt-text">
-                                <span class="opt-title">E-commerce / Продаж товарів</span>
-                                <span class="opt-desc">Фокус на окупності витрат (ROAS) та чистому прибутку.</span>
-                            </div>
-                        </div>
-                        <div class="quiz-option" onclick="qSelect('model', 'leadgen')">
-                            <span class="opt-icon">🤝</span>
-                            <div class="opt-text">
-                                <span class="opt-title">Lead Gen / Послуги та B2B</span>
-                                <span class="opt-desc">Фокус на вартості ліда та якості конверсії у клієнта.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="trust-badge">
-                        Професійна оцінка на основі досвіду в 80+ проектах
-                    </div>
-                </div>
-
-                <!-- Step 1: E-commerce Fields -->
-                <div class="quiz-step" id="quiz-step-1-ecommerce">
-                    <h2 style="font-size: 1.8rem;">Маржинальність та цілі</h2>
-                    <p style="color: var(--text-gray);">Ці дані дозволять розрахувати межу ефективності маркетингу.</p>
-                    <div style="margin-top: 24px;">
-                        <div class="quiz-input-group">
-                            <label class="quiz-label">Website & Ніша</label>
-                            <input type="text" id="qEcomSite" class="quiz-input" placeholder="myshop.com | Одяг" />
-                        </div>
-                        
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                            <div class="quiz-input-group">
-                                <label class="quiz-label">Середній чек (₴)</label>
-                                <input type="number" id="qAOV" class="quiz-input" placeholder="1500" />
-                                <span class="quiz-hint">Навіщо: для розрахунку LTV</span>
-                            </div>
-                            <div class="quiz-input-group">
-                                <label class="quiz-label">Націнка (%)</label>
-                                <input type="number" id="qMargin" class="quiz-input" placeholder="30" />
-                                <span class="quiz-hint">Навіщо: для точки беззбитковості</span>
-                            </div>
-                        </div>
-
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                            <div class="quiz-input-group">
-                                <label class="quiz-label">План продажів/міс</label>
-                                <input type="text" id="qSalesPlan" class="quiz-input" placeholder="500,000₴" />
-                            </div>
-                            <div class="quiz-input-group">
-                                <label class="quiz-label">Max. бюджет (% від виручки)</label>
-                                <input type="number" id="qMaxMarketing" class="quiz-input" placeholder="15" />
-                                <span class="quiz-hint">Ваш ліміт на рекламу</span>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" style="width: 100%; border: none; margin-top: 8px;" onclick="qNext()">Розрахувати потенціал &rarr;</button>
-                </div>
-
-                <!-- Step 1: Lead Gen Fields -->
-                <div class="quiz-step" id="quiz-step-1-leadgen">
-                    <h2 style="font-size: 1.8rem;">Воронка та цілі</h2>
-                    <p style="color: var(--text-gray);">Розрахуємо необхідний об'єм трафіку для виконання плану.</p>
-                    <div style="margin-top: 24px;">
-                        <div class="quiz-input-group">
-                            <label class="quiz-label">Website & Ніша</label>
-                            <input type="text" id="qLeadSite" class="quiz-input" placeholder="services.com | Логістика" />
-                        </div>
-                        
-                        <div class="quiz-input-group">
-                            <label class="quiz-label">Бажана кількість продажів на місяць</label>
-                            <input type="number" id="qLeadTarget" class="quiz-input" placeholder="10" />
-                            <span class="quiz-hint">Скільки клієнтів ви хочете отримати</span>
-                        </div>
-                        
-                        <div class="quiz-input-group">
-                            <label class="quiz-label">% кваліфікації (з ліда в клієнта)</label>
-                            <input type="number" id="qLeadQual" class="quiz-input" placeholder="20" />
-                            <span class="quiz-hint">Ваш поточний рівень закриття угод</span>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" style="width: 100%; border: none; margin-top: 16px;" onclick="qNext()">Розрахувати воронку &rarr;</button>
-                </div>
-
-                <!-- Step 2: Access -->
-                <div class="quiz-step" id="quiz-step-2">
-                    <h2 style="font-size: 1.8rem;">Джерела даних</h2>
-                    <p style="color: var(--text-gray);">Як ми можемо отримати історичні дані для точнішого прогнозу?</p>
-                    <div style="margin-top: 32px;">
-                        <div class="quiz-option" onclick="qSelect('access', 'Так, готовий надати доступ')">
-                            <span class="opt-icon">📊</span>
-                            <div class="opt-text">
-                                <span class="opt-title">Google Ads / GA4 Access</span>
-                                <span class="opt-desc">Надати Read-Only доступ для глибокого аудиту.</span>
-                            </div>
-                        </div>
-                        <div class="quiz-option" onclick="qSelect('access', 'Так, після NDA')">
-                            <span class="opt-icon">📝</span>
-                            <div class="opt-text">
-                                <span class="opt-title">Після підписання NDA</span>
-                                <span class="opt-desc">Готові надати дані після формальних процедур.</span>
-                            </div>
-                        </div>
-                        <div class="quiz-option" onclick="qSelect('access', 'Поки не готовий')">
-                            <span class="opt-icon">📉</span>
-                            <div class="opt-text">
-                                <span class="opt-title">На базі ринкових бенчмарків</span>
-                                <span class="opt-desc">Зробити прогноз без доступу до вашої статистики.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 3: Final Diagnostic -->
-                <div class="quiz-step" id="quiz-step-3">
-                    <h2 style="font-size: 1.8rem;">Попередній висновок</h2>
-                    <p style="color: var(--text-gray);">На основі ваших цифр, я підготував миттєвий інсайт для вашого проекту.</p>
+                <div class="dashboard-grid" style="display: grid; grid-template-columns: 1fr 1fr; min-height: 500px;">
                     
-                    <div id="diagnosticResult" class="diagnostic-box">
-                        <!-- Filled by JS -->
+                    <!-- LEFT COLUMN: SIMPLE INPUTS -->
+                    <div style="padding: 40px; background: #fff;">
+                        <span class="section-label" style="margin-bottom: 24px;">Strategic Sales Assessment</span>
+                        <h2 style="font-size: 1.8rem; margin-bottom: 8px;">Введіть базові дані</h2>
+                        <p style="color: var(--text-gray); margin-bottom: 32px; font-size: 0.95rem;">Заповніть 3 поля, щоб миттєво побачити прогнозну воронку.</p>
+
+                        <!-- Toggle Business Model -->
+                        <div style="display: flex; gap: 8px; margin-bottom: 24px; background: #f0f0f0; padding: 4px; border-radius: 6px;">
+                            <button id="btnModelLeadGen" class="btn btn-ghost" style="flex:1; border:none; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.1);" onclick="setCalcModel('leadgen')">Lead Gen / B2B</button>
+                            <button id="btnModelEcom" class="btn btn-ghost" style="flex:1; border:none; color:var(--text-gray);" onclick="setCalcModel('ecommerce')">E-commerce</button>
+                        </div>
+
+                        <!-- Common Inputs -->
+                        <div class="quiz-input-group">
+                            <label class="quiz-label" id="lblTarget">Бажана кількість угод (клієнтів) на місяць</label>
+                            <input type="number" id="calcTarget" class="quiz-input" placeholder="Наприклад: 20" oninput="runMagicCalc()" />
+                        </div>
+                        
+                        <div class="quiz-input-group">
+                            <label class="quiz-label" id="lblAOV">Середній чек з одного клієнта ($)</label>
+                            <input type="number" id="calcAOV" class="quiz-input" placeholder="Наприклад: 500" oninput="runMagicCalc()" />
+                        </div>
+
+                        <div class="quiz-input-group" id="groupMargin" style="display: none;">
+                            <label class="quiz-label">Валова маржа (%)</label>
+                            <input type="number" id="calcMargin" class="quiz-input" placeholder="Наприклад: 30" oninput="runMagicCalc()" value="30" />
+                        </div>
+
+                        <div class="quiz-input-group">
+                            <label class="quiz-label">Текущий рівень закриття (з ліда в клієнта, %)</label>
+                            <input type="number" id="calcCloseRate" class="quiz-input" placeholder="Залишіть пустим, якщо не знаєте" oninput="runMagicCalc()" />
+                            <span class="quiz-hint">За замовчуванням: 20% (Lead Gen) / 1.5% (E-com)</span>
+                        </div>
+                        
+                        <div style="margin-top: auto; padding-top: 24px;">
+                            <div class="trust-badge" style="font-size: 0.8rem;">
+                                Математика заснована на середніх бенчмарках для ринків США та ЄС.
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="trust-badge">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 4px;"><path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9V7z"/></svg>
-                        Дані захищені та 100% конфіденційні
-                    </div>
+                    <!-- RIGHT COLUMN: EXPERT OUTPUT -->
+                    <div style="padding: 40px; background: var(--bg-dark); color: #fff;">
+                        <h2 style="font-size: 1.4rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 16px; margin-bottom: 24px; color: #fff;">Прогнозна воронка (Live)</h2>
+                        
+                        <div id="calcEmptyState" style="text-align: center; padding: 40px 0; color: rgba(255,255,255,0.5);">
+                            <div style="font-size: 2rem; margin-bottom: 16px;">📊</div>
+                            <p>Введіть ціль та середній чек зліва, щоб побачити розрахунок.</p>
+                        </div>
 
-                    <div style="margin-top: 32px;">
-                        <a id="quizMailtoBtn" href="#" class="btn btn-primary" style="display: block; text-align: center; width: 100%;">Надіслати для детального розрахунку</a>
-                    </div>
-                </div>
+                        <div id="calcResultsBox" style="display: none;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
+                                <div>
+                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Необхідний трафік</span>
+                                    <span id="outClicks" style="display:block; font-size: 1.5rem; font-weight:bold; color: #fff;">-</span>
+                                </div>
+                                <div id="divOutLeads">
+                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Необхідно лідів</span>
+                                    <span id="outLeads" style="display:block; font-size: 1.5rem; font-weight:bold; color: #fff;">-</span>
+                                </div>
+                                <div>
+                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Очікувані продажі</span>
+                                    <span id="outSales" style="display:block; font-size: 1.5rem; font-weight:bold; color: var(--accent-brand);">0</span>
+                                </div>
+                                <div>
+                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Рекоменд. Бюджет</span>
+                                    <span id="outBudget" style="display:block; font-size: 1.5rem; font-weight:bold; color: #fff;">-</span>
+                                </div>
+                            </div>
+                            
+                            <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 6px; margin-bottom: 24px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span style="color: rgba(255,255,255,0.7);">Граничний CPA / CAC:</span>
+                                    <span id="outCPA" style="font-weight: bold;">-</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span style="color: rgba(255,255,255,0.7);">Прогнозна Виручка:</span>
+                                    <span id="outRev" style="font-weight: bold; color: #4ade80;">-</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="color: rgba(255,255,255,0.7);">Орієнтовний ROAS:</span>
+                                    <span id="outROAS" style="font-weight: bold;">-</span>
+                                </div>
+                            </div>
 
-                <div class="quiz-footer">
-                    <span class="quiz-progress" id="quizProgressText">Крок 1 з 3</span>
-                    <button class="btn btn-ghost" style="border: none; padding: 8px 16px; min-width: auto; font-size: 0.9rem; display: none;" id="qPrevBtn" onclick="qPrev()">&larr; Назад</button>
+                            <a href="#" id="magicMailtoBtn" class="btn btn-primary" style="display: block; text-align: center; width: 100%; border: none; background: var(--accent-brand);">Надіслати для стратегії &rarr;</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1465,17 +1411,15 @@
             }
         }
 
-        // Quiz Logic
-        let qState = { step: 0, model: '', access: '' };
-        
+        // Magic Dashboard Calculator Logic
+        let calcModel = 'leadgen'; // default
+
         function startQuiz() {
-            qState = { step: 0, model: '', access: '' };
-            // Clear inputs
-            ['qEcomSite', 'qAOV', 'qMargin', 'qSalesPlan', 'qMaxMarketing', 'qLeadSite', 'qLeadTarget', 'qLeadQual'].forEach(id => {
-                const el = document.getElementById(id);
-                if(el) el.value = '';
-            });
-            updateQuizUI();
+            setCalcModel('leadgen');
+            document.getElementById('calcTarget').value = '';
+            document.getElementById('calcAOV').value = '';
+            document.getElementById('calcCloseRate').value = '';
+            runMagicCalc();
             document.getElementById('quizModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -1483,97 +1427,125 @@
             document.getElementById('quizModal').classList.remove('active');
             document.body.style.overflow = '';
         }
-        function calculateInstantResult() {
-            let resultHTML = '';
-            if (qState.model === 'ecommerce') {
-                const margin = parseFloat(document.getElementById('qMargin').value);
-                if (!isNaN(margin) && margin > 0) {
-                    const breakevenROAS = Math.round((1 / (margin / 100)) * 100);
-                    resultHTML = `<span class="diagnostic-label">Точка беззбитковості (Max CPA / Min ROAS):</span>
-                                  <span class="diagnostic-val">${breakevenROAS}% ROAS</span>
-                                  <span style="font-size:0.85rem; opacity:0.8;">Щоб ваш бізнес зростав, нам потрібен ROAS вищий за цю цифру. Я розрахую стратегію, як досягти цієї мети.</span>`;
-                } else {
-                    resultHTML = `<span class="diagnostic-val">Даних недостатньо</span><span style="font-size:0.85rem;">Потрібні точні цифри націнки для фінансового прогнозу. Я оціню потенціал на основі ринку.</span>`;
-                }
+
+        function setCalcModel(model) {
+            calcModel = model;
+            const btnLg = document.getElementById('btnModelLeadGen');
+            const btnEc = document.getElementById('btnModelEcom');
+            const lblTarget = document.getElementById('lblTarget');
+            const lblAOV = document.getElementById('lblAOV');
+            const grpMargin = document.getElementById('groupMargin');
+            const divOutLeads = document.getElementById('divOutLeads');
+            const calcCloseRate = document.getElementById('calcCloseRate');
+
+            if (model === 'leadgen') {
+                btnLg.style.background = '#fff';
+                btnLg.style.color = '#000';
+                btnLg.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+                btnEc.style.background = 'transparent';
+                btnEc.style.color = 'var(--text-gray)';
+                btnEc.style.boxShadow = 'none';
+
+                lblTarget.innerText = 'Бажана кількість угод (клієнтів) на місяць';
+                lblAOV.innerText = 'Середній чек (чи LTV) з одного клієнта ($)';
+                grpMargin.style.display = 'none';
+                divOutLeads.style.display = 'block';
+                calcCloseRate.previousElementSibling.innerText = 'Текущий рівень закриття (з ліда в угод, %)';
+                calcCloseRate.nextElementSibling.innerText = 'За замовчуванням (якщо пусто): 20%';
             } else {
-                const target = parseFloat(document.getElementById('qLeadTarget').value);
-                const qual = parseFloat(document.getElementById('qLeadQual').value);
-                if (!isNaN(target) && target > 0 && !isNaN(qual) && qual > 0) {
-                    const reqLeads = Math.ceil(target / (qual / 100));
-                    resultHTML = `<span class="diagnostic-label">Необхідний об'єм воронки:</span>
-                                  <span class="diagnostic-val">${reqLeads} лідів / міс</span>
-                                  <span style="font-size:0.85rem; opacity:0.8;">Щоб отримати ${target} продажів при вашій поточній конверсії. Я розрахую бюджет, необхідний для викупу цього трафіку.</span>`;
-                } else {
-                    resultHTML = `<span class="diagnostic-val">Даних недостатньо</span><span style="font-size:0.85rem;">Потрібні точні цілі для прогнозу розміру воронки. Я створю загальний медіаплан.</span>`;
-                }
+                btnEc.style.background = '#fff';
+                btnEc.style.color = '#000';
+                btnEc.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+                btnLg.style.background = 'transparent';
+                btnLg.style.color = 'var(--text-gray)';
+                btnLg.style.boxShadow = 'none';
+
+                lblTarget.innerText = 'Бажана кількість продажів (замовлень) на місяць';
+                lblAOV.innerText = 'Середній кошик/чек ($)';
+                grpMargin.style.display = 'block';
+                divOutLeads.style.display = 'none';
+                calcCloseRate.previousElementSibling.innerText = 'Конверсія сайту (EХR, %)';
+                calcCloseRate.nextElementSibling.innerText = 'За замовчуванням (якщо пусто): 1.5%';
             }
-            document.getElementById('diagnosticResult').innerHTML = resultHTML;
+            runMagicCalc();
         }
 
-        function updateQuizUI() {
-            document.querySelectorAll('.quiz-step').forEach(el => el.classList.remove('active'));
-            
-            let targetStepId = 'quiz-step-' + qState.step;
-            if (qState.step === 1) {
-                targetStepId = 'quiz-step-1-' + qState.model;
-            }
-            
-            const stepEl = document.getElementById(targetStepId);
-            if(stepEl) stepEl.classList.add('active');
-            
-            // Progress Bar Logic
-            const totalSteps = 3;
-            const progressPercent = (qState.step / totalSteps) * 100;
-            const bar = document.getElementById('quizBar');
-            if(bar) bar.style.width = progressPercent + '%';
+        function runMagicCalc() {
+            const emptyState = document.getElementById('calcEmptyState');
+            const resultsBox = document.getElementById('calcResultsBox');
 
-            if(qState.step === 3) {
-                calculateInstantResult();
-                document.getElementById('quizProgressText').innerText = 'Готово до відправлення';
+            let target = parseFloat(document.getElementById('calcTarget').value);
+            let aov = parseFloat(document.getElementById('calcAOV').value);
+            let userCR = parseFloat(document.getElementById('calcCloseRate').value);
+
+            if (isNaN(target) || isNaN(aov) || target <= 0 || aov <= 0) {
+                emptyState.style.display = 'block';
+                resultsBox.style.display = 'none';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            resultsBox.style.display = 'block';
+
+            // Hidden Industry Benchmarks
+            let avgCPC = 1.20; // $1.20 per click
+            let siteToLeadCR = 0.05; // 5% site to lead
+            let leadToClientCR = isNaN(userCR) ? 0.20 : (userCR / 100); // 20% lead to close defaults
+            let ecomSiteCR = isNaN(userCR) ? 0.015 : (userCR / 100); // 1.5% ecom conversion defaults
+
+            let clicks, leads, sales, budget, rev, cpa, roas;
+
+            if (calcModel === 'leadgen') {
+                // Top-down reverse math for Lead Gen
+                sales = target;
+                leads = Math.ceil(sales / leadToClientCR);
+                clicks = Math.ceil(leads / siteToLeadCR);
+                budget = clicks * avgCPC;
+                rev = sales * aov;
+                cpa = budget / sales;
+                roas = (rev / budget) * 100;
+
+                document.getElementById('outLeads').innerText = '~' + leads.toLocaleString();
             } else {
-                document.getElementById('quizProgressText').innerText = `Крок ${qState.step + 1} з 3`;
+                // Top-down reverse math for E-com
+                sales = target;
+                clicks = Math.ceil(sales / ecomSiteCR);
+                avgCPC = 0.80; // slightly cheaper for shopping ads
+                budget = clicks * avgCPC;
+                rev = sales * aov;
+                cpa = budget / sales;
+                roas = (rev / budget) * 100;
             }
-            
-            document.getElementById('qPrevBtn').style.display = qState.step > 0 && qState.step < 3 ? 'block' : 'none';
+
+            document.getElementById('outSales').innerText = sales.toLocaleString();
+            document.getElementById('outClicks').innerText = '~' + clicks.toLocaleString();
+            document.getElementById('outBudget').innerText = '$' + Math.round(budget).toLocaleString();
+            document.getElementById('outCPA').innerText = '$' + Math.round(cpa).toLocaleString();
+            document.getElementById('outRev').innerText = '$' + Math.round(rev).toLocaleString();
+            document.getElementById('outROAS').innerText = Math.round(roas) + '%';
+
+            compileMagicEmail(target, aov, userCR, budget, roas);
         }
-        function qNext() {
-            qState.step++;
-            updateQuizUI();
-        }
-        function qSelect(key, value) {
-            qState[key] = value;
-            qState.step++;
-            if(qState.step === 3) {
-               compileEmail();
-            }
-            updateQuizUI();
-        }
-        function qPrev() {
-            if(qState.step > 0) { qState.step--; updateQuizUI(); }
-        }
-        function compileEmail() {            
-            let subject = "Стратегічний Sales-асесмент: запит на прогноз";
-            let bodyText = `Вітаю, Ярославе,\n\nЯ пройшов асесмент. Ось дані мого бізнесу для розрахунку прогнозу:\n\n`;
+
+        function compileMagicEmail(target, aov, cr, budget, roas) {
+            let subject = "Магія Расчетов: Запит на детальну стратегію";
+            let bodyText = `Вітаю, Ярославе,\n\nЯ скористався калькулятором на сайті. Мій попередній розрахунок:\n\n`;
             
-            if (qState.model === 'ecommerce') {
-                bodyText += `-- МОДЕЛЬ: E-COMMERCE --\n`;
-                bodyText += `Сайт/Ніша: ${document.getElementById('qEcomSite').value || 'н/д'}\n`;
-                bodyText += `Середній чек: ${document.getElementById('qAOV').value || 'н/д'} ₴\n`;
-                bodyText += `Націнка: ${document.getElementById('qMargin').value || 'н/д'} %\n`;
-                bodyText += `План продажів: ${document.getElementById('qSalesPlan').value || 'н/д'}\n`;
-                bodyText += `Макс. % на маркетинг: ${document.getElementById('qMaxMarketing').value || 'н/д'} %\n`;
-            } else {
-                bodyText += `-- МОДЕЛЬ: LEAD GENERATION --\n`;
-                bodyText += `Сайт/Ніша: ${document.getElementById('qLeadSite').value || 'н/д'}\n`;
-                bodyText += `Ціль продажів/міс: ${document.getElementById('qLeadTarget').value || 'н/д'}\n`;
-                bodyText += `% кваліфікації: ${document.getElementById('qLeadQual').value || 'н/д'} %\n`;
-            }
+            bodyText += `-- МОДЕЛЬ: ${calcModel.toUpperCase()} --\n`;
+            bodyText += `Ціль продажів/міс: ${target}\n`;
+            bodyText += `Середній чек: $${aov}\n`;
+            bodyText += `Поточна конверсія: ${isNaN(cr) ? 'Не вказана (використано бенчмарк)' : cr+'%'}\n`;
             
-            bodyText += `\n-- ДЖЕРЕЛА ДАНИХ --\nСтатус: ${qState.access}\n\nБудь ласка, проаналізуйте показники та підготуйте детальний медіаплан.\n\nЗ повагою,`;
+            bodyText += `\n-- КАЛЬКУЛЯТОР ПОКАЗАВ --\n`;
+            bodyText += `Рекомендований бюджет: $${Math.round(budget)}\n`;
+            bodyText += `Очікуваний ROAS: ${Math.round(roas)}%\n\n`;
             
-            document.getElementById('quizMailtoBtn').href = `mailto:yaroslav.zhakun@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+            bodyText += `Будь ласка, перевірте розрахунок та підготуйте точну стратегію.\n\nЗ повагою,`;
+            
+            document.getElementById('magicMailtoBtn').href = `mailto:yaroslav.zhakun@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
         }
     </script>
+
 
     <!-- GA4 Event Tracking: Conversions & Engagement -->
     <script>
