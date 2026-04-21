@@ -1262,50 +1262,77 @@
                     </div>
 
                     <!-- RIGHT COLUMN: EXPERT OUTPUT -->
-                    <div style="padding: 40px; background: var(--bg-dark); color: #fff;">
-                        <h2 style="font-size: 1.4rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 16px; margin-bottom: 24px; color: #fff;">Прогнозна воронка (Live)</h2>
-                        
-                        <div id="calcEmptyState" style="text-align: center; padding: 40px 0; color: rgba(255,255,255,0.5);">
-                            <div style="font-size: 2rem; margin-bottom: 16px;">📊</div>
-                            <p>Введіть ціль та середній чек зліва, щоб побачити розрахунок.</p>
+                    <div style="padding: 32px 36px; background: var(--bg-dark); color: #fff; overflow-y: auto;">
+                        <h2 style="font-size: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 14px; margin-bottom: 20px; color: #fff; letter-spacing: -0.01em;">Прогнозна воронка (Live)</h2>
+
+                        <div id="calcEmptyState" style="text-align: center; padding: 32px 0; color: rgba(255,255,255,0.4);">
+                            <div style="font-size: 2.2rem; margin-bottom: 12px;">📊</div>
+                            <p style="font-size: 0.9rem;">Введіть ціль та середній чек зліва, щоб побачити розрахунок.</p>
                         </div>
 
                         <div id="calcResultsBox" style="display: none;">
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
-                                <div>
-                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Необхідний трафік</span>
-                                    <span id="outClicks" style="display:block; font-size: 1.5rem; font-weight:bold; color: #fff;">-</span>
+
+                            <!-- Budget Health Indicator -->
+                            <div id="budgetHealthBar" style="margin-bottom: 20px; padding: 12px 16px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                    <span style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.5);">Budget Health</span>
+                                    <span id="outHealthLabel" style="font-size: 0.8rem; font-weight: 700;">-</span>
                                 </div>
-                                <div id="divOutLeads">
-                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Необхідно лідів</span>
-                                    <span id="outLeads" style="display:block; font-size: 1.5rem; font-weight:bold; color: #fff;">-</span>
+                                <div style="height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden;">
+                                    <div id="outHealthBar" style="height: 100%; width: 0%; border-radius: 3px; transition: width 0.5s ease;"></div>
                                 </div>
-                                <div>
-                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Очікувані продажі</span>
-                                    <span id="outSales" style="display:block; font-size: 1.5rem; font-weight:bold; color: var(--accent-brand);">0</span>
-                                </div>
-                                <div>
-                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Рекоменд. Бюджет</span>
-                                    <span id="outBudget" style="display:block; font-size: 1.5rem; font-weight:bold; color: #fff;">-</span>
-                                </div>
+                                <p id="outHealthDesc" style="font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 6px;"></p>
                             </div>
-                            
-                            <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 6px; margin-bottom: 24px;">
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                                    <span style="color: rgba(255,255,255,0.7);">Граничний CPA / CAC:</span>
-                                    <span id="outCPA" style="font-weight: bold;">-</span>
+
+                            <!-- Top Metrics -->
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px;">
+                                <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px;">
+                                    <span style="display:block; font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom: 4px;">Трафік/міс</span>
+                                    <span id="outClicks" style="display:block; font-size: 1.4rem; font-weight:800; color: #fff;">-</span>
                                 </div>
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                                    <span style="color: rgba(255,255,255,0.7);">Прогнозна Виручка:</span>
-                                    <span id="outRev" style="font-weight: bold; color: #4ade80;">-</span>
+                                <div id="divOutLeads" style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px;">
+                                    <span style="display:block; font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom: 4px;">Необхідно лідів</span>
+                                    <span id="outLeads" style="display:block; font-size: 1.4rem; font-weight:800; color: #fff;">-</span>
                                 </div>
-                                <div style="display: flex; justify-content: space-between;">
-                                    <span style="color: rgba(255,255,255,0.7);">Орієнтовний ROAS:</span>
-                                    <span id="outROAS" style="font-weight: bold;">-</span>
+                                <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px;">
+                                    <span style="display:block; font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom: 4px;">Продажі/Складення</span>
+                                    <span id="outSales" style="display:block; font-size: 1.4rem; font-weight:800; color: var(--accent-brand);">0</span>
+                                </div>
+                                <div style="background: rgba(192,0,0,0.15); border: 1px solid rgba(192,0,0,0.35); padding: 12px; border-radius: 6px;">
+                                    <span style="display:block; font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom: 4px;">Бюджет на рекламу</span>
+                                    <span id="outBudget" style="display:block; font-size: 1.4rem; font-weight:800; color: #fff;">-</span>
                                 </div>
                             </div>
 
-                            <button id="magicSubmitBtn" onclick="sendMagicForm()" class="btn btn-primary" style="display: block; text-align: center; width: 100%; border: none; background: var(--accent-brand); cursor: pointer;">Надіслати для стратегії &rarr;</button>
+                            <!-- KPI Details -->
+                            <div style="background: rgba(255,255,255,0.04); padding: 14px 16px; border-radius: 6px; margin-bottom: 16px; font-size: 0.85rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 9px; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                    <span style="color: rgba(255,255,255,0.6);">Cost per Lead (CPL):</span>
+                                    <span id="outCPL" style="font-weight: 700;">-</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 9px; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                    <span style="color: rgba(255,255,255,0.6);">CPA / Ціна залучення:</span>
+                                    <span id="outCPA" style="font-weight: 700;">-</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 9px; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                    <span style="color: rgba(255,255,255,0.6);">Виручка / Revenue:</span>
+                                    <span id="outRev" style="font-weight: 700; color: #4ade80;">-</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 9px; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                    <span style="color: rgba(255,255,255,0.6);">ROAS (поверньність):</span>
+                                    <span id="outROAS" style="font-weight: 700;">-</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 9px; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                    <span style="color: rgba(255,255,255,0.6);">% бюджету від виручки:</span>
+                                    <span id="outAdPct" style="font-weight: 700;">-</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="color: rgba(255,255,255,0.6);">Net Profit (after ads):</span>
+                                    <span id="outNetProfit" style="font-weight: 700; color: #4ade80;">-</span>
+                                </div>
+                            </div>
+
+                            <button id="magicSubmitBtn" onclick="sendMagicForm()" class="btn btn-primary" style="display: block; text-align: center; width: 100%; border: none; background: var(--accent-brand); cursor: pointer; font-size: 0.9rem;">Надіслати для стратегії &rarr;</button>
                         </div>
                     </div>
                 </div>
@@ -1331,6 +1358,21 @@
                         <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">✓  Стратегія та план запуску</p>
                     </div>
                     <button onclick="closeQuiz()" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); padding: 8px 20px; cursor: pointer; border-radius: 4px; font-size: 0.9rem;">Закрити</button>
+
+                    <!-- MESSENGER BUTTONS -->
+                    <div style="margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); width: 100%; max-width: 420px;">
+                        <p style="font-size: 0.75rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px;">Або напишіть зараз</p>
+                        <div style="display: flex; gap: 12px; justify-content: center;">
+                            <a href="https://t.me/Yaroslav797" target="_blank" style="display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-size: 0.88rem; font-weight: 600; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.13)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="#2AABEE"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+                                Telegram
+                            </a>
+                            <a href="https://wa.me/380505580953" target="_blank" style="display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-size: 0.88rem; font-weight: 600; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.13)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                WhatsApp
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1557,6 +1599,50 @@
             document.getElementById('outCPA').innerText = '$' + Math.round(cpa).toLocaleString();
             document.getElementById('outRev').innerText = '$' + Math.round(rev).toLocaleString();
             document.getElementById('outROAS').innerText = Math.round(roas) + '%';
+
+            // New KPIs
+            const cpl = leads > 0 ? Math.round(budget / leads) : cpa;
+            document.getElementById('outCPL').innerText = '$' + cpl.toLocaleString();
+
+            const adPct = rev > 0 ? Math.round((budget / rev) * 100) : 0;
+            document.getElementById('outAdPct').innerText = adPct + '%';
+
+            const margin = parseFloat(document.getElementById('calcMargin').value) || (calcModel === 'ecommerce' ? 30 : 100);
+            const grossProfit = rev * (margin / 100);
+            const netProfit = grossProfit - budget;
+            const netProfitEl = document.getElementById('outNetProfit');
+            netProfitEl.innerText = '$' + Math.round(netProfit).toLocaleString();
+            netProfitEl.style.color = netProfit >= 0 ? '#4ade80' : '#f87171';
+
+            // Budget Health Indicator
+            const healthBar = document.getElementById('outHealthBar');
+            const healthLabel = document.getElementById('outHealthLabel');
+            const healthDesc = document.getElementById('outHealthDesc');
+            if (adPct <= 15) {
+                healthBar.style.width = '30%';
+                healthBar.style.background = '#4ade80';
+                healthLabel.innerText = '🟢 Conservative';
+                healthLabel.style.color = '#4ade80';
+                healthDesc.innerText = 'Бюджет до 15% від виручки — стабільна зона.';
+            } else if (adPct <= 30) {
+                healthBar.style.width = '60%';
+                healthBar.style.background = '#facc15';
+                healthLabel.innerText = '🟡 Balanced';
+                healthLabel.style.color = '#facc15';
+                healthDesc.innerText = 'Бюджет 15–30% від виручки — ефективна зона зростання.';
+            } else if (adPct <= 50) {
+                healthBar.style.width = '85%';
+                healthBar.style.background = '#fb923c';
+                healthLabel.innerText = '🟠 Aggressive';
+                healthLabel.style.color = '#fb923c';
+                healthDesc.innerText = 'Бюджет 30–50% від виручки — потрібна оптимізація.';
+            } else {
+                healthBar.style.width = '100%';
+                healthBar.style.background = '#f87171';
+                healthLabel.innerText = '🔴 High Risk';
+                healthLabel.style.color = '#f87171';
+                healthDesc.innerText = 'Бюджет >50% від виручки — переглянте ціль або чек.';
+            }
 
             compileMagicEmail(target, aov, userCR, budget, roas);
         }
