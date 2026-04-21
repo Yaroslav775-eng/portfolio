@@ -1088,10 +1088,26 @@
                             <button id="btnModelEcom" class="btn btn-ghost" style="flex:1; border:none; color:var(--text-gray);" onclick="setCalcModel('ecommerce')">E-commerce</button>
                         </div>
 
+                        <!-- Context Inputs (Niche, Region, Competitors) -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px;">
+                            <div class="quiz-input-group" style="margin-bottom: 0;">
+                                <label class="quiz-label">Niche / Product</label>
+                                <input type="text" id="calcNiche" class="quiz-input" placeholder="e.g. Roof Repair" oninput="runMagicCalc()" />
+                            </div>
+                            <div class="quiz-input-group" style="margin-bottom: 0;">
+                                <label class="quiz-label">Target Region</label>
+                                <input type="text" id="calcRegion" class="quiz-input" placeholder="e.g. London" oninput="runMagicCalc()" />
+                            </div>
+                            <div class="quiz-input-group" style="grid-column: span 2; margin-bottom: 0;">
+                                <label class="quiz-label">Main Competitors</label>
+                                <input type="text" id="calcCompetitors" class="quiz-input" placeholder="Who do you want to beat?" oninput="runMagicCalc()" />
+                            </div>
+                        </div>
+
                         <!-- Common Inputs -->
                         <div class="quiz-input-group">
-                            <label class="quiz-label" id="lblTarget">Desired new deals (clients) per month</label>
-                            <input type="number" id="calcTarget" class="quiz-input" placeholder="Example: 20" oninput="runMagicCalc()" />
+                            <label class="quiz-label" id="lblTarget">Desired number of inquiries (leads) per month</label>
+                            <input type="number" id="calcTarget" class="quiz-input" placeholder="Example: 50" oninput="runMagicCalc()" />
                         </div>
                         
                         <div class="quiz-input-group">
@@ -1206,6 +1222,9 @@
             document.getElementById('calcTarget').value = '';
             document.getElementById('calcAOV').value = '';
             document.getElementById('calcCloseRate').value = '';
+            document.getElementById('calcNiche').value = '';
+            document.getElementById('calcRegion').value = '';
+            document.getElementById('calcCompetitors').value = '';
             runMagicCalc();
             document.getElementById('quizModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1233,11 +1252,11 @@
                 btnEc.style.color = 'var(--text-gray)';
                 btnEc.style.boxShadow = 'none';
 
-                lblTarget.innerText = 'Desired new deals (clients) per month';
+                lblTarget.innerText = 'Desired number of inquiries (leads) per month';
                 lblAOV.innerText = 'Average Check (or LTV) per client ($)';
                 grpMargin.style.display = 'none';
                 divOutLeads.style.display = 'block';
-                calcCloseRate.previousElementSibling.innerText = 'Current Close Rate (Lead to Client, %)';
+                calcCloseRate.previousElementSibling.innerText = 'Target Close Rate (Lead to client, %)';
                 calcCloseRate.nextElementSibling.innerText = 'Default benchmark: 20%';
             } else {
                 btnEc.style.background = '#fff';
@@ -1283,9 +1302,9 @@
             let clicks, leads, sales, budget, rev, cpa, roas;
 
             if (calcModel === 'leadgen') {
-                // Top-down reverse math for Lead Gen
-                sales = target;
-                leads = Math.ceil(sales / leadToClientCR);
+                // Forward math for Lead Gen based on desired inquiries
+                leads = target; // target means target number of leads/inquiries
+                sales = Math.ceil(leads * leadToClientCR); // estimate closed deals
                 clicks = Math.ceil(leads / siteToLeadCR);
                 budget = clicks * avgCPC;
                 rev = sales * aov;
@@ -1316,17 +1335,26 @@
         }
 
         function compileMagicEmail(target, aov, cr, budget, roas) {
+            let niche = document.getElementById('calcNiche').value || 'Not specified';
+            let region = document.getElementById('calcRegion').value || 'Not specified';
+            let competitors = document.getElementById('calcCompetitors').value || 'Not specified';
+
             let subject = "Funnel Calculation: Request for Custom Strategy";
             let bodyText = `Hi Iaroslav,\n\nI just ran the math on your site. Here are my baseline targets:\n\n`;
             
+            bodyText += `-- CONTEXT --\n`;
+            bodyText += `Niche/Product: ${niche}\n`;
+            bodyText += `Target Region: ${region}\n`;
+            bodyText += `Main Competitors: ${competitors}\n\n`;
+
             bodyText += `-- MODEL: ${calcModel.toUpperCase()} --\n`;
             if (calcModel === 'leadgen') {
-                bodyText += `Target Deals/month: ${target}\n`;
+                bodyText += `Target Leads/month: ${target}\n`;
             } else {
                 bodyText += `Target Revenue/month: $${target}\n`;
             }
             bodyText += `Average Check: $${aov}\n`;
-            bodyText += `Current Convertion: ${isNaN(cr) ? 'Not specified (used benchmark)' : cr+'%'}\n`;
+            bodyText += `Close Rate: ${isNaN(cr) ? 'Not specified (used benchmark)' : cr+'%'}\n`;
             
             bodyText += `\n-- FORECAST GENERATED --\n`;
             bodyText += `Recommended Ad Budget: $${Math.round(budget)}\n`;

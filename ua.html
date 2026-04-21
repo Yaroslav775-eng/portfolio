@@ -1208,10 +1208,26 @@
                             <button id="btnModelEcom" class="btn btn-ghost" style="flex:1; border:none; color:var(--text-gray);" onclick="setCalcModel('ecommerce')">E-commerce</button>
                         </div>
 
+                        <!-- Context Inputs (Niche, Region, Competitors) -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px;">
+                            <div class="quiz-input-group" style="margin-bottom: 0;">
+                                <label class="quiz-label">Ніша / Продукт</label>
+                                <input type="text" id="calcNiche" class="quiz-input" placeholder="Ремонт дахів" oninput="runMagicCalc()" />
+                            </div>
+                            <div class="quiz-input-group" style="margin-bottom: 0;">
+                                <label class="quiz-label">Регіон реклами</label>
+                                <input type="text" id="calcRegion" class="quiz-input" placeholder="Лондон" oninput="runMagicCalc()" />
+                            </div>
+                            <div class="quiz-input-group" style="grid-column: span 2; margin-bottom: 0;">
+                                <label class="quiz-label">Основні конкуренти</label>
+                                <input type="text" id="calcCompetitors" class="quiz-input" placeholder="Вкажіть, кого хочете обійти" oninput="runMagicCalc()" />
+                            </div>
+                        </div>
+
                         <!-- Common Inputs -->
                         <div class="quiz-input-group">
-                            <label class="quiz-label" id="lblTarget">Бажана кількість угод (клієнтів) на місяць</label>
-                            <input type="number" id="calcTarget" class="quiz-input" placeholder="Наприклад: 20" oninput="runMagicCalc()" />
+                            <label class="quiz-label" id="lblTarget">Бажана кількість звернень (лідів) на місяць</label>
+                            <input type="number" id="calcTarget" class="quiz-input" placeholder="Наприклад: 50" oninput="runMagicCalc()" />
                         </div>
                         
                         <div class="quiz-input-group">
@@ -1326,6 +1342,9 @@
             document.getElementById('calcTarget').value = '';
             document.getElementById('calcAOV').value = '';
             document.getElementById('calcCloseRate').value = '';
+            document.getElementById('calcNiche').value = '';
+            document.getElementById('calcRegion').value = '';
+            document.getElementById('calcCompetitors').value = '';
             runMagicCalc();
             document.getElementById('quizModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1353,11 +1372,11 @@
                 btnEc.style.color = 'var(--text-gray)';
                 btnEc.style.boxShadow = 'none';
 
-                lblTarget.innerText = 'Бажана кількість угод (клієнтів) на місяць';
+                lblTarget.innerText = 'Бажана кількість звернень (лідів) на місяць';
                 lblAOV.innerText = 'Середній чек (чи LTV) з одного клієнта ($)';
                 grpMargin.style.display = 'none';
                 divOutLeads.style.display = 'block';
-                calcCloseRate.previousElementSibling.innerText = 'Текущий рівень закриття (з ліда в угод, %)';
+                calcCloseRate.previousElementSibling.innerText = 'Ваш відсоток закриття (з ліда в клієнта, %)';
                 calcCloseRate.nextElementSibling.innerText = 'За замовчуванням (якщо пусто): 20%';
             } else {
                 btnEc.style.background = '#fff';
@@ -1403,9 +1422,9 @@
             let clicks, leads, sales, budget, rev, cpa, roas;
 
             if (calcModel === 'leadgen') {
-                // Top-down reverse math for Lead Gen
-                sales = target; // target means number of deals
-                leads = Math.ceil(sales / leadToClientCR);
+                // Forward math for Lead Gen based on desired inquiries
+                leads = target; // target means target number of leads/inquiries
+                sales = Math.ceil(leads * leadToClientCR); // estimate closed deals
                 clicks = Math.ceil(leads / siteToLeadCR);
                 budget = clicks * avgCPC;
                 rev = sales * aov;
@@ -1436,12 +1455,21 @@
         }
 
         function compileMagicEmail(target, aov, cr, budget, roas) {
+            let niche = document.getElementById('calcNiche').value || 'Не вказано';
+            let region = document.getElementById('calcRegion').value || 'Не вказано';
+            let competitors = document.getElementById('calcCompetitors').value || 'Не вказано';
+
             let subject = "Магія Расчетов: Запит на детальну стратегію";
             let bodyText = `Вітаю, Ярославе,\n\nЯ скористався калькулятором на сайті. Мій попередній розрахунок:\n\n`;
             
+            bodyText += `-- КОНТЕКСТ --\n`;
+            bodyText += `Ніша/Продукт: ${niche}\n`;
+            bodyText += `Регіон: ${region}\n`;
+            bodyText += `Конкуренти: ${competitors}\n\n`;
+
             bodyText += `-- МОДЕЛЬ: ${calcModel.toUpperCase()} --\n`;
             if (calcModel === 'leadgen') {
-                bodyText += `Ціль угод/міс: ${target}\n`;
+                bodyText += `Ціль лідів/міс: ${target}\n`;
             } else {
                 bodyText += `Ціль по виручці/міс: $${target}\n`;
             }
