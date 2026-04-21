@@ -1246,9 +1246,17 @@
                             <span class="quiz-hint">За замовчуванням: 20% (Lead Gen) / 1.5% (E-com)</span>
                         </div>
                         
-                        <div style="margin-top: auto; padding-top: 24px;">
-                            <div class="trust-badge" style="font-size: 0.8rem;">
-                                Математика заснована на середніх бенчмарках для ринків США та ЄС.
+                        <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #f0f0f0;">
+                            <p style="font-size: 0.75rem; color: var(--text-gray); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Куди надіслати розрахунок?</p>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <div class="quiz-input-group" style="margin-bottom: 0;">
+                                    <label class="quiz-label">Ім’я</label>
+                                    <input type="text" id="calcName" class="quiz-input" placeholder="Як вас звати?" />
+                                </div>
+                                <div class="quiz-input-group" style="margin-bottom: 0;">
+                                    <label class="quiz-label">Телефон або Email</label>
+                                    <input type="text" id="calcContact" class="quiz-input" placeholder="+380... / email" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1303,17 +1311,26 @@
                 </div>
 
                 <!-- THANK YOU SCREEN -->
-                <div id="thankYouScreen" style="display:none; padding: 64px 48px; text-align: center; background: var(--bg-dark); color: #fff; min-height: 500px; flex-direction: column; justify-content: center; align-items: center;">
-                    <div style="font-size: 4rem; margin-bottom: 24px;">🎯</div>
-                    <h2 style="font-size: 2rem; color: #fff; margin-bottom: 16px;">Дякую за звернення!</h2>
-                    <p style="color: rgba(255,255,255,0.7); font-size: 1.05rem; max-width: 420px; margin: 0 auto 32px;">Яотримав ваш бріф і особисто перегляну цифри. Очікуйте відповідь протягом 24 годин.</p>
-                    <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 20px 28px; margin-bottom: 40px; display: inline-block; text-align: left;">
-                        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 12px;">Що буде далі</p>
-                        <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; margin-bottom: 8px;">✓ &nbsp;Бріф вже у скриньці Ярослава</p>
-                        <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; margin-bottom: 8px;">✓ &nbsp;Аудит воронки протягом 24 годин</p>
-                        <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem;">✓ &nbsp;Стратегія та план запуску</p>
+                <div id="thankYouScreen" style="display:none; padding: 48px 48px; text-align: center; background: var(--bg-dark); color: #fff; min-height: 500px; flex-direction: column; justify-content: center; align-items: center;">
+                    <div style="font-size: 3.5rem; margin-bottom: 16px;">🎯</div>
+                    <h2 style="font-size: 1.9rem; color: #fff; margin-bottom: 12px;">Дякую за звернення!</h2>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 1rem; max-width: 400px; margin: 0 auto 24px;">Я отримав ваш бріф і особисто перегляну цифри. Відповідь протягом 24 годин.</p>
+
+                    <!-- GIFT BLOCK -->
+                    <div style="background: rgba(192,0,0,0.15); border: 1px solid rgba(192,0,0,0.4); border-radius: 10px; padding: 20px 24px; margin-bottom: 28px; max-width: 420px; text-align: left;">
+                        <p style="font-size: 0.75rem; color: #C00000; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;">🎁 Подарунок для вас</p>
+                        <p style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">Чекліст: 12 помилок в Google Ads</p>
+                        <p style="font-size: 0.85rem; color: rgba(255,255,255,0.65); margin-bottom: 16px;">що зливають ваш бюджет щомісяць — PDF чекліст зараз доступний</p>
+                        <a href="checklist.html" target="_blank" class="btn btn-primary" style="display: inline-block; background: #C00000; border: none; font-size: 0.9rem; padding: 10px 20px; cursor: pointer; text-decoration: none;">Завантажити PDF →</a>
                     </div>
-                    <button onclick="closeQuiz()" class="btn btn-primary" style="border: none; background: var(--accent-brand); cursor: pointer;">Закрити &rarr;</button>
+
+                    <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 16px 24px; margin-bottom: 24px; display: inline-block; text-align: left; max-width: 420px; width: 100%;">
+                        <p style="font-size: 0.75rem; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 8px;">Що буде далі</p>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 6px;">✓  Бріф вже у скриньці Ярослава</p>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 6px;">✓  Аудит воронки протягом 24 годин</p>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">✓  Стратегія та план запуску</p>
+                    </div>
+                    <button onclick="closeQuiz()" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); padding: 8px 20px; cursor: pointer; border-radius: 4px; font-size: 0.9rem;">Закрити</button>
                 </div>
             </div>
         </div>
@@ -1359,6 +1376,8 @@
             document.getElementById('calcNiche').value = '';
             document.getElementById('calcRegion').value = '';
             document.getElementById('calcCompetitors').value = '';
+            document.getElementById('calcName').value = '';
+            document.getElementById('calcContact').value = '';
             runMagicCalc();
             document.getElementById('quizModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1378,6 +1397,8 @@
             btn.disabled = true;
             btn.innerText = 'Відправляємо...';
 
+            const name        = document.getElementById('calcName').value || 'Не вказано';
+            const contact     = document.getElementById('calcContact').value || 'Не вказано';
             const niche       = document.getElementById('calcNiche').value || 'Не вказано';
             const region      = document.getElementById('calcRegion').value || 'Не вказано';
             const competitors = document.getElementById('calcCompetitors').value || 'Не вказано';
@@ -1389,6 +1410,10 @@
             const revenue     = document.getElementById('outRev').innerText || '—';
 
             const message = [
+                '=== КОНТАКТ ===',
+                'Ім’я: ' + name,
+                'Тел/Email: ' + contact,
+                '',
                 '=== КОНТЕКСТ ===',
                 'Ніша: ' + niche,
                 'Регіон: ' + region,
@@ -1413,7 +1438,7 @@
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify({
                     access_key: '024929c9-3c2f-471f-8ec3-bd5cbaf34070',
-                    subject: 'Бріф 🎯 ' + niche + ' | ' + region,
+                    subject: 'Бріф 🎯 ' + (name !== 'Не вказано' ? name + ' — ' : '') + niche + ' | ' + region,
                     from_name: 'Калькулятор на сайті',
                     message: message
                 })

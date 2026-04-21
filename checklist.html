@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 помилок в Google Ads | Безкоштовний чекліст — Ярослав Жакун</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f4f0;
+            color: #111;
+            line-height: 1.6;
+        }
+
+        /* PRINT CTA BAR */
+        .print-bar {
+            background: #111;
+            color: #fff;
+            padding: 12px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .print-bar span { font-size: 0.85rem; opacity: 0.7; }
+        .print-bar .btns { display: flex; gap: 12px; }
+        .btn-print {
+            background: #C00000;
+            color: #fff;
+            border: none;
+            padding: 8px 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .btn-back {
+            background: transparent;
+            color: rgba(255,255,255,0.6);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        /* PAGE */
+        .page {
+            max-width: 780px;
+            margin: 40px auto 80px;
+            background: #fff;
+            padding: 64px 64px 80px;
+            box-shadow: 0 2px 40px rgba(0,0,0,0.08);
+        }
+
+        /* HEADER */
+        .doc-header {
+            border-bottom: 3px solid #111;
+            padding-bottom: 32px;
+            margin-bottom: 40px;
+        }
+        .doc-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #C00000;
+            margin-bottom: 12px;
+        }
+        .doc-title {
+            font-size: 2.4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+        .doc-title span { color: #C00000; }
+        .doc-subtitle {
+            font-size: 1rem;
+            color: #555;
+            max-width: 520px;
+        }
+        .doc-meta {
+            display: flex;
+            gap: 32px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .doc-meta-item { font-size: 0.78rem; color: #888; }
+        .doc-meta-item strong { color: #111; display: block; font-size: 0.9rem; }
+
+        /* INTRO BOX */
+        .intro-box {
+            background: #111;
+            color: #fff;
+            padding: 24px 28px;
+            margin-bottom: 40px;
+            border-left: 4px solid #C00000;
+        }
+        .intro-box p { font-size: 0.95rem; line-height: 1.7; }
+        .intro-box strong { color: #fff; }
+
+        /* SECTIONS */
+        .section-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #C00000;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* CHECKLIST ITEMS */
+        .checklist { margin-bottom: 40px; }
+
+        .check-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 16px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .check-item:last-child { border-bottom: none; }
+
+        .check-box {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #ddd;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .check-num {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #C00000;
+            letter-spacing: 0.05em;
+            min-width: 28px;
+            margin-top: 3px;
+        }
+
+        .check-content { flex: 1; }
+        .check-title {
+            font-size: 0.97rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .check-desc {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        .check-impact {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #C00000;
+            background: rgba(192,0,0,0.07);
+            padding: 2px 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* FOOTER */
+        .doc-footer {
+            border-top: 2px solid #111;
+            padding-top: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-cta { }
+        .footer-cta p { font-size: 0.8rem; color: #888; margin-bottom: 6px; }
+        .footer-cta a {
+            display: inline-block;
+            background: #C00000;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .footer-brand { text-align: right; }
+        .footer-brand strong { display: block; font-size: 0.9rem; }
+        .footer-brand span { font-size: 0.78rem; color: #888; }
+
+        @media print {
+            .print-bar { display: none; }
+            body { background: #fff; }
+            .page { box-shadow: none; margin: 0; padding: 40px; }
+        }
+        @media (max-width: 600px) {
+            .page { padding: 32px 24px; margin: 0; }
+            .doc-title { font-size: 1.7rem; }
+            .print-bar { padding: 12px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="print-bar">
+    <span>🎁 Безкоштовний матеріал від Ярослава Жакуна</span>
+    <div class="btns">
+        <a href="ua.html" class="btn-back">← На сайт</a>
+        <button class="btn-print" onclick="window.print()">⬇ Зберегти PDF</button>
+    </div>
+</div>
+
+<div class="page">
+
+    <div class="doc-header">
+        <div class="doc-label">Безкоштовний чекліст · Google Ads</div>
+        <h1 class="doc-title">12 помилок в Google Ads,<br>що <span>зливають бюджет</span> щомісяця</h1>
+        <p class="doc-subtitle">Практичний чекліст для власників бізнесу та маркетологів, які хочуть перевірити свою рекламу самостійно або підготуватися до аудиту.</p>
+        <div class="doc-meta">
+            <div class="doc-meta-item"><strong>Ярослав Жакун</strong>Спеціаліст Google Ads</div>
+            <div class="doc-meta-item"><strong>Цільова аудиторія</strong>E-com, Послуги, B2B</div>
+            <div class="doc-meta-item"><strong>Час перевірки</strong>~15–20 хвилин</div>
+        </div>
+    </div>
+
+    <div class="intro-box">
+        <p>Більшість рекламних бюджетів втрачає від <strong>20% до 60%</strong> коштів через типові помилки налаштування. Цей список — не теорія. Це помилки, які я особисто виявляю в кожному третьому обліковому записі, що потрапляє на аудит.</p>
+    </div>
+
+    <!-- SECTION 1 -->
+    <div class="section-title">Блок 1 — Структура кампаній</div>
+    <div class="checklist">
+        <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-num">01</div>
+            <div class="check-content">
+                <div class="check-title">Усі продукти/послуги в одній кампанії</div>
+                <div class="check-desc">Змішані оголошення в одній кампанії знижують релевантність та ускладнюють оптимізацію бюджету.</div>
+                <span class="check-impact">Вплив: зайві витрати 15–30%</span>
+            </div>
+        </div>
+        <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-num">02</div>
+            <div class="check-content">
+                <div class="check-title">Немає поділу на брендові та небрендові запити</div>
+                <div class="check-desc">Брендові ключі «з'їдають» бюджет небрендових. Їх обов'язково треба розділяти.</div>
+                <span class="check-impact">Вплив: викривлення метрик CPA</span>
+            </div>
+        </div>
+        <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-num">03</div>
+            <div class="check-content">
+                <div class="check-title">«Розумна» кампанія замість пошукової</div>
+                <div class="check-desc">Performance Max або Smart кампанії без достатньої кількості конверсій — гроші на вітер перших 2–4 тижні.</div>
+                <span class="check-impact">Вплив: фаза навчання без результату</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="section-title">Блок 2 — Ключові слова та мінус-слова</div>
+    <div class="checklist">
+        <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-num">04</div>
+            <div class="check-content">
+                <div class="check-title">Тільки широка відповідність без мінус-слів</div>
+                <div class="check-desc">Broad match без мінус-листа показує рекламу нерелевантній аудиторії. Особливо небезпечно при малих бюджетах.</div>
+                <span class="check-impact">Вплив: до 40% нерелевантного трафіку</span>
+            </div>
+        </div>
+        <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-num">05</div>
+            <div class="check-content">
+                <div class="check-title">Список мінус-слів не оновлювався 3+ місяці</div>
+                <div class="check-desc">Регулярний перегляд пошукових запитів — щоб блокувати нові нерелевантні слова.</div>
+                <span class="check-impact">Вплив: накопичені зайві витрати</span>
+            </div>
+        </div>
+        <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-num">06</div>
+            <div class="check-content">
+                <div class="check-title">Ключові слова-конкуренти без окремого бюджету</div>
+                <div class="check-desc">Конкурентні запити зазвичай дорогі та конвертують гірше. Без ізоляції вони знищують ефективний CPL.</div>
+                <span class="check-impact">Вплив: завищений CPA</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="section-title">Блок 3 — Оголошення та посадкові сторінки</div>
+    <div class="checklist">
+        <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-num">07</div>
+            <div class="check-content">
+                <div class="check-title">Усі оголошення ведуть на головну сторінку</div>
+                <div class="check-desc">Покупець шукає «купити бойлер Ariston 80 л» — і потрапляє на головну про «побутову техніку». Конверсія падає в рази.</div>
+                <span class="check-impact">Вплив: конверсія нижче в 2–4 рази</span>
+            </div>
+        </div>
+        <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-num">08</div>
+            <div class="check-content">
+                <div class="check-title">Менше ніж 3 RSA-варіанти оголошень в групі</div>
+                <div class="check-desc">Google не може тестувати заголовки та описи без мінімум 2–3 різних RSA в кожній групі.</div>
+                <span class="check-impact">Вплив: втрата CTR 10–20%</span>
+            </div>
+        </div>
+        <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-num">09</div>
+            <div class="check-content">
+                <div class="check-title">Немає адаптованих оголошень для мобільних</div>
+                <div class="check-desc">50–70% трафіку — мобільний. Якщо лендинг не адаптований або форма неручна, гроші вилітають.</div>
+                <span class="check-impact">Вплив: втрата половини потенційних лідів</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="section-title">Блок 4 — Відстеження та аналітика</div>
+    <div class="checklist">
+        <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-num">10</div>
+            <div class="check-content">
+                <div class="check-title">Конверсія не налаштована або рахується двічі</div>
+                <div class="check-desc">Без точних даних Google навчає алгоритм на помилкових сигналах. Автоматичні стратегії перестають працювати.</div>
+                <span class="check-impact">Вплив: алгоритм оптимізує «фантомні» конверсії</span>
+            </div>
+        </div>
+        <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-num">11</div>
+            <div class="check-content">
+                <div class="check-title">Відсутній захист від кліків-фроду</div>
+                <div class="check-desc">Конкуренти та боти можуть витрачати ваш бюджет. ClickCease, Lunio або хоча б IP-виключення — обов'язкові.</div>
+                <span class="check-impact">Вплив: до 15–25% бюджету на фрод-кліки</span>
+            </div>
+        </div>
+        <div class="check-item">
+            <div class="check-box"></div>
+            <div class="check-num">12</div>
+            <div class="check-content">
+                <div class="check-title">Немає регулярного перегляду Search Terms звіту</div>
+                <div class="check-desc">Щотижневий перегляд пошукових запитів — єдиний спосіб реально контролювати, за що платите.</div>
+                <span class="check-impact">Вплив: невидимі витрати накопичуються</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="doc-footer">
+        <div class="footer-cta">
+            <p>Знайшли помилки у своїй рекламі? Хочете аудит від спеціаліста?</p>
+            <a href="ua.html#cta">Отримати персональний аудит →</a>
+        </div>
+        <div class="footer-brand">
+            <strong>Ярослав Жакун</strong>
+            <span>Спеціаліст Google Ads</span>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
