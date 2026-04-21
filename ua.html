@@ -1188,6 +1188,16 @@
         </div>
     </div>
 
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // ── EmailJS CONFIG ─────────────────────────────────────────────
+        const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
+        const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+        const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
+        (function() { emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); })();
+    </script>
+
     <!-- QUIZ MODAL HTML (MAGIC DASHBOARD) -->
     <div class="modal-overlay" id="quizModal">
         <div class="modal-window" style="max-width: 900px;"> <!-- Wider modal for 2 columns -->
@@ -1297,9 +1307,23 @@
                                 </div>
                             </div>
 
-                            <a href="#" id="magicMailtoBtn" class="btn btn-primary" style="display: block; text-align: center; width: 100%; border: none; background: var(--accent-brand);">Надіслати для стратегії &rarr;</a>
+                            <button id="magicSubmitBtn" onclick="sendMagicForm()" class="btn btn-primary" style="display: block; text-align: center; width: 100%; border: none; background: var(--accent-brand); cursor: pointer;">Надіслати для стратегії &rarr;</button>
                         </div>
                     </div>
+                </div>
+
+                <!-- THANK YOU SCREEN -->
+                <div id="thankYouScreen" style="display:none; padding: 64px 48px; text-align: center; background: var(--bg-dark); color: #fff; min-height: 500px; flex-direction: column; justify-content: center; align-items: center;">
+                    <div style="font-size: 4rem; margin-bottom: 24px;">🎯</div>
+                    <h2 style="font-size: 2rem; color: #fff; margin-bottom: 16px;">Дякую за звернення!</h2>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 1.05rem; max-width: 420px; margin: 0 auto 32px;">Яотримав ваш бріф і особисто перегляну цифри. Очікуйте відповідь протягом 24 годин.</p>
+                    <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 20px 28px; margin-bottom: 40px; display: inline-block; text-align: left;">
+                        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 12px;">Що буде далі</p>
+                        <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; margin-bottom: 8px;">✓ &nbsp;Бріф вже у скриньці Ярослава</p>
+                        <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; margin-bottom: 8px;">✓ &nbsp;Аудит воронки протягом 24 годин</p>
+                        <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem;">✓ &nbsp;Стратегія та план запуску</p>
+                    </div>
+                    <button onclick="closeQuiz()" class="btn btn-primary" style="border: none; background: var(--accent-brand); cursor: pointer;">Закрити &rarr;</button>
                 </div>
             </div>
         </div>
@@ -1352,6 +1376,79 @@
         function closeQuiz() {
             document.getElementById('quizModal').classList.remove('active');
             document.body.style.overflow = '';
+            // Reset thank-you screen on next open
+            document.getElementById('thankYouScreen').style.display = 'none';
+            document.querySelector('.dashboard-grid').style.display = 'grid';
+            const btn = document.getElementById('magicSubmitBtn');
+            if (btn) { btn.disabled = false; btn.innerText = 'Надіслати для стратегії →'; }
+        }
+
+        function sendMagicForm() {
+            const btn = document.getElementById('magicSubmitBtn');
+            btn.disabled = true;
+            btn.innerText = 'Відправляємо...';
+
+            const niche       = document.getElementById('calcNiche').value || 'Не вказано';
+            const region      = document.getElementById('calcRegion').value || 'Не вказано';
+            const competitors = document.getElementById('calcCompetitors').value || 'Не вказано';
+            const target      = document.getElementById('calcTarget').value || '—';
+            const aov         = document.getElementById('calcAOV').value || '—';
+            const cr          = document.getElementById('calcCloseRate').value || 'benchmark';
+            const budget      = document.getElementById('outBudget').innerText || '—';
+            const roas        = document.getElementById('outROAS').innerText || '—';
+            const revenue     = document.getElementById('outRev').innerText || '—';
+
+            const templateParams = {
+                model:       calcModel.toUpperCase(),
+                niche:       niche,
+                region:      region,
+                competitors: competitors,
+                target:      target,
+                aov:         '$' + aov,
+                close_rate:  cr + '%',
+                budget:      budget,
+                roas:        roas,
+                revenue:     revenue,
+                page:        'Українська (ua.html)'
+            };
+
+            if (EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID') {
+                emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                    .then(function() { showThankYou(); })
+                    .catch(function(err) {
+                        console.warn('EmailJS error', err);
+                        openMailtoFallback(niche, region, competitors, target, aov, cr, budget, roas);
+                        showThankYou();
+                    });
+            } else {
+                openMailtoFallback(niche, region, competitors, target, aov, cr, budget, roas);
+                showThankYou();
+            }
+        }
+
+        function openMailtoFallback(niche, region, competitors, target, aov, cr, budget, roas) {
+            const subject = encodeURIComponent('Бріф з калькулятора: ' + niche + ' / ' + region);
+            const body = encodeURIComponent(
+                'Вітаю, Ярославе!\n\n' +
+                '-- КОНТЕКСТ --\n' +
+                'Ніша: ' + niche + '\n' +
+                'Регіон: ' + region + '\n' +
+                'Конкуренти: ' + competitors + '\n\n' +
+                '-- МОДЕЛЬ: ' + calcModel.toUpperCase() + ' --\n' +
+                'Ціль: ' + target + '\n' +
+                'Середній чек: $' + aov + '\n' +
+                'Закриття: ' + cr + '\n\n' +
+                '-- ПРОГНОЗ --\n' +
+                'Бюджет: ' + budget + '\n' +
+                'ROAS: ' + roas + '\nПідготуйте стратегію, будь ласка.'
+            );
+            window.open('mailto:yaroslav.zhakun@gmail.com?subject=' + subject + '&body=' + body);
+        }
+
+        function showThankYou() {
+            document.querySelector('.dashboard-grid').style.display = 'none';
+            const screen = document.getElementById('thankYouScreen');
+            screen.style.display = 'flex';
         }
 
         function setCalcModel(model) {

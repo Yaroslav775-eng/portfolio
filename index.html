@@ -1068,6 +1068,21 @@
         </div>
     </div>
 
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // ── EmailJS CONFIG ─────────────────────────────────────────────
+        // 1. Sign up free at https://www.emailjs.com/
+        // 2. Create a service (Gmail) → copy Service ID
+        // 3. Create a template → copy Template ID
+        // 4. Go to Account → copy Public Key
+        // Then paste the 3 values below:
+        const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // e.g. 'service_abc123'
+        const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // e.g. 'template_xyz456'
+        const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // e.g. 'abcDEF123456'
+        (function() { emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); })();
+    </script>
+
     <!-- QUIZ MODAL HTML (MAGIC DASHBOARD) -->
     <div class="modal-overlay" id="quizModal">
         <div class="modal-window" style="max-width: 900px;"> <!-- Wider modal for 2 columns -->
@@ -1177,9 +1192,23 @@
                                 </div>
                             </div>
 
-                            <a href="#" id="magicMailtoBtn" class="btn btn-primary" style="display: block; text-align: center; width: 100%; border: none; background: var(--accent-brand);">Submit for Custom Strategy &rarr;</a>
+                            <button id="magicSubmitBtn" onclick="sendMagicForm()" class="btn btn-primary" style="display: block; text-align: center; width: 100%; border: none; background: var(--accent-brand); cursor: pointer;">Send for Custom Strategy &rarr;</button>
                         </div>
                     </div>
+                </div>
+
+                <!-- THANK YOU SCREEN -->
+                <div id="thankYouScreen" style="display:none; padding: 64px 48px; text-align: center; background: var(--bg-dark); color: #fff; min-height: 500px; flex-direction: column; justify-content: center; align-items: center;">
+                    <div style="font-size: 4rem; margin-bottom: 24px; animation: popIn 0.5s ease;">🎯</div>
+                    <h2 style="font-size: 2rem; color: #fff; margin-bottom: 16px;">Request Submitted!</h2>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 1.05rem; max-width: 400px; margin: 0 auto 32px;">I've received your funnel brief and will personally review the numbers. Expect a reply within 24 hours.</p>
+                    <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 20px 28px; margin-bottom: 40px; display: inline-block; text-align: left;">
+                        <p style="font-size: 0.8rem; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 8px;">What happens next</p>
+                        <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; margin-bottom: 8px;">✓ &nbsp;Your brief is in Yaroslav's inbox</p>
+                        <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; margin-bottom: 8px;">✓ &nbsp;Funnel audit prepared within 24h</p>
+                        <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem;">✓ &nbsp;Strategy session scheduled</p>
+                    </div>
+                    <button onclick="closeQuiz()" class="btn btn-primary" style="border: none; background: var(--accent-brand); cursor: pointer;">Close &rarr;</button>
                 </div>
             </div>
         </div>
@@ -1232,6 +1261,80 @@
         function closeQuiz() {
             document.getElementById('quizModal').classList.remove('active');
             document.body.style.overflow = '';
+            // Reset thank-you screen on next open
+            document.getElementById('thankYouScreen').style.display = 'none';
+            document.getElementById('thankYouScreen').style.flexDirection = '';
+            document.querySelector('.dashboard-grid').style.display = 'grid';
+        }
+
+        function sendMagicForm() {
+            const btn = document.getElementById('magicSubmitBtn');
+            btn.disabled = true;
+            btn.innerText = 'Sending...';
+
+            const niche       = document.getElementById('calcNiche').value || 'Not specified';
+            const region      = document.getElementById('calcRegion').value || 'Not specified';
+            const competitors = document.getElementById('calcCompetitors').value || 'Not specified';
+            const target      = document.getElementById('calcTarget').value || '—';
+            const aov         = document.getElementById('calcAOV').value || '—';
+            const cr          = document.getElementById('calcCloseRate').value || 'benchmark';
+            const budget      = document.getElementById('outBudget').innerText || '—';
+            const roas        = document.getElementById('outROAS').innerText || '—';
+            const revenue     = document.getElementById('outRev').innerText || '—';
+
+            const templateParams = {
+                model:       calcModel.toUpperCase(),
+                niche:       niche,
+                region:      region,
+                competitors: competitors,
+                target:      target,
+                aov:         '$' + aov,
+                close_rate:  cr + '%',
+                budget:      budget,
+                roas:        roas,
+                revenue:     revenue,
+                page:        'English (index.html)'
+            };
+
+            // Try EmailJS first; fallback to mailto if not configured
+            if (EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID') {
+                emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                    .then(function() { showThankYou(); })
+                    .catch(function(err) {
+                        console.warn('EmailJS error, falling back to mailto', err);
+                        openMailtoFallback(niche, region, competitors, target, aov, cr, budget, roas);
+                        showThankYou();
+                    });
+            } else {
+                // EmailJS not configured — open mailto as fallback
+                openMailtoFallback(niche, region, competitors, target, aov, cr, budget, roas);
+                showThankYou();
+            }
+        }
+
+        function openMailtoFallback(niche, region, competitors, target, aov, cr, budget, roas) {
+            const subject = encodeURIComponent('Funnel Brief: ' + niche + ' / ' + region);
+            const body = encodeURIComponent(
+                'Hi Yaroslav,\n\n' +
+                '-- CONTEXT --\n' +
+                'Niche: ' + niche + '\n' +
+                'Region: ' + region + '\n' +
+                'Competitors: ' + competitors + '\n\n' +
+                '-- MODEL: ' + calcModel.toUpperCase() + ' --\n' +
+                'Target: ' + target + '\n' +
+                'Avg Check: $' + aov + '\n' +
+                'Close Rate: ' + cr + '\n\n' +
+                '-- FORECAST --\n' +
+                'Recommended Budget: ' + budget + '\n' +
+                'Estimated ROAS: ' + roas + '\n\nPlease prepare a custom strategy.'
+            );
+            window.open('mailto:yaroslav.zhakun@gmail.com?subject=' + subject + '&body=' + body);
+        }
+
+        function showThankYou() {
+            document.querySelector('.dashboard-grid').style.display = 'none';
+            const screen = document.getElementById('thankYouScreen');
+            screen.style.display = 'flex';
         }
 
         function setCalcModel(model) {
