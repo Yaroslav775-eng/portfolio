@@ -473,26 +473,43 @@
             
             .case-card { margin-bottom: 20px; }
 
-            /* CALCULATOR MODAL MOBILE FIX */
+            /* CALCULATOR MODAL MOBILE FIX - AGGRESSIVE */
             #quizModal .modal-window {
                 width: 96% !important;
                 max-width: 96% !important;
-                margin: 2% !important;
+                margin: 2% auto !important;
                 padding: 0 !important;
-                max-height: 96vh !important;
+                max-height: 94vh !important;
                 overflow-y: auto !important;
                 border-radius: 8px !important;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
             }
             
             .dashboard-grid {
-                display: flex !important;
-                flex-direction: column !important;
+                display: block !important; /* Block is safer than flex-column for some browsers */
                 height: auto !important;
             }
             
             .dashboard-grid > div {
                 width: 100% !important;
-                padding: 24px !important;
+                display: block !important;
+                padding: 24px 20px !important;
+            }
+            
+            /* Nested grids inside calculator */
+            .dashboard-grid div[style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+                display: flex !important;
+                flex-direction: column !important;
+            }
+            
+            /* Business model toggle buttons stack */
+            .dashboard-grid div[style*="display: flex; gap: 8px"] {
+                flex-direction: column !important;
+                gap: 5px !important;
             }
             
             #quizContainer { padding: 0 !important; }
@@ -503,12 +520,15 @@
             
             .modal-metrics-grid {
                 grid-template-columns: 1fr 1fr !important;
+                gap: 10px !important;
             }
             
             /* Fix Thank You Screen */
             #thankYouScreen {
                 padding: 40px 20px !important;
                 min-height: auto !important;
+                display: flex !important;
+                flex-direction: column !important;
             }
         }
     </style>
