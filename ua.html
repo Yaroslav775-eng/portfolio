@@ -438,6 +438,79 @@
             .nav-socials { display: none !important; }
             .nav-phone { font-size: 0.78rem !important; }
         }
+
+        /* COMPREHENSIVE MOBILE OVERRIDE */
+        @media (max-width: 768px) {
+            body { overflow-x: hidden; width: 100%; }
+            .container { padding: 0 20px !important; }
+            
+            /* Header Fixes */
+            .sticky-nav .container { 
+                flex-direction: column !important; 
+                gap: 10px !important; 
+                padding: 15px 10px !important;
+                text-align: center;
+            }
+            .sticky-nav { position: relative !important; } /* Unstick for better scrolling on tiny screens */
+
+            /* Typography */
+            h1 { font-size: 2.8rem !important; line-height: 1.1 !important; }
+            h2 { font-size: 2rem !important; }
+            
+            /* Grids & Layouts */
+            .hero-grid, .cred-grid, .case-grid, .methodology-flow, .tool-strip { 
+                grid-template-columns: 1fr !important; 
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 30px !important;
+            }
+            
+            .stats-strip { 
+                flex-wrap: wrap !important; 
+                gap: 20px !important; 
+                justify-content: center !important; 
+            }
+            
+            .case-card { margin-bottom: 20px; }
+
+            /* CALCULATOR MODAL MOBILE FIX */
+            #quizModal .modal-window {
+                width: 96% !important;
+                max-width: 96% !important;
+                margin: 2% !important;
+                padding: 0 !important;
+                max-height: 96vh !important;
+                overflow-y: auto !important;
+                border-radius: 8px !important;
+            }
+            
+            .dashboard-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                height: auto !important;
+            }
+            
+            .dashboard-grid > div {
+                width: 100% !important;
+                padding: 24px !important;
+            }
+            
+            #quizContainer { padding: 0 !important; }
+            
+            .quiz-input-group { margin-bottom: 16px !important; }
+            .quiz-option { padding: 16px !important; gap: 12px !important; }
+            .quiz-option .opt-icon { font-size: 1.5rem !important; }
+            
+            .modal-metrics-grid {
+                grid-template-columns: 1fr 1fr !important;
+            }
+            
+            /* Fix Thank You Screen */
+            #thankYouScreen {
+                padding: 40px 20px !important;
+                min-height: auto !important;
+            }
+        }
     </style>
 </head>
 <body>
