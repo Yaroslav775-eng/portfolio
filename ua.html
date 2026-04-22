@@ -1215,8 +1215,9 @@
                                 <input type="text" id="calcRegion" class="quiz-input" placeholder="Напр.: Україна / Польща" oninput="runMagicCalc()" />
                             </div>
                             <div class="quiz-input-group" style="grid-column: span 2; margin-bottom: 0;">
-                                <label class="quiz-label">Основні конкуренти</label>
-                                <input type="text" id="calcCompetitors" class="quiz-input" placeholder="Ваші основні конкуренти на ринку" oninput="runMagicCalc()" />
+                                <label class="quiz-label">Сайт конкурента (URL)</label>
+                                <input type="url" id="calcCompetitors" class="quiz-input" placeholder="https://competitor.com" oninput="runMagicCalc()" />
+                                <span class="quiz-hint">Вставте посилання — проведемо аналіз рекламної видимості</span>
                             </div>
                         </div>
 
@@ -1250,10 +1251,11 @@
                                     <input type="text" id="calcName" class="quiz-input" placeholder="Як вас звати?" />
                                 </div>
                                 <div class="quiz-input-group" style="margin-bottom: 0;">
-                                    <label class="quiz-label">Телефон або Email</label>
+                                    <label class="quiz-label">Телефон або Email <span style="color:#C00000;">*</span></label>
                                     <input type="text" id="calcContact" class="quiz-input" placeholder="+380... / email" />
                                 </div>
                             </div>
+                            <p style="font-size: 0.65rem; color: var(--text-gray); margin-top: 8px; opacity: 0.8;">🔒 Дані захищені. Без спаму.</p>
                         </div>
                     </div>
 
@@ -1389,6 +1391,12 @@
             document.getElementById('modalContentInner').innerHTML = dataElement.innerHTML;
             document.getElementById('caseModal').classList.add('active');
             document.body.style.overflow = 'hidden'; 
+            
+            // GA4 Micro-conversion: View Case
+            gtag('event', 'view_case_study', {
+                'event_category': 'engagement',
+                'event_label': caseId
+            });
         }
         function closeModal(event, force = false) {
             if (force || event.target === document.getElementById('caseModal')) {
@@ -1413,6 +1421,11 @@
             runMagicCalc();
             document.getElementById('quizModal').classList.add('active');
             document.body.style.overflow = 'hidden';
+
+            // GA4 Micro-conversion: Open Calculator
+            gtag('event', 'open_calculator', {
+                'event_category': 'engagement'
+            });
         }
         function closeQuiz() {
             document.getElementById('quizModal').classList.remove('active');
@@ -1478,6 +1491,12 @@
             .then(function(r) { return r.json(); })
             .then(function(data) {
                 showThankYou();
+                // GA4 Micro-conversion: Submit Brief
+                gtag('event', 'submit_brief_success', {
+                    'event_category': 'lead',
+                    'model': calcModel,
+                    'niche': niche
+                });
             })
             .catch(function(err) {
                 console.warn('Web3Forms error', err);
@@ -1493,6 +1512,13 @@
 
         function setCalcModel(model) {
             calcModel = model;
+            
+            // GA4 Micro-conversion: Switch Model
+            gtag('event', 'switch_calc_model', {
+                'event_category': 'engagement',
+                'model': model
+            });
+
             const btnLg = document.getElementById('btnModelLeadGen');
             const btnEc = document.getElementById('btnModelEcom');
             const lblTarget = document.getElementById('lblTarget');
@@ -1762,6 +1788,24 @@
                     target_language: el.href.includes('ua.html') ? 'uk' : 'en'
                 });
             });
+        // GA4 Global Interaction Tracking
+        document.addEventListener('click', function(e) {
+            const el = e.target.closest('a');
+            if (!el) return;
+
+            // Track Messenger Clicks
+            if (el.href.includes('t.me/')) {
+                gtag('event', 'click_messenger', { 'platform': 'telegram', 'location': el.closest('.footer') ? 'footer' : 'content' });
+            } else if (el.href.includes('wa.me/')) {
+                gtag('event', 'click_messenger', { 'platform': 'whatsapp', 'location': el.closest('.footer') ? 'footer' : 'content' });
+            } else if (el.href.includes('mailto:')) {
+                gtag('event', 'click_email', { 'location': 'contact' });
+            }
+
+            // Track Language Switch
+            if (el.textContent.includes('EN') || el.textContent.includes('UA')) {
+                gtag('event', 'language_switch', { 'target_lang': el.textContent.trim() });
+            }
         });
     </script>
 </body>

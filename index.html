@@ -1231,6 +1231,12 @@
             document.getElementById('modalContentInner').innerHTML = dataElement.innerHTML;
             document.getElementById('caseModal').classList.add('active');
             document.body.style.overflow = 'hidden'; 
+            
+            // GA4 Micro-conversion: View Case
+            gta('view_case_study', {
+                'event_category': 'engagement',
+                'event_label': caseId
+            });
         }
         function closeModal(event, force = false) {
             if (force || event.target === document.getElementById('caseModal')) {
@@ -1253,6 +1259,11 @@
             runMagicCalc();
             document.getElementById('quizModal').classList.add('active');
             document.body.style.overflow = 'hidden';
+
+            // GA4 Micro-conversion: Open Calculator
+            gta('open_calculator', {
+                'event_category': 'engagement'
+            });
         }
         function closeQuiz() {
             document.getElementById('quizModal').classList.remove('active');
@@ -1309,6 +1320,12 @@
             .then(function(r) { return r.json(); })
             .then(function(data) {
                 showThankYou();
+                // GA4 Micro-conversion: Submit Brief
+                gta('submit_brief_success', {
+                    'event_category': 'lead',
+                    'model': calcModel,
+                    'niche': niche
+                });
             })
             .catch(function(err) {
                 console.warn('Web3Forms error', err);
@@ -1324,6 +1341,13 @@
 
         function setCalcModel(model) {
             calcModel = model;
+            
+            // GA4 Micro-conversion: Switch Model
+            gta('switch_calc_model', {
+                'event_category': 'engagement',
+                'model': model
+            });
+
             const btnLg = document.getElementById('btnModelLeadGen');
             const btnEc = document.getElementById('btnModelEcom');
             const lblTarget = document.getElementById('lblTarget');
@@ -1548,6 +1572,24 @@
                     target_language: el.href.includes('ua.html') ? 'uk' : 'en'
                 });
             });
+        // GA4 Global Interaction Tracking
+        document.addEventListener('click', function(e) {
+            const el = e.target.closest('a');
+            if (!el) return;
+
+            // Track Messenger Clicks
+            if (el.href.includes('t.me/')) {
+                gta('click_messenger', { 'platform': 'telegram', 'location': el.closest('.footer') ? 'footer' : 'content' });
+            } else if (el.href.includes('wa.me/')) {
+                gta('click_messenger', { 'platform': 'whatsapp', 'location': el.closest('.footer') ? 'footer' : 'content' });
+            } else if (el.href.includes('mailto:')) {
+                gta('click_email', { 'location': 'contact' });
+            }
+
+            // Track Language Switch
+            if (el.textContent.includes('EN') || el.textContent.includes('UA')) {
+                gta('language_switch', { 'target_lang': el.textContent.trim() });
+            }
         });
     </script>
 </body>
