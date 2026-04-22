@@ -349,11 +349,8 @@
         .modal-metric-val { font-size: 2rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; font-family: var(--font-heading);}
         .modal-metric-lbl { font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); letter-spacing: 0.05em;}
 
-        /* PREMIUM EXPERT DASHBOARD STYLES */
-        .dashboard-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; min-height: 550px; border-radius: 0; overflow: hidden; }
-        @media (max-width: 900px) { .dashboard-grid { grid-template-columns: 1fr; } }
-
-        .dashboard-left { background: #121212; padding: 40px; position: relative; border-right: 1px solid rgba(255,255,255,0.05); }
+        /* Expert Quiz Upgrade Styles */
+        .quiz-progress-container { width: 100%; height: 4px; background: var(--bg-tint); margin-bottom: 32px; position: relative; }
         .quiz-progress-bar { height: 100%; background: var(--accent-brand); width: 0%; transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         
         .quiz-step { display: none; animation: fadeIn 0.4s ease; }
@@ -434,67 +431,6 @@
         .stack-tags { display: flex; flex-wrap: wrap; gap: 8px; }
         .stack-tag { padding: 6px 12px; background: var(--bg-offwhite); border: 1px solid var(--accent-muted); font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600; color: var(--text-dark); }
         
-        .dashboard-right { background: #000; padding: 40px; }
-
-        .glass-input { 
-            background: rgba(255,255,255,0.03); 
-            border: 1px solid rgba(255,255,255,0.1); 
-            color: #fff; 
-            padding: 14px 18px; 
-            font-size: 1rem; 
-            width: 100%; 
-            border-radius: 0; 
-            outline: none; 
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-            font-family: var(--font-sans);
-            margin-bottom: 20px;
-        }
-        .glass-input:focus { border-color: var(--accent-brand); background: rgba(255,255,255,0.07); box-shadow: 0 0 15px rgba(192,0,0,0.15); }
-        
-        .step-title { font-family: var(--font-heading); font-size: 2rem; color: #fff; margin-bottom: 8px; line-height: 1.2; }
-        .step-subtitle { font-size: 0.95rem; color: rgba(255,255,255,0.5); margin-bottom: 32px; font-family: var(--font-sans); }
-
-        .calc-step { display: none; height: 100%; flex-direction: column; }
-        .calc-step.active { display: flex; animation: slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
-
-        .step-nav { margin-top: auto; padding-top: 32px; display: flex; gap: 12px; }
-        .btn-nav-step { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px 24px; font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.75rem; border-radius: 0; }
-        .btn-nav-step:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
-        .btn-nav-step-primary { background: var(--accent-brand); border: none; }
-        .btn-nav-step-primary:hover { background: #990000; transform: translateY(-1px); }
-
-        .progress-dots { display: flex; gap: 8px; margin-bottom: 24px; }
-        .dot { width: 40px; height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; }
-        .dot.active { background: var(--accent-brand); }
-
-        /* Mobile Sticky Results */
-        @media (max-width: 900px) {
-            .mobile-sticky-results {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                background: #000;
-                border-top: 2px solid var(--accent-brand);
-                padding: 12px 20px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                z-index: 1001;
-                font-family: var(--font-sans);
-            }
-            .mobile-sticky-results span { font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform: uppercase; }
-            .mobile-sticky-results strong { font-size: 1.2rem; color: #fff; }
-        }
-
-        .calc-label { font-size: 0.75rem; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 700; margin-bottom: 8px; display: block; letter-spacing: 0.1em; }
-
-        /* KPI Card Styles */
-        .kpi-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 16px; border-radius: 8px; }
-        .kpi-val { font-size: 1.6rem; font-weight: 800; display: block; line-height: 1.1; margin-bottom: 4px; }
-        .kpi-lbl { font-size: 0.65rem; color: rgba(255,255,255,0.4); text-transform: uppercase; font-weight: 700; letter-spacing: 0.08em; }
-
         .section-white { background-color: var(--bg-white); padding: 80px 0; }
 
         /* MOBILE NAV — hide socials, keep phone + CTA */
@@ -1252,53 +1188,224 @@
         </div>
     </div>
 
-    <!-- PREMIUM MAGIC DASHBOARD MODAL -->
+    <!-- QUIZ MODAL HTML (MAGIC DASHBOARD) -->
     <div class="modal-overlay" id="quizModal">
-        <div class="modal-window" style="max-width: 1000px; padding: 0; box-shadow: 0 50px 100px -20px rgba(0,0,0,0.5); border: none; overflow: hidden;">
-            <button class="modal-close" onclick="closeQuiz()" style="z-index: 100;">✕</button>
-            
-            <div class="dashboard-grid">
-                <!-- LEFT COLUMN: STEPS -->
-                <div class="dashboard-left">
-                    <div class="progress-dots">
-                        <div class="dot active" id="dot1"></div>
-                        <div class="dot" id="dot2"></div>
-                        <div class="dot" id="dot3"></div>
-                        <div class="dot" id="dot4"></div>
+        <div class="modal-window" style="max-width: 900px;"> <!-- Wider modal for 2 columns -->
+            <button class="modal-close" onclick="closeQuiz()">✕</button>
+            <div class="modal-content-area" id="quizContainer" style="padding: 0;">
+                
+                <div class="dashboard-grid" style="display: grid; grid-template-columns: 1fr 1fr; min-height: 500px;">
+                    
+                    <!-- LEFT COLUMN: SIMPLE INPUTS -->
+                    <div style="padding: 40px; background: #fff;">
+                        <span class="section-label" style="margin-bottom: 24px;">Strategic Sales Assessment</span>
+                        <h2 style="font-size: 1.8rem; margin-bottom: 8px;">Введіть базові дані</h2>
+                        <p style="color: var(--text-gray); margin-bottom: 32px; font-size: 0.95rem;">Заповніть 3 поля, щоб миттєво побачити прогнозну воронку.</p>
+
+                        <!-- Toggle Business Model -->
+                        <div style="display: flex; gap: 8px; margin-bottom: 24px; background: #f0f0f0; padding: 4px; border-radius: 6px;">
+                            <button id="btnModelLeadGen" class="btn btn-ghost" style="flex:1; border:none; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.1);" onclick="setCalcModel('leadgen')">Lead Gen / B2B</button>
+                            <button id="btnModelEcom" class="btn btn-ghost" style="flex:1; border:none; color:var(--text-gray);" onclick="setCalcModel('ecommerce')">E-commerce</button>
+                        </div>
+
+                        <!-- Context Inputs (Niche, Region, Competitors) -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px;">
+                            <div class="quiz-input-group" style="margin-bottom: 0;">
+                                <label class="quiz-label">Ніша / Продукт</label>
+                                <input type="text" id="calcNiche" class="quiz-input" placeholder="Напр.: Послуги / SaaS / Товар" oninput="runMagicCalc()" />
+                            </div>
+                            <div class="quiz-input-group" style="margin-bottom: 0;">
+                                <label class="quiz-label">Регіон реклами</label>
+                                <input type="text" id="calcRegion" class="quiz-input" placeholder="Напр.: Україна / Польща" oninput="runMagicCalc()" />
+                            </div>
+                            <div class="quiz-input-group" style="grid-column: span 2; margin-bottom: 0;">
+                                <label class="quiz-label">Основні конкуренти</label>
+                                <input type="text" id="calcCompetitors" class="quiz-input" placeholder="Ваші основні конкуренти на ринку" oninput="runMagicCalc()" />
+                            </div>
+                        </div>
+
+                        <!-- Common Inputs -->
+                        <div class="quiz-input-group">
+                            <label class="quiz-label" id="lblTarget">Бажана кількість звернень (лідів) на місяць</label>
+                            <input type="number" id="calcTarget" class="quiz-input" placeholder="Наприклад: 50" oninput="runMagicCalc()" />
+                        </div>
+                        
+                        <div class="quiz-input-group">
+                            <label class="quiz-label" id="lblAOV">Середній чек з одного клієнта ($)</label>
+                            <input type="number" id="calcAOV" class="quiz-input" placeholder="Наприклад: 500" oninput="runMagicCalc()" />
+                        </div>
+
+                        <div class="quiz-input-group" id="groupMargin" style="display: none;">
+                            <label class="quiz-label">Валова маржа (%)</label>
+                            <input type="number" id="calcMargin" class="quiz-input" placeholder="Наприклад: 30" oninput="runMagicCalc()" value="30" />
+                        </div>
+
+                        <div class="quiz-input-group">
+                            <label class="quiz-label">Текущий рівень закриття (з ліда в клієнта, %)</label>
+                            <input type="number" id="calcCloseRate" class="quiz-input" placeholder="Залишіть пустим, якщо не знаєте" oninput="runMagicCalc()" />
+                            <span class="quiz-hint">За замовчуванням: 20% (Lead Gen) / 1.5% (E-com)</span>
+                        </div>
+                        
+                        <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #f0f0f0;">
+                            <p style="font-size: 0.75rem; color: var(--text-gray); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Куди надіслати розрахунок?</p>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <div class="quiz-input-group" style="margin-bottom: 0;">
+                                    <label class="quiz-label">Ім’я</label>
+                                    <input type="text" id="calcName" class="quiz-input" placeholder="Як вас звати?" />
+                                </div>
+                                <div class="quiz-input-group" style="margin-bottom: 0;">
+                                    <label class="quiz-label">Телефон або Email</label>
+                                    <input type="text" id="calcContact" class="quiz-input" placeholder="+380... / email" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- STEP 1: CONTEXT -->
-                    <div class="calc-step active" id="calcStep1">
-                        <h2 class="step-title">Контекст бізнесу</h2>
-                        <p class="step-subtitle">Оберіть модель та вкажіть нішу для точного розрахунку.</p>
-                        
-                        <label class="calc-label">Модель бізнесу</label>
-                        <div style="display: flex; gap: 10px; margin-bottom: 24px;">
-                            <button id="btnModelLeadGen" class="btn-nav-step btn-nav-step-primary" style="flex:1" onclick="setCalcModel('leadgen')">Lead Gen / B2B</button>
-                            <button id="btnModelEcom" class="btn-nav-step" style="flex:1" onclick="setCalcModel('ecommerce')">E-commerce</button>
+                    <!-- RIGHT COLUMN: EXPERT OUTPUT -->
+                    <div style="padding: 32px 36px; background: var(--bg-dark); color: #fff; overflow-y: auto;">
+                        <h2 style="font-size: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 14px; margin-bottom: 20px; color: #fff; letter-spacing: -0.01em;">Прогнозна воронка (Live)</h2>
+
+                        <div id="calcEmptyState" style="text-align: center; padding: 32px 0; color: rgba(255,255,255,0.4);">
+                            <div style="font-size: 2.2rem; margin-bottom: 12px;">📊</div>
+                            <p style="font-size: 0.9rem;">Введіть ціль та середній чек зліва, щоб побачити розрахунок.</p>
                         </div>
 
-                        <label class="calc-label">Ніша / Продукт</label>
-                        <input type="text" id="calcNiche" class="glass-input" placeholder="Напр.: Стоматологія / Одяг" oninput="runMagicCalc()" />
+                        <div id="calcResultsBox" style="display: none;">
 
-                        <label class="calc-label">Регіон реклами / Конкуренти</label>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                            <input type="text" id="calcRegion" class="glass-input" placeholder="Україна" oninput="runMagicCalc()" />
-                            <input type="text" id="calcCompetitors" class="glass-input" placeholder="Конкуренти" oninput="runMagicCalc()" />
+                            <!-- Budget Health Indicator -->
+                            <div id="budgetHealthBar" style="margin-bottom: 20px; padding: 12px 16px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                    <span style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.5);">Budget Health</span>
+                                    <span id="outHealthLabel" style="font-size: 0.8rem; font-weight: 700;">-</span>
+                                </div>
+                                <div style="height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden;">
+                                    <div id="outHealthBar" style="height: 100%; width: 0%; border-radius: 3px; transition: width 0.5s ease;"></div>
+                                </div>
+                                <p id="outHealthDesc" style="font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 6px;"></p>
+                            </div>
+
+                            <!-- Top Metrics -->
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px;">
+                                <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px;">
+                                    <span style="display:block; font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom: 4px;">Трафік/міс</span>
+                                    <span id="outClicks" style="display:block; font-size: 1.4rem; font-weight:800; color: #fff;">-</span>
+                                </div>
+                                <div id="divOutLeads" style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px;">
+                                    <span style="display:block; font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom: 4px;">Необхідно лідів</span>
+                                    <span id="outLeads" style="display:block; font-size: 1.4rem; font-weight:800; color: #fff;">-</span>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px;">
+                                    <span style="display:block; font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom: 4px;">Продажі/Складення</span>
+                                    <span id="outSales" style="display:block; font-size: 1.4rem; font-weight:800; color: var(--accent-brand);">0</span>
+                                </div>
+                                <div style="background: rgba(192,0,0,0.15); border: 1px solid rgba(192,0,0,0.35); padding: 12px; border-radius: 6px;">
+                                    <span style="display:block; font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom: 4px;">Бюджет на рекламу</span>
+                                    <span id="outBudget" style="display:block; font-size: 1.4rem; font-weight:800; color: #fff;">-</span>
+                                </div>
+                            </div>
+
+                            <!-- KPI Details -->
+                            <div style="background: rgba(255,255,255,0.04); padding: 14px 16px; border-radius: 6px; margin-bottom: 16px; font-size: 0.85rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 9px; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                    <span style="color: rgba(255,255,255,0.6);">Cost per Lead (CPL):</span>
+                                    <span id="outCPL" style="font-weight: 700;">-</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 9px; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                    <span style="color: rgba(255,255,255,0.6);">CPA / Ціна залучення:</span>
+                                    <span id="outCPA" style="font-weight: 700;">-</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 9px; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                    <span style="color: rgba(255,255,255,0.6);">Виручка / Revenue:</span>
+                                    <span id="outRev" style="font-weight: 700; color: #4ade80;">-</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 9px; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                    <span style="color: rgba(255,255,255,0.6);">ROAS (поверньність):</span>
+                                    <span id="outROAS" style="font-weight: 700;">-</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 9px; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,0.06);">
+                                    <span style="color: rgba(255,255,255,0.6);">% бюджету від виручки:</span>
+                                    <span id="outAdPct" style="font-weight: 700;">-</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span style="color: rgba(255,255,255,0.6);">Net Profit (after ads):</span>
+                                    <span id="outNetProfit" style="font-weight: 700; color: #4ade80;">-</span>
+                                </div>
+                            </div>
+
+                            <button id="magicSubmitBtn" onclick="sendMagicForm()" class="btn btn-primary" style="display: block; text-align: center; width: 100%; border: none; background: var(--accent-brand); cursor: pointer; font-size: 0.9rem;">Надіслати для стратегії &rarr;</button>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="step-nav">
-                            <button cl
+                <!-- THANK YOU SCREEN -->
+                <div id="thankYouScreen" style="display:none; padding: 48px 48px; text-align: center; background: var(--bg-dark); color: #fff; min-height: 500px; flex-direction: column; justify-content: center; align-items: center;">
+                    <div style="font-size: 3.5rem; margin-bottom: 16px;">🎯</div>
+                    <h2 style="font-size: 1.9rem; color: #fff; margin-bottom: 12px;">Дякую за звернення!</h2>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 1rem; max-width: 400px; margin: 0 auto 24px;">Я отримав ваш бріф і особисто перегляну цифри. Відповідь протягом 24 годин.</p>
+
+
+
+                    <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 16px 24px; margin-bottom: 24px; display: inline-block; text-align: left; max-width: 420px; width: 100%;">
+                        <p style="font-size: 0.75rem; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 8px;">Що буде далі</p>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 6px;">✓  Бріф вже у скриньці Ярослава</p>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 6px;">✓  Аудит воронки протягом 24 годин</p>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">✓  Стратегія та план запуску</p>
+                    </div>
+                    <button onclick="closeQuiz()" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); padding: 8px 20px; cursor: pointer; border-radius: 4px; font-size: 0.9rem;">Закрити</button>
+
+                    <!-- MESSENGER BUTTONS -->
+                    <div style="margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); width: 100%; max-width: 420px;">
+                        <p style="font-size: 0.75rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px;">Або напишіть зараз</p>
+                        <div style="display: flex; gap: 12px; justify-content: center;">
+                            <a href="https://t.me/Yaroslav797" target="_blank" style="display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-size: 0.88rem; font-weight: 600; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.13)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="#2AABEE"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+                                Telegram
+                            </a>
+                            <a href="https://wa.me/380505580953" target="_blank" style="display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-size: 0.88rem; font-weight: 600; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.13)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN JS Logic -->
+    <script>
+        // Intersection Observer for reveal-on-scroll
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+        // Modal Logic
+        function openModal(caseId) {
+            const dataElement = document.getElementById('data-' + caseId);
+            if (!dataElement) return;
+            document.getElementById('modalContentInner').innerHTML = dataElement.innerHTML;
+            document.getElementById('caseModal').classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+        }
+        function closeModal(event, force = false) {
+            if (force || event.target === document.getElementById('caseModal')) {
+                document.getElementById('caseModal').classList.remove('active');
+                document.body.style.overflow = ''; 
+            }
+        }
+
         // Magic Dashboard Calculator Logic
         let calcModel = 'leadgen'; // default
-        let currentCalcStep = 1;
 
         function startQuiz() {
             setCalcModel('leadgen');
-            currentCalcStep = 1;
-            showCalcStep(1);
-            
-            // Reset fields
             document.getElementById('calcTarget').value = '';
             document.getElementById('calcAOV').value = '';
             document.getElementById('calcCloseRate').value = '';
@@ -1307,251 +1414,262 @@
             document.getElementById('calcCompetitors').value = '';
             document.getElementById('calcName').value = '';
             document.getElementById('calcContact').value = '';
-            
             runMagicCalc();
             document.getElementById('quizModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-
         function closeQuiz() {
             document.getElementById('quizModal').classList.remove('active');
             document.body.style.overflow = '';
+            // Reset thank-you screen on next open
+            document.getElementById('thankYouScreen').style.display = 'none';
+            document.querySelector('.dashboard-grid').style.display = 'grid';
+            const btn = document.getElementById('magicSubmitBtn');
+            if (btn) { btn.disabled = false; btn.innerText = 'Надіслати для стратегії →'; }
         }
 
-        function showCalcStep(step) {
-            currentCalcStep = step;
-            document.querySelectorAll('.calc-step').forEach(el => el.classList.remove('active'));
-            const stepEl = document.getElementById('calcStep' + step);
-            if (stepEl) stepEl.classList.add('active');
-            
-            // Handle Dots
-            document.querySelectorAll('.dot').forEach((dot, idx) => {
-                if (idx + 1 <= step) dot.classList.add('active');
-                else dot.classList.remove('active');
+        function sendMagicForm() {
+            const btn = document.getElementById('magicSubmitBtn');
+            btn.disabled = true;
+            btn.innerText = 'Відправляємо...';
+
+            const name        = document.getElementById('calcName').value || 'Не вказано';
+            const contact     = document.getElementById('calcContact').value || 'Не вказано';
+            const niche       = document.getElementById('calcNiche').value || 'Не вказано';
+            const region      = document.getElementById('calcRegion').value || 'Не вказано';
+            const competitors = document.getElementById('calcCompetitors').value || 'Не вказано';
+            const target      = document.getElementById('calcTarget').value || '—';
+            const aov         = document.getElementById('calcAOV').value || '—';
+            const cr          = document.getElementById('calcCloseRate').value || 'benchmark';
+            const budget      = document.getElementById('outBudget').innerText || '—';
+            const roas        = document.getElementById('outROAS').innerText || '—';
+            const revenue     = document.getElementById('outRev').innerText || '—';
+
+            const message = [
+                '=== КОНТАКТ ===',
+                'Ім’я: ' + name,
+                'Тел/Email: ' + contact,
+                '',
+                '=== КОНТЕКСТ ===',
+                'Ніша: ' + niche,
+                'Регіон: ' + region,
+                'Конкуренти: ' + competitors,
+                '',
+                '=== МОДЕЛЬ: ' + calcModel.toUpperCase() + ' ===',
+                'Ціль: ' + target,
+                'Середній чек: $' + aov,
+                'Закриття: ' + cr + '%',
+                '',
+                '=== ПРОГНОЗ ===',
+                'Трафік: ' + document.getElementById('outClicks').innerText,
+                'Рекомендований бюджет: ' + budget,
+                'Прогнозна виручка: ' + revenue,
+                'Очікуваний ROAS: ' + roas,
+                '',
+                'Сторінка: Українська (ua.html)'
+            ].join('\n');
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    access_key: '024929c9-3c2f-471f-8ec3-bd5cbaf34070',
+                    subject: 'Бріф 🎯 ' + (name !== 'Не вказано' ? name + ' — ' : '') + niche + ' | ' + region,
+                    from_name: 'Калькулятор на сайті',
+                    message: message
+                })
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                showThankYou();
+            })
+            .catch(function(err) {
+                console.warn('Web3Forms error', err);
+                showThankYou();
             });
         }
 
-        function nextCalcStep(step) {
-            showCalcStep(step);
+        function showThankYou() {
+            document.querySelector('.dashboard-grid').style.display = 'none';
+            const screen = document.getElementById('thankYouScreen');
+            screen.style.display = 'flex';
         }
 
         function setCalcModel(model) {
             calcModel = model;
-            const btnLead = document.getElementById('btnModelLeadGen');
-            const btnEcom = document.getElementById('btnModelEcom');
-            const groupMargin = document.getElementById('groupMargin');
+            const btnLg = document.getElementById('btnModelLeadGen');
+            const btnEc = document.getElementById('btnModelEcom');
             const lblTarget = document.getElementById('lblTarget');
             const lblAOV = document.getElementById('lblAOV');
+            const grpMargin = document.getElementById('groupMargin');
             const divOutLeads = document.getElementById('divOutLeads');
-            
+            const calcCloseRate = document.getElementById('calcCloseRate');
+
             if (model === 'leadgen') {
-                if(btnLead) btnLead.className = 'btn-nav-step btn-nav-step-primary';
-                if(btnEcom) btnEcom.className = 'btn-nav-step';
-                if(groupMargin) groupMargin.style.display = 'none';
-                if(lblTarget) lblTarget.innerText = 'Бажана кількість лідів';
-                if(lblAOV) lblAOV.innerText = 'Середній чек (LTV) $';
-                if(divOutLeads) divOutLeads.style.display = 'block';
-                const m = document.getElementById('calcMargin'); if (m) m.value = 100;
-                const cr = document.getElementById('calcCloseRate'); if (cr) cr.placeholder = '20';
+                btnLg.style.background = '#fff';
+                btnLg.style.color = '#000';
+                btnLg.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+                btnEc.style.background = 'transparent';
+                btnEc.style.color = 'var(--text-gray)';
+                btnEc.style.boxShadow = 'none';
+
+                lblTarget.innerText = 'Бажана кількість звернень (лідів) на місяць';
+                document.getElementById('calcTarget').placeholder = 'Наприклад: 50';
+                lblAOV.innerText = 'Середній чек (чи LTV) з одного клієнта ($)';
+                grpMargin.style.display = 'none';
+                divOutLeads.style.display = 'block';
+                calcCloseRate.previousElementSibling.innerText = 'Ваш відсоток закриття (з ліда в клієнта, %)';
+                calcCloseRate.nextElementSibling.innerText = 'За замовчуванням (якщо пусто): 20%';
             } else {
-                if(btnLead) btnLead.className = 'btn-nav-step';
-                if(btnEcom) btnEcom.className = 'btn-nav-step btn-nav-step-primary';
-                if(groupMargin) groupMargin.style.display = 'block';
-                if(lblTarget) lblTarget.innerText = 'Ціль (продажів/міс)';
-                if(lblAOV) lblAOV.innerText = 'Середній чек (кошик) $';
-                if(divOutLeads) divOutLeads.style.display = 'none';
-                const m = document.getElementById('calcMargin'); if (m) m.value = 30;
-                const cr = document.getElementById('calcCloseRate'); if (cr) cr.placeholder = '1.5';
+                btnEc.style.background = '#fff';
+                btnEc.style.color = '#000';
+                btnEc.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+                btnLg.style.background = 'transparent';
+                btnLg.style.color = 'var(--text-gray)';
+                btnLg.style.boxShadow = 'none';
+
+                lblTarget.innerText = 'Бажана місячна виручка ($)';
+                document.getElementById('calcTarget').placeholder = 'Наприклад: 50000';
+                lblAOV.innerText = 'Середній кошик/чек ($)';
+                grpMargin.style.display = 'block';
+                divOutLeads.style.display = 'none';
+                calcCloseRate.previousElementSibling.innerText = 'Конверсія сайту (EХR, %)';
+                calcCloseRate.nextElementSibling.innerText = 'За замовчуванням (якщо пусто): 1.5%';
             }
             runMagicCalc();
         }
 
         function runMagicCalc() {
-            const targetEl = document.getElementById('calcTarget');
-            const aovEl = document.getElementById('calcAOV');
-            const crEl = document.getElementById('calcCloseRate');
-            const marginEl = document.getElementById('calcMargin');
-            
-            const target = targetEl ? parseFloat(targetEl.value) || 0 : 0;
-            const aov = aovEl ? parseFloat(aovEl.value) || 0 : 0;
-            const closeRateInput = crEl ? parseFloat(crEl.value) : NaN;
-            const closeRate = !isNaN(closeRateInput) ? closeRateInput : (calcModel === 'leadgen' ? 20 : 1.5);
-            const margin = marginEl && marginEl.value ? parseFloat(marginEl.value) : (calcModel === 'leadgen' ? 100 : 30);
-            
-            const resultsBox = document.getElementById('calcResultsBox');
             const emptyState = document.getElementById('calcEmptyState');
-            
-            if (target > 0 && aov > 0) {
-                if (resultsBox) resultsBox.style.display = 'block';
-                if (emptyState) emptyState.style.display = 'none';
-                
-                // Logic
-                let sales = target;
-                let leads = target;
-                if (calcModel === 'leadgen') {
-                    sales = Math.round(target * (closeRate / 100));
-                } else {
-                    leads = Math.round(target / (closeRate / 100));
-                }
-                
-                const revenue = Math.round(sales * aov);
-                const cpc = 0.45; // average benchmark
-                const leadConv = calcModel === 'leadgen' ? 0.05 : (closeRate / 100); 
-                
-                const clicksNeeded = Math.round(leads / leadConv);
-                const budget = Math.round(clicksNeeded * cpc);
-                const roas = budget > 0 ? (revenue / budget).toFixed(1) : 0;
-                const cpl = leads > 0 ? (budget / leads).toFixed(1) : 0;
-                const netProfit = Math.round((revenue * (margin / 100)) - budget);
-                
-                // Update UI
-                const outClicks = document.getElementById('outClicks');
-                const outLeads = document.getElementById('outLeads');
-                const outSales = document.getElementById('outSales');
-                const outBudget = document.getElementById('outBudget');
-                const outRev = document.getElementById('outRev');
-                const outROAS = document.getElementById('outROAS');
-                const outCPL = document.getElementById('outCPL');
-                const outNetProfit = document.getElementById('outNetProfit');
-                
-                if (outClicks) outClicks.innerText = clicksNeeded.toLocaleString() + ' кліків';
-                if (outLeads) outLeads.innerText = leads.toLocaleString();
-                if (outSales) outSales.innerText = sales.toLocaleString();
-                if (outBudget) outBudget.innerText = '$' + budget.toLocaleString();
-                if (outRev) outRev.innerText = '$' + revenue.toLocaleString();
-                if (outROAS) outROAS.innerText = roas + 'x';
-                if (outCPL) outCPL.innerText = '$' + cpl;
-                if (outNetProfit) {
-                    outNetProfit.innerText = '$' + netProfit.toLocaleString();
-                    outNetProfit.style.color = netProfit >= 0 ? '#4ade80' : '#ff4444';
-                }
-                
-                // Sticky Header Update
-                const stickyRev = document.getElementById('stickyRev');
-                const stickyBudget = document.getElementById('stickyBudget');
-                if (stickyRev) stickyRev.innerText = '$' + revenue.toLocaleString();
-                if (stickyBudget) stickyBudget.innerText = '$' + budget.toLocaleString();
-                
-                const stickyMobile = document.getElementById('calcMobileSticky');
-                if (stickyMobile && window.innerWidth <= 900) {
-                    stickyMobile.style.display = 'flex';
-                }
+            const resultsBox = document.getElementById('calcResultsBox');
 
-                // Health
-                updateHealth(roas, budget, revenue);
-            } else {
-                if (resultsBox) resultsBox.style.display = 'none';
-                if (emptyState) emptyState.style.display = 'flex';
-                const stickyMobile = document.getElementById('calcMobileSticky');
-                if (stickyMobile) stickyMobile.style.display = 'none';
-            }
-        }
+            let target = parseFloat(document.getElementById('calcTarget').value);
+            let aov = parseFloat(document.getElementById('calcAOV').value);
+            let userCR = parseFloat(document.getElementById('calcCloseRate').value);
 
-        function updateHealth(roas, budget, revenue) {
-            const bar = document.getElementById('outHealthBar');
-            const label = document.getElementById('outHealthLabel');
-            const desc = document.getElementById('outHealthDesc');
-            if (!bar || !label || !desc) return;
-            
-            let score = (roas / 8) * 100;
-            if (score > 100) score = 100;
-            
-            bar.style.width = score + '%';
-            
-            if (roas < 2.5) {
-                bar.style.background = '#ff4444';
-                label.innerText = 'КРИТИЧНО';
-                label.style.color = '#ff4444';
-                label.style.background = 'transparent';
-                desc.innerText = 'Високий ризик збитковості. Потрібна оптимізація оферу або сайту.';
-            } else if (roas < 5) {
-                bar.style.background = '#ffbb33';
-                label.innerText = 'РИЗИКОВАНО';
-                label.style.color = '#ffbb33';
-                label.style.background = 'transparent';
-                desc.innerText = 'Модель працює, але запас міцності низький.';
-            } else {
-                bar.style.background = '#4ade80';
-                label.innerText = 'СТАБІЛЬНО';
-                label.style.color = '#4ade80';
-                label.style.background = 'transparent';
-                desc.innerText = 'Бюджет дозволяє масштабуватися.';
-            }
-        }
-
-        async function sendMagicForm() {
-            const btn = document.getElementById('magicSubmitBtn');
-            const nameEl = document.getElementById('calcName');
-            const contactEl = document.getElementById('calcContact');
-            
-            const name = nameEl ? nameEl.value : '';
-            const contact = contactEl ? contactEl.value : '';
-            
-            if (!contact) {
-                alert('Будь ласка, вкажіть ваш контакт (телефон або email).');
+            if (isNaN(target) || isNaN(aov) || target <= 0 || aov <= 0) {
+                emptyState.style.display = 'block';
+                resultsBox.style.display = 'none';
                 return;
             }
 
-            if (btn) {
-                btn.disabled = true;
-                btn.innerText = 'Надсилаємо...';
+            emptyState.style.display = 'none';
+            resultsBox.style.display = 'block';
+
+            // Hidden Industry Benchmarks
+            let avgCPC = 1.20; // $1.20 per click
+            let siteToLeadCR = 0.05; // 5% site to lead
+            let leadToClientCR = isNaN(userCR) ? 0.20 : (userCR / 100); // 20% lead to close defaults
+            let ecomSiteCR = isNaN(userCR) ? 0.015 : (userCR / 100); // 1.5% ecom conversion defaults
+
+            let clicks, leads, sales, budget, rev, cpa, roas;
+
+            if (calcModel === 'leadgen') {
+                // Forward math for Lead Gen based on desired inquiries
+                leads = target; // target means target number of leads/inquiries
+                sales = Math.ceil(leads * leadToClientCR); // estimate closed deals
+                clicks = Math.ceil(leads / siteToLeadCR);
+                budget = clicks * avgCPC;
+                rev = sales * aov;
+                cpa = budget / sales;
+                roas = (rev / budget) * 100;
+
+                document.getElementById('outLeads').innerText = '~' + leads.toLocaleString();
+            } else {
+                // Top-down reverse math for E-com
+                let targetRevenue = target; // user inputs desired revenue
+                sales = Math.ceil(targetRevenue / aov); // calculate required orders
+                clicks = Math.ceil(sales / ecomSiteCR);
+                avgCPC = 0.80; // slightly cheaper for shopping ads
+                budget = clicks * avgCPC;
+                rev = targetRevenue;
+                cpa = budget / sales;
+                roas = (rev / budget) * 100;
             }
 
-            const getVal = (id) => document.getElementById(id) ? document.getElementById(id).value : '';
-            const getTxt = (id) => document.getElementById(id) ? document.getElementById(id).innerText : '';
+            document.getElementById('outSales').innerText = sales.toLocaleString();
+            document.getElementById('outClicks').innerText = '~' + clicks.toLocaleString();
+            document.getElementById('outBudget').innerText = '$' + Math.round(budget).toLocaleString();
+            document.getElementById('outCPA').innerText = '$' + Math.round(cpa).toLocaleString();
+            document.getElementById('outRev').innerText = '$' + Math.round(rev).toLocaleString();
+            document.getElementById('outROAS').innerText = Math.round(roas) + '%';
 
-            const formData = {
-                access_key: '024929c9-3c2f-471f-8ec3-bd5cbaf34070',
-                subject: 'Magic Dashboard: ' + name,
-                from_name: 'Portfolio Calculator',
-                Name: name,
-                Contact: contact,
-                Model: calcModel,
-                Niche: getVal('calcNiche'),
-                Region: getVal('calcRegion'),
-                Target: getVal('calcTarget'),
-                AOV: getVal('calcAOV'),
-                ROAS: getTxt('outROAS'),
-                NetProfit: getTxt('outNetProfit'),
-                Budget: getTxt('outBudget')
-            };
+            // New KPIs
+            const cpl = leads > 0 ? Math.round(budget / leads) : cpa;
+            document.getElementById('outCPL').innerText = '$' + cpl.toLocaleString();
 
-            try {
-                const response = await fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-                if (response.ok) {
-                    showThankYou();
-                } else {
-                    alert('Помилка при відправці.');
-                    if (btn) { btn.disabled = false; btn.innerText = 'Надіслати для стратегії'; }
-                }
-            } catch (err) {
-                console.error(err);
-                alert('Сталася мережева помилка.');
-                if (btn) { btn.disabled = false; btn.innerText = 'Надіслати для стратегії'; }
+            const adPct = rev > 0 ? Math.round((budget / rev) * 100) : 0;
+            document.getElementById('outAdPct').innerText = adPct + '%';
+
+            const margin = parseFloat(document.getElementById('calcMargin').value) || (calcModel === 'ecommerce' ? 30 : 100);
+            const grossProfit = rev * (margin / 100);
+            const netProfit = grossProfit - budget;
+            const netProfitEl = document.getElementById('outNetProfit');
+            netProfitEl.innerText = '$' + Math.round(netProfit).toLocaleString();
+            netProfitEl.style.color = netProfit >= 0 ? '#4ade80' : '#f87171';
+
+            // Budget Health Indicator
+            const healthBar = document.getElementById('outHealthBar');
+            const healthLabel = document.getElementById('outHealthLabel');
+            const healthDesc = document.getElementById('outHealthDesc');
+            if (adPct <= 15) {
+                healthBar.style.width = '30%';
+                healthBar.style.background = '#4ade80';
+                healthLabel.innerText = '🟢 Conservative';
+                healthLabel.style.color = '#4ade80';
+                healthDesc.innerText = 'Бюджет до 15% від виручки — стабільна зона.';
+            } else if (adPct <= 30) {
+                healthBar.style.width = '60%';
+                healthBar.style.background = '#facc15';
+                healthLabel.innerText = '🟡 Balanced';
+                healthLabel.style.color = '#facc15';
+                healthDesc.innerText = 'Бюджет 15–30% від виручки — ефективна зона зростання.';
+            } else if (adPct <= 50) {
+                healthBar.style.width = '85%';
+                healthBar.style.background = '#fb923c';
+                healthLabel.innerText = '🟠 Aggressive';
+                healthLabel.style.color = '#fb923c';
+                healthDesc.innerText = 'Бюджет 30–50% від виручки — потрібна оптимізація.';
+            } else {
+                healthBar.style.width = '100%';
+                healthBar.style.background = '#f87171';
+                healthLabel.innerText = '🔴 High Risk';
+                healthLabel.style.color = '#f87171';
+                healthDesc.innerText = 'Бюджет >50% від виручки — переглянте ціль або чек.';
             }
+
+            compileMagicEmail(target, aov, userCR, budget, roas);
         }
 
-        function showThankYou() {
-            const leftCol = document.querySelector('.dashboard-left');
-            if (leftCol) {
-                leftCol.innerHTML = `<div style="height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; animation: fadeIn 0.5s forwards;">
-                    <div style="font-size: 4rem; margin-bottom: 24px;">🎯</div>
-                    <h2 class="step-title" style="margin-bottom:8px;">Дякую!</h2>
-                    <p class="step-subtitle">Ваш запит збережено. Я підготую стратегію та зв'яжуся з вами.</p>
-                    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px; margin-bottom: 32px; width:100%;">
-                        <p style="font-size: 0.75rem; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 12px;">Або напишіть мені в месенджер:</p>
-                        <div style="display: flex; gap: 10px; justify-content: center;">
-                            <a href="https://t.me/Yaroslav797" class="btn-nav-step" target="_blank" style="text-decoration:none;">Telegram</a>
-                            <a href="https://wa.me/380505580953" class="btn-nav-step" target="_blank" style="text-decoration:none;">WhatsApp</a>
-                        </div>
-                    </div>
-                    <button class="btn-nav-step" style="width:100%;" onclick="closeQuiz()">Закрити вікно</button>
-                </div>`;
+        function compileMagicEmail(target, aov, cr, budget, roas) {
+            let niche = document.getElementById('calcNiche').value || 'Не вказано';
+            let region = document.getElementById('calcRegion').value || 'Не вказано';
+            let competitors = document.getElementById('calcCompetitors').value || 'Не вказано';
+
+            let subject = "Магія Расчетов: Запит на детальну стратегію";
+            let bodyText = `Вітаю, Ярославе,\n\nЯ скористався калькулятором на сайті. Мій попередній розрахунок:\n\n`;
+            
+            bodyText += `-- КОНТЕКСТ --\n`;
+            bodyText += `Ніша/Продукт: ${niche}\n`;
+            bodyText += `Регіон: ${region}\n`;
+            bodyText += `Конкуренти: ${competitors}\n\n`;
+
+            bodyText += `-- МОДЕЛЬ: ${calcModel.toUpperCase()} --\n`;
+            if (calcModel === 'leadgen') {
+                bodyText += `Ціль лідів/міс: ${target}\n`;
+            } else {
+                bodyText += `Ціль по виручці/міс: $${target}\n`;
             }
+            bodyText += `Середній чек: $${aov}\n`;
+            bodyText += `Поточна конверсія: ${isNaN(cr) ? 'Не вказана (використано бенчмарк)' : cr+'%'}\n`;
+            
+            bodyText += `\n-- КАЛЬКУЛЯТОР ПОКАЗАВ --\n`;
+            bodyText += `Рекомендований бюджет: $${Math.round(budget)}\n`;
+            bodyText += `Очікуваний ROAS: ${Math.round(roas)}%\n\n`;
+            
+            bodyText += `Будь ласка, перевірте розрахунок та підготуйте точну стратегію.\n\nЗ повагою,`;
+            
+            document.getElementById('magicMailtoBtn').href = `mailto:yaroslav.zhakun@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
         }
     </script>
 
