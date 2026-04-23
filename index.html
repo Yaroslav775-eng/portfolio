@@ -1245,6 +1245,11 @@
             }
         }
 
+        // GA4 Helper shim (must be before any function that calls gta)
+        function gta(event, params) {
+            if (typeof gtag === 'function') { gtag('event', event, params); }
+        }
+
         // Magic Dashboard Calculator Logic
         let calcModel = 'leadgen'; // default
 
