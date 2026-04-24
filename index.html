@@ -1597,6 +1597,22 @@
                 gta('language_switch', { 'target_lang': el.textContent.trim() });
             }
         });
+        // ── 7. TIME ON PAGE ───────────────────────────────────────
+        [{ s:30, l:'30s' },{ s:60, l:'60s' },{ s:120, l:'2min' },{ s:300, l:'5min' }]
+        .forEach(function(t) {
+            setTimeout(function() {
+                gta('time_on_page', { page_language:'en', time_milestone: t.l });
+            }, t.s * 1000);
+        });
+
+        // ── 8. CV LINK CLICKS ────────────────────────────────────────
+        document.addEventListener('click', function(e) {
+            var a = e.target.closest('a');
+            if (a && (a.href.includes('cv_eng') || a.href.includes('cv_ua'))) {
+                var lang = a.href.includes('cv_ua') ? 'ua' : 'en';
+                gta('cv_link_click', { page_language:'en', cv_version: lang });
+            }
+        });
     </script>
 </body>
 </html>
