@@ -235,10 +235,10 @@
             <h1>Iaroslav Zhakun</h1>
             <div class="subtitle">PPC Specialist | Google Ads | Performance Marketing | E-commerce</div>
             <div class="contact-info">
-                 <a href="mailto:yaroslav.zhakun@gmail.com">yaroslav.zhakun@gmail.com</a>
+                 <a href="mailto:yaroslav.zhakun@gmail.com" id="cv-email-link" onclick="gtag('event','cv_email_click',{cv_language:'en',link_url:'mailto:yaroslav.zhakun@gmail.com'})">yaroslav.zhakun@gmail.com</a>
                  <span>+30 697 439 58 95 (Athens)</span>
-                 <a href="https://www.linkedin.com/in/iaroslav-zhakun-399550271/" target="_blank">LinkedIn Profile</a>
-                 <a href="https://yaroslav775-eng.github.io/portfolio/" class="no-print">Portfolio Website</a>
+                 <a href="https://www.linkedin.com/in/iaroslav-zhakun-399550271/" target="_blank" id="cv-linkedin-link" onclick="gtag('event','cv_linkedin_click',{cv_language:'en',link_url:'linkedin.com/in/iaroslav-zhakun'})">LinkedIn Profile</a>
+                 <a href="https://yaroslav775-eng.github.io/portfolio/" class="no-print" id="cv-portfolio-link" onclick="gtag('event','cv_portfolio_click',{cv_language:'en'})">Portfolio Website</a>
             </div>
         </header>
 
@@ -368,9 +368,57 @@
         </section>
 
         <div class="footer-nav no-print">
-            <a href="index.html" class="btn-back">← Back to Portfolio</a>
+            <a href="index.html" class="btn-back" id="cv-back-link" onclick="gtag('event','cv_back_to_portfolio',{cv_language:'en'})">← Back to Portfolio</a>
         </div>
     </div>
+
+<!-- ── GA4 CV Tracking ── -->
+<script>
+(function() {
+  var CV_LANG = 'en';
+
+  // 1. cv_viewed
+  gtag('event', 'cv_viewed', { cv_language: CV_LANG });
+
+  // 2. Scroll depth: 25 / 50 / 75 / 100
+  var scrollFired = {};
+  window.addEventListener('scroll', function() {
+    var scrolled = window.scrollY + window.innerHeight;
+    var total    = document.documentElement.scrollHeight;
+    var pct      = Math.round((scrolled / total) * 100);
+    [25, 50, 75, 100].forEach(function(milestone) {
+      if (pct >= milestone && !scrollFired[milestone]) {
+        scrollFired[milestone] = true;
+        gtag('event', 'cv_scroll_depth', {
+          cv_language   : CV_LANG,
+          scroll_percent: milestone
+        });
+      }
+    });
+  });
+
+  // 3. Time on page: 30s / 60s / 2min / 5min
+  var timers = [
+    { seconds: 30,  label: '30s'  },
+    { seconds: 60,  label: '60s'  },
+    { seconds: 120, label: '2min' },
+    { seconds: 300, label: '5min' }
+  ];
+  timers.forEach(function(t) {
+    setTimeout(function() {
+      gtag('event', 'cv_time_on_page', {
+        cv_language  : CV_LANG,
+        time_milestone: t.label
+      });
+    }, t.seconds * 1000);
+  });
+
+  // 4. Print
+  window.addEventListener('beforeprint', function() {
+    gtag('event', 'cv_print', { cv_language: CV_LANG });
+  });
+})();
+</script>
 
 </body>
 </html>
