@@ -361,6 +361,16 @@
         .quiz-input { width: 100%; border: 1px solid var(--accent-muted); border-bottom: 2px solid var(--text-dark); padding: 16px; font-size: 1.1rem; margin-bottom: 24px; outline: none; transition: border-color 0.2s;}
         .quiz-input:focus { border-color: var(--accent-brand); }
         .quiz-label { font-size: 0.9rem; text-transform: uppercase; color: var(--text-gray); margin-bottom: 8px; display: block; letter-spacing: 0.05em;}
+        .quiz-hint { font-size: 0.8rem; color: var(--text-gray); font-style: italic; margin-top: -16px; margin-bottom: 24px; display: block; }
+        .assistant-brief-card { border: 1px solid #000; padding: 18px; margin-bottom: 24px; background: #f9f9f9; }
+        .assistant-eyebrow { font-family: var(--font-sans); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-brand); margin-bottom: 8px; }
+        .assistant-brief-card p { font-size: 0.92rem; color: var(--text-dark); margin-bottom: 14px; line-height: 1.55; }
+        .assistant-chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+        .assistant-chip-row + .assistant-chip-row { margin-top: 8px; }
+        .assistant-chip { border: 1px solid var(--text-dark); background: #fff; color: var(--text-dark); padding: 7px 10px; font-family: var(--font-sans); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; transition: all 0.15s ease; }
+        .assistant-chip:hover, .assistant-chip.active { background: var(--text-dark); color: #fff; }
+        .assistant-recommendation { border-left: 3px solid var(--accent-brand); padding: 14px 16px; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.78); font-size: 0.86rem; line-height: 1.5; margin-bottom: 18px; }
+        .assistant-recommendation strong { color: #fff; display: block; margin-bottom: 6px; }
         .quiz-footer { margin-top: 32px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--accent-muted); padding-top: 24px;}
         .quiz-progress { font-size: 0.85rem; color: var(--text-gray); }
 
@@ -412,6 +422,24 @@
         @media (max-width: 640px) {
             .nav-socials { display: none !important; }
             .nav-phone { font-size: 0.78rem !important; }
+        }
+        @media (max-width: 768px) {
+            #quizModal .modal-window {
+                width: 96% !important;
+                max-width: 96% !important;
+                margin: 2% auto !important;
+                padding: 0 !important;
+            }
+            .dashboard-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                min-height: unset !important;
+            }
+            .dashboard-grid > div {
+                width: 100% !important;
+                padding: 24px 20px !important;
+            }
+            .assistant-chip { flex: 1 1 auto; }
         }
     </style>
 </head>
@@ -1084,6 +1112,21 @@
                         <h2 style="font-size: 1.8rem; margin-bottom: 8px;">Enter Basic Metrics</h2>
                         <p style="color: var(--text-gray); margin-bottom: 32px; font-size: 0.95rem;">Fill out these fields to instantly reverse-engineer your required marketing funnel.</p>
 
+                        <div class="assistant-brief-card">
+                            <div class="assistant-eyebrow">PPC Fit Check Assistant</div>
+                            <p>I’ll turn your answers into a short brief for Iaroslav and point you to the most relevant next step.</p>
+                            <div class="assistant-chip-row" aria-label="Visitor role">
+                                <button type="button" class="assistant-chip active" data-field="persona" data-value="Business owner" onclick="setAssistantChoice(this)">Business Owner</button>
+                                <button type="button" class="assistant-chip" data-field="persona" data-value="Agency partner" onclick="setAssistantChoice(this)">Agency Partner</button>
+                                <button type="button" class="assistant-chip" data-field="persona" data-value="Hiring manager" onclick="setAssistantChoice(this)">Hiring Manager</button>
+                            </div>
+                            <div class="assistant-chip-row" aria-label="Request type">
+                                <button type="button" class="assistant-chip active" data-field="intent" data-value="Audit request" onclick="setAssistantChoice(this)">Audit</button>
+                                <button type="button" class="assistant-chip" data-field="intent" data-value="Hire specialist" onclick="setAssistantChoice(this)">Hire</button>
+                                <button type="button" class="assistant-chip" data-field="intent" data-value="Collaboration" onclick="setAssistantChoice(this)">Collaboration</button>
+                            </div>
+                        </div>
+
                         <!-- Toggle Business Model -->
                         <div style="display: flex; gap: 8px; margin-bottom: 24px; background: #f0f0f0; padding: 4px; border-radius: 6px;">
                             <button id="btnModelLeadGen" class="btn btn-ghost" style="flex:1; border:none; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.1);" onclick="setCalcModel('leadgen')">Lead Gen / B2B</button>
@@ -1146,7 +1189,12 @@
                     <!-- RIGHT COLUMN: EXPERT OUTPUT -->
                     <div style="padding: 40px; background: var(--bg-dark); color: #fff;">
                         <h2 style="font-size: 1.4rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 16px; margin-bottom: 24px; color: #fff;">Pipeline Forecast (Live)</h2>
-                        
+
+                        <div id="assistantRecommendation" class="assistant-recommendation">
+                            <strong>Assistant note</strong>
+                            Choose your role and enter a few numbers. I’ll summarize what Iaroslav should review first.
+                        </div>
+
                         <div id="calcEmptyState" style="text-align: center; padding: 40px 0; color: rgba(255,255,255,0.5);">
                             <div style="font-size: 2rem; margin-bottom: 16px;">📊</div>
                             <p>Enter your target volume and average check on the left to uncover the math.</p>
@@ -1254,9 +1302,15 @@
 
         // Magic Dashboard Calculator Logic
         let calcModel = 'leadgen'; // default
+        const assistantDefaults = {
+            persona: 'Business owner',
+            intent: 'Audit request'
+        };
+        let assistantState = Object.assign({}, assistantDefaults);
+        let assistantRecommendationSent = false;
 
         function startQuiz() {
-            setCalcModel('leadgen');
+            resetAssistantChoices();
             document.getElementById('calcTarget').value = '';
             document.getElementById('calcAOV').value = '';
             document.getElementById('calcCloseRate').value = '';
@@ -1265,7 +1319,9 @@
             document.getElementById('calcCompetitors').value = '';
             document.getElementById('calcName').value = '';
             document.getElementById('calcContact').value = '';
+            setCalcModel('leadgen');
             runMagicCalc();
+            updateAssistantRecommendation();
             document.getElementById('quizModal').classList.add('active');
             document.body.style.overflow = 'hidden';
 
@@ -1283,6 +1339,72 @@
             document.querySelector('.dashboard-grid').style.display = 'grid';
             const btn = document.getElementById('magicSubmitBtn');
             if (btn) { btn.disabled = false; btn.innerText = 'Send for Custom Strategy →'; }
+        }
+
+        function resetAssistantChoices() {
+            assistantState = Object.assign({}, assistantDefaults);
+            assistantRecommendationSent = false;
+            document.querySelectorAll('.assistant-chip').forEach(function(chip) {
+                chip.classList.toggle('active', chip.dataset.value === assistantState[chip.dataset.field]);
+            });
+        }
+
+        function setAssistantChoice(btn) {
+            const field = btn.dataset.field;
+            if (!field) { return; }
+            assistantState[field] = btn.dataset.value;
+            document.querySelectorAll('.assistant-chip[data-field="' + field + '"]').forEach(function(chip) {
+                chip.classList.toggle('active', chip === btn);
+            });
+            updateAssistantRecommendation();
+            gta(field === 'persona' ? 'assistant_persona_select' : 'assistant_intent_select', {
+                'event_category': 'engagement',
+                'value': assistantState[field]
+            });
+        }
+
+        function updateAssistantRecommendation() {
+            const box = document.getElementById('assistantRecommendation');
+            if (!box) { return; }
+
+            const niche = document.getElementById('calcNiche').value.trim();
+            const region = document.getElementById('calcRegion').value.trim();
+            const target = document.getElementById('calcTarget').value.trim();
+            const aov = document.getElementById('calcAOV').value.trim();
+            const missing = [];
+
+            if (!niche) { missing.push('niche'); }
+            if (!region) { missing.push('region'); }
+            if (!target || !aov) { missing.push('target and average check'); }
+
+            const focus = calcModel === 'leadgen'
+                ? 'lead quality, conversion tracking, search intent and wasted spend'
+                : 'ROAS, margin pressure, Shopping/Search structure and repeatable scaling';
+            const nextStep = assistantState.intent === 'Hire specialist'
+                ? 'check fit, availability and portfolio evidence'
+                : assistantState.intent === 'Collaboration'
+                    ? 'outline the partnership angle and responsibilities'
+                    : 'prepare a fast audit of campaign economics';
+
+            let note;
+            if (missing.length) {
+                assistantRecommendationSent = false;
+                note = 'For a ' + assistantState.persona.toLowerCase() + ', this will become an ' + assistantState.intent.toLowerCase() + ' brief. Add ' + missing.join(', ') + ' so the forecast has enough context.';
+            } else {
+                note = 'For a ' + assistantState.persona.toLowerCase() + ' in ' + niche + ' / ' + region + ', I would ask Iaroslav to review ' + focus + '. Next step: ' + nextStep + '.';
+                if (!assistantRecommendationSent) {
+                    gta('assistant_recommendation_ready', {
+                        'event_category': 'engagement',
+                        'model': calcModel,
+                        'persona': assistantState.persona,
+                        'intent': assistantState.intent
+                    });
+                    assistantRecommendationSent = true;
+                }
+            }
+
+            box.innerHTML = '<strong>Assistant note</strong>';
+            box.appendChild(document.createTextNode(note));
         }
 
         function sendMagicForm() {
@@ -1308,6 +1430,8 @@
                 'Phone/Email: ' + contact,
                 '',
                 '=== CONTEXT ===',
+                'Persona: ' + assistantState.persona,
+                'Intent: ' + assistantState.intent,
                 'Niche: ' + niche,
                 'Region: ' + region,
                 'Competitors: ' + competitors,
@@ -1348,6 +1472,8 @@
                 gta('submit_brief_success', {
                     'event_category': 'lead',
                     'model': calcModel,
+                    'persona': assistantState.persona,
+                    'intent': assistantState.intent,
                     'niche': niche
                 });
             })
@@ -1418,6 +1544,7 @@
                 calcCloseRate.nextElementSibling.innerText = 'Default benchmark: 1.5%';
             }
             runMagicCalc();
+            updateAssistantRecommendation();
         }
 
         function runMagicCalc() {
@@ -1431,6 +1558,7 @@
             if (isNaN(target) || isNaN(aov) || target <= 0 || aov <= 0) {
                 emptyState.style.display = 'block';
                 resultsBox.style.display = 'none';
+                updateAssistantRecommendation();
                 return;
             }
 
@@ -1476,6 +1604,7 @@
             document.getElementById('outROAS').innerText = Math.round(roas) + '%';
 
             compileMagicEmail(target, aov, userCR, budget, roas);
+            updateAssistantRecommendation();
         }
 
         function compileMagicEmail(target, aov, cr, budget, roas) {
@@ -1490,6 +1619,9 @@
             bodyText += `Niche/Product: ${niche}\n`;
             bodyText += `Target Region: ${region}\n`;
             bodyText += `Main Competitors: ${competitors}\n\n`;
+            bodyText += `-- ASSISTANT CONTEXT --\n`;
+            bodyText += `Persona: ${assistantState.persona}\n`;
+            bodyText += `Intent: ${assistantState.intent}\n\n`;
 
             bodyText += `-- MODEL: ${calcModel.toUpperCase()} --\n`;
             if (calcModel === 'leadgen') {

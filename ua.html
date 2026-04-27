@@ -381,6 +381,15 @@
         .quiz-input:focus { border-color: var(--accent-brand); background: #fff; }
         .quiz-label { font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); margin-bottom: 6px; display: block; font-weight: 700; letter-spacing: 0.05em;}
         .quiz-hint { font-size: 0.8rem; color: var(--text-gray); font-style: italic; margin-top: 4px; display: block; }
+        .assistant-brief-card { border: 1px solid #000; padding: 18px; margin-bottom: 24px; background: #f9f9f9; }
+        .assistant-eyebrow { font-family: var(--font-sans); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-brand); margin-bottom: 8px; }
+        .assistant-brief-card p { font-size: 0.92rem; color: var(--text-dark); margin-bottom: 14px; line-height: 1.55; }
+        .assistant-chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+        .assistant-chip-row + .assistant-chip-row { margin-top: 8px; }
+        .assistant-chip { border: 1px solid var(--text-dark); background: #fff; color: var(--text-dark); padding: 7px 10px; font-family: var(--font-sans); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; transition: all 0.15s ease; }
+        .assistant-chip:hover, .assistant-chip.active { background: var(--text-dark); color: #fff; }
+        .assistant-recommendation { border-left: 3px solid var(--accent-brand); padding: 14px 16px; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.78); font-size: 0.86rem; line-height: 1.5; margin-bottom: 18px; }
+        .assistant-recommendation strong { color: #fff; display: block; margin-bottom: 6px; }
 
         .diagnostic-box { background: var(--bg-dark); color: #fff; padding: 24px; margin-top: 24px; border-left: 4px solid var(--accent-brand); }
         .diagnostic-val { font-size: 1.5rem; font-weight: 700; color: var(--accent-brand); display: block; margin-bottom: 4px; }
@@ -442,6 +451,11 @@
         }
 
         /* ── Desktop defaults for calc layout classes ─── */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 500px;
+        }
         .calc-input-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -520,6 +534,7 @@
                 gap: 6px !important;
             }
             .calc-toggle-row button { width: 100% !important; }
+            .assistant-chip { flex: 1 1 auto; }
             .modal-metrics-grid {
                 grid-template-columns: 1fr 1fr !important;
                 gap: 10px !important;
@@ -1291,6 +1306,21 @@
                         <h2 style="font-size: 1.8rem; margin-bottom: 8px;">Введіть базові дані</h2>
                         <p style="color: var(--text-gray); margin-bottom: 32px; font-size: 0.95rem;">Заповніть 3 поля, щоб миттєво побачити прогнозну воронку.</p>
 
+                        <div class="assistant-brief-card">
+                            <div class="assistant-eyebrow">PPC Fit Check асистент</div>
+                            <p>Я перетворю ваші відповіді на короткий brief для Ярослава і підкажу, що варто перевірити першим.</p>
+                            <div class="assistant-chip-row" aria-label="Роль відвідувача">
+                                <button type="button" class="assistant-chip active" data-field="persona" data-value="Власник бізнесу" onclick="setAssistantChoice(this)">Власник бізнесу</button>
+                                <button type="button" class="assistant-chip" data-field="persona" data-value="Агенція" onclick="setAssistantChoice(this)">Агенція</button>
+                                <button type="button" class="assistant-chip" data-field="persona" data-value="HR / рекрутер" onclick="setAssistantChoice(this)">HR / рекрутер</button>
+                            </div>
+                            <div class="assistant-chip-row" aria-label="Тип запиту">
+                                <button type="button" class="assistant-chip active" data-field="intent" data-value="Запит на аудит" onclick="setAssistantChoice(this)">Аудит</button>
+                                <button type="button" class="assistant-chip" data-field="intent" data-value="Найм спеціаліста" onclick="setAssistantChoice(this)">Найм</button>
+                                <button type="button" class="assistant-chip" data-field="intent" data-value="Співпраця" onclick="setAssistantChoice(this)">Співпраця</button>
+                            </div>
+                        </div>
+
                         <!-- Toggle Business Model -->
                         <div class="calc-toggle-row">
                             <button id="btnModelLeadGen" class="btn btn-ghost" style="flex:1; border:none; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.1);" onclick="setCalcModel('leadgen')">Lead Gen / B2B</button>
@@ -1357,6 +1387,11 @@
                     <!-- RIGHT COLUMN: EXPERT OUTPUT -->
                     <div style="padding: 32px 36px; background: var(--bg-dark); color: #fff; overflow-y: auto;">
                         <h2 style="font-size: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 14px; margin-bottom: 20px; color: #fff; letter-spacing: -0.01em;">Прогнозна воронка (Live)</h2>
+
+                        <div id="assistantRecommendation" class="assistant-recommendation">
+                            <strong>Нотатка асистента</strong>
+                            Оберіть роль і введіть кілька цифр. Я коротко підсумую, що Ярославу варто перевірити першим.
+                        </div>
 
                         <div id="calcEmptyState" style="text-align: center; padding: 32px 0; color: rgba(255,255,255,0.4);">
                             <div style="font-size: 2.2rem; margin-bottom: 12px;">📊</div>
@@ -1480,9 +1515,15 @@
 
         // Magic Dashboard Calculator Logic
         let calcModel = 'leadgen'; // default
+        const assistantDefaults = {
+            persona: 'Власник бізнесу',
+            intent: 'Запит на аудит'
+        };
+        let assistantState = Object.assign({}, assistantDefaults);
+        let assistantRecommendationSent = false;
 
         function startQuiz() {
-            setCalcModel('leadgen');
+            resetAssistantChoices();
             document.getElementById('calcTarget').value = '';
             document.getElementById('calcAOV').value = '';
             document.getElementById('calcCloseRate').value = '';
@@ -1491,7 +1532,9 @@
             document.getElementById('calcCompetitors').value = '';
             document.getElementById('calcName').value = '';
             document.getElementById('calcContact').value = '';
+            setCalcModel('leadgen');
             runMagicCalc();
+            updateAssistantRecommendation();
             document.getElementById('quizModal').classList.add('active');
             document.body.style.overflow = 'hidden';
 
@@ -1508,6 +1551,72 @@
             document.querySelector('.dashboard-grid').style.display = 'grid';
             const btn = document.getElementById('magicSubmitBtn');
             if (btn) { btn.disabled = false; btn.innerText = 'Надіслати для стратегії →'; }
+        }
+
+        function resetAssistantChoices() {
+            assistantState = Object.assign({}, assistantDefaults);
+            assistantRecommendationSent = false;
+            document.querySelectorAll('.assistant-chip').forEach(function(chip) {
+                chip.classList.toggle('active', chip.dataset.value === assistantState[chip.dataset.field]);
+            });
+        }
+
+        function setAssistantChoice(btn) {
+            const field = btn.dataset.field;
+            if (!field) { return; }
+            assistantState[field] = btn.dataset.value;
+            document.querySelectorAll('.assistant-chip[data-field="' + field + '"]').forEach(function(chip) {
+                chip.classList.toggle('active', chip === btn);
+            });
+            updateAssistantRecommendation();
+            gta(field === 'persona' ? 'assistant_persona_select' : 'assistant_intent_select', {
+                'event_category': 'engagement',
+                'value': assistantState[field]
+            });
+        }
+
+        function updateAssistantRecommendation() {
+            const box = document.getElementById('assistantRecommendation');
+            if (!box) { return; }
+
+            const niche = document.getElementById('calcNiche').value.trim();
+            const region = document.getElementById('calcRegion').value.trim();
+            const target = document.getElementById('calcTarget').value.trim();
+            const aov = document.getElementById('calcAOV').value.trim();
+            const missing = [];
+
+            if (!niche) { missing.push('нішу'); }
+            if (!region) { missing.push('регіон'); }
+            if (!target || !aov) { missing.push('ціль і середній чек'); }
+
+            const focus = calcModel === 'leadgen'
+                ? 'якість лідів, конверсії, пошуковий попит і зайві витрати'
+                : 'ROAS, маржинальність, структуру Shopping/Search і можливість масштабування';
+            const nextStep = assistantState.intent === 'Найм спеціаліста'
+                ? 'оцінити fit, доступність і релевантні кейси'
+                : assistantState.intent === 'Співпраця'
+                    ? 'окреслити формат партнерства та зони відповідальності'
+                    : 'підготувати швидкий аудит економіки кампаній';
+
+            let note;
+            if (missing.length) {
+                assistantRecommendationSent = false;
+                note = 'Для ролі "' + assistantState.persona + '" це стане brief під запит "' + assistantState.intent + '". Додайте ' + missing.join(', ') + ', щоб прогноз мав достатньо контексту.';
+            } else {
+                note = 'Для ролі "' + assistantState.persona + '" у ніші "' + niche + '" / "' + region + '" я б попросив Ярослава перевірити ' + focus + '. Наступний крок: ' + nextStep + '.';
+                if (!assistantRecommendationSent) {
+                    gta('assistant_recommendation_ready', {
+                        'event_category': 'engagement',
+                        'model': calcModel,
+                        'persona': assistantState.persona,
+                        'intent': assistantState.intent
+                    });
+                    assistantRecommendationSent = true;
+                }
+            }
+
+            box.innerHTML = '<strong>Нотатка асистента</strong>';
+            box.appendChild(document.createTextNode(note));
         }
 
         function sendMagicForm() {
@@ -1533,6 +1642,8 @@
                 'Тел/Email: ' + contact,
                 '',
                 '=== КОНТЕКСТ ===',
+                'Роль: ' + assistantState.persona,
+                'Намір: ' + assistantState.intent,
                 'Ніша: ' + niche,
                 'Регіон: ' + region,
                 'Конкуренти: ' + competitors,
@@ -1575,6 +1686,8 @@
                 gtag('event', 'submit_brief_success', {
                     'event_category': 'lead',
                     'model': calcModel,
+                    'persona': assistantState.persona,
+                    'intent': assistantState.intent,
                     'niche': niche
                 });
             })
@@ -1645,6 +1758,7 @@
                 calcCloseRate.nextElementSibling.innerText = 'За замовчуванням (якщо пусто): 1.5%';
             }
             runMagicCalc();
+            updateAssistantRecommendation();
         }
 
         function runMagicCalc() {
@@ -1658,6 +1772,7 @@
             if (isNaN(target) || isNaN(aov) || target <= 0 || aov <= 0) {
                 emptyState.style.display = 'block';
                 resultsBox.style.display = 'none';
+                updateAssistantRecommendation();
                 return;
             }
 
@@ -1747,6 +1862,7 @@
             }
 
             compileMagicEmail(target, aov, userCR, budget, roas);
+            updateAssistantRecommendation();
         }
 
         function compileMagicEmail(target, aov, cr, budget, roas) {
@@ -1761,6 +1877,9 @@
             bodyText += `Ніша/Продукт: ${niche}\n`;
             bodyText += `Регіон: ${region}\n`;
             bodyText += `Конкуренти: ${competitors}\n\n`;
+            bodyText += `-- КОНТЕКСТ АСИСТЕНТА --\n`;
+            bodyText += `Роль: ${assistantState.persona}\n`;
+            bodyText += `Намір: ${assistantState.intent}\n\n`;
 
             bodyText += `-- МОДЕЛЬ: ${calcModel.toUpperCase()} --\n`;
             if (calcModel === 'leadgen') {
