@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="uk">
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z52JJMBTQM"></script>
@@ -27,7 +29,6 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="uk_UA">
     
-    <link rel="canonical" href="https://yaroslav775-eng.github.io/portfolio/ua.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Chifra:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -572,7 +573,7 @@
                 <h1 class="animate-fade delay-1">Перетворюю рекламні бюджети на передбачуваний, вимірюваний дохід</h1>
                 <p class="animate-fade delay-2" style="max-width: 800px;">Працюю з агенціями та прямими клієнтами. Беру акаунт, будую систему, звітую бізнес-цифрами &mdash; не кліками та CTR. Без необхідності постійного контролю.</p>
                 <div class="hero-buttons animate-fade delay-3">
-                    <a href="#" onclick="startQuiz(); return false;" class="btn btn-primary" style="font-weight: 700;">Отримати прогноз продажів & план інвестицій &darr;</a>
+                    <a href="#" onclick="startQuiz(); return false;" class="btn btn-primary" style="font-weight: 700;">Отримати PPC Fit Check & план інвестицій &darr;</a>
                     <a href="https://t.me/Yaroslav797" target="_blank" class="btn btn-ghost" style="margin-left: 12px;">Обговорити проект &rarr;</a>
 
                 </div>
@@ -1560,7 +1561,14 @@
                     message: message
                 })
             })
-            .then(function(r) { return r.json(); })
+            .then(function(r) {
+                return r.json().then(function(data) {
+                    if (!r.ok || data.success === false) {
+                        throw new Error(data.message || 'Web3Forms rejected the request');
+                    }
+                    return data;
+                });
+            })
             .then(function(data) {
                 showThankYou();
                 // GA4 Micro-conversion: Submit Brief
@@ -1572,7 +1580,13 @@
             })
             .catch(function(err) {
                 console.warn('Web3Forms error', err);
-                showThankYou();
+                btn.disabled = false;
+                btn.innerText = 'Надіслати для стратегії →';
+                gta('submit_brief_error', {
+                    'event_category': 'lead',
+                    'error_message': String(err.message || err).slice(0, 120)
+                });
+                alert('На жаль, запит не відправився. Напишіть мені в Telegram або на email.');
             });
         }
 
@@ -1860,6 +1874,8 @@
                     target_language: el.href.includes('ua.html') ? 'uk' : 'en'
                 });
             });
+        });
+
         // GA4 Global Interaction Tracking
         document.addEventListener('click', function(e) {
             const el = e.target.closest('a');

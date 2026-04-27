@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z52JJMBTQM"></script>
@@ -27,7 +29,6 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
     
-    <link rel="canonical" href="https://yaroslav775-eng.github.io/portfolio/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Chifra:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -454,7 +455,7 @@
                 <h1 class="animate-fade delay-1">I turn ad budgets into predictable, measurable revenue</h1>
                 <p class="animate-fade delay-2" style="max-width: 800px;">I work with agencies and direct clients. I take an account, build a system, and report in business numbers &mdash; not clicks and CTR. No hand-holding needed.</p>
                 <div class="hero-buttons animate-fade delay-3">
-                    <a href="#" onclick="startQuiz(); return false;" class="btn btn-primary" style="font-weight: 700;">Get Sales Forecast & Investment Plan &darr;</a>
+                    <a href="#" onclick="startQuiz(); return false;" class="btn btn-primary" style="font-weight: 700;">Get PPC Fit Check & Investment Plan &darr;</a>
                     <a href="https://t.me/Yaroslav797" target="_blank" class="btn btn-ghost" style="margin-left: 12px;">Discuss Collaboration &rarr;</a>
 
                 </div>
@@ -1262,6 +1263,8 @@
             document.getElementById('calcNiche').value = '';
             document.getElementById('calcRegion').value = '';
             document.getElementById('calcCompetitors').value = '';
+            document.getElementById('calcName').value = '';
+            document.getElementById('calcContact').value = '';
             runMagicCalc();
             document.getElementById('quizModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1278,6 +1281,8 @@
             document.getElementById('thankYouScreen').style.display = 'none';
             document.getElementById('thankYouScreen').style.flexDirection = '';
             document.querySelector('.dashboard-grid').style.display = 'grid';
+            const btn = document.getElementById('magicSubmitBtn');
+            if (btn) { btn.disabled = false; btn.innerText = 'Send for Custom Strategy →'; }
         }
 
         function sendMagicForm() {
@@ -1285,6 +1290,8 @@
             btn.disabled = true;
             btn.innerText = 'Sending...';
 
+            const name        = document.getElementById('calcName').value || 'Not specified';
+            const contact     = document.getElementById('calcContact').value || 'Not specified';
             const niche       = document.getElementById('calcNiche').value || 'Not specified';
             const region      = document.getElementById('calcRegion').value || 'Not specified';
             const competitors = document.getElementById('calcCompetitors').value || 'Not specified';
@@ -1296,6 +1303,10 @@
             const revenue     = document.getElementById('outRev').innerText || '—';
 
             const message = [
+                '=== CONTACT ===',
+                'Name: ' + name,
+                'Phone/Email: ' + contact,
+                '',
                 '=== CONTEXT ===',
                 'Niche: ' + niche,
                 'Region: ' + region,
@@ -1318,12 +1329,19 @@
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify({
                     access_key: '024929c9-3c2f-471f-8ec3-bd5cbaf34070',
-                    subject: 'Funnel Brief 🎯 ' + niche + ' | ' + region,
+                    subject: 'Funnel Brief 🎯 ' + (name !== 'Not specified' ? name + ' — ' : '') + niche + ' | ' + region,
                     from_name: 'Portfolio Calculator',
                     message: message
                 })
             })
-            .then(function(r) { return r.json(); })
+            .then(function(r) {
+                return r.json().then(function(data) {
+                    if (!r.ok || data.success === false) {
+                        throw new Error(data.message || 'Web3Forms rejected the request');
+                    }
+                    return data;
+                });
+            })
             .then(function(data) {
                 showThankYou();
                 // GA4 Micro-conversion: Submit Brief
@@ -1335,7 +1353,13 @@
             })
             .catch(function(err) {
                 console.warn('Web3Forms error', err);
-                showThankYou(); // still show thank-you
+                btn.disabled = false;
+                btn.innerText = 'Send for Custom Strategy →';
+                gta('submit_brief_error', {
+                    'event_category': 'lead',
+                    'error_message': String(err.message || err).slice(0, 120)
+                });
+                alert('Sorry, the request did not send. Please message me on Telegram or email.');
             });
         }
 
@@ -1578,6 +1602,8 @@
                     target_language: el.href.includes('ua.html') ? 'uk' : 'en'
                 });
             });
+        });
+
         // GA4 Global Interaction Tracking
         document.addEventListener('click', function(e) {
             const el = e.target.closest('a');
