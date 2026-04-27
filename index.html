@@ -378,6 +378,12 @@
         .assistant-status { min-height: 16px; margin-top: 8px; font-size: 0.72rem; color: var(--text-gray); line-height: 1.35; }
         .assistant-recommendation { border-left: 3px solid var(--accent-brand); padding: 14px 16px; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.78); font-size: 0.86rem; line-height: 1.5; margin-bottom: 18px; }
         .assistant-recommendation strong { color: #fff; display: block; margin-bottom: 6px; }
+        .advanced-fields { border: 1px solid #e5e5e5; margin: 8px 0 24px; padding: 0; background: #fafafa; }
+        .advanced-fields summary { cursor: pointer; padding: 14px 16px; font-family: var(--font-sans); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dark); list-style: none; }
+        .advanced-fields summary::-webkit-details-marker { display: none; }
+        .advanced-fields summary::after { content: '+'; float: right; font-size: 1rem; line-height: 1; }
+        .advanced-fields[open] summary::after { content: '-'; }
+        .advanced-fields-inner { padding: 0 16px 16px; }
         .quiz-footer { margin-top: 32px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--accent-muted); padding-top: 24px;}
         .quiz-progress { font-size: 0.85rem; color: var(--text-gray); }
 
@@ -1156,33 +1162,39 @@
                                 <label class="quiz-label">Target Region</label>
                                 <input type="text" id="calcRegion" class="quiz-input" placeholder="e.g. USA / Global" oninput="runMagicCalc()" />
                             </div>
-                            <div class="quiz-input-group" style="grid-column: span 2; margin-bottom: 0;">
-                                <label class="quiz-label">Main Competitors</label>
-                                <input type="text" id="calcCompetitors" class="quiz-input" placeholder="Who do you want to beat?" oninput="runMagicCalc()" />
-                            </div>
                         </div>
 
                         <!-- Common Inputs -->
                         <div class="quiz-input-group">
-                            <label class="quiz-label" id="lblTarget">Desired number of inquiries (leads) per month</label>
+                            <label class="quiz-label" id="lblTarget">Main goal per month</label>
                             <input type="number" id="calcTarget" class="quiz-input" placeholder="Example: 50" oninput="runMagicCalc()" />
                         </div>
-                        
-                        <div class="quiz-input-group">
-                            <label class="quiz-label" id="lblAOV">Average Check (or LTV) per client ($)</label>
-                            <input type="number" id="calcAOV" class="quiz-input" placeholder="Example: 500" oninput="runMagicCalc()" />
-                        </div>
 
-                        <div class="quiz-input-group" id="groupMargin" style="display: none;">
-                            <label class="quiz-label">Gross Margin (%)</label>
-                            <input type="number" id="calcMargin" class="quiz-input" placeholder="Example: 30" oninput="runMagicCalc()" value="30" />
-                        </div>
+                        <details class="advanced-fields">
+                            <summary>Advanced numbers</summary>
+                            <div class="advanced-fields-inner">
+                                <div class="quiz-input-group">
+                                    <label class="quiz-label">Main Competitors</label>
+                                    <input type="text" id="calcCompetitors" class="quiz-input" placeholder="Who do you want to beat?" oninput="runMagicCalc()" />
+                                </div>
 
-                        <div class="quiz-input-group">
-                            <label class="quiz-label">Current Close Rate (Lead to Client, %)</label>
-                            <input type="number" id="calcCloseRate" class="quiz-input" placeholder="Leave blank if unknown" oninput="runMagicCalc()" />
-                            <span class="quiz-hint">Default benchmark: 20%</span>
-                        </div>
+                                <div class="quiz-input-group">
+                                    <label class="quiz-label" id="lblAOV">Average Check (or LTV) per client ($)</label>
+                                    <input type="number" id="calcAOV" class="quiz-input" placeholder="Optional, example: 500" oninput="runMagicCalc()" />
+                                </div>
+
+                                <div class="quiz-input-group" id="groupMargin" style="display: none;">
+                                    <label class="quiz-label">Gross Margin (%)</label>
+                                    <input type="number" id="calcMargin" class="quiz-input" placeholder="Example: 30" oninput="runMagicCalc()" value="30" />
+                                </div>
+
+                                <div class="quiz-input-group" style="margin-bottom: 0;">
+                                    <label class="quiz-label">Current Close Rate (Lead to Client, %)</label>
+                                    <input type="number" id="calcCloseRate" class="quiz-input" placeholder="Leave blank if unknown" oninput="runMagicCalc()" />
+                                    <span class="quiz-hint">Default benchmark: 20%</span>
+                                </div>
+                            </div>
+                        </details>
                         
                         <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #f0f0f0;">
                             <p style="font-size: 0.75rem; color: var(--text-gray); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Where to send the results?</p>
@@ -1504,7 +1516,7 @@
 
             if (!niche) { missing.push('niche'); }
             if (!region) { missing.push('region'); }
-            if (!target || !aov) { missing.push('target and average check'); }
+            if (!target) { missing.push('main monthly goal'); }
 
             const focus = calcModel === 'leadgen'
                 ? 'lead quality, conversion tracking, search intent and wasted spend'
@@ -1518,9 +1530,9 @@
             let note;
             if (missing.length) {
                 assistantRecommendationSent = false;
-                note = 'For a ' + assistantState.persona.toLowerCase() + ', this will become an ' + assistantState.intent.toLowerCase() + ' brief. Add ' + missing.join(', ') + ' so the forecast has enough context.';
+                note = 'For a ' + assistantState.persona.toLowerCase() + ', this will become an ' + assistantState.intent.toLowerCase() + ' brief. Add ' + missing.join(', ') + ' and contact details so Iaroslav can respond.';
             } else {
-                note = 'For a ' + assistantState.persona.toLowerCase() + ' in ' + niche + ' / ' + region + ', I would ask Iaroslav to review ' + focus + '. Next step: ' + nextStep + '.';
+                note = 'For a ' + assistantState.persona.toLowerCase() + ' in ' + niche + ' / ' + region + ', I would ask Iaroslav to review ' + focus + '. Average check is optional; if it is empty, I will use a benchmark. Next step: ' + nextStep + '.';
                 if (!assistantRecommendationSent) {
                     gta('assistant_recommendation_ready', {
                         'event_category': 'engagement',
@@ -1648,9 +1660,9 @@
                 btnEc.style.color = 'var(--text-gray)';
                 btnEc.style.boxShadow = 'none';
 
-                lblTarget.innerText = 'Desired number of inquiries (leads) per month';
+                lblTarget.innerText = 'Main goal: inquiries per month';
                 document.getElementById('calcTarget').placeholder = 'Example: 50';
-                lblAOV.innerText = 'Average Check (or LTV) per client ($)';
+                lblAOV.innerText = 'Average Check / LTV per client ($)';
                 grpMargin.style.display = 'none';
                 divOutLeads.style.display = 'block';
                 calcCloseRate.previousElementSibling.innerText = 'Target Close Rate (Lead to client, %)';
@@ -1663,7 +1675,7 @@
                 btnLg.style.color = 'var(--text-gray)';
                 btnLg.style.boxShadow = 'none';
 
-                lblTarget.innerText = 'Desired monthly revenue ($)';
+                lblTarget.innerText = 'Main goal: monthly revenue ($)';
                 document.getElementById('calcTarget').placeholder = 'Example: 50000';
                 lblAOV.innerText = 'Average Order Value ($)';
                 grpMargin.style.display = 'block';
@@ -1683,11 +1695,14 @@
             let aov = parseFloat(document.getElementById('calcAOV').value);
             let userCR = parseFloat(document.getElementById('calcCloseRate').value);
 
-            if (isNaN(target) || isNaN(aov) || target <= 0 || aov <= 0) {
+            if (isNaN(target) || target <= 0) {
                 emptyState.style.display = 'block';
                 resultsBox.style.display = 'none';
                 updateAssistantRecommendation();
                 return;
+            }
+            if (isNaN(aov) || aov <= 0) {
+                aov = calcModel === 'leadgen' ? 500 : 50;
             }
 
             emptyState.style.display = 'none';

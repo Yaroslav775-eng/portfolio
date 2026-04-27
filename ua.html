@@ -397,6 +397,12 @@
         .assistant-status { min-height: 16px; margin-top: 8px; font-size: 0.72rem; color: var(--text-gray); line-height: 1.35; }
         .assistant-recommendation { border-left: 3px solid var(--accent-brand); padding: 14px 16px; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.78); font-size: 0.86rem; line-height: 1.5; margin-bottom: 18px; }
         .assistant-recommendation strong { color: #fff; display: block; margin-bottom: 6px; }
+        .advanced-fields { border: 1px solid #e5e5e5; margin: 8px 0 24px; padding: 0; background: #fafafa; }
+        .advanced-fields summary { cursor: pointer; padding: 14px 16px; font-family: var(--font-sans); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dark); list-style: none; }
+        .advanced-fields summary::-webkit-details-marker { display: none; }
+        .advanced-fields summary::after { content: '+'; float: right; font-size: 1rem; line-height: 1; }
+        .advanced-fields[open] summary::after { content: '-'; }
+        .advanced-fields-inner { padding: 0 16px 16px; }
 
         .diagnostic-box { background: var(--bg-dark); color: #fff; padding: 24px; margin-top: 24px; border-left: 4px solid var(--accent-brand); }
         .diagnostic-val { font-size: 1.5rem; font-weight: 700; color: var(--accent-brand); display: block; margin-bottom: 4px; }
@@ -1350,34 +1356,40 @@
                                 <label class="quiz-label">Регіон реклами</label>
                                 <input type="text" id="calcRegion" class="quiz-input" placeholder="Напр.: Україна / Польща" oninput="runMagicCalc()" />
                             </div>
-                            <div class="quiz-input-group" style="grid-column: span 2; margin-bottom: 0;">
-                                <label class="quiz-label">Сайт конкурента (URL)</label>
-                                <input type="url" id="calcCompetitors" class="quiz-input" placeholder="https://competitor.com" oninput="runMagicCalc()" />
-                                <span class="quiz-hint">Вставте посилання — проведемо аналіз рекламної видимості</span>
-                            </div>
                         </div>
 
                         <!-- Common Inputs -->
                         <div class="quiz-input-group">
-                            <label class="quiz-label" id="lblTarget">Бажана кількість звернень (лідів) на місяць</label>
+                            <label class="quiz-label" id="lblTarget">Головна ціль на місяць</label>
                             <input type="number" id="calcTarget" class="quiz-input" placeholder="Наприклад: 50" oninput="runMagicCalc()" />
                         </div>
-                        
-                        <div class="quiz-input-group">
-                            <label class="quiz-label" id="lblAOV">Середній чек з одного клієнта ($)</label>
-                            <input type="number" id="calcAOV" class="quiz-input" placeholder="Наприклад: 500" oninput="runMagicCalc()" />
-                        </div>
 
-                        <div class="quiz-input-group" id="groupMargin" style="display: none;">
-                            <label class="quiz-label">Валова маржа (%)</label>
-                            <input type="number" id="calcMargin" class="quiz-input" placeholder="Наприклад: 30" oninput="runMagicCalc()" value="30" />
-                        </div>
+                        <details class="advanced-fields">
+                            <summary>Додаткові цифри</summary>
+                            <div class="advanced-fields-inner">
+                                <div class="quiz-input-group">
+                                    <label class="quiz-label">Сайт конкурента (URL)</label>
+                                    <input type="url" id="calcCompetitors" class="quiz-input" placeholder="https://competitor.com" oninput="runMagicCalc()" />
+                                    <span class="quiz-hint">Опційно: допоможе точніше оцінити контекст</span>
+                                </div>
 
-                        <div class="quiz-input-group">
-                            <label class="quiz-label">Текущий рівень закриття (з ліда в клієнта, %)</label>
-                            <input type="number" id="calcCloseRate" class="quiz-input" placeholder="Залишіть пустим, якщо не знаєте" oninput="runMagicCalc()" />
-                            <span class="quiz-hint">За замовчуванням: 20% (Lead Gen) / 1.5% (E-com)</span>
-                        </div>
+                                <div class="quiz-input-group">
+                                    <label class="quiz-label" id="lblAOV">Середній чек з одного клієнта ($)</label>
+                                    <input type="number" id="calcAOV" class="quiz-input" placeholder="Опційно, наприклад: 500" oninput="runMagicCalc()" />
+                                </div>
+
+                                <div class="quiz-input-group" id="groupMargin" style="display: none;">
+                                    <label class="quiz-label">Валова маржа (%)</label>
+                                    <input type="number" id="calcMargin" class="quiz-input" placeholder="Наприклад: 30" oninput="runMagicCalc()" value="30" />
+                                </div>
+
+                                <div class="quiz-input-group" style="margin-bottom: 0;">
+                                    <label class="quiz-label">Поточний рівень закриття (з ліда в клієнта, %)</label>
+                                    <input type="number" id="calcCloseRate" class="quiz-input" placeholder="Залишіть пустим, якщо не знаєте" oninput="runMagicCalc()" />
+                                    <span class="quiz-hint">За замовчуванням: 20% (Lead Gen) / 1.5% (E-com)</span>
+                                </div>
+                            </div>
+                        </details>
                         
                         <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #f0f0f0;">
                             <p style="font-size: 0.75rem; color: var(--text-gray); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Куди надіслати розрахунок?</p>
@@ -1719,7 +1731,7 @@
 
             if (!niche) { missing.push('нішу'); }
             if (!region) { missing.push('регіон'); }
-            if (!target || !aov) { missing.push('ціль і середній чек'); }
+            if (!target) { missing.push('головну ціль на місяць'); }
 
             const focus = calcModel === 'leadgen'
                 ? 'якість лідів, конверсії, пошуковий попит і зайві витрати'
@@ -1733,9 +1745,9 @@
             let note;
             if (missing.length) {
                 assistantRecommendationSent = false;
-                note = 'Для ролі "' + assistantState.persona + '" це стане brief під запит "' + assistantState.intent + '". Додайте ' + missing.join(', ') + ', щоб прогноз мав достатньо контексту.';
+                note = 'Для ролі "' + assistantState.persona + '" це стане brief під запит "' + assistantState.intent + '". Додайте ' + missing.join(', ') + ' і контакт, щоб Ярослав міг відповісти.';
             } else {
-                note = 'Для ролі "' + assistantState.persona + '" у ніші "' + niche + '" / "' + region + '" я б попросив Ярослава перевірити ' + focus + '. Наступний крок: ' + nextStep + '.';
+                note = 'Для ролі "' + assistantState.persona + '" у ніші "' + niche + '" / "' + region + '" я б попросив Ярослава перевірити ' + focus + '. Середній чек можна не заповнювати: якщо він пустий, використаємо benchmark. Наступний крок: ' + nextStep + '.';
                 if (!assistantRecommendationSent) {
                     gta('assistant_recommendation_ready', {
                         'event_category': 'engagement',
@@ -1865,9 +1877,9 @@
                 btnEc.style.color = 'var(--text-gray)';
                 btnEc.style.boxShadow = 'none';
 
-                lblTarget.innerText = 'Бажана кількість звернень (лідів) на місяць';
+                lblTarget.innerText = 'Головна ціль: звернення на місяць';
                 document.getElementById('calcTarget').placeholder = 'Наприклад: 50';
-                lblAOV.innerText = 'Середній чек (чи LTV) з одного клієнта ($)';
+                lblAOV.innerText = 'Середній чек / LTV з одного клієнта ($)';
                 grpMargin.style.display = 'none';
                 divOutLeads.style.display = 'block';
                 calcCloseRate.previousElementSibling.innerText = 'Ваш відсоток закриття (з ліда в клієнта, %)';
@@ -1880,7 +1892,7 @@
                 btnLg.style.color = 'var(--text-gray)';
                 btnLg.style.boxShadow = 'none';
 
-                lblTarget.innerText = 'Бажана місячна виручка ($)';
+                lblTarget.innerText = 'Головна ціль: місячна виручка ($)';
                 document.getElementById('calcTarget').placeholder = 'Наприклад: 50000';
                 lblAOV.innerText = 'Середній кошик/чек ($)';
                 grpMargin.style.display = 'block';
@@ -1900,11 +1912,14 @@
             let aov = parseFloat(document.getElementById('calcAOV').value);
             let userCR = parseFloat(document.getElementById('calcCloseRate').value);
 
-            if (isNaN(target) || isNaN(aov) || target <= 0 || aov <= 0) {
+            if (isNaN(target) || target <= 0) {
                 emptyState.style.display = 'block';
                 resultsBox.style.display = 'none';
                 updateAssistantRecommendation();
                 return;
+            }
+            if (isNaN(aov) || aov <= 0) {
+                aov = calcModel === 'leadgen' ? 500 : 50;
             }
 
             emptyState.style.display = 'none';
