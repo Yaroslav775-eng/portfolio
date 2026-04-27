@@ -370,9 +370,8 @@
         .assistant-chip-row + .assistant-chip-row { margin-top: 8px; }
         .assistant-chip { border: 1px solid var(--text-dark); background: #fff; color: var(--text-dark); padding: 7px 10px; font-family: var(--font-sans); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; transition: all 0.15s ease; }
         .assistant-chip:hover, .assistant-chip.active { background: var(--text-dark); color: #fff; }
-        .assistant-chat-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; margin-top: 14px; }
-        .assistant-input { width: 100%; border: 1px solid var(--accent-muted); border-bottom: 2px solid var(--text-dark); padding: 10px 12px; font-size: 0.86rem; font-family: var(--font-sans); outline: none; background: #fff; }
-        .assistant-input:focus { border-color: var(--accent-brand); }
+        .assistant-chat-row { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 14px; }
+        .assistant-input { display: none; }
         .assistant-ask { border: 1px solid var(--text-dark); background: var(--text-dark); color: #fff; padding: 0 12px; font-family: var(--font-sans); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; min-height: 40px; }
         .assistant-ask:disabled { opacity: 0.55; cursor: progress; }
         .assistant-status { min-height: 16px; margin-top: 8px; font-size: 0.72rem; color: var(--text-gray); line-height: 1.35; }
@@ -1127,8 +1126,8 @@
                         <p style="color: var(--text-gray); margin-bottom: 32px; font-size: 0.95rem;">Fill out these fields to instantly reverse-engineer your required marketing funnel.</p>
 
                         <div class="assistant-brief-card">
-                            <div class="assistant-eyebrow">PPC Fit Check Assistant</div>
-                            <p>I’ll turn your answers into a short brief for Iaroslav and point you to the most relevant next step.</p>
+                            <div class="assistant-eyebrow">PPC Fit Check</div>
+                            <p>Answer a few fields and get a quick PPC diagnosis before sending the brief.</p>
                             <div class="assistant-chip-row" aria-label="Visitor role">
                                 <button type="button" class="assistant-chip active" data-field="persona" data-value="Business owner" onclick="setAssistantChoice(this)">Business Owner</button>
                                 <button type="button" class="assistant-chip" data-field="persona" data-value="Agency partner" onclick="setAssistantChoice(this)">Agency Partner</button>
@@ -1140,8 +1139,8 @@
                                 <button type="button" class="assistant-chip" data-field="intent" data-value="Collaboration" onclick="setAssistantChoice(this)">Collaboration</button>
                             </div>
                             <div class="assistant-chat-row">
-                                <input type="text" id="assistantQuestion" class="assistant-input" placeholder="Ask GPT about budget, ROAS, or next steps" onkeydown="handleAssistantKey(event)" />
-                                <button type="button" id="assistantAskBtn" class="assistant-ask" onclick="askGptAssistant()">Ask GPT</button>
+                                <input type="text" id="assistantQuestion" class="assistant-input" placeholder="" onkeydown="handleAssistantKey(event)" />
+                                <button type="button" id="assistantAskBtn" class="assistant-ask" onclick="askGptAssistant()">Get quick PPC diagnosis</button>
                             </div>
                             <div id="assistantStatus" class="assistant-status" aria-live="polite"></div>
                         </div>
@@ -1197,7 +1196,7 @@
                         </details>
                         
                         <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #f0f0f0;">
-                            <p style="font-size: 0.75rem; color: var(--text-gray); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Where to send the results?</p>
+                            <p style="font-size: 0.75rem; color: var(--text-gray); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Where should I send the quick audit?</p>
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                                 <div class="quiz-input-group" style="margin-bottom: 0;">
                                     <label class="quiz-label">Your Name</label>
@@ -1213,11 +1212,11 @@
 
                     <!-- RIGHT COLUMN: EXPERT OUTPUT -->
                     <div style="padding: 40px; background: var(--bg-dark); color: #fff;">
-                        <h2 style="font-size: 1.4rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 16px; margin-bottom: 24px; color: #fff;">Pipeline Forecast (Live)</h2>
+                        <h2 style="font-size: 1.4rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 16px; margin-bottom: 24px; color: #fff;">Quick PPC Diagnosis</h2>
 
                         <div id="assistantRecommendation" class="assistant-recommendation">
-                            <strong>Assistant note</strong>
-                            Choose your role and enter a few numbers. I’ll summarize what Iaroslav should review first.
+                            <strong>Diagnosis preview</strong>
+                            Choose your role, add a niche, goal and contact. I’ll summarize what Iaroslav should review first.
                         </div>
 
                         <div id="calcEmptyState" style="text-align: center; padding: 40px 0; color: rgba(255,255,255,0.5);">
@@ -1260,7 +1259,7 @@
                                 </div>
                             </div>
 
-                            <button id="magicSubmitBtn" onclick="sendMagicForm()" class="btn btn-primary" style="display: block; text-align: center; width: 100%; border: none; background: var(--accent-brand); cursor: pointer;">Send for Custom Strategy &rarr;</button>
+                            <button id="magicSubmitBtn" onclick="sendMagicForm()" class="btn btn-primary" style="display: block; text-align: center; width: 100%; border: none; background: var(--accent-brand); cursor: pointer;">Send my brief &rarr;</button>
                         </div>
                     </div>
                 </div>
@@ -1363,7 +1362,7 @@
             document.getElementById('thankYouScreen').style.flexDirection = '';
             document.querySelector('.dashboard-grid').style.display = 'grid';
             const btn = document.getElementById('magicSubmitBtn');
-            if (btn) { btn.disabled = false; btn.innerText = 'Send for Custom Strategy →'; }
+            if (btn) { btn.disabled = false; btn.innerText = 'Send my brief →'; }
         }
 
         function resetAssistantChoices() {
@@ -1450,7 +1449,7 @@
         async function askGptAssistant() {
             const input = document.getElementById('assistantQuestion');
             const btn = document.getElementById('assistantAskBtn');
-            const message = (input && input.value.trim()) || 'What should I check first in these Google Ads numbers?';
+            const message = (input && input.value.trim()) || 'Generate a quick PPC diagnosis from this portfolio form. Include likely Google Ads angle, first risk to check, and one next step.';
             const endpoint = getAssistantApiEndpoint();
 
             if (!endpoint) {
@@ -1461,10 +1460,10 @@
 
             if (btn) {
                 btn.disabled = true;
-                btn.innerText = 'Thinking...';
+                btn.innerText = 'Checking...';
             }
-            setAssistantStatus('Asking GPT...');
-            renderAssistantNote('GPT assistant', 'Reading your role, intent and calculator numbers...');
+            setAssistantStatus('Preparing diagnosis...');
+            renderAssistantNote('Quick diagnosis', 'Reading your role, intent and PPC context...');
 
             try {
                 const response = await fetch(endpoint, {
@@ -1480,8 +1479,8 @@
                     throw new Error(data.error || 'Assistant endpoint is unavailable');
                 }
 
-                renderAssistantNote('GPT assistant', data.answer);
-                setAssistantStatus('Live GPT response generated.');
+                renderAssistantNote('Quick diagnosis', data.answer);
+                setAssistantStatus('Diagnosis generated.');
                 gta('assistant_gpt_answer', {
                     'event_category': 'engagement',
                     'model': calcModel,
@@ -1499,7 +1498,7 @@
             } finally {
                 if (btn) {
                     btn.disabled = false;
-                    btn.innerText = 'Ask GPT';
+                    btn.innerText = 'Get quick PPC diagnosis';
                 }
             }
         }
@@ -1544,7 +1543,7 @@
                 }
             }
 
-            renderAssistantNote('Assistant note', note);
+            renderAssistantNote('Diagnosis preview', note);
         }
 
         function sendMagicForm() {
@@ -1620,7 +1619,7 @@
             .catch(function(err) {
                 console.warn('Web3Forms error', err);
                 btn.disabled = false;
-                btn.innerText = 'Send for Custom Strategy →';
+                btn.innerText = 'Send my brief →';
                 gta('submit_brief_error', {
                     'event_category': 'lead',
                     'error_message': String(err.message || err).slice(0, 120)
