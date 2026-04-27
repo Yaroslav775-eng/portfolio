@@ -22,6 +22,7 @@
     <link rel="alternate" hreflang="uk" href="https://yaroslav775-eng.github.io/portfolio/ua.html">
     <meta name="author" content="Iaroslav Zhakun">
     <meta name="robots" content="index, follow">
+    <script src="assistant-config.js"></script>
     
     <!-- Open Graph for LinkedIn / Twitter sharing -->
     <meta property="og:title" content="Ярослав Жакун | Фахівець з Google Ads">
@@ -388,6 +389,12 @@
         .assistant-chip-row + .assistant-chip-row { margin-top: 8px; }
         .assistant-chip { border: 1px solid var(--text-dark); background: #fff; color: var(--text-dark); padding: 7px 10px; font-family: var(--font-sans); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; transition: all 0.15s ease; }
         .assistant-chip:hover, .assistant-chip.active { background: var(--text-dark); color: #fff; }
+        .assistant-chat-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; margin-top: 14px; }
+        .assistant-input { width: 100%; border: 1px solid var(--accent-muted); border-bottom: 2px solid var(--text-dark); padding: 10px 12px; font-size: 0.86rem; font-family: var(--font-sans); outline: none; background: #fff; }
+        .assistant-input:focus { border-color: var(--accent-brand); }
+        .assistant-ask { border: 1px solid var(--text-dark); background: var(--text-dark); color: #fff; padding: 0 12px; font-family: var(--font-sans); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; min-height: 40px; }
+        .assistant-ask:disabled { opacity: 0.55; cursor: progress; }
+        .assistant-status { min-height: 16px; margin-top: 8px; font-size: 0.72rem; color: var(--text-gray); line-height: 1.35; }
         .assistant-recommendation { border-left: 3px solid var(--accent-brand); padding: 14px 16px; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.78); font-size: 0.86rem; line-height: 1.5; margin-bottom: 18px; }
         .assistant-recommendation strong { color: #fff; display: block; margin-bottom: 6px; }
 
@@ -534,6 +541,7 @@
                 gap: 6px !important;
             }
             .calc-toggle-row button { width: 100% !important; }
+            .assistant-chat-row { grid-template-columns: 1fr; }
             .assistant-chip { flex: 1 1 auto; }
             .modal-metrics-grid {
                 grid-template-columns: 1fr 1fr !important;
@@ -1319,6 +1327,11 @@
                                 <button type="button" class="assistant-chip" data-field="intent" data-value="Найм спеціаліста" onclick="setAssistantChoice(this)">Найм</button>
                                 <button type="button" class="assistant-chip" data-field="intent" data-value="Співпраця" onclick="setAssistantChoice(this)">Співпраця</button>
                             </div>
+                            <div class="assistant-chat-row">
+                                <input type="text" id="assistantQuestion" class="assistant-input" placeholder="Запитайте GPT про бюджет, ROAS або наступні кроки" onkeydown="handleAssistantKey(event)" />
+                                <button type="button" id="assistantAskBtn" class="assistant-ask" onclick="askGptAssistant()">Ask GPT</button>
+                            </div>
+                            <div id="assistantStatus" class="assistant-status" aria-live="polite"></div>
                         </div>
 
                         <!-- Toggle Business Model -->
@@ -1575,6 +1588,125 @@
             });
         }
 
+        function getAssistantApiEndpoint() {
+            const configured = window.IAROSLAV_ASSISTANT_API_URL || '';
+            if (configured) { return configured; }
+            return location.hostname.indexOf('github.io') !== -1 ? '' : '/api/assistant';
+        }
+
+        function getFieldValue(id) {
+            const el = document.getElementById(id);
+            return el ? el.value.trim() : '';
+        }
+
+        function getFieldText(id) {
+            const el = document.getElementById(id);
+            return el ? el.innerText.trim() : '';
+        }
+
+        function getAssistantContext() {
+            return {
+                page_language: 'uk',
+                persona: assistantState.persona,
+                intent: assistantState.intent,
+                calculator_model: calcModel,
+                niche: getFieldValue('calcNiche'),
+                region: getFieldValue('calcRegion'),
+                competitors: getFieldValue('calcCompetitors'),
+                target: getFieldValue('calcTarget'),
+                average_check: getFieldValue('calcAOV'),
+                close_rate: getFieldValue('calcCloseRate'),
+                forecast: {
+                    traffic: getFieldText('outClicks'),
+                    leads: getFieldText('outLeads'),
+                    sales: getFieldText('outSales'),
+                    budget: getFieldText('outBudget'),
+                    cpl: getFieldText('outCPL'),
+                    cpa: getFieldText('outCPA'),
+                    revenue: getFieldText('outRev'),
+                    roas: getFieldText('outROAS'),
+                    ad_spend_percent: getFieldText('outAdPct'),
+                    net_profit: getFieldText('outNetProfit')
+                }
+            };
+        }
+
+        function setAssistantStatus(message) {
+            const status = document.getElementById('assistantStatus');
+            if (status) { status.innerText = message || ''; }
+        }
+
+        function renderAssistantNote(title, note) {
+            const box = document.getElementById('assistantRecommendation');
+            if (!box) { return; }
+            box.innerHTML = '<strong>' + title + '</strong>';
+            box.appendChild(document.createTextNode(note));
+        }
+
+        function handleAssistantKey(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                askGptAssistant();
+            }
+        }
+
+        async function askGptAssistant() {
+            const input = document.getElementById('assistantQuestion');
+            const btn = document.getElementById('assistantAskBtn');
+            const message = (input && input.value.trim()) || 'Що варто перевірити першим у цих Google Ads цифрах?';
+            const endpoint = getAssistantApiEndpoint();
+
+            if (!endpoint) {
+                renderAssistantNote('GPT setup pending', 'Backend для GPT вже готовий у репозиторії, але для GitHub Pages ще потрібно додати URL Vercel API. Brief продовжує працювати.');
+                setAssistantStatus('Додайте window.IAROSLAV_ASSISTANT_API_URL після деплою /api/assistant на Vercel.');
+                return;
+            }
+
+            if (btn) {
+                btn.disabled = true;
+                btn.innerText = 'Thinking...';
+            }
+            setAssistantStatus('Запит до GPT...');
+            renderAssistantNote('GPT асистент', 'Читаю вашу роль, намір і цифри калькулятора...');
+
+            try {
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: message,
+                        context: getAssistantContext()
+                    })
+                });
+                const data = await response.json().catch(function() { return {}; });
+                if (!response.ok || !data.answer) {
+                    throw new Error(data.error || 'Assistant endpoint is unavailable');
+                }
+
+                renderAssistantNote('GPT асистент', data.answer);
+                setAssistantStatus('Відповідь GPT згенерована.');
+                gta('assistant_gpt_answer', {
+                    'event_category': 'engagement',
+                    'model': calcModel,
+                    'persona': assistantState.persona,
+                    'intent': assistantState.intent
+                });
+            } catch (err) {
+                console.warn('GPT assistant error', err);
+                updateAssistantRecommendation();
+                setAssistantStatus('Для live GPT потрібен backend Vercel /api/assistant. Brief все одно працює.');
+                gta('assistant_gpt_error', {
+                    'event_category': 'engagement',
+                    'error_message': String(err.message || err).slice(0, 120)
+                });
+            } finally {
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerText = 'Ask GPT';
+                }
+            }
+        }
+
         function updateAssistantRecommendation() {
             const box = document.getElementById('assistantRecommendation');
             if (!box) { return; }
@@ -1615,8 +1747,7 @@
                 }
             }
 
-            box.innerHTML = '<strong>Нотатка асистента</strong>';
-            box.appendChild(document.createTextNode(note));
+            renderAssistantNote('Нотатка асистента', note);
         }
 
         function sendMagicForm() {

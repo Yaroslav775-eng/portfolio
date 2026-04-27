@@ -22,6 +22,7 @@
     <link rel="alternate" hreflang="uk" href="https://yaroslav775-eng.github.io/portfolio/ua.html">
     <meta name="author" content="Iaroslav Zhakun">
     <meta name="robots" content="index, follow">
+    <script src="assistant-config.js"></script>
     
     <!-- Open Graph for LinkedIn / Twitter sharing -->
     <meta property="og:title" content="Iaroslav Zhakun | Google Ads Specialist">
@@ -369,6 +370,12 @@
         .assistant-chip-row + .assistant-chip-row { margin-top: 8px; }
         .assistant-chip { border: 1px solid var(--text-dark); background: #fff; color: var(--text-dark); padding: 7px 10px; font-family: var(--font-sans); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; transition: all 0.15s ease; }
         .assistant-chip:hover, .assistant-chip.active { background: var(--text-dark); color: #fff; }
+        .assistant-chat-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; margin-top: 14px; }
+        .assistant-input { width: 100%; border: 1px solid var(--accent-muted); border-bottom: 2px solid var(--text-dark); padding: 10px 12px; font-size: 0.86rem; font-family: var(--font-sans); outline: none; background: #fff; }
+        .assistant-input:focus { border-color: var(--accent-brand); }
+        .assistant-ask { border: 1px solid var(--text-dark); background: var(--text-dark); color: #fff; padding: 0 12px; font-family: var(--font-sans); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; min-height: 40px; }
+        .assistant-ask:disabled { opacity: 0.55; cursor: progress; }
+        .assistant-status { min-height: 16px; margin-top: 8px; font-size: 0.72rem; color: var(--text-gray); line-height: 1.35; }
         .assistant-recommendation { border-left: 3px solid var(--accent-brand); padding: 14px 16px; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.78); font-size: 0.86rem; line-height: 1.5; margin-bottom: 18px; }
         .assistant-recommendation strong { color: #fff; display: block; margin-bottom: 6px; }
         .quiz-footer { margin-top: 32px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--accent-muted); padding-top: 24px;}
@@ -439,6 +446,7 @@
                 width: 100% !important;
                 padding: 24px 20px !important;
             }
+            .assistant-chat-row { grid-template-columns: 1fr; }
             .assistant-chip { flex: 1 1 auto; }
         }
     </style>
@@ -1125,6 +1133,11 @@
                                 <button type="button" class="assistant-chip" data-field="intent" data-value="Hire specialist" onclick="setAssistantChoice(this)">Hire</button>
                                 <button type="button" class="assistant-chip" data-field="intent" data-value="Collaboration" onclick="setAssistantChoice(this)">Collaboration</button>
                             </div>
+                            <div class="assistant-chat-row">
+                                <input type="text" id="assistantQuestion" class="assistant-input" placeholder="Ask GPT about budget, ROAS, or next steps" onkeydown="handleAssistantKey(event)" />
+                                <button type="button" id="assistantAskBtn" class="assistant-ask" onclick="askGptAssistant()">Ask GPT</button>
+                            </div>
+                            <div id="assistantStatus" class="assistant-status" aria-live="polite"></div>
                         </div>
 
                         <!-- Toggle Business Model -->
@@ -1363,6 +1376,122 @@
             });
         }
 
+        function getAssistantApiEndpoint() {
+            const configured = window.IAROSLAV_ASSISTANT_API_URL || '';
+            if (configured) { return configured; }
+            return location.hostname.indexOf('github.io') !== -1 ? '' : '/api/assistant';
+        }
+
+        function getFieldValue(id) {
+            const el = document.getElementById(id);
+            return el ? el.value.trim() : '';
+        }
+
+        function getFieldText(id) {
+            const el = document.getElementById(id);
+            return el ? el.innerText.trim() : '';
+        }
+
+        function getAssistantContext() {
+            return {
+                page_language: 'en',
+                persona: assistantState.persona,
+                intent: assistantState.intent,
+                calculator_model: calcModel,
+                niche: getFieldValue('calcNiche'),
+                region: getFieldValue('calcRegion'),
+                competitors: getFieldValue('calcCompetitors'),
+                target: getFieldValue('calcTarget'),
+                average_check: getFieldValue('calcAOV'),
+                close_rate: getFieldValue('calcCloseRate'),
+                forecast: {
+                    traffic: getFieldText('outClicks'),
+                    leads: getFieldText('outLeads'),
+                    sales: getFieldText('outSales'),
+                    budget: getFieldText('outBudget'),
+                    cpa: getFieldText('outCPA'),
+                    revenue: getFieldText('outRev'),
+                    roas: getFieldText('outROAS')
+                }
+            };
+        }
+
+        function setAssistantStatus(message) {
+            const status = document.getElementById('assistantStatus');
+            if (status) { status.innerText = message || ''; }
+        }
+
+        function renderAssistantNote(title, note) {
+            const box = document.getElementById('assistantRecommendation');
+            if (!box) { return; }
+            box.innerHTML = '<strong>' + title + '</strong>';
+            box.appendChild(document.createTextNode(note));
+        }
+
+        function handleAssistantKey(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                askGptAssistant();
+            }
+        }
+
+        async function askGptAssistant() {
+            const input = document.getElementById('assistantQuestion');
+            const btn = document.getElementById('assistantAskBtn');
+            const message = (input && input.value.trim()) || 'What should I check first in these Google Ads numbers?';
+            const endpoint = getAssistantApiEndpoint();
+
+            if (!endpoint) {
+                renderAssistantNote('GPT setup pending', 'The GPT backend is ready in the repository, but this GitHub Pages domain still needs a Vercel API URL. The brief builder continues to work.');
+                setAssistantStatus('Add window.IAROSLAV_ASSISTANT_API_URL after deploying /api/assistant to Vercel.');
+                return;
+            }
+
+            if (btn) {
+                btn.disabled = true;
+                btn.innerText = 'Thinking...';
+            }
+            setAssistantStatus('Asking GPT...');
+            renderAssistantNote('GPT assistant', 'Reading your role, intent and calculator numbers...');
+
+            try {
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: message,
+                        context: getAssistantContext()
+                    })
+                });
+                const data = await response.json().catch(function() { return {}; });
+                if (!response.ok || !data.answer) {
+                    throw new Error(data.error || 'Assistant endpoint is unavailable');
+                }
+
+                renderAssistantNote('GPT assistant', data.answer);
+                setAssistantStatus('Live GPT response generated.');
+                gta('assistant_gpt_answer', {
+                    'event_category': 'engagement',
+                    'model': calcModel,
+                    'persona': assistantState.persona,
+                    'intent': assistantState.intent
+                });
+            } catch (err) {
+                console.warn('GPT assistant error', err);
+                updateAssistantRecommendation();
+                setAssistantStatus('Live GPT needs the Vercel /api/assistant backend. The brief builder still works.');
+                gta('assistant_gpt_error', {
+                    'event_category': 'engagement',
+                    'error_message': String(err.message || err).slice(0, 120)
+                });
+            } finally {
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerText = 'Ask GPT';
+                }
+            }
+        }
+
         function updateAssistantRecommendation() {
             const box = document.getElementById('assistantRecommendation');
             if (!box) { return; }
@@ -1403,8 +1532,7 @@
                 }
             }
 
-            box.innerHTML = '<strong>Assistant note</strong>';
-            box.appendChild(document.createTextNode(note));
+            renderAssistantNote('Assistant note', note);
         }
 
         function sendMagicForm() {
