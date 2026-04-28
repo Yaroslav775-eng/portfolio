@@ -1443,6 +1443,35 @@
                         <div id="calcResultsBox" style="display: none;">
                             <div id="calcAssumptions" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 14px 16px; border-radius: 6px; margin-bottom: 18px; font-size: 0.8rem; line-height: 1.45; color: rgba(255,255,255,0.68);"></div>
 
+                            <div id="calcVerdictBox" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); padding: 16px; border-radius: 6px; margin-bottom: 18px;">
+                                <div style="display:flex; justify-content:space-between; gap:14px; align-items:flex-start; margin-bottom:12px;">
+                                    <div>
+                                        <span style="display:block; font-size:0.72rem; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px;">Висновок по плану</span>
+                                        <strong id="outVerdictTitle" style="display:block; font-size:1rem; color:#fff;">-</strong>
+                                    </div>
+                                    <span id="outVerdictBadge" style="font-size:0.72rem; font-weight:800; text-transform:uppercase; padding:5px 8px; border-radius:999px; background:rgba(255,255,255,0.08); color:#fff;">-</span>
+                                </div>
+                                <p id="outVerdictText" style="font-size:0.82rem; line-height:1.45; color:rgba(255,255,255,0.7); margin:0 0 12px;"></p>
+                                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:0.78rem;">
+                                    <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:9px;">
+                                        <span style="display:block; color:rgba(255,255,255,0.48);">Max CPC для економіки</span>
+                                        <strong id="outMaxCpc" style="color:#fff;">-</strong>
+                                    </div>
+                                    <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:9px;">
+                                        <span id="outRequiredCrLabel" style="display:block; color:rgba(255,255,255,0.48);">Потрібна конверсія при поточному CPC</span>
+                                        <strong id="outRequiredCr" style="color:#fff;">-</strong>
+                                    </div>
+                                    <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:9px;">
+                                        <span style="display:block; color:rgba(255,255,255,0.48);">Запас маржі після реклами</span>
+                                        <strong id="outMarginBuffer" style="color:#fff;">-</strong>
+                                    </div>
+                                    <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:9px;">
+                                        <span style="display:block; color:rgba(255,255,255,0.48);">Що перевірити далі</span>
+                                        <strong id="outNextCheck" style="color:#fff;">-</strong>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- Budget Health Indicator -->
                             <div id="budgetHealthBar" style="margin-bottom: 20px; padding: 12px 16px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);">
                                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
@@ -2104,6 +2133,54 @@
             document.getElementById('outMaxCPA').innerText = '$' + Math.round(maxCpa).toLocaleString();
             gapEl.innerText = gap >= 0 ? 'Сходиться, +' + '$' + Math.round(gap).toLocaleString() : 'Дорого, -' + '$' + Math.abs(Math.round(gap)).toLocaleString();
             gapEl.style.color = gap >= 0 ? '#4ade80' : '#f87171';
+
+            const totalConversionRate = calcModel === 'leadgen' ? (siteToLeadCR * leadToClientCR) : ecomSiteCR;
+            const maxCpc = maxCpa * totalConversionRate;
+            const requiredCr = maxCpa > 0 ? (avgCPC / maxCpa) * 100 : 0;
+            const marginBuffer = marginPct - effectiveAdPctLimit;
+            const budgetShare = rev > 0 ? (budget / rev) * 100 : 0;
+            const hasHealthyBuffer = marginBuffer >= 8;
+            const isEconomicsFit = gap >= 0;
+            const verdictTitle = document.getElementById('outVerdictTitle');
+            const verdictBadge = document.getElementById('outVerdictBadge');
+            const verdictText = document.getElementById('outVerdictText');
+            const maxCpcEl = document.getElementById('outMaxCpc');
+            const requiredCrEl = document.getElementById('outRequiredCr');
+            const requiredCrLabel = document.getElementById('outRequiredCrLabel');
+            const marginBufferEl = document.getElementById('outMarginBuffer');
+            const nextCheckEl = document.getElementById('outNextCheck');
+            if (verdictTitle && verdictBadge && verdictText) {
+                if (isEconomicsFit && hasHealthyBuffer) {
+                    verdictTitle.innerText = 'План виглядає робочим за benchmark-логікою';
+                    verdictBadge.innerText = 'Ок';
+                    verdictBadge.style.background = 'rgba(74,222,128,0.16)';
+                    verdictBadge.style.color = '#4ade80';
+                    verdictText.innerText = 'Орієнтовний CPA вкладається у допустиму вартість залучення і залишає запас маржі після реклами. Наступний крок - звірити CPC, CTR і конверсію з реальними даними.';
+                } else if (isEconomicsFit) {
+                    verdictTitle.innerText = 'План сходиться, але запас маржі тонкий';
+                    verdictBadge.innerText = 'Тісно';
+                    verdictBadge.style.background = 'rgba(250,204,21,0.16)';
+                    verdictBadge.style.color = '#facc15';
+                    verdictText.innerText = 'CPA вкладається в ліміт, але майже вся доступна маржа йде на рекламу. Перед масштабуванням це потрібно перевірити на малому бюджеті.';
+                } else {
+                    verdictTitle.innerText = 'План не сходиться за поточними припущеннями';
+                    verdictBadge.innerText = 'Ризик';
+                    verdictBadge.style.background = 'rgba(248,113,113,0.16)';
+                    verdictBadge.style.color = '#f87171';
+                    verdictText.innerText = 'За benchmark CPC і конверсією ціна залучення вища за допустиму. Потрібно знижувати CPC, піднімати конверсію, збільшувати середній чек або переглядати план продажів.';
+                }
+            }
+            if (maxCpcEl) maxCpcEl.innerText = '$' + maxCpc.toFixed(2);
+            if (requiredCrLabel) requiredCrLabel.innerText = calcModel === 'leadgen' ? 'Потрібна конверсія клік -> клієнт при поточному CPC' : 'Потрібна конверсія сайту при поточному CPC';
+            if (requiredCrEl) requiredCrEl.innerText = requiredCr.toFixed(2) + '%';
+            if (marginBufferEl) {
+                marginBufferEl.innerText = marginBuffer.toFixed(1) + '% до операційних витрат';
+                marginBufferEl.style.color = marginBuffer >= 8 ? '#4ade80' : (marginBuffer > 0 ? '#facc15' : '#f87171');
+            }
+            if (nextCheckEl) {
+                nextCheckEl.innerText = budgetShare > effectiveAdPctLimit ? 'Спочатку перевірити CPC / конверсію' : 'Звірити з реальними CPC і CTR';
+                nextCheckEl.style.color = isEconomicsFit ? '#fff' : '#facc15';
+            }
 
             // New KPIs
             const cpl = leads > 0 ? Math.round(budget / leads) : cpa;

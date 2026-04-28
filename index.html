@@ -1246,6 +1246,35 @@
                         <div id="calcResultsBox" style="display: none;">
                             <div id="calcAssumptions" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 14px 16px; border-radius: 6px; margin-bottom: 22px; font-size: 0.8rem; line-height: 1.45; color: rgba(255,255,255,0.68);"></div>
 
+                            <div id="calcVerdictBox" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); padding: 16px; border-radius: 6px; margin-bottom: 22px;">
+                                <div style="display:flex; justify-content:space-between; gap:14px; align-items:flex-start; margin-bottom:12px;">
+                                    <div>
+                                        <span style="display:block; font-size:0.72rem; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px;">Plan verdict</span>
+                                        <strong id="outVerdictTitle" style="display:block; font-size:1rem; color:#fff;">-</strong>
+                                    </div>
+                                    <span id="outVerdictBadge" style="font-size:0.72rem; font-weight:800; text-transform:uppercase; padding:5px 8px; border-radius:999px; background:rgba(255,255,255,0.08); color:#fff;">-</span>
+                                </div>
+                                <p id="outVerdictText" style="font-size:0.82rem; line-height:1.45; color:rgba(255,255,255,0.7); margin:0 0 12px;"></p>
+                                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:0.78rem;">
+                                    <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:9px;">
+                                        <span style="display:block; color:rgba(255,255,255,0.48);">Max CPC to keep economics</span>
+                                        <strong id="outMaxCpc" style="color:#fff;">-</strong>
+                                    </div>
+                                    <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:9px;">
+                                        <span id="outRequiredCrLabel" style="display:block; color:rgba(255,255,255,0.48);">Required conversion at current CPC</span>
+                                        <strong id="outRequiredCr" style="color:#fff;">-</strong>
+                                    </div>
+                                    <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:9px;">
+                                        <span style="display:block; color:rgba(255,255,255,0.48);">Margin buffer after ads</span>
+                                        <strong id="outMarginBuffer" style="color:#fff;">-</strong>
+                                    </div>
+                                    <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:9px;">
+                                        <span style="display:block; color:rgba(255,255,255,0.48);">Next check</span>
+                                        <strong id="outNextCheck" style="color:#fff;">-</strong>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
                                 <div>
                                     <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Estimated Traffic</span>
@@ -1889,6 +1918,54 @@
             document.getElementById('outMaxCPA').innerText = '$' + Math.round(maxCpa).toLocaleString();
             gapEl.innerText = gap >= 0 ? 'Fits, +' + '$' + Math.round(gap).toLocaleString() : 'Too high, -' + '$' + Math.abs(Math.round(gap)).toLocaleString();
             gapEl.style.color = gap >= 0 ? '#4ade80' : '#f87171';
+
+            const totalConversionRate = calcModel === 'leadgen' ? (siteToLeadCR * leadToClientCR) : ecomSiteCR;
+            const maxCpc = maxCpa * totalConversionRate;
+            const requiredCr = maxCpa > 0 ? (avgCPC / maxCpa) * 100 : 0;
+            const marginBuffer = marginPct - effectiveAdPctLimit;
+            const budgetShare = rev > 0 ? (budget / rev) * 100 : 0;
+            const hasHealthyBuffer = marginBuffer >= 8;
+            const isEconomicsFit = gap >= 0;
+            const verdictTitle = document.getElementById('outVerdictTitle');
+            const verdictBadge = document.getElementById('outVerdictBadge');
+            const verdictText = document.getElementById('outVerdictText');
+            const maxCpcEl = document.getElementById('outMaxCpc');
+            const requiredCrEl = document.getElementById('outRequiredCr');
+            const requiredCrLabel = document.getElementById('outRequiredCrLabel');
+            const marginBufferEl = document.getElementById('outMarginBuffer');
+            const nextCheckEl = document.getElementById('outNextCheck');
+            if (verdictTitle && verdictBadge && verdictText) {
+                if (isEconomicsFit && hasHealthyBuffer) {
+                    verdictTitle.innerText = 'The plan looks workable on benchmark math';
+                    verdictBadge.innerText = 'Workable';
+                    verdictBadge.style.background = 'rgba(74,222,128,0.16)';
+                    verdictBadge.style.color = '#4ade80';
+                    verdictText.innerText = 'The estimated CPA stays inside your allowed ad-cost limit and leaves margin after ads. The next step is to validate CPC, CTR and conversion against real account data.';
+                } else if (isEconomicsFit) {
+                    verdictTitle.innerText = 'The plan fits, but the margin buffer is thin';
+                    verdictBadge.innerText = 'Tight';
+                    verdictBadge.style.background = 'rgba(250,204,21,0.16)';
+                    verdictBadge.style.color = '#facc15';
+                    verdictText.innerText = 'The CPA is inside the limit, but almost all available margin is reserved for ads. This needs careful testing before scaling.';
+                } else {
+                    verdictTitle.innerText = 'The plan does not fit the current assumptions';
+                    verdictBadge.innerText = 'Risk';
+                    verdictBadge.style.background = 'rgba(248,113,113,0.16)';
+                    verdictBadge.style.color = '#f87171';
+                    verdictText.innerText = 'At the benchmark CPC and conversion rate, acquisition cost is above the allowed level. The plan needs lower CPC, better conversion, higher average check, or a lower sales target.';
+                }
+            }
+            if (maxCpcEl) maxCpcEl.innerText = '$' + maxCpc.toFixed(2);
+            if (requiredCrLabel) requiredCrLabel.innerText = calcModel === 'leadgen' ? 'Required click-to-client conversion at current CPC' : 'Required website conversion at current CPC';
+            if (requiredCrEl) requiredCrEl.innerText = requiredCr.toFixed(2) + '%';
+            if (marginBufferEl) {
+                marginBufferEl.innerText = marginBuffer.toFixed(1) + '% left before operating costs';
+                marginBufferEl.style.color = marginBuffer >= 8 ? '#4ade80' : (marginBuffer > 0 ? '#facc15' : '#f87171');
+            }
+            if (nextCheckEl) {
+                nextCheckEl.innerText = budgetShare > effectiveAdPctLimit ? 'Check CPC / conversion first' : 'Validate with real CPC and CTR';
+                nextCheckEl.style.color = isEconomicsFit ? '#fff' : '#facc15';
+            }
 
             compileMagicEmail(target, aov, userCR, budget, roas);
             updateAssistantRecommendation();
