@@ -396,6 +396,15 @@
         .assistant-status { min-height: 16px; margin-top: 8px; font-size: 0.72rem; color: var(--text-gray); line-height: 1.35; }
         .assistant-recommendation { border-left: 3px solid var(--accent-brand); padding: 14px 16px; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.78); font-size: 0.86rem; line-height: 1.5; margin-bottom: 18px; }
         .assistant-recommendation strong { color: #fff; display: block; margin-bottom: 6px; }
+        .fit-progress { margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.10); }
+        .fit-progress-head { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 8px; color: rgba(255,255,255,0.62); font-family: var(--font-sans); font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
+        .fit-progress-bar { height: 6px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,0.13); margin-bottom: 12px; }
+        .fit-progress-fill { height: 100%; border-radius: 999px; background: var(--accent-brand); transition: width 0.2s ease; }
+        .fit-checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 12px; }
+        .fit-step { color: rgba(255,255,255,0.48); font-size: 0.78rem; line-height: 1.25; }
+        .fit-step.done { color: rgba(255,255,255,0.94); }
+        .fit-step::before { content: '○'; margin-right: 6px; color: rgba(255,255,255,0.36); }
+        .fit-step.done::before { content: '✓'; color: #4ade80; }
         .advanced-fields { border: 1px solid #e5e5e5; margin: 8px 0 24px; padding: 0; background: #fafafa; }
         .advanced-fields summary { cursor: pointer; padding: 14px 16px; font-family: var(--font-sans); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dark); list-style: none; }
         .advanced-fields summary::-webkit-details-marker { display: none; }
@@ -1400,7 +1409,7 @@
                                 </div>
                                 <div class="quiz-input-group" style="margin-bottom: 0;">
                                     <label class="quiz-label">Телефон або Email <span style="color:#C00000;">*</span></label>
-                                    <input type="text" id="calcContact" class="quiz-input" placeholder="+380... / email" />
+                                    <input type="text" id="calcContact" class="quiz-input" placeholder="+380... / email" oninput="updateAssistantRecommendation()" />
                                 </div>
                             </div>
                             <p style="font-size: 0.7rem; color: var(--text-gray); margin-top: 12px; opacity: 0.9; line-height: 1.3;">
@@ -1679,6 +1688,20 @@
             box.innerHTML = '<strong>' + title + '</strong>' + html;
         }
 
+        function renderFitProgress(items, label) {
+            const doneCount = items.filter(function(item) { return item.done; }).length;
+            const percent = Math.round((doneCount / items.length) * 100);
+            return '<div class="fit-progress">' +
+                '<div class="fit-progress-head"><span>' + label + '</span><span>' + doneCount + '/' + items.length + '</span></div>' +
+                '<div class="fit-progress-bar"><div class="fit-progress-fill" style="width:' + percent + '%"></div></div>' +
+                '<div class="fit-checklist">' +
+                    items.map(function(item) {
+                        return '<span class="fit-step ' + (item.done ? 'done' : '') + '">' + item.label + '</span>';
+                    }).join('') +
+                '</div>' +
+            '</div>';
+        }
+
         function handleAssistantKey(event) {
             if (event.key === 'Enter') {
                 event.preventDefault();
@@ -1752,6 +1775,15 @@
             const target = document.getElementById('calcTarget').value.trim();
             const aov = document.getElementById('calcAOV').value.trim();
             const adPct = document.getElementById('calcAdPct').value.trim();
+            const contact = document.getElementById('calcContact').value.trim();
+            const progressHtml = renderFitProgress([
+                { label: 'Ніша', done: !!niche },
+                { label: 'Регіон', done: !!region },
+                { label: 'Ціль на місяць', done: !!target },
+                { label: 'Середній чек', done: !!aov },
+                { label: '% на рекламу', done: !!adPct },
+                { label: 'Контакт', done: !!contact }
+            ], 'Прогрес');
             const missing = [];
 
             if (!niche) { missing.push('нішу'); }
@@ -1762,7 +1794,7 @@
 
             if (missing.length) {
                 assistantRecommendationSent = false;
-                renderAssistantHtml('Попередня оцінка', '<p style="margin:0 0 10px;">Заповніть 3 цифри, щоб перевірити економіку Google Ads:</p><p style="margin:0 0 6px;">1. Головна ціль на місяць</p><p style="margin:0 0 6px;">2. Середній чек / LTV</p><p style="margin:0;">3. Max % від чеку, який можна витратити на рекламу</p>');
+                renderAssistantHtml('Попередня оцінка', '<p style="margin:0 0 10px;">Заповніть ключові поля, і калькулятор покаже, чи сходиться економіка Google Ads.</p><p style="margin:0 0 6px;">Найважливіше: ціль на місяць, середній чек і max % на рекламу.</p>' + progressHtml);
                 return;
             }
 
@@ -1782,6 +1814,7 @@
                 '<p style="margin:0 0 10px;">Різниця: <b>' + gapText + '</b></p>' +
                 '<p style="margin:0;">' + advice + '</p>'
             );
+            box.insertAdjacentHTML('beforeend', progressHtml);
             if (!assistantRecommendationSent) {
                 gta('assistant_recommendation_ready', {
                     'event_category': 'engagement',
