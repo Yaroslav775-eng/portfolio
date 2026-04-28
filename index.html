@@ -1228,7 +1228,7 @@
 
                         <div id="assistantRecommendation" class="assistant-recommendation">
                             <strong>Diagnosis preview</strong>
-                            Add your sales plan, average check and ad-cost limit. I will show whether the plan looks possible and what needs to be checked first.
+                            This is a preliminary benchmark estimate, not historical account data. Add your monthly sales plan, average check and ad-cost limit to see whether the plan looks possible.
                         </div>
 
                         <div class="assistant-chat-row">
@@ -1239,13 +1239,16 @@
 
                         <div id="calcEmptyState" style="text-align: center; padding: 40px 0; color: rgba(255,255,255,0.5);">
                             <div style="font-size: 2rem; margin-bottom: 16px;">📊</div>
-                            <p>Add your sales plan, average check and max ad-cost percentage to see if the plan can work.</p>
+                            <p>Add your monthly sales plan, average check and max ad-cost percentage to get a preliminary benchmark estimate.</p>
+                            <p style="font-size:0.78rem; line-height:1.45; margin-top:10px; color:rgba(255,255,255,0.42);">Clicks and budget are calculated from default assumptions. Historical CPC, CTR and conversion data would make the estimate more accurate.</p>
                         </div>
 
                         <div id="calcResultsBox" style="display: none;">
+                            <div id="calcAssumptions" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 14px 16px; border-radius: 6px; margin-bottom: 22px; font-size: 0.8rem; line-height: 1.45; color: rgba(255,255,255,0.68);"></div>
+
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
                                 <div>
-                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Required Traffic</span>
+                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Estimated Traffic</span>
                                     <span id="outClicks" style="display:block; font-size: 1.5rem; font-weight:bold; color: #fff;">-</span>
                                 </div>
                                 <div id="divOutLeads">
@@ -1253,11 +1256,11 @@
                                     <span id="outLeads" style="display:block; font-size: 1.5rem; font-weight:bold; color: #fff;">-</span>
                                 </div>
                                 <div>
-                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Target Sales</span>
+                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Sales Plan</span>
                                     <span id="outSales" style="display:block; font-size: 1.5rem; font-weight:bold; color: var(--accent-brand);">0</span>
                                 </div>
                                 <div>
-                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Rec. Ad Budget</span>
+                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Est. Ad Budget</span>
                                     <span id="outBudget" style="display:block; font-size: 1.5rem; font-weight:bold; color: #fff;">-</span>
                                 </div>
                             </div>
@@ -1604,7 +1607,7 @@
 
             if (missing.length) {
                 assistantRecommendationSent = false;
-                renderAssistantHtml('Can this sales plan work?', '<p style="margin:0 0 10px;">Fill in the sales plan and unit economics. The calculator will estimate the traffic, budget and CAC needed to reach that plan.</p><p style="margin:0 0 6px;">Most important: sales plan, average check, margin and max ad-cost %.</p>' + progressHtml);
+                renderAssistantHtml('Can this sales plan work?', '<p style="margin:0 0 10px;">Fill in the sales plan and unit economics. The calculator will estimate traffic, budget and CAC from benchmark assumptions.</p><p style="margin:0 0 6px;">Historical CPC, CTR and conversion data would make this more precise.</p>' + progressHtml);
                 return;
             }
 
@@ -1764,13 +1767,13 @@
                 btnEc.style.color = 'var(--text-gray)';
                 btnEc.style.boxShadow = 'none';
 
-                lblTarget.innerText = 'Sales plan: new clients per month';
+                lblTarget.innerText = 'Monthly sales plan';
                 document.getElementById('calcTarget').placeholder = 'Example: 50';
                 lblAOV.innerText = 'Average check per client ($)';
                 grpMargin.style.display = 'block';
                 divOutLeads.style.display = 'block';
                 calcCloseRate.previousElementSibling.innerText = 'Historical close rate: lead to client (%)';
-                calcCloseRate.nextElementSibling.innerText = 'If unknown, leave blank. Benchmark: 20%';
+                calcCloseRate.nextElementSibling.innerText = 'If unknown, leave blank. Used as an assumption. Benchmark: 20%';
             } else {
                 btnEc.style.background = '#fff';
                 btnEc.style.color = '#000';
@@ -1779,13 +1782,13 @@
                 btnLg.style.color = 'var(--text-gray)';
                 btnLg.style.boxShadow = 'none';
 
-                lblTarget.innerText = 'Sales plan: orders per month';
+                lblTarget.innerText = 'Monthly sales plan';
                 document.getElementById('calcTarget').placeholder = 'Example: 50';
                 lblAOV.innerText = 'Average order value ($)';
                 grpMargin.style.display = 'block';
                 divOutLeads.style.display = 'none';
                 calcCloseRate.previousElementSibling.innerText = 'Historical website conversion to order (%)';
-                calcCloseRate.nextElementSibling.innerText = 'If unknown, leave blank. Benchmark: 1.5%';
+                calcCloseRate.nextElementSibling.innerText = 'If unknown, leave blank. Used as an assumption. Benchmark: 1.5%';
             }
             runMagicCalc();
             updateAssistantRecommendation();
@@ -1839,6 +1842,19 @@
                 rev = sales * aov;
                 cpa = budget / sales;
                 roas = (rev / budget) * 100;
+            }
+
+            const assumptionsBox = document.getElementById('calcAssumptions');
+            if (assumptionsBox) {
+                const crText = calcModel === 'leadgen'
+                    ? (isNaN(userCR) ? 'lead-to-client close rate benchmark: 20%' : 'your historical lead-to-client close rate: ' + userCR + '%')
+                    : (isNaN(userCR) ? 'website conversion benchmark: 1.5%' : 'your historical website conversion: ' + userCR + '%');
+                const funnelText = calcModel === 'leadgen'
+                    ? 'Traffic is estimated from a 5% site-to-lead benchmark, then leads are converted into clients.'
+                    : 'Traffic is estimated from website conversion to orders.';
+                assumptionsBox.innerHTML =
+                    '<strong style="display:block; color:#fff; margin-bottom:6px;">Preliminary benchmark estimate</strong>' +
+                    '<span>This is not pulled from historical account data. Budget and clicks are calculated from assumptions: CPC benchmark <b>$' + avgCPC.toFixed(2) + '</b>, ' + crText + '. ' + funnelText + ' If you have historical CPC, CTR and conversion data, the forecast can be recalculated more accurately.</span>';
             }
 
             document.getElementById('outSales').innerText = sales.toLocaleString();

@@ -1425,7 +1425,7 @@
 
                         <div id="assistantRecommendation" class="assistant-recommendation">
                             <strong>Попередня діагностика</strong>
-                            Додайте план продажів, середній чек і ліміт витрат на рекламу. Я покажу, чи виглядає план реалістичним і що треба перевірити першим.
+                            Це попередня benchmark-оцінка, а не історичні дані акаунту. Додайте план продажів на місяць, середній чек і ліміт витрат на рекламу, щоб оцінити, чи виглядає план реалістичним.
                         </div>
 
                         <div class="assistant-chat-row">
@@ -1436,10 +1436,12 @@
 
                         <div id="calcEmptyState" style="text-align: center; padding: 32px 0; color: rgba(255,255,255,0.4);">
                             <div style="font-size: 2.2rem; margin-bottom: 12px;">📊</div>
-                            <p style="font-size: 0.9rem;">Введіть план продажів, середній чек і max % на рекламу, щоб побачити, чи може план спрацювати.</p>
+                            <p style="font-size: 0.9rem;">Введіть план продажів на місяць, середній чек і max % на рекламу, щоб отримати попередню benchmark-оцінку.</p>
+                            <p style="font-size:0.78rem; line-height:1.45; margin-top:10px; color:rgba(255,255,255,0.42);">Кліки та бюджет рахуються з базових припущень. Історичні CPC, CTR і конверсії зробили б оцінку точнішою.</p>
                         </div>
 
                         <div id="calcResultsBox" style="display: none;">
+                            <div id="calcAssumptions" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 14px 16px; border-radius: 6px; margin-bottom: 18px; font-size: 0.8rem; line-height: 1.45; color: rgba(255,255,255,0.68);"></div>
 
                             <!-- Budget Health Indicator -->
                             <div id="budgetHealthBar" style="margin-bottom: 20px; padding: 12px 16px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);">
@@ -1456,7 +1458,7 @@
                             <!-- Top Metrics -->
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px;">
                                 <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px;">
-                                    <span style="display:block; font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom: 4px;">Трафік/міс</span>
+                                    <span style="display:block; font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom: 4px;">Орієнтовний трафік/міс</span>
                                     <span id="outClicks" style="display:block; font-size: 1.4rem; font-weight:800; color: #fff;">-</span>
                                 </div>
                                 <div id="divOutLeads" style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px;">
@@ -1464,11 +1466,11 @@
                                     <span id="outLeads" style="display:block; font-size: 1.4rem; font-weight:800; color: #fff;">-</span>
                                 </div>
                                 <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px;">
-                                    <span style="display:block; font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom: 4px;">Продажі/Складення</span>
+                                    <span style="display:block; font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom: 4px;">План продажів</span>
                                     <span id="outSales" style="display:block; font-size: 1.4rem; font-weight:800; color: var(--accent-brand);">0</span>
                                 </div>
                                 <div style="background: rgba(192,0,0,0.15); border: 1px solid rgba(192,0,0,0.35); padding: 12px; border-radius: 6px;">
-                                    <span style="display:block; font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom: 4px;">Бюджет на рекламу</span>
+                                    <span style="display:block; font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom: 4px;">Орієнтовний бюджет</span>
                                     <span id="outBudget" style="display:block; font-size: 1.4rem; font-weight:800; color: #fff;">-</span>
                                 </div>
                             </div>
@@ -1818,7 +1820,7 @@
 
             if (missing.length) {
                 assistantRecommendationSent = false;
-                renderAssistantHtml('Чи може цей план продажів спрацювати?', '<p style="margin:0 0 10px;">Заповніть план продажів і юніт-економіку. Калькулятор оцінить потрібний трафік, бюджет і CAC для цього плану.</p><p style="margin:0 0 6px;">Найважливіше: план продажів, середній чек, маржа і max % на рекламу.</p>' + progressHtml);
+                renderAssistantHtml('Чи може цей план продажів спрацювати?', '<p style="margin:0 0 10px;">Заповніть план продажів і юніт-економіку. Калькулятор оцінить трафік, бюджет і CAC на базі benchmark-припущень.</p><p style="margin:0 0 6px;">Історичні CPC, CTR і конверсії зробили б оцінку точнішою.</p>' + progressHtml);
                 return;
             }
 
@@ -1980,13 +1982,13 @@
                 btnEc.style.color = 'var(--text-gray)';
                 btnEc.style.boxShadow = 'none';
 
-                lblTarget.innerText = 'План продажів: нових клієнтів на місяць';
+                lblTarget.innerText = 'План продажів на місяць';
                 document.getElementById('calcTarget').placeholder = 'Наприклад: 50';
                 lblAOV.innerText = 'Середній чек з клієнта ($)';
                 grpMargin.style.display = 'block';
                 divOutLeads.style.display = 'block';
                 calcCloseRate.previousElementSibling.innerText = 'Історична конверсія: лід у клієнта (%)';
-                calcCloseRate.nextElementSibling.innerText = 'Якщо не знаєте, залиште пустим. Бенчмарк: 20%';
+                calcCloseRate.nextElementSibling.innerText = 'Якщо не знаєте, залиште пустим. Це припущення для моделі. Бенчмарк: 20%';
             } else {
                 btnEc.style.background = '#fff';
                 btnEc.style.color = '#000';
@@ -1995,13 +1997,13 @@
                 btnLg.style.color = 'var(--text-gray)';
                 btnLg.style.boxShadow = 'none';
 
-                lblTarget.innerText = 'План продажів: замовлень на місяць';
+                lblTarget.innerText = 'План продажів на місяць';
                 document.getElementById('calcTarget').placeholder = 'Наприклад: 50';
                 lblAOV.innerText = 'Середній чек замовлення ($)';
                 grpMargin.style.display = 'block';
                 divOutLeads.style.display = 'none';
                 calcCloseRate.previousElementSibling.innerText = 'Історична конверсія сайту в замовлення (%)';
-                calcCloseRate.nextElementSibling.innerText = 'Якщо не знаєте, залиште пустим. Бенчмарк: 1.5%';
+                calcCloseRate.nextElementSibling.innerText = 'Якщо не знаєте, залиште пустим. Це припущення для моделі. Бенчмарк: 1.5%';
             }
             runMagicCalc();
             updateAssistantRecommendation();
@@ -2055,6 +2057,19 @@
                 rev = sales * aov;
                 cpa = budget / sales;
                 roas = (rev / budget) * 100;
+            }
+
+            const assumptionsBox = document.getElementById('calcAssumptions');
+            if (assumptionsBox) {
+                const crText = calcModel === 'leadgen'
+                    ? (isNaN(userCR) ? 'бенчмарк конверсії ліда в клієнта: 20%' : 'ваша історична конверсія ліда в клієнта: ' + userCR + '%')
+                    : (isNaN(userCR) ? 'бенчмарк конверсії сайту в замовлення: 1.5%' : 'ваша історична конверсія сайту: ' + userCR + '%');
+                const funnelText = calcModel === 'leadgen'
+                    ? 'Трафік оцінюється через бенчмарк 5% конверсії сайту в лід, далі ліди переводяться в клієнтів.'
+                    : 'Трафік оцінюється через конверсію сайту в продажі.';
+                assumptionsBox.innerHTML =
+                    '<strong style="display:block; color:#fff; margin-bottom:6px;">Попередня benchmark-оцінка</strong>' +
+                    '<span>Це не історичні дані акаунту. Кліки та бюджет рахуються з припущень: CPC-бенчмарк <b>$' + avgCPC.toFixed(2) + '</b>, ' + crText + '. ' + funnelText + ' Якщо є історичні CPC, CTR і конверсії, прогноз можна перерахувати точніше.</span>';
             }
 
             document.getElementById('outSales').innerText = sales.toLocaleString();
