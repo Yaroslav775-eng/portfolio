@@ -1169,7 +1169,7 @@
 
                         <!-- Common Inputs -->
                         <div class="quiz-input-group">
-                            <label class="quiz-label" id="lblTarget">Main goal per month</label>
+                            <label class="quiz-label" id="lblTarget">Sales plan per month</label>
                             <input type="number" id="calcTarget" class="quiz-input" placeholder="Example: 50" oninput="runMagicCalc()" />
                         </div>
 
@@ -1177,8 +1177,14 @@
                             <div class="assistant-eyebrow" style="padding: 14px 16px 0; margin-bottom: 10px;">Performance inputs</div>
                             <div class="advanced-fields-inner">
                                 <div class="quiz-input-group">
-                                    <label class="quiz-label" id="lblAOV">Average Check (or LTV) per client ($)</label>
+                                    <label class="quiz-label" id="lblAOV">Average check ($)</label>
                                     <input type="number" id="calcAOV" class="quiz-input" placeholder="Example: 500" oninput="runMagicCalc()" />
+                                </div>
+
+                                <div class="quiz-input-group" id="groupMargin">
+                                    <label class="quiz-label">Gross margin / trade markup (%)</label>
+                                    <input type="number" id="calcMargin" class="quiz-input" placeholder="Example: 30" oninput="runMagicCalc()" value="30" />
+                                    <span class="quiz-hint">Needed to understand how much room there is before ads eat the profit.</span>
                                 </div>
 
                                 <div class="quiz-input-group">
@@ -1187,15 +1193,10 @@
                                     <span class="quiz-hint">This is the limit: how much of one sale/client can go to ads.</span>
                                 </div>
 
-                                <div class="quiz-input-group" id="groupMargin" style="display: none;">
-                                    <label class="quiz-label">Gross Margin (%)</label>
-                                    <input type="number" id="calcMargin" class="quiz-input" placeholder="Example: 30" oninput="runMagicCalc()" value="30" />
-                                </div>
-
                                 <div class="quiz-input-group" style="margin-bottom: 0;">
-                                    <label class="quiz-label">Current Close Rate (Lead to Client, %)</label>
+                                    <label class="quiz-label">Historical conversion to order/client (%)</label>
                                     <input type="number" id="calcCloseRate" class="quiz-input" placeholder="Leave blank if unknown" oninput="runMagicCalc()" />
-                                    <span class="quiz-hint">Default benchmark: 20%</span>
+                                    <span class="quiz-hint">If you do not know it, leave blank. I will use a benchmark.</span>
                                 </div>
 
                                 <div class="quiz-input-group" style="margin-bottom: 0;">
@@ -1227,7 +1228,7 @@
 
                         <div id="assistantRecommendation" class="assistant-recommendation">
                             <strong>Diagnosis preview</strong>
-                            Choose your role, add a niche, goal and contact. I’ll summarize what Iaroslav should review first.
+                            Add your sales plan, average check and ad-cost limit. I will show whether the plan looks possible and what needs to be checked first.
                         </div>
 
                         <div class="assistant-chat-row">
@@ -1238,7 +1239,7 @@
 
                         <div id="calcEmptyState" style="text-align: center; padding: 40px 0; color: rgba(255,255,255,0.5);">
                             <div style="font-size: 2rem; margin-bottom: 16px;">📊</div>
-                            <p>Add your main goal, average check and max ad-cost percentage to see if the economics can work.</p>
+                            <p>Add your sales plan, average check and max ad-cost percentage to see if the plan can work.</p>
                         </div>
 
                         <div id="calcResultsBox" style="display: none;">
@@ -1275,7 +1276,7 @@
                                     <span id="outROAS" style="font-weight: bold;">-</span>
                                 </div>
                                 <div style="display: flex; justify-content: space-between; margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08);">
-                                    <span style="color: rgba(255,255,255,0.7);">Max allowed CAC:</span>
+                                    <span style="color: rgba(255,255,255,0.7);">Max CAC by margin/ad limit:</span>
                                     <span id="outMaxCPA" style="font-weight: bold;">-</span>
                                 </div>
                                 <div style="display: flex; justify-content: space-between; margin-top: 8px;">
@@ -1578,13 +1579,15 @@
             const region = document.getElementById('calcRegion').value.trim();
             const target = document.getElementById('calcTarget').value.trim();
             const aov = document.getElementById('calcAOV').value.trim();
+            const margin = document.getElementById('calcMargin').value.trim();
             const adPct = document.getElementById('calcAdPct').value.trim();
             const contact = document.getElementById('calcContact').value.trim();
             const progressItems = [
                 { label: 'Niche', done: !!niche },
                 { label: 'Region', done: !!region },
-                { label: 'Monthly goal', done: !!target },
+                { label: 'Sales plan', done: !!target },
                 { label: 'Average check', done: !!aov },
+                { label: 'Margin', done: !!margin },
                 { label: 'Ad-cost %', done: !!adPct },
                 { label: 'Contact', done: !!contact }
             ];
@@ -1594,13 +1597,14 @@
 
             if (!niche) { missing.push('niche'); }
             if (!region) { missing.push('region'); }
-            if (!target) { missing.push('main monthly goal'); }
+            if (!target) { missing.push('sales plan'); }
             if (!aov) { missing.push('average check'); }
+            if (!margin) { missing.push('margin'); }
             if (!adPct) { missing.push('max ad-cost percent'); }
 
             if (missing.length) {
                 assistantRecommendationSent = false;
-                renderAssistantHtml('Preliminary check', '<p style="margin:0 0 10px;">Fill in the key fields, then the calculator will show if Google Ads economics can work.</p><p style="margin:0 0 6px;">Most important: monthly goal, average check and max ad-cost %.</p>' + progressHtml);
+                renderAssistantHtml('Can this sales plan work?', '<p style="margin:0 0 10px;">Fill in the sales plan and unit economics. The calculator will estimate the traffic, budget and CAC needed to reach that plan.</p><p style="margin:0 0 6px;">Most important: sales plan, average check, margin and max ad-cost %.</p>' + progressHtml);
                 return;
             }
 
@@ -1608,15 +1612,15 @@
             const maxCpaText = document.getElementById('outMaxCPA').innerText || '-';
             const gapText = document.getElementById('outGap').innerText || '-';
             const isGood = !gapText.includes('Too high');
-            const verdict = isGood ? 'Economics can work' : 'Ads look too expensive';
+            const verdict = isGood ? 'This plan looks possible' : 'This plan looks risky';
             const advice = isGood
-                ? 'Next step: check search demand and conversion tracking before scaling.'
-                : 'Next step: improve conversion rate, raise average check, or lower target CPA.';
+                ? 'Next step: check whether there is enough search demand and whether conversion tracking is clean.'
+                : 'Next step: check if conversion rate, average check, margin or target CPA can be improved before spending.';
 
-            renderAssistantHtml('Preliminary check',
+            renderAssistantHtml('Can this sales plan work?',
                 '<p style="margin:0 0 10px; color:' + (isGood ? '#4ade80' : '#f87171') + '; font-weight:700;">' + verdict + '</p>' +
                 '<p style="margin:0 0 6px;">Estimated CAC: <b>' + cpaText + '</b></p>' +
-                '<p style="margin:0 0 6px;">Max allowed CAC: <b>' + maxCpaText + '</b></p>' +
+                '<p style="margin:0 0 6px;">Max CAC allowed by margin/ad-cost limit: <b>' + maxCpaText + '</b></p>' +
                 '<p style="margin:0 0 10px;">Gap: <b>' + gapText + '</b></p>' +
                 '<p style="margin:0;">' + advice + '</p>' +
                 progressHtml
@@ -1760,13 +1764,13 @@
                 btnEc.style.color = 'var(--text-gray)';
                 btnEc.style.boxShadow = 'none';
 
-                lblTarget.innerText = 'Main goal: inquiries per month';
+                lblTarget.innerText = 'Sales plan: new clients per month';
                 document.getElementById('calcTarget').placeholder = 'Example: 50';
-                lblAOV.innerText = 'Average check / LTV per closed client ($)';
-                grpMargin.style.display = 'none';
+                lblAOV.innerText = 'Average check per client ($)';
+                grpMargin.style.display = 'block';
                 divOutLeads.style.display = 'block';
-                calcCloseRate.previousElementSibling.innerText = 'Target Close Rate (Lead to client, %)';
-                calcCloseRate.nextElementSibling.innerText = 'Default benchmark: 20%';
+                calcCloseRate.previousElementSibling.innerText = 'Historical close rate: lead to client (%)';
+                calcCloseRate.nextElementSibling.innerText = 'If unknown, leave blank. Benchmark: 20%';
             } else {
                 btnEc.style.background = '#fff';
                 btnEc.style.color = '#000';
@@ -1775,13 +1779,13 @@
                 btnLg.style.color = 'var(--text-gray)';
                 btnLg.style.boxShadow = 'none';
 
-                lblTarget.innerText = 'Main goal: monthly revenue ($)';
-                document.getElementById('calcTarget').placeholder = 'Example: 50000';
+                lblTarget.innerText = 'Sales plan: orders per month';
+                document.getElementById('calcTarget').placeholder = 'Example: 50';
                 lblAOV.innerText = 'Average order value ($)';
                 grpMargin.style.display = 'block';
                 divOutLeads.style.display = 'none';
-                calcCloseRate.previousElementSibling.innerText = 'Website Conversion Rate (EXR, %)';
-                calcCloseRate.nextElementSibling.innerText = 'Default benchmark: 1.5%';
+                calcCloseRate.previousElementSibling.innerText = 'Historical website conversion to order (%)';
+                calcCloseRate.nextElementSibling.innerText = 'If unknown, leave blank. Benchmark: 1.5%';
             }
             runMagicCalc();
             updateAssistantRecommendation();
@@ -1794,9 +1798,10 @@
             let target = parseFloat(document.getElementById('calcTarget').value);
             let aov = parseFloat(document.getElementById('calcAOV').value);
             let adPctLimit = parseFloat(document.getElementById('calcAdPct').value);
+            let marginPct = parseFloat(document.getElementById('calcMargin').value);
             let userCR = parseFloat(document.getElementById('calcCloseRate').value);
 
-            if (isNaN(target) || target <= 0 || isNaN(aov) || aov <= 0 || isNaN(adPctLimit) || adPctLimit <= 0) {
+            if (isNaN(target) || target <= 0 || isNaN(aov) || aov <= 0 || isNaN(adPctLimit) || adPctLimit <= 0 || isNaN(marginPct) || marginPct <= 0) {
                 emptyState.style.display = 'block';
                 resultsBox.style.display = 'none';
                 updateAssistantRecommendation();
@@ -1815,9 +1820,9 @@
             let clicks, leads, sales, budget, rev, cpa, roas;
 
             if (calcModel === 'leadgen') {
-                // Forward math for Lead Gen based on desired inquiries
-                leads = target; // target means target number of leads/inquiries
-                sales = Math.ceil(leads * leadToClientCR); // estimate closed deals
+                // Forward math for Lead Gen based on sales plan
+                sales = target;
+                leads = Math.ceil(sales / leadToClientCR);
                 clicks = Math.ceil(leads / siteToLeadCR);
                 budget = clicks * avgCPC;
                 rev = sales * aov;
@@ -1826,13 +1831,12 @@
 
                 document.getElementById('outLeads').innerText = '~' + leads.toLocaleString();
             } else {
-                // Top-down reverse math for E-com
-                let targetRevenue = target; // user inputs desired revenue
-                sales = Math.ceil(targetRevenue / aov); // calculate required orders
+                // Top-down reverse math for E-com based on orders plan
+                sales = target;
                 clicks = Math.ceil(sales / ecomSiteCR);
                 avgCPC = 0.80; // slightly cheaper generic shopping ads
                 budget = clicks * avgCPC;
-                rev = targetRevenue;
+                rev = sales * aov;
                 cpa = budget / sales;
                 roas = (rev / budget) * 100;
             }
@@ -1843,7 +1847,7 @@
             document.getElementById('outCPA').innerText = '$' + Math.round(cpa).toLocaleString();
             document.getElementById('outRev').innerText = '$' + Math.round(rev).toLocaleString();
             document.getElementById('outROAS').innerText = Math.round(roas) + '%';
-            const maxCpa = aov * (adPctLimit / 100);
+            const maxCpa = aov * (Math.min(adPctLimit, marginPct) / 100);
             const gap = maxCpa - cpa;
             const gapEl = document.getElementById('outGap');
             document.getElementById('outMaxCPA').innerText = '$' + Math.round(maxCpa).toLocaleString();

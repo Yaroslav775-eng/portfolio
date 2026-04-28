@@ -1363,7 +1363,7 @@
 
                         <!-- Common Inputs -->
                         <div class="quiz-input-group">
-                            <label class="quiz-label" id="lblTarget">Головна ціль на місяць</label>
+                            <label class="quiz-label" id="lblTarget">План продажів на місяць</label>
                             <input type="number" id="calcTarget" class="quiz-input" placeholder="Наприклад: 50" oninput="runMagicCalc()" />
                         </div>
 
@@ -1371,7 +1371,7 @@
                             <div class="assistant-eyebrow" style="padding: 14px 16px 0; margin-bottom: 10px;">Performance inputs</div>
                             <div class="advanced-fields-inner">
                                 <div class="quiz-input-group">
-                                    <label class="quiz-label" id="lblAOV">Середній чек з одного клієнта ($)</label>
+                                    <label class="quiz-label" id="lblAOV">Середній чек ($)</label>
                                     <input type="number" id="calcAOV" class="quiz-input" placeholder="Наприклад: 500" oninput="runMagicCalc()" />
                                 </div>
 
@@ -1381,15 +1381,15 @@
                                     <span class="quiz-hint">Це межа: яку частку з одного продажу/клієнта можна віддати на рекламу.</span>
                                 </div>
 
-                                <div class="quiz-input-group" id="groupMargin" style="display: none;">
-                                    <label class="quiz-label">Валова маржа (%)</label>
+                                <div class="quiz-input-group" id="groupMargin">
+                                    <label class="quiz-label">Торгова націнка / маржа (%)</label>
                                     <input type="number" id="calcMargin" class="quiz-input" placeholder="Наприклад: 30" oninput="runMagicCalc()" value="30" />
                                 </div>
 
                                 <div class="quiz-input-group" style="margin-bottom: 0;">
-                                    <label class="quiz-label">Поточний рівень закриття (з ліда в клієнта, %)</label>
+                                    <label class="quiz-label">Історична конверсія в замовлення/клієнта (%)</label>
                                     <input type="number" id="calcCloseRate" class="quiz-input" placeholder="Залишіть пустим, якщо не знаєте" oninput="runMagicCalc()" />
-                                    <span class="quiz-hint">За замовчуванням: 20% (Lead Gen) / 1.5% (E-com)</span>
+                                    <span class="quiz-hint">Якщо не знаєте, залиште пустим. Я використаю бенчмарк.</span>
                                 </div>
 
                                 <div class="quiz-input-group" style="margin-bottom: 0;">
@@ -1425,7 +1425,7 @@
 
                         <div id="assistantRecommendation" class="assistant-recommendation">
                             <strong>Попередня діагностика</strong>
-                            Оберіть роль, додайте нішу, ціль і контакт. Я коротко підсумую, що Ярославу варто перевірити першим.
+                            Додайте план продажів, середній чек і ліміт витрат на рекламу. Я покажу, чи виглядає план реалістичним і що треба перевірити першим.
                         </div>
 
                         <div class="assistant-chat-row">
@@ -1436,7 +1436,7 @@
 
                         <div id="calcEmptyState" style="text-align: center; padding: 32px 0; color: rgba(255,255,255,0.4);">
                             <div style="font-size: 2.2rem; margin-bottom: 12px;">📊</div>
-                            <p style="font-size: 0.9rem;">Введіть ціль, середній чек і max % на рекламу, щоб побачити, чи сходиться економіка.</p>
+                            <p style="font-size: 0.9rem;">Введіть план продажів, середній чек і max % на рекламу, щоб побачити, чи може план спрацювати.</p>
                         </div>
 
                         <div id="calcResultsBox" style="display: none;">
@@ -1793,13 +1793,15 @@
             const region = document.getElementById('calcRegion').value.trim();
             const target = document.getElementById('calcTarget').value.trim();
             const aov = document.getElementById('calcAOV').value.trim();
+            const margin = document.getElementById('calcMargin').value.trim();
             const adPct = document.getElementById('calcAdPct').value.trim();
             const contact = document.getElementById('calcContact').value.trim();
             const progressItems = [
                 { label: 'Ніша', done: !!niche },
                 { label: 'Регіон', done: !!region },
-                { label: 'Ціль на місяць', done: !!target },
+                { label: 'План продажів', done: !!target },
                 { label: 'Середній чек', done: !!aov },
+                { label: 'Маржа', done: !!margin },
                 { label: '% на рекламу', done: !!adPct },
                 { label: 'Контакт', done: !!contact }
             ];
@@ -1809,13 +1811,14 @@
 
             if (!niche) { missing.push('нішу'); }
             if (!region) { missing.push('регіон'); }
-            if (!target) { missing.push('головну ціль на місяць'); }
+            if (!target) { missing.push('план продажів'); }
             if (!aov) { missing.push('середній чек'); }
+            if (!margin) { missing.push('маржу'); }
             if (!adPct) { missing.push('max % на рекламу'); }
 
             if (missing.length) {
                 assistantRecommendationSent = false;
-                renderAssistantHtml('Попередня оцінка', '<p style="margin:0 0 10px;">Заповніть ключові поля, і калькулятор покаже, чи сходиться економіка Google Ads.</p><p style="margin:0 0 6px;">Найважливіше: ціль на місяць, середній чек і max % на рекламу.</p>' + progressHtml);
+                renderAssistantHtml('Чи може цей план продажів спрацювати?', '<p style="margin:0 0 10px;">Заповніть план продажів і юніт-економіку. Калькулятор оцінить потрібний трафік, бюджет і CAC для цього плану.</p><p style="margin:0 0 6px;">Найважливіше: план продажів, середній чек, маржа і max % на рекламу.</p>' + progressHtml);
                 return;
             }
 
@@ -1823,15 +1826,15 @@
             const maxCpaText = document.getElementById('outMaxCPA').innerText || '-';
             const gapText = document.getElementById('outGap').innerText || '-';
             const isGood = !gapText.includes('Дорого');
-            const verdict = isGood ? 'Економіка сходиться' : 'Реклама поки дорога';
+            const verdict = isGood ? 'План виглядає можливим' : 'План виглядає ризикованим';
             const advice = isGood
-                ? 'Наступний крок: перевірити попит і трекінг конверсій перед масштабуванням.'
-                : 'Наступний крок: покращити конверсію, підняти середній чек або знизити CPA.';
+                ? 'Наступний крок: перевірити, чи достатньо пошукового попиту і чи чисто налаштований трекінг.'
+                : 'Наступний крок: перевірити, чи можна покращити конверсію, середній чек, маржу або цільовий CPA.';
 
-            renderAssistantHtml('Попередня оцінка',
+            renderAssistantHtml('Чи може цей план продажів спрацювати?',
                 '<p style="margin:0 0 10px; color:' + (isGood ? '#4ade80' : '#f87171') + '; font-weight:700;">' + verdict + '</p>' +
                 '<p style="margin:0 0 6px;">Орієнтовний CAC: <b>' + cpaText + '</b></p>' +
-                '<p style="margin:0 0 6px;">Max допустимий CAC: <b>' + maxCpaText + '</b></p>' +
+                '<p style="margin:0 0 6px;">Max CAC з урахуванням маржі/ліміту реклами: <b>' + maxCpaText + '</b></p>' +
                 '<p style="margin:0 0 10px;">Різниця: <b>' + gapText + '</b></p>' +
                 '<p style="margin:0;">' + advice + '</p>'
             );
@@ -1977,13 +1980,13 @@
                 btnEc.style.color = 'var(--text-gray)';
                 btnEc.style.boxShadow = 'none';
 
-                lblTarget.innerText = 'Головна ціль: звернення на місяць';
+                lblTarget.innerText = 'План продажів: нових клієнтів на місяць';
                 document.getElementById('calcTarget').placeholder = 'Наприклад: 50';
-                lblAOV.innerText = 'Середній чек / LTV з одного клієнта ($)';
-                grpMargin.style.display = 'none';
+                lblAOV.innerText = 'Середній чек з клієнта ($)';
+                grpMargin.style.display = 'block';
                 divOutLeads.style.display = 'block';
-                calcCloseRate.previousElementSibling.innerText = 'Ваш відсоток закриття (з ліда в клієнта, %)';
-                calcCloseRate.nextElementSibling.innerText = 'За замовчуванням (якщо пусто): 20%';
+                calcCloseRate.previousElementSibling.innerText = 'Історична конверсія: лід у клієнта (%)';
+                calcCloseRate.nextElementSibling.innerText = 'Якщо не знаєте, залиште пустим. Бенчмарк: 20%';
             } else {
                 btnEc.style.background = '#fff';
                 btnEc.style.color = '#000';
@@ -1992,13 +1995,13 @@
                 btnLg.style.color = 'var(--text-gray)';
                 btnLg.style.boxShadow = 'none';
 
-                lblTarget.innerText = 'Головна ціль: місячна виручка ($)';
-                document.getElementById('calcTarget').placeholder = 'Наприклад: 50000';
-                lblAOV.innerText = 'Середній кошик/чек ($)';
+                lblTarget.innerText = 'План продажів: замовлень на місяць';
+                document.getElementById('calcTarget').placeholder = 'Наприклад: 50';
+                lblAOV.innerText = 'Середній чек замовлення ($)';
                 grpMargin.style.display = 'block';
                 divOutLeads.style.display = 'none';
-                calcCloseRate.previousElementSibling.innerText = 'Конверсія сайту (EХR, %)';
-                calcCloseRate.nextElementSibling.innerText = 'За замовчуванням (якщо пусто): 1.5%';
+                calcCloseRate.previousElementSibling.innerText = 'Історична конверсія сайту в замовлення (%)';
+                calcCloseRate.nextElementSibling.innerText = 'Якщо не знаєте, залиште пустим. Бенчмарк: 1.5%';
             }
             runMagicCalc();
             updateAssistantRecommendation();
@@ -2011,9 +2014,10 @@
             let target = parseFloat(document.getElementById('calcTarget').value);
             let aov = parseFloat(document.getElementById('calcAOV').value);
             let adPctLimit = parseFloat(document.getElementById('calcAdPct').value);
+            let marginPct = parseFloat(document.getElementById('calcMargin').value);
             let userCR = parseFloat(document.getElementById('calcCloseRate').value);
 
-            if (isNaN(target) || target <= 0 || isNaN(aov) || aov <= 0 || isNaN(adPctLimit) || adPctLimit <= 0) {
+            if (isNaN(target) || target <= 0 || isNaN(aov) || aov <= 0 || isNaN(adPctLimit) || adPctLimit <= 0 || isNaN(marginPct) || marginPct <= 0) {
                 emptyState.style.display = 'block';
                 resultsBox.style.display = 'none';
                 updateAssistantRecommendation();
@@ -2032,9 +2036,9 @@
             let clicks, leads, sales, budget, rev, cpa, roas;
 
             if (calcModel === 'leadgen') {
-                // Forward math for Lead Gen based on desired inquiries
-                leads = target; // target means target number of leads/inquiries
-                sales = Math.ceil(leads * leadToClientCR); // estimate closed deals
+                // Forward math for Lead Gen based on sales plan
+                sales = target;
+                leads = Math.ceil(sales / leadToClientCR);
                 clicks = Math.ceil(leads / siteToLeadCR);
                 budget = clicks * avgCPC;
                 rev = sales * aov;
@@ -2043,13 +2047,12 @@
 
                 document.getElementById('outLeads').innerText = '~' + leads.toLocaleString();
             } else {
-                // Top-down reverse math for E-com
-                let targetRevenue = target; // user inputs desired revenue
-                sales = Math.ceil(targetRevenue / aov); // calculate required orders
+                // Top-down reverse math for E-com based on orders plan
+                sales = target;
                 clicks = Math.ceil(sales / ecomSiteCR);
                 avgCPC = 0.80; // slightly cheaper for shopping ads
                 budget = clicks * avgCPC;
-                rev = targetRevenue;
+                rev = sales * aov;
                 cpa = budget / sales;
                 roas = (rev / budget) * 100;
             }
@@ -2060,7 +2063,7 @@
             document.getElementById('outCPA').innerText = '$' + Math.round(cpa).toLocaleString();
             document.getElementById('outRev').innerText = '$' + Math.round(rev).toLocaleString();
             document.getElementById('outROAS').innerText = Math.round(roas) + '%';
-            const maxCpa = aov * (adPctLimit / 100);
+            const maxCpa = aov * (Math.min(adPctLimit, marginPct) / 100);
             const gap = maxCpa - cpa;
             const gapEl = document.getElementById('outGap');
             document.getElementById('outMaxCPA').innerText = '$' + Math.round(maxCpa).toLocaleString();
