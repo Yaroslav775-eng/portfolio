@@ -1138,11 +1138,6 @@
                                 <button type="button" class="assistant-chip" data-field="intent" data-value="Hire specialist" onclick="setAssistantChoice(this)">Hire</button>
                                 <button type="button" class="assistant-chip" data-field="intent" data-value="Collaboration" onclick="setAssistantChoice(this)">Collaboration</button>
                             </div>
-                            <div class="assistant-chat-row">
-                                <input type="text" id="assistantQuestion" class="assistant-input" placeholder="" onkeydown="handleAssistantKey(event)" />
-                                <button type="button" id="assistantAskBtn" class="assistant-ask" onclick="askGptAssistant()">Get quick PPC diagnosis</button>
-                            </div>
-                            <div id="assistantStatus" class="assistant-status" aria-live="polite"></div>
                         </div>
 
                         <!-- Toggle Business Model -->
@@ -1219,9 +1214,15 @@
                             Choose your role, add a niche, goal and contact. I’ll summarize what Iaroslav should review first.
                         </div>
 
+                        <div class="assistant-chat-row">
+                            <input type="text" id="assistantQuestion" class="assistant-input" placeholder="" onkeydown="handleAssistantKey(event)" />
+                            <button type="button" id="assistantAskBtn" class="assistant-ask" onclick="askGptAssistant()">Get quick PPC diagnosis</button>
+                        </div>
+                        <div id="assistantStatus" class="assistant-status" aria-live="polite"></div>
+
                         <div id="calcEmptyState" style="text-align: center; padding: 40px 0; color: rgba(255,255,255,0.5);">
                             <div style="font-size: 2rem; margin-bottom: 16px;">📊</div>
-                            <p>Enter your target volume and average check on the left to uncover the math.</p>
+                            <p>Add your main monthly goal to see rough PPC numbers. Advanced fields are optional.</p>
                         </div>
 
                         <div id="calcResultsBox" style="display: none;">
@@ -1552,7 +1553,8 @@
             btn.innerText = 'Sending...';
 
             const name        = document.getElementById('calcName').value || 'Not specified';
-            const contact     = document.getElementById('calcContact').value || 'Not specified';
+            const contactEl    = document.getElementById('calcContact');
+            const contact     = contactEl.value.trim() || 'Not specified';
             const niche       = document.getElementById('calcNiche').value || 'Not specified';
             const region      = document.getElementById('calcRegion').value || 'Not specified';
             const competitors = document.getElementById('calcCompetitors').value || 'Not specified';
@@ -1562,6 +1564,14 @@
             const budget      = document.getElementById('outBudget').innerText || '—';
             const roas        = document.getElementById('outROAS').innerText || '—';
             const revenue     = document.getElementById('outRev').innerText || '—';
+
+            if (contact === 'Not specified') {
+                btn.disabled = false;
+                btn.innerText = 'Send my brief →';
+                contactEl.focus();
+                alert('Please leave a phone number or email so Iaroslav can reply.');
+                return;
+            }
 
             const message = [
                 '=== CONTACT ===',

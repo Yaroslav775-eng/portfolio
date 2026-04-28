@@ -1332,11 +1332,6 @@
                                 <button type="button" class="assistant-chip" data-field="intent" data-value="Найм спеціаліста" onclick="setAssistantChoice(this)">Найм</button>
                                 <button type="button" class="assistant-chip" data-field="intent" data-value="Співпраця" onclick="setAssistantChoice(this)">Співпраця</button>
                             </div>
-                            <div class="assistant-chat-row">
-                                <input type="text" id="assistantQuestion" class="assistant-input" placeholder="" onkeydown="handleAssistantKey(event)" />
-                                <button type="button" id="assistantAskBtn" class="assistant-ask" onclick="askGptAssistant()">Отримати PPC-діагностику</button>
-                            </div>
-                            <div id="assistantStatus" class="assistant-status" aria-live="polite"></div>
                         </div>
 
                         <!-- Toggle Business Model -->
@@ -1417,9 +1412,15 @@
                             Оберіть роль, додайте нішу, ціль і контакт. Я коротко підсумую, що Ярославу варто перевірити першим.
                         </div>
 
+                        <div class="assistant-chat-row">
+                            <input type="text" id="assistantQuestion" class="assistant-input" placeholder="" onkeydown="handleAssistantKey(event)" />
+                            <button type="button" id="assistantAskBtn" class="assistant-ask" onclick="askGptAssistant()">Отримати PPC-діагностику</button>
+                        </div>
+                        <div id="assistantStatus" class="assistant-status" aria-live="polite"></div>
+
                         <div id="calcEmptyState" style="text-align: center; padding: 32px 0; color: rgba(255,255,255,0.4);">
                             <div style="font-size: 2.2rem; margin-bottom: 12px;">📊</div>
-                            <p style="font-size: 0.9rem;">Введіть ціль та середній чек зліва, щоб побачити розрахунок.</p>
+                            <p style="font-size: 0.9rem;">Введіть головну ціль на місяць, щоб побачити орієнтовні PPC-цифри. Додаткові поля опційні.</p>
                         </div>
 
                         <div id="calcResultsBox" style="display: none;">
@@ -1767,7 +1768,8 @@
             btn.innerText = 'Відправляємо...';
 
             const name        = document.getElementById('calcName').value || 'Не вказано';
-            const contact     = document.getElementById('calcContact').value || 'Не вказано';
+            const contactEl    = document.getElementById('calcContact');
+            const contact     = contactEl.value.trim() || 'Не вказано';
             const niche       = document.getElementById('calcNiche').value || 'Не вказано';
             const region      = document.getElementById('calcRegion').value || 'Не вказано';
             const competitors = document.getElementById('calcCompetitors').value || 'Не вказано';
@@ -1777,6 +1779,14 @@
             const budget      = document.getElementById('outBudget').innerText || '—';
             const roas        = document.getElementById('outROAS').innerText || '—';
             const revenue     = document.getElementById('outRev').innerText || '—';
+
+            if (contact === 'Не вказано') {
+                btn.disabled = false;
+                btn.innerText = 'Надіслати brief →';
+                contactEl.focus();
+                alert('Залиште телефон або email, щоб Ярослав міг відповісти.');
+                return;
+            }
 
             const message = [
                 '=== КОНТАКТ ===',
