@@ -1164,17 +1164,18 @@
                             <input type="number" id="calcTarget" class="quiz-input" placeholder="Example: 50" oninput="runMagicCalc()" />
                         </div>
 
-                        <details class="advanced-fields">
-                            <summary>Advanced numbers</summary>
+                        <div class="advanced-fields">
+                            <div class="assistant-eyebrow" style="padding: 14px 16px 0; margin-bottom: 10px;">Performance inputs</div>
                             <div class="advanced-fields-inner">
                                 <div class="quiz-input-group">
-                                    <label class="quiz-label">Main Competitors</label>
-                                    <input type="text" id="calcCompetitors" class="quiz-input" placeholder="Who do you want to beat?" oninput="runMagicCalc()" />
+                                    <label class="quiz-label" id="lblAOV">Average Check (or LTV) per client ($)</label>
+                                    <input type="number" id="calcAOV" class="quiz-input" placeholder="Example: 500" oninput="runMagicCalc()" />
                                 </div>
 
                                 <div class="quiz-input-group">
-                                    <label class="quiz-label" id="lblAOV">Average Check (or LTV) per client ($)</label>
-                                    <input type="number" id="calcAOV" class="quiz-input" placeholder="Optional, example: 500" oninput="runMagicCalc()" />
+                                    <label class="quiz-label">Max ad cost from average check (%)</label>
+                                    <input type="number" id="calcAdPct" class="quiz-input" placeholder="Example: 20" oninput="runMagicCalc()" value="20" />
+                                    <span class="quiz-hint">This is the limit: how much of one sale/client can go to ads.</span>
                                 </div>
 
                                 <div class="quiz-input-group" id="groupMargin" style="display: none;">
@@ -1187,8 +1188,13 @@
                                     <input type="number" id="calcCloseRate" class="quiz-input" placeholder="Leave blank if unknown" oninput="runMagicCalc()" />
                                     <span class="quiz-hint">Default benchmark: 20%</span>
                                 </div>
+
+                                <div class="quiz-input-group" style="margin-bottom: 0;">
+                                    <label class="quiz-label">Main Competitors</label>
+                                    <input type="text" id="calcCompetitors" class="quiz-input" placeholder="Who do you want to beat?" oninput="runMagicCalc()" />
+                                </div>
                             </div>
-                        </details>
+                        </div>
                         
                         <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #f0f0f0;">
                             <p style="font-size: 0.75rem; color: var(--text-gray); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Where should I send the quick audit?</p>
@@ -1216,13 +1222,13 @@
 
                         <div class="assistant-chat-row">
                             <input type="text" id="assistantQuestion" class="assistant-input" placeholder="" onkeydown="handleAssistantKey(event)" />
-                            <button type="button" id="assistantAskBtn" class="assistant-ask" onclick="askGptAssistant()">Get quick PPC diagnosis</button>
+                            <button type="button" id="assistantAskBtn" class="assistant-ask" onclick="askGptAssistant()">Explain these numbers with AI</button>
                         </div>
                         <div id="assistantStatus" class="assistant-status" aria-live="polite"></div>
 
                         <div id="calcEmptyState" style="text-align: center; padding: 40px 0; color: rgba(255,255,255,0.5);">
                             <div style="font-size: 2rem; margin-bottom: 16px;">📊</div>
-                            <p>Add your main monthly goal to see rough PPC numbers. Advanced fields are optional.</p>
+                            <p>Add your main goal, average check and max ad-cost percentage to see if the economics can work.</p>
                         </div>
 
                         <div id="calcResultsBox" style="display: none;">
@@ -1257,6 +1263,14 @@
                                 <div style="display: flex; justify-content: space-between;">
                                     <span style="color: rgba(255,255,255,0.7);">Estimated ROAS:</span>
                                     <span id="outROAS" style="font-weight: bold;">-</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08);">
+                                    <span style="color: rgba(255,255,255,0.7);">Max allowed CAC:</span>
+                                    <span id="outMaxCPA" style="font-weight: bold;">-</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-top: 8px;">
+                                    <span style="color: rgba(255,255,255,0.7);">Economics:</span>
+                                    <span id="outGap" style="font-weight: bold;">-</span>
                                 </div>
                             </div>
 
@@ -1338,6 +1352,7 @@
             resetAssistantChoices();
             document.getElementById('calcTarget').value = '';
             document.getElementById('calcAOV').value = '';
+            document.getElementById('calcAdPct').value = '20';
             document.getElementById('calcCloseRate').value = '';
             document.getElementById('calcNiche').value = '';
             document.getElementById('calcRegion').value = '';
@@ -1415,6 +1430,7 @@
                 competitors: getFieldValue('calcCompetitors'),
                 target: getFieldValue('calcTarget'),
                 average_check: getFieldValue('calcAOV'),
+                max_ad_cost_percent: getFieldValue('calcAdPct'),
                 close_rate: getFieldValue('calcCloseRate'),
                 forecast: {
                     traffic: getFieldText('outClicks'),
@@ -1422,6 +1438,8 @@
                     sales: getFieldText('outSales'),
                     budget: getFieldText('outBudget'),
                     cpa: getFieldText('outCPA'),
+                    max_allowed_cac: getFieldText('outMaxCPA'),
+                    economics: getFieldText('outGap'),
                     revenue: getFieldText('outRev'),
                     roas: getFieldText('outROAS')
                 }
@@ -1450,7 +1468,7 @@
         async function askGptAssistant() {
             const input = document.getElementById('assistantQuestion');
             const btn = document.getElementById('assistantAskBtn');
-            const message = (input && input.value.trim()) || 'Generate a quick PPC diagnosis from this portfolio form. Include likely Google Ads angle, first risk to check, and one next step.';
+            const message = (input && input.value.trim()) || 'Explain these PPC economics from the portfolio calculator. Compare estimated CAC with max allowed CAC, name the first risk, and give one next step.';
             const endpoint = getAssistantApiEndpoint();
 
             if (!endpoint) {
@@ -1512,11 +1530,14 @@
             const region = document.getElementById('calcRegion').value.trim();
             const target = document.getElementById('calcTarget').value.trim();
             const aov = document.getElementById('calcAOV').value.trim();
+            const adPct = document.getElementById('calcAdPct').value.trim();
             const missing = [];
 
             if (!niche) { missing.push('niche'); }
             if (!region) { missing.push('region'); }
             if (!target) { missing.push('main monthly goal'); }
+            if (!aov) { missing.push('average check'); }
+            if (!adPct) { missing.push('max ad-cost percent'); }
 
             const focus = calcModel === 'leadgen'
                 ? 'lead quality, conversion tracking, search intent and wasted spend'
@@ -1532,7 +1553,7 @@
                 assistantRecommendationSent = false;
                 note = 'For a ' + assistantState.persona.toLowerCase() + ', this will become an ' + assistantState.intent.toLowerCase() + ' brief. Add ' + missing.join(', ') + ' and contact details so Iaroslav can respond.';
             } else {
-                note = 'For a ' + assistantState.persona.toLowerCase() + ' in ' + niche + ' / ' + region + ', I would ask Iaroslav to review ' + focus + '. Average check is optional; if it is empty, I will use a benchmark. Next step: ' + nextStep + '.';
+                note = 'For a ' + assistantState.persona.toLowerCase() + ' in ' + niche + ' / ' + region + ', I would ask Iaroslav to review ' + focus + '. The key check is whether estimated CAC fits inside your max ad-cost percent. Next step: ' + nextStep + '.';
                 if (!assistantRecommendationSent) {
                     gta('assistant_recommendation_ready', {
                         'event_category': 'engagement',
@@ -1560,10 +1581,13 @@
             const competitors = document.getElementById('calcCompetitors').value || 'Not specified';
             const target      = document.getElementById('calcTarget').value || '—';
             const aov         = document.getElementById('calcAOV').value || '—';
+            const adPct       = document.getElementById('calcAdPct').value || '—';
             const cr          = document.getElementById('calcCloseRate').value || 'benchmark';
             const budget      = document.getElementById('outBudget').innerText || '—';
             const roas        = document.getElementById('outROAS').innerText || '—';
             const revenue     = document.getElementById('outRev').innerText || '—';
+            const maxCpa      = document.getElementById('outMaxCPA').innerText || '—';
+            const economics   = document.getElementById('outGap').innerText || '—';
 
             if (contact === 'Not specified') {
                 btn.disabled = false;
@@ -1588,11 +1612,14 @@
                 '=== MODEL: ' + calcModel.toUpperCase() + ' ===',
                 'Target: ' + target,
                 'Avg Check: $' + aov,
+                'Max ad cost from avg check: ' + adPct + '%',
                 'Close Rate: ' + cr + '%',
                 '',
                 '=== FORECAST ===',
                 'Traffic needed: ' + document.getElementById('outClicks').innerText,
                 'Recommended Budget: ' + budget,
+                'Max allowed CAC: ' + maxCpa,
+                'Economics: ' + economics,
                 'Projected Revenue: ' + revenue,
                 'Estimated ROAS: ' + roas
             ].join('\n');
@@ -1671,7 +1698,7 @@
 
                 lblTarget.innerText = 'Main goal: inquiries per month';
                 document.getElementById('calcTarget').placeholder = 'Example: 50';
-                lblAOV.innerText = 'Average Check / LTV per client ($)';
+                lblAOV.innerText = 'Average check / LTV per closed client ($)';
                 grpMargin.style.display = 'none';
                 divOutLeads.style.display = 'block';
                 calcCloseRate.previousElementSibling.innerText = 'Target Close Rate (Lead to client, %)';
@@ -1686,7 +1713,7 @@
 
                 lblTarget.innerText = 'Main goal: monthly revenue ($)';
                 document.getElementById('calcTarget').placeholder = 'Example: 50000';
-                lblAOV.innerText = 'Average Order Value ($)';
+                lblAOV.innerText = 'Average order value ($)';
                 grpMargin.style.display = 'block';
                 divOutLeads.style.display = 'none';
                 calcCloseRate.previousElementSibling.innerText = 'Website Conversion Rate (EXR, %)';
@@ -1702,16 +1729,14 @@
 
             let target = parseFloat(document.getElementById('calcTarget').value);
             let aov = parseFloat(document.getElementById('calcAOV').value);
+            let adPctLimit = parseFloat(document.getElementById('calcAdPct').value);
             let userCR = parseFloat(document.getElementById('calcCloseRate').value);
 
-            if (isNaN(target) || target <= 0) {
+            if (isNaN(target) || target <= 0 || isNaN(aov) || aov <= 0 || isNaN(adPctLimit) || adPctLimit <= 0) {
                 emptyState.style.display = 'block';
                 resultsBox.style.display = 'none';
                 updateAssistantRecommendation();
                 return;
-            }
-            if (isNaN(aov) || aov <= 0) {
-                aov = calcModel === 'leadgen' ? 500 : 50;
             }
 
             emptyState.style.display = 'none';
@@ -1754,6 +1779,12 @@
             document.getElementById('outCPA').innerText = '$' + Math.round(cpa).toLocaleString();
             document.getElementById('outRev').innerText = '$' + Math.round(rev).toLocaleString();
             document.getElementById('outROAS').innerText = Math.round(roas) + '%';
+            const maxCpa = aov * (adPctLimit / 100);
+            const gap = maxCpa - cpa;
+            const gapEl = document.getElementById('outGap');
+            document.getElementById('outMaxCPA').innerText = '$' + Math.round(maxCpa).toLocaleString();
+            gapEl.innerText = gap >= 0 ? 'Fits, +' + '$' + Math.round(gap).toLocaleString() : 'Too high, -' + '$' + Math.abs(Math.round(gap)).toLocaleString();
+            gapEl.style.color = gap >= 0 ? '#4ade80' : '#f87171';
 
             compileMagicEmail(target, aov, userCR, budget, roas);
             updateAssistantRecommendation();
