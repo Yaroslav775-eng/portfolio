@@ -36,6 +36,10 @@
         .report-category { font-family: var(--font-sans); color: var(--accent-brand); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; display: block; margin-bottom: 16px; }
         .report-title { font-family: var(--font-serif); font-size: 3.5rem; line-height: 1.1; font-weight: 900; margin: 0 0 24px 0; letter-spacing: -0.02em; }
         .ai-summary { font-family: var(--font-sans); font-size: 1.1rem; color: var(--text-muted); border-left: 4px solid var(--accent-brand); padding-left: 24px; margin: 32px 0 0 0; font-style: italic; }
+        .context-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 44px 0 0; }
+        .context-item { background: #fff; border: 1px solid var(--accent-muted); padding: 18px 20px; }
+        .context-label { display: block; font-family: var(--font-sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+        .context-value { display: block; font-family: var(--font-serif); font-size: 1.12rem; font-weight: 700; line-height: 1.35; color: var(--text-dark); }
         .editorial-table { width: 100%; border-collapse: collapse; margin: 60px 0; border-top: 2px solid var(--text-dark); border-bottom: 2px solid var(--text-dark); }
         .editorial-table th, .editorial-table td { padding: 24px 16px; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.1); }
         .editorial-table th { font-family: var(--font-sans); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-muted); width: 25%; }
@@ -52,6 +56,7 @@
 
         @media (max-width: 768px) {
             .report-title { font-size: 2.5rem; }
+            .context-grid { grid-template-columns: 1fr; }
             .editorial-table th, .editorial-table td { padding: 16px 8px; font-size: 1rem; }
             .report-nav { padding: 16px 0; }
         }
@@ -69,9 +74,28 @@
     <article class="report-article">
         <header class="report-header">
             <span class="report-category">E-commerce Масштабування</span>
-            <h1 class="report-title">Зупинка марнотратства бюджету: як структурувати рекламу зоотоварів для передбачуваного ROAS.</h1>
+            <h1 class="report-title">Як ми зупинили канібалізацію кампаній у Google Ads акаунті магазину зоотоварів.</h1>
             <div class="ai-summary">
-                <strong>Executive Summary:</strong> Клієнт витрачав значні кошти на десятки неправильно налаштованих кампаній, що призводило до некерованих витрат. Ми впровадили чітку архітектуру акаунту — розділивши брендовий Search, категорійний Shopping та інкрементальний PMax — що знизило CPA до €4.35 та стабілізувало ROAS на рівні 800–1200%.
+                <strong>Короткий висновок:</strong> Акаунт генерував конверсії, але його структура робила масштабування ризикованим: Brand Search, Shopping і Performance Max перетиналися між собою, тому ROAS не давав чіткої відповіді, які кампанії створюють новий дохід, а які просто забирають уже існуючий попит. Я перебудував акаунт за принципом “одна кампанія — одне завдання”. Результат: середній CPA стабілізувався на рівні €4.35, ROAS утримувався в діапазоні 800–1200%, а загальна кількість відстежених конверсій за період склала 34,923.
+            </div>
+
+            <div class="context-grid">
+                <div class="context-item">
+                    <span class="context-label">Ніша</span>
+                    <span class="context-value">E-commerce, зоотовари</span>
+                </div>
+                <div class="context-item">
+                    <span class="context-label">Канал</span>
+                    <span class="context-value">Google Ads</span>
+                </div>
+                <div class="context-item">
+                    <span class="context-label">Головна проблема</span>
+                    <span class="context-value">Перетин кампаній і нечітка логіка масштабування</span>
+                </div>
+                <div class="context-item">
+                    <span class="context-label">Джерело оцінки</span>
+                    <span class="context-value">Google Ads / GA4 conversion data</span>
+                </div>
             </div>
         </header>
 
@@ -79,11 +103,11 @@
             <tbody>
                 <tr>
                     <th>Проблема</th>
-                    <td>Бюджет розпорошений між кампаніями, що перетинаються. Відсутність розуміння реальної маржинальності.</td>
+                    <td>Brand Search, Shopping і PMax перетиналися, тому було складно зрозуміти, що реально масштабує продажі.</td>
                 </tr>
                 <tr>
                     <th>Рішення</th>
-                    <td>Архітектура "Одна кампанія = Одне завдання" (кластери Собаки/Коти, чітке розмежування PMax).</td>
+                    <td>Архітектура “одна кампанія = одне завдання”: окремо бренд, категорійний Shopping та інкрементальний PMax.</td>
                 </tr>
                 <tr>
                     <th>Всього конверсій</th>
@@ -101,32 +125,33 @@
         </table>
 
         <div class="report-body">
-            <h2>Проблема "Чорної скриньки"</h2>
-            <p>Для інтернет-магазину з тисячами SKU (як у ніші зоотоварів) стандартне налаштування Google Ads часто стає фінансовою чорною скринькою. У клієнта працювали десятки кампаній одночасно. Бюджет витрачався масштабно, але ніхто не міг чітко пояснити, які саме кампанії генерують прибуток, а які — просто поглинають бюджет.</p>
-            <p>Вони потрапили в цикл "витрачати гроші, щоб заробляти гроші", не розуміючи реальних важелів свого зростання.</p>
+            <h2>Проблема: акаунт виглядав прибутковим, але був некерованим</h2>
+            <p>Акаунт не провалювався через відсутність попиту. Проблема була в тому, що структура кампаній не дозволяла нормально інтерпретувати результат. Кілька кампаній конкурували за один і той самий трафік, а Brand Search, категорійний попит і автоматизація Performance Max були змішані між собою.</p>
+            <p>На поверхні акаунт міг виглядати ефективним, але власник не міг чітко відповісти на базове питання: які кампанії варто масштабувати, а які просто витрачають бюджет або забирають заслугу за вже існуючий попит.</p>
 
-            <h2>Технічне втручання</h2>
-            <p>Ми повністю перебудували акаунт з нуля, спираючись на фундаментальний принцип перформанс-маркетингу: <strong>Кожна кампанія повинна виконувати одну конкретну роль.</strong></p>
+            <h2>Що було змінено</h2>
+            <p>Я перебудував акаунт навколо простого принципу: <strong>кожна кампанія повинна мати одну конкретну роль.</strong> Це дозволило відокремити захист існуючого попиту від кампаній, які мають створювати нове зростання.</p>
             
             <div class="architecture-box">
-                <h3>3-рівнева структурована архітектура</h3>
-                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-bottom: 24px;">Щоб кампанії не конкурували одна з одною за тих самих користувачів, ми впровадили суворі межі за допомогою мінус-слів та аудиторних сигналів.</p>
+                <h3>Нова логіка акаунту</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-bottom: 24px;">Щоб кампанії не конкурували між собою за тих самих користувачів, були очищені мінус-слова, межі між кампаніями та бюджетні ролі.</p>
                 <ul>
-                    <li><strong>Рівень 1: Високоінтентний Search.</strong> Захоплення користувачів, які шукають конкретні бренди або точні моделі товарів. Готовий попит.</li>
-                    <li><strong>Рівень 2: Сегментований Shopping.</strong> Забезпечення видимості всього каталогу. Ми розділили "Собак" та "Котів" на окремі кластери, щоб бюджет слідував за реальним ринковим попитом.</li>
-                    <li><strong>Рівень 3: Ізольований Performance Max.</strong> Робота виключно на інкрементальне охоплення. Ми заблокували PMax можливість "красти" брендовий трафік, щоб ROAS був реальним показником нового доходу.</li>
+                    <li><strong>Brand Search був ізольований.</strong> Це дозволило окремо вимірювати попит від людей, які вже знали бренд, і не змішувати його з новим попитом.</li>
+                    <li><strong>Shopping був розділений за категорійною логікою.</strong> Категорії “собаки” та “коти” отримали окремі кластери, щоб бюджет ішов за реальною структурою попиту, а не усереднювався по всьому каталогу.</li>
+                    <li><strong>Performance Max був обмежений.</strong> PMax отримав роль інкрементального охоплення, а не легкого зарахування брендових конверсій собі в результат.</li>
+                    <li><strong>Оптимізація стала не про “найвищий ROAS”, а про роль кампанії.</strong> Рішення приймалися за тим, чи має кампанія чітке завдання і чи можна її масштабувати економічно.</li>
                 </ul>
             </div>
 
-            <h2>Результат: Масштабованість</h2>
-            <p>Коли кожен рівень акаунту отримав свою роль — і вони перестали перетинатися — оптимізація стала математичною мовою цифр, а не емоцій. ROAS стабілізувався в цільовому діапазоні 800-1200%, а середній CPA впав до €4.35.</p>
-            <p>Головне — власник бізнесу повернув контроль. Тепер при необхідності масштабування вони точно знають, за який важіль тягнути, не ризикуючи прибутковістю.</p>
+            <h2>Результат: стабільніша економіка і зрозуміле масштабування</h2>
+            <p>Після реструктуризації акаунт став стабільнішим і зрозумілішим для масштабування. Середній CPA стабілізувався на рівні €4.35, ROAS утримувався в діапазоні 800–1200%, а загальна кількість відстежених конверсій за період склала 34,923.</p>
+            <p>Головний результат був не лише в зниженні CPA. Бізнес отримав зрозумілу структуру: які кампанії захищають існуючий попит, які відповідають за категорійні продажі, а які можна масштабувати для нового зростання.</p>
         </div>
 
         <section class="report-cta">
-            <h2>Ваші кампанії "з'їдають" одна одну?</h2>
-            <p style="font-family: var(--font-sans); font-size: 1.1rem; color: #555; margin-bottom: 32px;">Давайте проведемо аудит вашої архітектури. Якщо кампанії перетинаються, ви платите Google двічі за той самий клік.</p>
-            <a href="https://t.me/Yaroslav797" target="_blank" class="btn-text case-cta" style="font-size: 1.1rem; border-bottom: 1px solid #000; padding-bottom: 4px;">Замовити технічний аудит <span>&rarr;</span></a>
+            <h2>Ваші кампанії конкурують між собою?</h2>
+            <p style="font-family: var(--font-sans); font-size: 1.1rem; color: #555; margin-bottom: 32px;">Якщо Brand, Shopping і PMax змішані в одну логіку, ROAS може виглядати красиво, але масштабування все одно буде ризикованим. Почати варто з аудиту структури акаунту.</p>
+            <a href="https://t.me/Yaroslav797" target="_blank" class="btn-text case-cta" style="font-size: 1.1rem; border-bottom: 1px solid #000; padding-bottom: 4px;">Замовити аудит структури <span>&rarr;</span></a>
         </section>
 
     </article>
