@@ -1458,6 +1458,12 @@
             box.appendChild(document.createTextNode(note));
         }
 
+        function renderAssistantHtml(title, html) {
+            const box = document.getElementById('assistantRecommendation');
+            if (!box) { return; }
+            box.innerHTML = '<strong>' + title + '</strong>' + html;
+        }
+
         function handleAssistantKey(event) {
             if (event.key === 'Enter') {
                 event.preventDefault();
@@ -1539,33 +1545,37 @@
             if (!aov) { missing.push('average check'); }
             if (!adPct) { missing.push('max ad-cost percent'); }
 
-            const focus = calcModel === 'leadgen'
-                ? 'lead quality, conversion tracking, search intent and wasted spend'
-                : 'ROAS, margin pressure, Shopping/Search structure and repeatable scaling';
-            const nextStep = assistantState.intent === 'Hire specialist'
-                ? 'check fit, availability and portfolio evidence'
-                : assistantState.intent === 'Collaboration'
-                    ? 'outline the partnership angle and responsibilities'
-                    : 'prepare a fast audit of campaign economics';
-
-            let note;
             if (missing.length) {
                 assistantRecommendationSent = false;
-                note = 'For a ' + assistantState.persona.toLowerCase() + ', this will become an ' + assistantState.intent.toLowerCase() + ' brief. Add ' + missing.join(', ') + ' and contact details so Iaroslav can respond.';
-            } else {
-                note = 'For a ' + assistantState.persona.toLowerCase() + ' in ' + niche + ' / ' + region + ', I would ask Iaroslav to review ' + focus + '. The key check is whether estimated CAC fits inside your max ad-cost percent. Next step: ' + nextStep + '.';
-                if (!assistantRecommendationSent) {
-                    gta('assistant_recommendation_ready', {
-                        'event_category': 'engagement',
-                        'model': calcModel,
-                        'persona': assistantState.persona,
-                        'intent': assistantState.intent
-                    });
-                    assistantRecommendationSent = true;
-                }
+                renderAssistantHtml('Preliminary check', '<p style="margin:0 0 10px;">Fill in 3 numbers to check if Google Ads economics can work:</p><p style="margin:0 0 6px;">1. Main monthly goal</p><p style="margin:0 0 6px;">2. Average check / LTV</p><p style="margin:0;">3. Max % of the check you can spend on ads</p>');
+                return;
             }
 
-            renderAssistantNote('Diagnosis preview', note);
+            const cpaText = document.getElementById('outCPA').innerText || '-';
+            const maxCpaText = document.getElementById('outMaxCPA').innerText || '-';
+            const gapText = document.getElementById('outGap').innerText || '-';
+            const isGood = !gapText.includes('Too high');
+            const verdict = isGood ? 'Economics can work' : 'Ads look too expensive';
+            const advice = isGood
+                ? 'Next step: check search demand and conversion tracking before scaling.'
+                : 'Next step: improve conversion rate, raise average check, or lower target CPA.';
+
+            renderAssistantHtml('Preliminary check',
+                '<p style="margin:0 0 10px; color:' + (isGood ? '#4ade80' : '#f87171') + '; font-weight:700;">' + verdict + '</p>' +
+                '<p style="margin:0 0 6px;">Estimated CAC: <b>' + cpaText + '</b></p>' +
+                '<p style="margin:0 0 6px;">Max allowed CAC: <b>' + maxCpaText + '</b></p>' +
+                '<p style="margin:0 0 10px;">Gap: <b>' + gapText + '</b></p>' +
+                '<p style="margin:0;">' + advice + '</p>'
+            );
+            if (!assistantRecommendationSent) {
+                gta('assistant_recommendation_ready', {
+                    'event_category': 'engagement',
+                    'model': calcModel,
+                    'persona': assistantState.persona,
+                    'intent': assistantState.intent
+                });
+                assistantRecommendationSent = true;
+            }
         }
 
         function sendMagicForm() {

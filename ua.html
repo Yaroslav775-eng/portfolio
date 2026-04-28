@@ -1673,6 +1673,12 @@
             box.appendChild(document.createTextNode(note));
         }
 
+        function renderAssistantHtml(title, html) {
+            const box = document.getElementById('assistantRecommendation');
+            if (!box) { return; }
+            box.innerHTML = '<strong>' + title + '</strong>' + html;
+        }
+
         function handleAssistantKey(event) {
             if (event.key === 'Enter') {
                 event.preventDefault();
@@ -1754,33 +1760,37 @@
             if (!aov) { missing.push('середній чек'); }
             if (!adPct) { missing.push('max % на рекламу'); }
 
-            const focus = calcModel === 'leadgen'
-                ? 'якість лідів, конверсії, пошуковий попит і зайві витрати'
-                : 'ROAS, маржинальність, структуру Shopping/Search і можливість масштабування';
-            const nextStep = assistantState.intent === 'Найм спеціаліста'
-                ? 'оцінити fit, доступність і релевантні кейси'
-                : assistantState.intent === 'Співпраця'
-                    ? 'окреслити формат партнерства та зони відповідальності'
-                    : 'підготувати швидкий аудит економіки кампаній';
-
-            let note;
             if (missing.length) {
                 assistantRecommendationSent = false;
-                note = 'Для ролі "' + assistantState.persona + '" це стане brief під запит "' + assistantState.intent + '". Додайте ' + missing.join(', ') + ' і контакт, щоб Ярослав міг відповісти.';
-            } else {
-                note = 'Для ролі "' + assistantState.persona + '" у ніші "' + niche + '" / "' + region + '" я б попросив Ярослава перевірити ' + focus + '. Головна перевірка: чи estimated CAC вкладається у ваш max % від середнього чеку. Наступний крок: ' + nextStep + '.';
-                if (!assistantRecommendationSent) {
-                    gta('assistant_recommendation_ready', {
-                        'event_category': 'engagement',
-                        'model': calcModel,
-                        'persona': assistantState.persona,
-                        'intent': assistantState.intent
-                    });
-                    assistantRecommendationSent = true;
-                }
+                renderAssistantHtml('Попередня оцінка', '<p style="margin:0 0 10px;">Заповніть 3 цифри, щоб перевірити економіку Google Ads:</p><p style="margin:0 0 6px;">1. Головна ціль на місяць</p><p style="margin:0 0 6px;">2. Середній чек / LTV</p><p style="margin:0;">3. Max % від чеку, який можна витратити на рекламу</p>');
+                return;
             }
 
-            renderAssistantNote('Попередня діагностика', note);
+            const cpaText = document.getElementById('outCPA').innerText || '-';
+            const maxCpaText = document.getElementById('outMaxCPA').innerText || '-';
+            const gapText = document.getElementById('outGap').innerText || '-';
+            const isGood = !gapText.includes('Дорого');
+            const verdict = isGood ? 'Економіка сходиться' : 'Реклама поки дорога';
+            const advice = isGood
+                ? 'Наступний крок: перевірити попит і трекінг конверсій перед масштабуванням.'
+                : 'Наступний крок: покращити конверсію, підняти середній чек або знизити CPA.';
+
+            renderAssistantHtml('Попередня оцінка',
+                '<p style="margin:0 0 10px; color:' + (isGood ? '#4ade80' : '#f87171') + '; font-weight:700;">' + verdict + '</p>' +
+                '<p style="margin:0 0 6px;">Орієнтовний CAC: <b>' + cpaText + '</b></p>' +
+                '<p style="margin:0 0 6px;">Max допустимий CAC: <b>' + maxCpaText + '</b></p>' +
+                '<p style="margin:0 0 10px;">Різниця: <b>' + gapText + '</b></p>' +
+                '<p style="margin:0;">' + advice + '</p>'
+            );
+            if (!assistantRecommendationSent) {
+                gta('assistant_recommendation_ready', {
+                    'event_category': 'engagement',
+                    'model': calcModel,
+                    'persona': assistantState.persona,
+                    'intent': assistantState.intent
+                });
+                assistantRecommendationSent = true;
+            }
         }
 
         function sendMagicForm() {
