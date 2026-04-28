@@ -1378,7 +1378,7 @@
                                 <div class="quiz-input-group">
                                     <label class="quiz-label">Max % від середнього чеку на рекламу</label>
                                     <input type="number" id="calcAdPct" class="quiz-input" placeholder="Наприклад: 20" oninput="runMagicCalc()" value="20" />
-                                    <span class="quiz-hint">Це межа: яку частку з одного продажу/клієнта можна віддати на рекламу.</span>
+                                    <span class="quiz-hint" id="calcAdPctHint">Цей відсоток не може бути вищим за маржу. Якщо він вищий, модель обмежить його маржею.</span>
                                 </div>
 
                                 <div class="quiz-input-group" id="groupMargin">
@@ -1460,6 +1460,10 @@
                                 <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px;">
                                     <span style="display:block; font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom: 4px;">Орієнтовний трафік/міс</span>
                                     <span id="outClicks" style="display:block; font-size: 1.4rem; font-weight:800; color: #fff;">-</span>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px;">
+                                    <span style="display:block; font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom: 4px;">Орієнтовні покази</span>
+                                    <span id="outImpressions" style="display:block; font-size: 1.4rem; font-weight:800; color: #fff;">-</span>
                                 </div>
                                 <div id="divOutLeads" style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 6px;">
                                     <span style="display:block; font-size: 0.7rem; color: rgba(255,255,255,0.5); text-transform:uppercase; margin-bottom: 4px;">Необхідно лідів</span>
@@ -2031,11 +2035,12 @@
 
             // Hidden Industry Benchmarks
             let avgCPC = 1.20; // $1.20 per click
+            let ctrBenchmark = 0.05; // 5% CTR benchmark
             let siteToLeadCR = 0.05; // 5% site to lead
             let leadToClientCR = isNaN(userCR) ? 0.20 : (userCR / 100); // 20% lead to close defaults
             let ecomSiteCR = isNaN(userCR) ? 0.015 : (userCR / 100); // 1.5% ecom conversion defaults
 
-            let clicks, leads, sales, budget, rev, cpa, roas;
+            let clicks, leads, sales, budget, rev, cpa, roas, impressions;
 
             if (calcModel === 'leadgen') {
                 // Forward math for Lead Gen based on sales plan
@@ -2053,10 +2058,24 @@
                 sales = target;
                 clicks = Math.ceil(sales / ecomSiteCR);
                 avgCPC = 0.80; // slightly cheaper for shopping ads
+                ctrBenchmark = 0.03; // broader shopping/PMax benchmark
                 budget = clicks * avgCPC;
                 rev = sales * aov;
                 cpa = budget / sales;
                 roas = (rev / budget) * 100;
+            }
+
+            impressions = Math.ceil(clicks / ctrBenchmark);
+            const effectiveAdPctLimit = Math.min(adPctLimit, marginPct);
+            const adLimitWarning = adPctLimit > marginPct
+                ? ' Ліміт витрат на рекламу вищий за маржу, тому модель обмежує його на рівні <b>' + marginPct + '%</b>.'
+                : '';
+            const adPctHint = document.getElementById('calcAdPctHint');
+            if (adPctHint) {
+                adPctHint.innerHTML = adPctLimit > marginPct
+                    ? 'Витрати на рекламу не можуть бути вищими за маржу. Модель використовує <b>' + marginPct + '%</b> замість ' + adPctLimit + '%.'
+                    : 'Цей відсоток не може бути вищим за маржу. Якщо він вищий, модель обмежить його маржею.';
+                adPctHint.style.color = adPctLimit > marginPct ? '#C00000' : '';
             }
 
             const assumptionsBox = document.getElementById('calcAssumptions');
@@ -2069,16 +2088,17 @@
                     : 'Трафік оцінюється через конверсію сайту в продажі.';
                 assumptionsBox.innerHTML =
                     '<strong style="display:block; color:#fff; margin-bottom:6px;">Попередня benchmark-оцінка</strong>' +
-                    '<span>Це не історичні дані акаунту. Кліки та бюджет рахуються з припущень: CPC-бенчмарк <b>$' + avgCPC.toFixed(2) + '</b>, ' + crText + '. ' + funnelText + ' Якщо є історичні CPC, CTR і конверсії, прогноз можна перерахувати точніше.</span>';
+                    '<span>Це не історичні дані акаунту. Покази, кліки та бюджет рахуються з припущень: CTR-бенчмарк <b>' + Math.round(ctrBenchmark * 100) + '%</b>, CPC-бенчмарк <b>$' + avgCPC.toFixed(2) + '</b>, ' + crText + '. ' + funnelText + adLimitWarning + ' Якщо є історичні CPC, CTR і конверсії, прогноз можна перерахувати точніше.</span>';
             }
 
             document.getElementById('outSales').innerText = sales.toLocaleString();
+            document.getElementById('outImpressions').innerText = '~' + impressions.toLocaleString();
             document.getElementById('outClicks').innerText = '~' + clicks.toLocaleString();
             document.getElementById('outBudget').innerText = '$' + Math.round(budget).toLocaleString();
             document.getElementById('outCPA').innerText = '$' + Math.round(cpa).toLocaleString();
             document.getElementById('outRev').innerText = '$' + Math.round(rev).toLocaleString();
             document.getElementById('outROAS').innerText = Math.round(roas) + '%';
-            const maxCpa = aov * (Math.min(adPctLimit, marginPct) / 100);
+            const maxCpa = aov * (effectiveAdPctLimit / 100);
             const gap = maxCpa - cpa;
             const gapEl = document.getElementById('outGap');
             document.getElementById('outMaxCPA').innerText = '$' + Math.round(maxCpa).toLocaleString();

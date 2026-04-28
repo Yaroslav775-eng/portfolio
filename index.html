@@ -1190,7 +1190,7 @@
                                 <div class="quiz-input-group">
                                     <label class="quiz-label">Max ad cost from average check (%)</label>
                                     <input type="number" id="calcAdPct" class="quiz-input" placeholder="Example: 20" oninput="runMagicCalc()" value="20" />
-                                    <span class="quiz-hint">This is the limit: how much of one sale/client can go to ads.</span>
+                                    <span class="quiz-hint" id="calcAdPctHint">This cannot be higher than gross margin. If it is higher, the model caps it by margin.</span>
                                 </div>
 
                                 <div class="quiz-input-group" style="margin-bottom: 0;">
@@ -1250,6 +1250,10 @@
                                 <div>
                                     <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Estimated Traffic</span>
                                     <span id="outClicks" style="display:block; font-size: 1.5rem; font-weight:bold; color: #fff;">-</span>
+                                </div>
+                                <div>
+                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Est. Impressions</span>
+                                    <span id="outImpressions" style="display:block; font-size: 1.5rem; font-weight:bold; color: #fff;">-</span>
                                 </div>
                                 <div id="divOutLeads">
                                     <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Required Leads</span>
@@ -1816,11 +1820,12 @@
 
             // Hidden Industry Benchmarks
             let avgCPC = 1.20; // $1.20 per click average
+            let ctrBenchmark = 0.05; // 5% CTR benchmark
             let siteToLeadCR = 0.05; // 5% site to lead
             let leadToClientCR = isNaN(userCR) ? 0.20 : (userCR / 100); // 20% default
             let ecomSiteCR = isNaN(userCR) ? 0.015 : (userCR / 100); // 1.5% ecom default
 
-            let clicks, leads, sales, budget, rev, cpa, roas;
+            let clicks, leads, sales, budget, rev, cpa, roas, impressions;
 
             if (calcModel === 'leadgen') {
                 // Forward math for Lead Gen based on sales plan
@@ -1838,10 +1843,24 @@
                 sales = target;
                 clicks = Math.ceil(sales / ecomSiteCR);
                 avgCPC = 0.80; // slightly cheaper generic shopping ads
+                ctrBenchmark = 0.03; // broader shopping/PMax benchmark
                 budget = clicks * avgCPC;
                 rev = sales * aov;
                 cpa = budget / sales;
                 roas = (rev / budget) * 100;
+            }
+
+            impressions = Math.ceil(clicks / ctrBenchmark);
+            const effectiveAdPctLimit = Math.min(adPctLimit, marginPct);
+            const adLimitWarning = adPctLimit > marginPct
+                ? ' Your ad-cost limit is higher than gross margin, so the model caps it at <b>' + marginPct + '%</b>.'
+                : '';
+            const adPctHint = document.getElementById('calcAdPctHint');
+            if (adPctHint) {
+                adPctHint.innerHTML = adPctLimit > marginPct
+                    ? 'Ad cost cannot exceed gross margin. Model uses <b>' + marginPct + '%</b> instead of ' + adPctLimit + '%.'
+                    : 'This cannot be higher than gross margin. If it is higher, the model caps it by margin.';
+                adPctHint.style.color = adPctLimit > marginPct ? '#C00000' : '';
             }
 
             const assumptionsBox = document.getElementById('calcAssumptions');
@@ -1854,16 +1873,17 @@
                     : 'Traffic is estimated from website conversion to orders.';
                 assumptionsBox.innerHTML =
                     '<strong style="display:block; color:#fff; margin-bottom:6px;">Preliminary benchmark estimate</strong>' +
-                    '<span>This is not pulled from historical account data. Budget and clicks are calculated from assumptions: CPC benchmark <b>$' + avgCPC.toFixed(2) + '</b>, ' + crText + '. ' + funnelText + ' If you have historical CPC, CTR and conversion data, the forecast can be recalculated more accurately.</span>';
+                    '<span>This is not pulled from historical account data. Impressions, clicks and budget are calculated from assumptions: CTR benchmark <b>' + Math.round(ctrBenchmark * 100) + '%</b>, CPC benchmark <b>$' + avgCPC.toFixed(2) + '</b>, ' + crText + '. ' + funnelText + adLimitWarning + ' If you have historical CPC, CTR and conversion data, the forecast can be recalculated more accurately.</span>';
             }
 
             document.getElementById('outSales').innerText = sales.toLocaleString();
+            document.getElementById('outImpressions').innerText = '~' + impressions.toLocaleString();
             document.getElementById('outClicks').innerText = '~' + clicks.toLocaleString();
             document.getElementById('outBudget').innerText = '$' + Math.round(budget).toLocaleString();
             document.getElementById('outCPA').innerText = '$' + Math.round(cpa).toLocaleString();
             document.getElementById('outRev').innerText = '$' + Math.round(rev).toLocaleString();
             document.getElementById('outROAS').innerText = Math.round(roas) + '%';
-            const maxCpa = aov * (Math.min(adPctLimit, marginPct) / 100);
+            const maxCpa = aov * (effectiveAdPctLimit / 100);
             const gap = maxCpa - cpa;
             const gapEl = document.getElementById('outGap');
             document.getElementById('outMaxCPA').innerText = '$' + Math.round(maxCpa).toLocaleString();
