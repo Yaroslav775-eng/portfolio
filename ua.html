@@ -1401,7 +1401,8 @@
                         </div>
                         
                         <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #f0f0f0;">
-                            <p style="font-size: 0.75rem; color: var(--text-gray); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Куди надіслати короткий аудит?</p>
+                            <p style="font-size: 0.75rem; color: var(--text-gray); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em;">Куди надіслати короткий висновок?</p>
+                            <p style="font-size: 0.78rem; color: var(--text-gray); margin-bottom: 12px; line-height: 1.35;">Залиште телефон або email, якщо хочете отримати ручну перевірку цифр і 1-2 наступні кроки.</p>
                             <div class="calc-input-row" style="margin-bottom: 0;">
                                 <div class="quiz-input-group" style="margin-bottom: 0;">
                                     <label class="quiz-label">Ім’я</label>
@@ -1429,7 +1430,7 @@
 
                         <div class="assistant-chat-row">
                             <input type="text" id="assistantQuestion" class="assistant-input" placeholder="" onkeydown="handleAssistantKey(event)" />
-                            <button type="button" id="assistantAskBtn" class="assistant-ask" onclick="askGptAssistant()">Пояснити цифри з AI</button>
+                            <button type="button" id="assistantAskBtn" class="assistant-ask" onclick="askGptAssistant()">Пояснити ризик і наступний крок з AI</button>
                         </div>
                         <div id="assistantStatus" class="assistant-status" aria-live="polite"></div>
 
@@ -1569,6 +1570,7 @@
         };
         let assistantState = Object.assign({}, assistantDefaults);
         let assistantRecommendationSent = false;
+        let calculatorProgressSent = {};
 
         function startQuiz() {
             resetAssistantChoices();
@@ -1581,6 +1583,7 @@
             document.getElementById('calcCompetitors').value = '';
             document.getElementById('calcName').value = '';
             document.getElementById('calcContact').value = '';
+            calculatorProgressSent = {};
             setCalcModel('leadgen');
             runMagicCalc();
             updateAssistantRecommendation();
@@ -1702,6 +1705,22 @@
             '</div>';
         }
 
+        function trackCalculatorProgress(doneCount, totalCount) {
+            const percent = Math.round((doneCount / totalCount) * 100);
+            [25, 50, 75, 100].forEach(function(mark) {
+                if (percent >= mark && !calculatorProgressSent[mark]) {
+                    calculatorProgressSent[mark] = true;
+                    gta('calculator_progress_' + mark, {
+                        'event_category': 'engagement',
+                        'progress_percent': mark,
+                        'fields_completed': doneCount,
+                        'fields_total': totalCount,
+                        'model': calcModel
+                    });
+                }
+            });
+        }
+
         function handleAssistantKey(event) {
             if (event.key === 'Enter') {
                 event.preventDefault();
@@ -1761,7 +1780,7 @@
             } finally {
                 if (btn) {
                     btn.disabled = false;
-                    btn.innerText = 'Отримати PPC-діагностику';
+                    btn.innerText = 'Пояснити ризик і наступний крок з AI';
                 }
             }
         }
@@ -1776,14 +1795,16 @@
             const aov = document.getElementById('calcAOV').value.trim();
             const adPct = document.getElementById('calcAdPct').value.trim();
             const contact = document.getElementById('calcContact').value.trim();
-            const progressHtml = renderFitProgress([
+            const progressItems = [
                 { label: 'Ніша', done: !!niche },
                 { label: 'Регіон', done: !!region },
                 { label: 'Ціль на місяць', done: !!target },
                 { label: 'Середній чек', done: !!aov },
                 { label: '% на рекламу', done: !!adPct },
                 { label: 'Контакт', done: !!contact }
-            ], 'Прогрес');
+            ];
+            const progressHtml = renderFitProgress(progressItems, 'Прогрес');
+            trackCalculatorProgress(progressItems.filter(function(item) { return item.done; }).length, progressItems.length);
             const missing = [];
 
             if (!niche) { missing.push('нішу'); }

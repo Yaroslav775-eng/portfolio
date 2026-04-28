@@ -1206,7 +1206,8 @@
                         </div>
                         
                         <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #f0f0f0;">
-                            <p style="font-size: 0.75rem; color: var(--text-gray); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Where should I send the quick audit?</p>
+                            <p style="font-size: 0.75rem; color: var(--text-gray); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em;">Where should I send the short diagnosis?</p>
+                            <p style="font-size: 0.78rem; color: var(--text-gray); margin-bottom: 12px; line-height: 1.35;">Leave a phone or email if you want a manual check of the numbers and 1-2 next steps.</p>
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                                 <div class="quiz-input-group" style="margin-bottom: 0;">
                                     <label class="quiz-label">Your Name</label>
@@ -1231,7 +1232,7 @@
 
                         <div class="assistant-chat-row">
                             <input type="text" id="assistantQuestion" class="assistant-input" placeholder="" onkeydown="handleAssistantKey(event)" />
-                            <button type="button" id="assistantAskBtn" class="assistant-ask" onclick="askGptAssistant()">Explain these numbers with AI</button>
+                            <button type="button" id="assistantAskBtn" class="assistant-ask" onclick="askGptAssistant()">Explain risk and next step with AI</button>
                         </div>
                         <div id="assistantStatus" class="assistant-status" aria-live="polite"></div>
 
@@ -1356,6 +1357,7 @@
         };
         let assistantState = Object.assign({}, assistantDefaults);
         let assistantRecommendationSent = false;
+        let calculatorProgressSent = {};
 
         function startQuiz() {
             resetAssistantChoices();
@@ -1368,6 +1370,7 @@
             document.getElementById('calcCompetitors').value = '';
             document.getElementById('calcName').value = '';
             document.getElementById('calcContact').value = '';
+            calculatorProgressSent = {};
             setCalcModel('leadgen');
             runMagicCalc();
             updateAssistantRecommendation();
@@ -1487,6 +1490,22 @@
             '</div>';
         }
 
+        function trackCalculatorProgress(doneCount, totalCount) {
+            const percent = Math.round((doneCount / totalCount) * 100);
+            [25, 50, 75, 100].forEach(function(mark) {
+                if (percent >= mark && !calculatorProgressSent[mark]) {
+                    calculatorProgressSent[mark] = true;
+                    gta('calculator_progress_' + mark, {
+                        'event_category': 'engagement',
+                        'progress_percent': mark,
+                        'fields_completed': doneCount,
+                        'fields_total': totalCount,
+                        'model': calcModel
+                    });
+                }
+            });
+        }
+
         function handleAssistantKey(event) {
             if (event.key === 'Enter') {
                 event.preventDefault();
@@ -1546,7 +1565,7 @@
             } finally {
                 if (btn) {
                     btn.disabled = false;
-                    btn.innerText = 'Get quick PPC diagnosis';
+                    btn.innerText = 'Explain risk and next step with AI';
                 }
             }
         }
@@ -1561,14 +1580,16 @@
             const aov = document.getElementById('calcAOV').value.trim();
             const adPct = document.getElementById('calcAdPct').value.trim();
             const contact = document.getElementById('calcContact').value.trim();
-            const progressHtml = renderFitProgress([
+            const progressItems = [
                 { label: 'Niche', done: !!niche },
                 { label: 'Region', done: !!region },
                 { label: 'Monthly goal', done: !!target },
                 { label: 'Average check', done: !!aov },
                 { label: 'Ad-cost %', done: !!adPct },
                 { label: 'Contact', done: !!contact }
-            ], 'Progress');
+            ];
+            const progressHtml = renderFitProgress(progressItems, 'Progress');
+            trackCalculatorProgress(progressItems.filter(function(item) { return item.done; }).length, progressItems.length);
             const missing = [];
 
             if (!niche) { missing.push('niche'); }
