@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Study: Scaling Pet Supplies with Profit-Driven Google Ads | Iaroslav Zhakun</title>
-    <meta name="description" content="Technical breakdown of how we restructured a Pet Supplies e-commerce Google Ads account to stop budget waste and achieve 800-1200% ROAS.">
+    <title>Case Study: Finding the Google Ads Scaling Ceiling for a Pet Supplies Store in Ukraine | Iaroslav Zhakun</title>
+    <meta name="description" content="Google Ads case study for a Ukrainian pet supplies e-commerce store: 2,500 SKUs, 6 months of work, demand isolation, feed optimization, €4.35 CPA and 800-1200% ROAS.">
     <meta name="robots" content="index, follow">
     
     <!-- Fonts -->
@@ -106,6 +106,10 @@
             margin: 32px 0 0 0;
             font-style: italic;
         }
+        .context-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 44px 0 0; }
+        .context-item { background: #fff; border: 1px solid rgba(0,0,0,0.12); padding: 18px 20px; }
+        .context-label { display: block; font-family: var(--font-sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+        .context-value { display: block; font-family: var(--font-serif); font-size: 1.12rem; font-weight: 700; line-height: 1.35; color: var(--text-dark); }
 
         /* Data Tables for LLMs & Executives */
         .editorial-table {
@@ -188,6 +192,12 @@
             top: 0;
             font-weight: bold;
         }
+        .insight-box { background: #fff; border-left: 4px solid var(--accent-brand); padding: 28px 32px; margin: 48px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
+        .insight-box h3 { font-family: var(--font-serif); font-size: 1.55rem; margin: 0 0 12px; }
+        .insight-box p { margin-bottom: 0; }
+        .learning-list { margin: 20px 0 0; padding: 0; list-style: none; counter-reset: learning; }
+        .learning-list li { font-family: var(--font-sans); color: #333; padding: 14px 0 14px 28px; border-top: 1px solid rgba(0,0,0,0.12); position: relative; }
+        .learning-list li::before { content: "0" counter(learning); counter-increment: learning; position: absolute; left: 0; top: 14px; color: var(--accent-brand); font-weight: 700; font-size: 0.78rem; }
 
         /* Call To Action */
         .report-cta {
@@ -206,6 +216,7 @@
 
         @media (max-width: 768px) {
             .report-title { font-size: 2.5rem; }
+            .context-grid { grid-template-columns: 1fr; }
             .editorial-table th, .editorial-table td { padding: 16px 8px; font-size: 1rem; }
             .editorial-table th { width: 35%; }
             .report-nav { padding: 16px 0; }
@@ -229,11 +240,38 @@
         <!-- Header -->
         <header class="report-header">
             <span class="report-category">E-commerce Scaling</span>
-            <h1 class="report-title">Stopping the Budget Bleed: How to Structure Pet Supplies Ads for Predictable ROAS.</h1>
+            <h1 class="report-title">Finding the Google Ads Scaling Ceiling for a Pet Supplies Store in Ukraine.</h1>
             
             <!-- AI Summary Block (GEO Strategy) -->
             <div class="ai-summary">
-                <strong>Executive Summary:</strong> The client was spending heavily across dozens of misconfigured campaigns, resulting in unscalable costs. We implemented a strictly fenced account architecture—separating Brand Search, Category Shopping, and Incremental PMax—which dropped the CPA to €4.35 and stabilized ROAS at 800–1200%.
+                <strong>Executive Summary:</strong> A Ukrainian pet supplies e-commerce store with roughly 2,500 SKUs already had demand, but scaling Google Ads was not just a budget problem. As reach expanded, demand quality started to drop, while Search, Shopping, PMax and returning customers blurred together. Over 6 months, I rebuilt the account around product prioritization, demand isolation, feed work, promotions and repeated audience touchpoints. Result: average CPA stabilized at €4.35, ROAS held in the 800–1200% range, and the account tracked 34,923 conversions during the analyzed period.
+            </div>
+
+            <div class="context-grid">
+                <div class="context-item">
+                    <span class="context-label">Market</span>
+                    <span class="context-value">Ukraine</span>
+                </div>
+                <div class="context-item">
+                    <span class="context-label">Catalog</span>
+                    <span class="context-value">Approx. 2,500 SKUs</span>
+                </div>
+                <div class="context-item">
+                    <span class="context-label">Work Period</span>
+                    <span class="context-value">6 months</span>
+                </div>
+                <div class="context-item">
+                    <span class="context-label">Channel Mix</span>
+                    <span class="context-value">Google Ads: PMax, Shopping, DSA</span>
+                </div>
+                <div class="context-item">
+                    <span class="context-label">Core Challenge</span>
+                    <span class="context-value">Find the best reach ceiling without weakening unit economics</span>
+                </div>
+                <div class="context-item">
+                    <span class="context-label">Measurement Source</span>
+                    <span class="context-value">Google Ads / GA4 conversion data</span>
+                </div>
             </div>
         </header>
 
@@ -242,11 +280,11 @@
             <tbody>
                 <tr>
                     <th>The Problem</th>
-                    <td>Budget spread randomly across overlapping campaigns. Flying blind on actual profit margins.</td>
+                    <td>When reach expanded, orders did not grow proportionally. Demand quality dropped and campaigns began to cannibalize each other.</td>
                 </tr>
                 <tr>
                     <th>The Solution</th>
-                    <td>"One Campaign = One Job" Architecture (Dogs vs Cats clusters, strict PMax fencing).</td>
+                    <td>Product prioritization, demand isolation, returning customer exclusions, feed optimization, and a focus on PMax, Shopping and DSA.</td>
                 </tr>
                 <tr>
                     <th>Total Conversions</th>
@@ -265,34 +303,58 @@
 
         <!-- Body Editorial -->
         <div class="report-body">
-            <h2>The "Black Box" Problem</h2>
-            <p>For an e-commerce store with thousands of SKUs (like Pet Supplies), the default Google Ads setup often becomes a financial black box. The client had dozens of campaigns running simultaneously. Budget was being spent at scale, but nobody could definitively explain which specific campaigns were generating profit, and which were quietly cannibalizing the budget.</p>
-            <p>They were trapped in a cycle of "spending money to make money" without knowing the actual levers of their growth.</p>
+            <h2>The Problem: Scaling Hit Demand Quality, Not Just Budget</h2>
+            <p>At the start, the account did not suffer from a lack of demand. The harder problem was that increasing reach pushed the system into broader audiences, and that did not create proportional order growth. Some traffic became less qualified, and the economics became less stable.</p>
+            <p>Search, Shopping and Performance Max were also able to overlap. Search helped collect initial demand at the beginning, but over time it started to cannibalize demand together with Shopping and PMax. The solution was not to simply increase spend, but to understand where new demand came from, where repeated touchpoints mattered, where returning customers should be excluded, and where ads were taking credit for sales that were already likely to happen.</p>
 
-            <h2>The Technical Intervention</h2>
-            <p>We tore down the convoluted setup and restructured the account from scratch around a fundamental principle of performance marketing: <strong>Every campaign must have one specific job.</strong></p>
+            <div class="insight-box">
+                <h3>Key Insight</h3>
+                <p>We did not chase maximum reach. After several iterations, it became clear that the best result came from an optimal working point: controlled reach, correct product priorities, returning customer exclusions and demand support through repeated audience touchpoints.</p>
+            </div>
+
+            <h2>What Changed</h2>
+            <p>The work lasted 6 months and was not one large switch. It was a sequence of iterations: first make demand easier to read, then separate returning customers and cannibalization, and only then scale the categories where the economics held up.</p>
             
             <!-- The Architecture Box (Technical Details) -->
             <div class="architecture-box">
-                <h3>The 3-Layer Fenced Architecture</h3>
-                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-bottom: 24px;">To stop campaigns from bidding against each other for the same users, we implemented strict negative keyword boundaries and audience signals.</p>
+                <h3>The New Working Model</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-bottom: 24px;">Instead of expanding in every direction, the account was rebuilt around clear roles: which campaigns collect ready demand, which support product categories, and which remind audiences about the brand and promotions.</p>
                 <ul>
-                    <li><strong>Layer 1: High-Intent Search.</strong> Captured users specifically searching for brand names or exact product matches. Ready to buy.</li>
-                    <li><strong>Layer 2: Segmented Shopping.</strong> Handled broad catalog visibility. We split "Dogs" and "Cats" into separate clusters so budget could follow real market demand, rather than being averaged across the whole assortment.</li>
-                    <li><strong>Layer 3: Fenced Performance Max.</strong> Tasked purely with incremental reach. PMax was strictly prevented from cannibalizing Brand terms, ensuring its reported ROAS was genuinely new revenue, not stolen credit.</li>
+                    <li><strong>Product prioritization.</strong> A catalog of roughly 2,500 SKUs was reviewed through demand, margin, promotion logic and scaling potential.</li>
+                    <li><strong>Demand isolation.</strong> Returning customers were excluded from part of the audiences to avoid mixing repeat purchases with new demand and overstating efficiency.</li>
+                    <li><strong>Shift from Search to product-led demand.</strong> Search was useful at the start, but after cannibalization became visible, it was removed from the active structure. The account focused on Performance Max, Shopping campaigns and DSA.</li>
+                    <li><strong>Feed and product card optimization.</strong> Product titles were rewritten around search intent so the system could better match products to relevant queries.</li>
+                    <li><strong>Promotions, banners and video.</strong> New static banners, video creatives and promo campaigns were launched to support category demand and keep reminding audiences about the brand.</li>
+                    <li><strong>Trust signals on product cards.</strong> Product reviews were added to improve ratings and make product cards more convincing before purchase.</li>
                 </ul>
             </div>
 
-            <h2>The Outcome: Scalability</h2>
-            <p>Once each layer of the account knew its specific role—and couldn't overlap with the others—optimization became mathematical rather than emotional. ROAS stabilized within the target 800-1200% range, and the Average CPA dropped to just €4.35.</p>
-            <p>More importantly, the business owner regained control. When scaling is required, they now know exactly which lever to pull without risking the bottom line.</p>
+            <h2>Demand Creation and Demand Support</h2>
+            <p>A separate part of the work was not about immediate sales, but about a longer cycle of reminding the audience. Static banners, video, promotions and repeated touchpoints helped support interest in categories that are not always purchased after the first interaction.</p>
+            <p>As a result, Google Ads stopped being only a tool for harvesting existing demand. It became a system with several roles: product prioritization, demand support, remarketing, cannibalization control and product feed improvement.</p>
+
+            <h2>The Outcome: Not Maximum Reach, but a Better Working Model</h2>
+            <p>After several iterations, it became clear that uncontrolled reach expansion was not the best path. The best result came from a balanced model: priority products, cleaner demand, returning customer exclusions, audience support through promos and creatives, and control over where campaigns started to cannibalize each other.</p>
+            <p>In this model, average CPA stabilized at €4.35, ROAS held in the 800–1200% range, and the account tracked 34,923 conversions during the analyzed period.</p>
+            <p>The main result was not only the final metrics. The business gained a clearer answer to which categories could be scaled, where demand needed support, and where expanding the audience started to damage the economics.</p>
+
+            <div class="insight-box">
+                <h3>What We Learned</h3>
+                <p>This stage mattered not only because of the final metrics, but because it clarified the scaling ceiling and the role of new tools in the niche.</p>
+                <ul class="learning-list">
+                    <li><strong>Every niche has a scaling ceiling.</strong> More reach does not always mean more qualified orders. After a certain point, broader audiences can make the economics worse.</li>
+                    <li><strong>The first question is whether demand already exists.</strong> If demand exists, the first job is to collect it correctly, separate it, and avoid mixing it with repeat purchases or branded touchpoints.</li>
+                    <li><strong>When ready demand is exhausted, demand has to be created.</strong> This is why promotions, video, banners, repeated touchpoints and product card improvements became part of the system, not decoration.</li>
+                    <li><strong>Steady growth needs planning.</strong> Scaling has to be tied to budgeting, product priorities, feed control, audience logic and iterative testing, not just higher daily spend.</li>
+                </ul>
+            </div>
         </div>
 
         <!-- Footer CTA -->
         <section class="report-cta">
-            <h2>Experiencing ad spend cannibalization?</h2>
-            <p style="font-family: var(--font-sans); font-size: 1.1rem; color: #555; margin-bottom: 32px;">Let's audit your account architecture. If your campaigns are overlapping, you're paying Google twice for the same click.</p>
-            <a href="https://t.me/Yaroslav797" target="_blank" class="btn-text case-cta" style="font-size: 1.1rem; border-bottom: 1px solid #000; padding-bottom: 4px;">Request a Technical Audit <span>&rarr;</span></a>
+            <h2>Is your Google Ads account scaling or just expanding reach?</h2>
+            <p style="font-family: var(--font-sans); font-size: 1.1rem; color: #555; margin-bottom: 32px;">If orders do not grow proportionally when budget increases, the issue may be campaign structure, feed quality, audience logic or cannibalization. The first step is auditing the working model of the account.</p>
+            <a href="https://t.me/Yaroslav797" target="_blank" class="btn-text case-cta" style="font-size: 1.1rem; border-bottom: 1px solid #000; padding-bottom: 4px;">Request a Google Ads Audit <span>&rarr;</span></a>
         </section>
 
     </article>
