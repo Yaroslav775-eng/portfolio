@@ -54,6 +54,10 @@
         .insight-box { background: #fff; border-left: 4px solid var(--accent-brand); padding: 28px 32px; margin: 48px 0; box-shadow: 0 10px 30px rgba(18,20,29,0.06); }
         .insight-box h3 { font-family: var(--font-serif); font-size: 1.55rem; margin: 0 0 12px; }
         .insight-box p { margin-bottom: 0; }
+        .learning-list { margin: 20px 0 0; padding: 0; list-style: none; }
+        .learning-list li { font-family: var(--font-sans); color: #333; padding: 14px 0 14px 28px; border-top: 1px solid var(--accent-muted); position: relative; }
+        .learning-list li::before { content: "0" counter(learning); counter-increment: learning; position: absolute; left: 0; top: 14px; color: var(--accent-brand); font-weight: 700; font-size: 0.78rem; }
+        .learning-list { counter-reset: learning; }
         .report-cta { margin-top: 80px; padding: 60px 40px; background-color: #f4f4f4; text-align: center; border: 1px solid #ddd; }
         .report-cta h2 { font-family: var(--font-serif); font-size: 2.25rem; margin-bottom: 16px; margin-top: 0; }
 
@@ -169,6 +173,17 @@
             <p>Після кількох ітерацій стало зрозуміло, що безконтрольне розширення охоплення не є найкращим шляхом. Найкращий результат дала збалансована модель: пріоритетні товари, чистіший попит, відсічення постійних клієнтів, підтримка аудиторії промо і креативами та контроль того, де кампанії починають канібалізувати одна одну.</p>
             <p>У цій моделі середній CPA стабілізувався на рівні €4.35, ROAS утримувався в діапазоні 800–1200%, а загальна кількість відстежених конверсій за період склала 34,923.</p>
             <p>Головний результат був не лише в цифрах. Бізнес отримав зрозумілу відповідь: які категорії можна масштабувати, де потрібно підтримувати попит, а де розширення аудиторії вже шкодить економіці.</p>
+
+            <div class="insight-box">
+                <h3>Висновки, які ми зробили для себе</h3>
+                <p>Цей етап був важливим не лише через фінальні метрики, а й через розуміння межі масштабування та ролі нових інструментів у ніші.</p>
+                <ul class="learning-list">
+                    <li><strong>У кожної ніші є поріг масштабування.</strong> Більше охоплення не завжди означає більше якісних замовлень. Після певної межі ширші аудиторії можуть погіршувати економіку.</li>
+                    <li><strong>Починати потрібно з відповіді на питання: чи є попит.</strong> Якщо попит уже існує, перше завдання — правильно його зібрати, розділити і не змішувати з повторними покупками та брендовими касаннями.</li>
+                    <li><strong>Коли ніша впирається в готовий попит, його потрібно формувати.</strong> Саме тому промо, відео, банери, повторні касання і робота з товарними картками стали частиною системи, а не декоративним додатком.</li>
+                    <li><strong>Поступальний результат потребує планування.</strong> Масштабування має спиратися на бюджетування, пріоритети товарів, контроль фіда, розуміння аудиторій і послідовні ітерації, а не на просте збільшення денного бюджету.</li>
+                </ul>
+            </div>
         </div>
 
         <section class="report-cta">
