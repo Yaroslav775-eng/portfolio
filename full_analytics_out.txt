@@ -1,0 +1,244 @@
+﻿Using property: properties/532831299
+{
+  "by_device": [
+    {
+      "device": "desktop",
+      "users": "14",
+      "sessions": "81",
+      "bounce_pct": 32.1
+    },
+    {
+      "device": "mobile",
+      "users": "2",
+      "sessions": "3",
+      "bounce_pct": 0.0
+    }
+  ],
+  "by_hour": [
+    {
+      "hour": 7,
+      "users": 4,
+      "sessions": 4
+    },
+    {
+      "hour": 8,
+      "users": 4,
+      "sessions": 7
+    },
+    {
+      "hour": 9,
+      "users": 3,
+      "sessions": 6
+    },
+    {
+      "hour": 10,
+      "users": 5,
+      "sessions": 9
+    },
+    {
+      "hour": 11,
+      "users": 6,
+      "sessions": 10
+    },
+    {
+      "hour": 12,
+      "users": 7,
+      "sessions": 11
+    },
+    {
+      "hour": 13,
+      "users": 6,
+      "sessions": 8
+    },
+    {
+      "hour": 14,
+      "users": 8,
+      "sessions": 10
+    },
+    {
+      "hour": 15,
+      "users": 5,
+      "sessions": 8
+    },
+    {
+      "hour": 16,
+      "users": 3,
+      "sessions": 3
+    },
+    {
+      "hour": 17,
+      "users": 4,
+      "sessions": 4
+    },
+    {
+      "hour": 18,
+      "users": 1,
+      "sessions": 1
+    },
+    {
+      "hour": 19,
+      "users": 2,
+      "sessions": 5
+    },
+    {
+      "hour": 20,
+      "users": 2,
+      "sessions": 2
+    },
+    {
+      "hour": 21,
+      "users": 1,
+      "sessions": 2
+    },
+    {
+      "hour": 22,
+      "users": 3,
+      "sessions": 4
+    }
+  ],
+  "by_country": [
+    {
+      "country": "Greece",
+      "users": 9,
+      "sessions": 76
+    },
+    {
+      "country": "Netherlands",
+      "users": 3,
+      "sessions": 3
+    },
+    {
+      "country": "Ukraine",
+      "users": 3,
+      "sessions": 4
+    },
+    {
+      "country": "Spain",
+      "users": 1,
+      "sessions": 1
+    }
+  ],
+  "events": [
+    {
+      "event": "page_view",
+      "count": 337
+    },
+    {
+      "event": "scroll_depth",
+      "count": 270
+    },
+    {
+      "event": "user_engagement",
+      "count": 206
+    },
+    {
+      "event": "session_start",
+      "count": 84
+    },
+    {
+      "event": "language_switch",
+      "count": 69
+    },
+    {
+      "event": "scroll",
+      "count": 41
+    },
+    {
+      "event": "switch_calc_model",
+      "count": 13
+    },
+    {
+      "event": "click",
+      "count": 12
+    },
+    {
+      "event": "cta_click",
+      "count": 10
+    },
+    {
+      "event": "open_calculator",
+      "count": 10
+    },
+    {
+      "event": "first_visit",
+      "count": 9
+    },
+    {
+      "event": "case_study_open",
+      "count": 6
+    },
+    {
+      "event": "submit_brief_success",
+      "count": 1
+    }
+  ],
+  "by_source": [
+    {
+      "source": "(direct)",
+      "medium": "(none)",
+      "users": 15,
+      "sessions": 74,
+      "avg_duration_s": 489.4
+    },
+    {
+      "source": "(not set)",
+      "medium": "(not set)",
+      "users": 3,
+      "sessions": 3,
+      "avg_duration_s": 100.9
+    },
+    {
+      "source": "mail.google.com",
+      "medium": "referral",
+      "users": 1,
+      "sessions": 3,
+      "avg_duration_s": 542.9
+    },
+    {
+      "source": "ntp.msn.com",
+      "medium": "referral",
+      "users": 1,
+      "sessions": 2,
+      "avg_duration_s": 4.2
+    },
+    {
+      "source": "robota.ua",
+      "medium": "referral",
+      "users": 1,
+      "sessions": 5,
+      "avg_duration_s": 410.8
+    }
+  ],
+  "by_day": [
+    {
+      "day_num": 1,
+      "day": "╨Т╤В",
+      "users": 1,
+      "sessions": 1
+    },
+    {
+      "day_num": 2,
+      "day": "╨б╤А",
+      "users": 12,
+      "sessions": 28
+    },
+    {
+      "day_num": 3,
+      "day": "╨з╤В",
+      "users": 15,
+      "sessions": 42
+    },
+    {
+      "day_num": 4,
+      "day": "╨Я╤В",
+      "users": 9,
+      "sessions": 32
+    },
+    {
+      "day_num": 5,
+      "day": "╨б╨▒",
+      "users": 5,
+      "sessions": 18
+    }
+  ]
+}

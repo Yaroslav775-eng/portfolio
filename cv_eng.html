@@ -224,6 +224,28 @@
             padding: 24px;
             margin-bottom: 40px;
         }
+
+        .btn-pdf {
+            display: inline-block;
+            background: var(--accent-brand);
+            color: #fff !important;
+            padding: 12px 24px;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            margin-top: 24px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-pdf:hover { background: #000; }
+
+        .skills-section { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 20px; }
+        .skill-group h3 { font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; color: var(--accent-brand); margin-bottom: 12px; letter-spacing: 0.1em; border-bottom: 1px solid #eee; padding-bottom: 4px; }
+        .skill-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-tag { background: #f9f9f9; border: 1px solid #eee; padding: 4px 10px; font-size: 0.85rem; font-family: var(--font-sans); font-weight: 500; }
     </style>
 </head>
 <body>
@@ -239,6 +261,9 @@
                  <span>+30 697 439 58 95 (Athens)</span>
                  <a href="https://www.linkedin.com/in/iaroslav-zhakun-399550271/" target="_blank" id="cv-linkedin-link" onclick="gtag('event','cv_linkedin_click',{cv_language:'en',link_url:'linkedin.com/in/iaroslav-zhakun'})">LinkedIn Profile</a>
                  <a href="https://yaroslav775-eng.github.io/portfolio/" class="no-print" id="cv-portfolio-link" onclick="gtag('event','cv_portfolio_click',{cv_language:'en'})">Portfolio Website</a>
+            </div>
+            <div class="no-print">
+                 <a href="#" class="btn-pdf" onclick="gtag('event', 'cv_download_pdf', { cv_language: 'en' }); window.print(); return false;">Save as PDF / Print &darr;</a>
             </div>
         </header>
 
@@ -359,11 +384,39 @@
         </section>
 
         <section>
+            <h2>Technical Expertise & Skills</h2>
+            <div class="skills-section">
+                <div class="skill-group">
+                    <h3>Core Advertising Tools</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Google Ads Specialist</span>
+                        <span class="skill-tag">Performance Max</span>
+                        <span class="skill-tag">Google Shopping</span>
+                        <span class="skill-tag">Merchant Center</span>
+                        <span class="skill-tag">Search & Display</span>
+                        <span class="skill-tag">YouTube Ads</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3>Analytics & Data Stack</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">GA4 (Advanced)</span>
+                        <span class="skill-tag">GTM (Server-side)</span>
+                        <span class="skill-tag">Looker Studio</span>
+                        <span class="skill-tag">SQL (Basic)</span>
+                        <span class="skill-tag">Python for Ads</span>
+                        <span class="skill-tag">CRM Integration</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
             <h2>Languages</h2>
             <div class="skills-grid">
                 <div class="skill-item"><strong>Ukrainian:</strong> Fluent (Native)</div>
                 <div class="skill-item"><strong>Russian:</strong> Fluent</div>
-                <div class="skill-item"><strong>English:</strong> Intermediate (Technical reading/writing proficient; Spoken comms via AI-enhanced tools)</div>
+                <div class="skill-item"><strong>English:</strong> Intermediate (Technical reading/writing proficient)</div>
             </div>
         </section>
 
