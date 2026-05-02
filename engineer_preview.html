@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineer Protocol Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Linear/Vercel Dark Theme Aesthetic */
+            --bg-base: #000000;
+            --bg-panel: #0A0A0A;
+            --bg-hover: #141414;
+            --border-subtle: #222222;
+            --text-primary: #EDEDED;
+            --text-secondary: #888888;
+            --accent-glow: rgba(217, 26, 26, 0.15); /* Subtle red glow */
+            --accent-brand: #D91A1A;
+            
+            --font-sans: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* GRID BACKGROUND / BLUEPRINT EFFECT */
+        .bg-grid {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: 
+                linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.3;
+            z-index: -1;
+            mask-image: radial-gradient(ellipse at top, black 20%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at top, black 20%, transparent 70%);
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 40px; }
+
+        /* HEADER / TERMINAL FEEL */
+        .top-bar {
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            backdrop-filter: blur(10px);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .status-dot { display: inline-block; width: 8px; height: 8px; background: #00E676; border-radius: 50%; margin-right: 8px; box-shadow: 0 0 8px #00E676; }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 120px 0 80px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .sys-label {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent-brand);
+            margin-bottom: 24px;
+            display: inline-block;
+            border: 1px solid rgba(217, 26, 26, 0.3);
+            padding: 4px 12px;
+            border-radius: 4px;
+            background: var(--accent-glow);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        /* DATA DASHBOARD GRID */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px; /* create 1px borders via background */
+            background: var(--border-subtle);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .dash-card {
+            background: var(--bg-panel);
+            padding: 24px;
+            transition: background 0.2s;
+        }
+        .dash-card:hover { background: var(--bg-hover); }
+
+        .dash-value { font-family: var(--font-mono); font-size: 2rem; color: var(--text-primary); margin-bottom: 4px; }
+        .dash-label { font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+
+        /* MARQUEE (Cleaned up) */
+        .marquee-wrapper {
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 15px 0; overflow: hidden; white-space: nowrap;
+            background: var(--bg-panel);
+        }
+        .marquee-track {
+            display: inline-flex; align-items: center; gap: 60px;
+            animation: marquee 20s linear infinite;
+        }
+        .marquee-item {
+            font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .marquee-item::before { content: '>'; color: var(--accent-brand); font-weight: bold; }
+        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* CASES (ARCHITECTURE LOGS) */
+        .cases-section { padding: 80px 0; }
+        .section-header { font-family: var(--font-mono); font-size: 1rem; color: var(--text-secondary); margin-bottom: 40px; border-bottom: 1px dashed var(--border-subtle); padding-bottom: 16px; }
+
+        .log-entry {
+            display: grid;
+            grid-template-columns: 200px 1fr 150px;
+            gap: 24px;
+            padding: 32px 0;
+            border-bottom: 1px solid var(--border-subtle);
+            transition: opacity 0.2s;
+        }
+        .log-entry:hover { opacity: 0.8; cursor: pointer; }
+
+        .log-meta { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary); }
+        .log-meta span { display: block; margin-bottom: 8px; }
+        
+        .log-title { font-size: 1.25rem; font-weight: 500; margin-bottom: 12px; }
+        .log-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.5; }
+
+        .log-result { text-align: right; font-family: var(--font-mono); }
+        .result-val { font-size: 1.5rem; color: #00E676; margin-bottom: 4px; }
+        .result-lbl { font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; }
+
+        @media (max-width: 768px) {
+            .dashboard-grid { grid-template-columns: 1fr; }
+            .log-entry { grid-template-columns: 1fr; gap: 16px; padding: 24px 0; }
+            .log-result { text-align: left; margin-top: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-grid"></div>
+
+    <div class="top-bar">
+        <div><span class="status-dot"></span> SYSTEM_ONLINE // IAROSLAV.ZHAKUN</div>
+        <div>v2.0.4 [STABLE]</div>
+    </div>
+
+    <div class="container">
+        <!-- HERO -->
+        <header class="hero">
+            <div class="sys-label">[ MODULE: ARCHITECT ]</div>
+            <h1>I build Google Ads systems<br>that deliver predictable revenue.</h1>
+            <p>No creative fluff. Just logical account structures, clean data pipelines, and isolated demand layers for e-commerce and B2B.</p>
+            
+            <div class="dashboard-grid">
+                <div class="dash-card">
+                    <div class="dash-value">>10</div>
+                    <div class="dash-label">Years Exp</div>
+                </div>
+                <div class="dash-card">
+                    <div class="dash-value">80+</div>
+                    <div class="dash-label">Deployments</div>
+                </div>
+                <div class="dash-card">
+                    <div class="dash-value">$50k</div>
+                    <div class="dash-label">Max ARR / Mo</div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- MARQUEE -->
+    <div class="marquee-wrapper">
+        <div class="marquee-track">
+            <span class="marquee-item">Google Ads API</span>
+            <span class="marquee-item">GA4 Server-Side</span>
+            <span class="marquee-item">Merchant Center Next</span>
+            <span class="marquee-item">Looker Studio SQL</span>
+            <!-- Duplicates -->
+            <span class="marquee-item">Google Ads API</span>
+            <span class="marquee-item">GA4 Server-Side</span>
+            <span class="marquee-item">Merchant Center Next</span>
+            <span class="marquee-item">Looker Studio SQL</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- CASES AS LOGS -->
+        <section class="cases-section">
+            <div class="section-header">// EXECUTION_LOGS.md</div>
+
+            <div class="log-entry">
+                <div class="log-meta">
+                    <span style="color: var(--text-primary);">TARGET: E-COMMERCE</span>
+                    <span>SECTOR: PET SUPPLIES</span>
+                    <span>TASK: SCALING</span>
+                </div>
+                <div>
+                    <h3 class="log-title">Finding the PMax Scaling Ceiling</h3>
+                    <p class="log-desc">Rebuilt the account architecture. Isolated Search, Shopping, and Performance Max into strict demand layers. Prevented budget bleed and stabilized ROI during high-spend periods.</p>
+                </div>
+                <div class="log-result">
+                    <div class="result-val">+1200%</div>
+                    <div class="result-lbl">PEAK ROAS</div>
+                </div>
+            </div>
+
+            <div class="log-entry">
+                <div class="log-meta">
+                    <span style="color: var(--text-primary);">TARGET: B2B LEAD GEN</span>
+                    <span>SECTOR: LOGISTICS</span>
+                    <span>TASK: COST REDUCTION</span>
+                </div>
+                <div>
+                    <h3 class="log-title">Cutting the Junk Search Terms</h3>
+                    <p class="log-desc">Transitioned from broad Match chaos to exact intent targeting. Implemented strict negative lists and offline conversion tracking to measure pipeline quality.</p>
+                </div>
+                <div class="log-result">
+                    <div class="result-val">€4.35</div>
+                    <div class="result-lbl">CPA</div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+</body>
+</html>

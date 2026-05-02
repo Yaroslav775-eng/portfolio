@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYT Style Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-paper: #FDFCF8;
+            --text-ink: #111111;
+            --text-muted: #555555;
+            --accent-red: #8B0000;
+            --font-serif: 'Frank Ruhl Libre', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-paper);
+            color: var(--text-ink);
+            font-family: var(--font-serif);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* Typography */
+        h1, h2, h3 { font-weight: 900; margin-top: 0; }
+        h1 { font-size: 4rem; line-height: 1.05; letter-spacing: -0.02em; border-bottom: 4px double var(--text-ink); padding-bottom: 24px; margin-bottom: 24px; }
+        .label { font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; color: var(--text-muted); }
+        
+        /* Grid Layout */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 2fr 1.2fr;
+            gap: 80px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid var(--text-ink);
+        }
+
+        /* Lead Article */
+        .lead-article p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: var(--text-ink);
+            max-width: 800px;
+        }
+        .byline {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 32px;
+            padding-top: 12px;
+            border-top: 1px solid var(--text-ink);
+        }
+
+        /* Financial Model (Sidebar) */
+        .sidebar {
+            border-left: 1px solid var(--text-ink);
+            padding-left: 40px;
+        }
+        .financial-model {
+            border: 1px solid var(--text-ink);
+            padding: 32px;
+            background: #fff;
+        }
+        .fm-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px dotted #ccc;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+        .fm-row.total {
+            border-bottom: none;
+            border-top: 2px solid var(--text-ink);
+            padding-top: 16px;
+            margin-bottom: 0;
+        }
+        .fm-label { font-family: var(--font-sans); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+        .fm-input { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 700; border: none; border-bottom: 1px dotted var(--text-ink); width: 80px; text-align: right; outline: none; }
+        .fm-value { font-size: 1.2rem; font-weight: 700; }
+        .fm-value.negative { color: var(--accent-red); font-size: 1.8rem; font-weight: 900; }
+
+        /* The Index (Cases) */
+        .index-section {
+            margin-top: 60px;
+        }
+        .index-title {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+        }
+        .ledger-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+        }
+        .ledger-table th {
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.75rem;
+            border-bottom: 2px solid var(--text-ink);
+            padding: 16px 8px;
+            color: var(--text-muted);
+        }
+        .ledger-table td {
+            padding: 24px 8px;
+            border-bottom: 1px solid #ddd;
+            vertical-align: top;
+        }
+        .ledger-table tr:hover td {
+            background: #fff;
+        }
+        .td-ticker { font-weight: 700; font-size: 1rem; }
+        .td-serif { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; }
+        .td-action a { color: var(--text-ink); text-decoration: none; font-weight: 700; border-bottom: 1px solid var(--text-ink); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+        
+        /* Application Form */
+        .form-section {
+            margin-top: 80px;
+            border-top: 4px double var(--text-ink);
+            padding-top: 60px;
+            max-width: 600px;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 24px;
+        }
+        .form-input-line {
+            border: none;
+            border-bottom: 2px dotted var(--text-ink);
+            background: transparent;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            padding: 4px;
+            flex-grow: 1;
+            margin-left: 24px;
+            outline: none;
+        }
+        .btn-submit {
+            background: var(--text-ink);
+            color: var(--bg-paper);
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            padding: 18px 36px;
+            border: none;
+            cursor: pointer;
+            margin-top: 24px;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .btn-submit:hover {
+            background: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- HERO SECTION -->
+    <div class="label" style="margin-bottom: 16px;">The Architecture Report</div>
+    <h1>Predictable Revenue Through Systematized Ads Architecture</h1>
+    
+    <div class="hero-grid">
+        <div class="lead-article">
+            <div class="byline">
+                <div class="label">Author<br><span style="color:var(--text-ink);">Iaroslav Zhakun</span></div>
+                <div class="label">Focus<br><span style="color:var(--text-ink);">E-Commerce Scaling</span></div>
+                <div class="label">Published<br><span style="color:var(--text-ink);">May 2026</span></div>
+            </div>
+            <p>I work exclusively with agencies and direct e-commerce clients. I do not provide standard "account management." I take an existing account, dismantle its inefficiencies, build a scalable system, and report purely in business metrics—not clicks or impressions.</p>
+            <p>The difference between a flat campaign and a tiered, intent-driven architecture is often hundreds of thousands of dollars in hidden, wasted spend.</p>
+        </div>
+
+        <div class="sidebar">
+            <div class="financial-model">
+                <div class="label" style="margin-bottom: 24px;">Financial Impact Model</div>
+                
+                <div class="fm-row">
+                    <span class="fm-label">Current Spend</span>
+                    <input type="text" class="fm-input" value="$10,000">
+                </div>
+                <div class="fm-row">
+                    <span class="fm-label">Current ROAS</span>
+                    <input type="text" class="fm-input" value="250%">
+                </div>
+                <div class="fm-row" style="border-bottom: none; margin-bottom: 24px;">
+                    <span class="fm-label">Target ROAS</span>
+                    <input type="text" class="fm-input" value="350%">
+                </div>
+
+                <div style="background: #F8F8F8; padding: 16px; border: 1px solid #E0E0E0;">
+                    <div class="fm-row" style="border-bottom: none; margin-bottom: 8px; padding-bottom: 0;">
+                        <span class="fm-label" style="color:var(--text-muted)">Current Rev.</span>
+                        <span class="fm-value" style="font-size:1rem;">$25,000</span>
+                    </div>
+                    <div class="fm-row" style="border-bottom: none; margin-bottom: 16px; padding-bottom: 0;">
+                        <span class="fm-label" style="color:var(--text-muted)">Target Rev.</span>
+                        <span class="fm-value" style="font-size:1rem;">$35,000</span>
+                    </div>
+                    
+                    <div class="fm-row total">
+                        <span class="fm-label">Lost Revenue<br><span style="font-size:0.65rem;color:var(--text-muted);">(Cost of Inaction)</span></span>
+                        <span class="fm-value negative">-$10,000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CASES INDEX -->
+    <div class="index-section">
+        <h2 class="index-title">Track Record Index</h2>
+        <table class="ledger-table">
+            <thead>
+                <tr>
+                    <th>Sector / Tag</th>
+                    <th>The Challenge</th>
+                    <th>Financial Outcome</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="td-ticker">BBQ Grills<br><span style="font-weight:400;color:#888;">[SCALE]</span></td>
+                    <td style="max-width:320px;">400+ SKUs in one flat campaign. Peak season budget wasted on low-margin accessories.</td>
+                    <td class="td-serif">679% ROAS<br><span style="font-size:0.8rem;font-family:var(--font-sans);font-weight:600;color:#555;">€13.7 CPA</span></td>
+                    <td class="td-action"><a href="#">Read Report</a></td>
+                </tr>
+                <tr>
+                    <td class="td-ticker">Logistics<br><span style="font-weight:400;color:#888;">[B2B]</span></td>
+                    <td style="max-width:320px;">High lead volume, catastrophic quality. Paying for B2C consumer traffic instead of corporate logistics.</td>
+                    <td class="td-serif">€11.5 CPL<br><span style="font-size:0.8rem;font-family:var(--font-sans);font-weight:600;color:#555;">1,090 Qualified Leads</span></td>
+                    <td class="td-action"><a href="#">Read Report</a></td>
+                </tr>
+                <tr>
+                    <td class="td-ticker">Electronics<br><span style="font-weight:400;color:#888;">[TECH]</span></td>
+                    <td style="max-width:320px;">Zero priority logic. PMax cannibalizing branded search. Margin collapse on high-ticket items.</td>
+                    <td class="td-serif">653% ROAS<br><span style="font-size:0.8rem;font-family:var(--font-sans);font-weight:600;color:#555;">€6.7 CPA</span></td>
+                    <td class="td-action"><a href="#">Read Report</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- FORM -->
+    <div class="form-section">
+        <h2 class="index-title">Application for Architecture Audit</h2>
+        <p style="margin-bottom: 40px; font-size: 1.1rem;">Please provide preliminary data for the initial feasibility assessment.</p>
+        
+        <div class="form-row">
+            <span class="label">Project URL</span>
+            <input type="text" class="form-input-line" value="https://">
+        </div>
+        <div class="form-row">
+            <span class="label">Current Mo. Spend</span>
+            <input type="text" class="form-input-line" placeholder="$">
+        </div>
+        <div class="form-row">
+            <span class="label">Primary Bottleneck</span>
+            <input type="text" class="form-input-line" placeholder="...">
+        </div>
+        
+        <button class="btn-submit">Submit for Review &rarr;</button>
+    </div>
+
+</div>
+
+</body>
+</html>

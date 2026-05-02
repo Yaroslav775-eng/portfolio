@@ -399,10 +399,27 @@
         .quiz-progress { font-size: 0.85rem; color: var(--text-gray); }
 
         /* Premium Layout Components */
-        .tool-strip { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--accent-muted); }
-        .tool-icon { display: flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; color: var(--text-dark); opacity: 0.7; transition: opacity 0.2s; }
+        .tool-strip { 
+            margin-top: 48px; 
+            padding-top: 32px; 
+            border-top: 1px solid var(--accent-muted); 
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+        .tool-strip-content {
+            display: inline-flex;
+            animation: marquee-rtl 25s linear infinite;
+        }
+        .tool-strip-content:hover { animation-play-state: paused; }
+        @keyframes marquee-rtl {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .tool-icon { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; color: var(--text-dark); opacity: 0.7; transition: opacity 0.2s; padding: 0 40px; }
         .tool-icon:hover { opacity: 1; }
-        .tool-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-brand); }
+        .tool-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-brand); flex-shrink: 0; }
 
         .compare-table { width: 100%; border-collapse: collapse; margin: 48px 0; border: 1px solid var(--text-dark); font-family: var(--font-sans); }
         .compare-table th { background: var(--bg-white); padding: 20px; text-align: left; border-bottom: 2px solid var(--text-dark); border-right: 1px solid #ddd; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.08em; font-weight: 700; }
@@ -603,11 +620,20 @@
             </div>
             
             <div class="tool-strip animate-fade delay-3">
-                <div class="tool-icon"><div class="tool-dot"></div>Google Ads</div>
-                <div class="tool-icon"><div class="tool-dot"></div>GA4 / GTM</div>
-                <div class="tool-icon"><div class="tool-dot"></div>Merchant Center</div>
-                <div class="tool-icon"><div class="tool-dot"></div>Looker Studio</div>
-                <div class="tool-icon"><div class="tool-dot"></div>Salesforce / CRM</div>
+                <div class="tool-strip-content">
+                    <!-- Set 1 -->
+                    <div class="tool-icon"><div class="tool-dot"></div>Google Ads</div>
+                    <div class="tool-icon"><div class="tool-dot"></div>GA4 / GTM</div>
+                    <div class="tool-icon"><div class="tool-dot"></div>Merchant Center</div>
+                    <div class="tool-icon"><div class="tool-dot"></div>Looker Studio</div>
+                    <div class="tool-icon"><div class="tool-dot"></div>Salesforce / CRM</div>
+                    <!-- Set 2 (for seamless looping left-to-right) -->
+                    <div class="tool-icon"><div class="tool-dot"></div>Google Ads</div>
+                    <div class="tool-icon"><div class="tool-dot"></div>GA4 / GTM</div>
+                    <div class="tool-icon"><div class="tool-dot"></div>Merchant Center</div>
+                    <div class="tool-icon"><div class="tool-dot"></div>Looker Studio</div>
+                    <div class="tool-icon"><div class="tool-dot"></div>Salesforce / CRM</div>
+                </div>
             </div>
         </div>
     </header>
