@@ -353,50 +353,24 @@
         .modal-metric-val { font-size: 2rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; font-family: var(--font-heading);}
         .modal-metric-lbl { font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); letter-spacing: 0.05em;}
 
-        /* Quiz Styles */
-        .quiz-step { display: none; animation: fadeIn 0.3s ease; }
+        /* Editorial Quiz Specifics */
+        .editorial-input-group { margin-bottom: 20px; }
+        .editorial-input-group label { display: block; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 8px; }
+        .editorial-input-group input { width: 100%; border: none; border-bottom: 2px dotted var(--text-ink); background: transparent; font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; padding: 4px 0 8px; outline: none; color: var(--text-ink); border-radius: 0; transition: border-bottom-style 0.2s; }
+        .editorial-input-group input:focus { border-bottom-style: solid; }
+
+        .btn-editorial-primary { background: var(--text-ink); color: var(--bg-paper); font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; padding: 16px 24px; border: none; cursor: pointer; transition: background 0.2s; font-size: 0.85rem; width: 100%; }
+        .btn-editorial-primary:hover { background: var(--accent-red); }
+
+        .btn-editorial-secondary { background: transparent; color: var(--text-ink); border: 1px solid var(--text-ink); font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; padding: 16px 24px; cursor: pointer; transition: all 0.2s; font-size: 0.85rem; }
+        .btn-editorial-secondary:hover { background: #eee; }
+
+        .btn-editorial-select { background: #fff; border: 1px solid #ccc; padding: 24px; font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; cursor: pointer; transition: all 0.2s; text-align: center; color: var(--text-muted); }
+        .btn-editorial-select:hover { border-color: var(--text-ink); color: var(--text-ink); box-shadow: 4px 4px 0px rgba(0,0,0,0.1); }
+
+        .quiz-step { animation: fadeIn 0.3s ease-out; }
         .quiz-step.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .quiz-option { border: 1px solid var(--text-dark); padding: 16px 24px; margin-bottom: 12px; cursor: pointer; transition: all 0.2s; font-size: 1.1rem; display: flex; align-items: center; justify-content: space-between;}
-        .quiz-option:hover { background: var(--text-dark); color: #fff; }
-        .quiz-option.selected { background: var(--text-dark); color: #fff; border-color: #000; box-shadow: 4px 4px 0 #000;}
-        .quiz-input { width: 100%; border: 1px solid var(--accent-muted); border-bottom: 2px solid var(--text-dark); padding: 16px; font-size: 1.1rem; margin-bottom: 24px; outline: none; transition: border-color 0.2s;}
-        .quiz-input:focus { border-color: var(--accent-brand); }
-        .quiz-label { font-size: 0.9rem; text-transform: uppercase; color: var(--text-gray); margin-bottom: 8px; display: block; letter-spacing: 0.05em;}
-        .quiz-hint { font-size: 0.8rem; color: var(--text-gray); font-style: italic; margin-top: -16px; margin-bottom: 24px; display: block; }
-        .assistant-brief-card { border: 1px solid #000; padding: 18px; margin-bottom: 24px; background: #f9f9f9; }
-        .assistant-eyebrow { font-family: var(--font-sans); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-brand); margin-bottom: 8px; }
-        .assistant-brief-card p { font-size: 0.92rem; color: var(--text-dark); margin-bottom: 14px; line-height: 1.55; }
-        .assistant-chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
-        .assistant-chip-row + .assistant-chip-row { margin-top: 8px; }
-        .assistant-chip { border: 1px solid var(--text-dark); background: #fff; color: var(--text-dark); padding: 7px 10px; font-family: var(--font-sans); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; transition: all 0.15s ease; }
-        .assistant-chip:hover, .assistant-chip.active { background: var(--text-dark); color: #fff; }
-        .assistant-chat-row { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 14px; }
-        .assistant-input { display: none; }
-        .assistant-ask { border: 1px solid var(--text-dark); background: var(--text-dark); color: #fff; padding: 0 12px; font-family: var(--font-sans); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; min-height: 40px; }
-        .assistant-ask:disabled { opacity: 0.55; cursor: progress; }
-        .assistant-status { min-height: 16px; margin-top: 8px; font-size: 0.72rem; color: var(--text-gray); line-height: 1.35; }
-        .assistant-recommendation { border-left: 3px solid var(--accent-brand); padding: 14px 16px; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.78); font-size: 0.86rem; line-height: 1.5; margin-bottom: 18px; }
-        .assistant-recommendation strong { color: #fff; display: block; margin-bottom: 6px; }
-        .fit-progress { margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.10); }
-        .fit-progress-head { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 8px; color: rgba(255,255,255,0.62); font-family: var(--font-sans); font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
-        .fit-progress-bar { height: 6px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,0.13); margin-bottom: 12px; }
-        .fit-progress-fill { height: 100%; border-radius: 999px; background: var(--accent-brand); transition: width 0.2s ease; }
-        .fit-checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 12px; }
-        .fit-step { color: rgba(255,255,255,0.48); font-size: 0.78rem; line-height: 1.25; }
-        .fit-step.done { color: rgba(255,255,255,0.94); }
-        .fit-step::before { content: '○'; margin-right: 6px; color: rgba(255,255,255,0.36); }
-        .fit-step.done::before { content: '✓'; color: #4ade80; }
-        .advanced-fields { border: 1px solid #e5e5e5; margin: 8px 0 24px; padding: 0; background: #fafafa; }
-        .advanced-fields summary { cursor: pointer; padding: 14px 16px; font-family: var(--font-sans); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dark); list-style: none; }
-        .advanced-fields summary::-webkit-details-marker { display: none; }
-        .advanced-fields summary::after { content: '+'; float: right; font-size: 1rem; line-height: 1; }
-        .advanced-fields[open] summary::after { content: '-'; }
-        .advanced-fields-inner { padding: 0 16px 16px; }
-        .calc-input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
-        .calc-toggle-row { display: flex; gap: 8px; margin-bottom: 24px; background: #f0f0f0; padding: 4px; border-radius: 6px; }
-        .quiz-footer { margin-top: 32px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--accent-muted); padding-top: 24px;}
-        .quiz-progress { font-size: 0.85rem; color: var(--text-gray); }
 
         /* Premium Layout Components */
         .tool-strip { 
@@ -467,88 +441,16 @@
         @media (max-width: 768px) {
             #quizModal .modal-window {
                 width: calc(100vw - 24px) !important;
-                max-width: 680px !important;
                 margin: 12px auto !important;
-                padding: 0 !important;
-                overflow-x: hidden !important;
+                padding: 24px !important;
             }
             #quizModal.modal-overlay {
                 justify-content: center !important;
                 align-items: flex-start !important;
-                overflow-x: hidden !important;
-                padding-left: 0 !important;
-            }
-            .dashboard-grid {
-                display: flex !important;
-                flex-direction: column !important;
-                min-height: unset !important;
-            }
-            .dashboard-grid > div {
-                width: 100% !important;
-                padding: 24px 20px !important;
             }
             #quizModal .modal-close {
                 top: 10px !important;
                 right: 10px !important;
-            }
-            #quizModal .calc-input-row {
-                display: grid !important;
-                grid-template-columns: 1fr !important;
-                gap: 14px !important;
-            }
-            #quizModal .calc-toggle-row {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 6px !important;
-            }
-            #quizModal .quiz-input {
-                width: 100% !important;
-                max-width: 100% !important;
-                margin-bottom: 12px !important;
-                font-size: 1rem !important;
-            }
-            #quizModal .quiz-label,
-            #quizModal .quiz-hint,
-            #quizModal .assistant-recommendation,
-            #quizModal #calcAssumptions,
-            #quizModal #calcVerdictBox {
-                overflow-wrap: anywhere;
-            }
-            #quizModal .assistant-chip-row {
-                display: grid !important;
-                grid-template-columns: 1fr !important;
-            }
-            #quizModal .assistant-chip,
-            #quizModal .assistant-ask,
-            #quizModal .btn {
-                width: 100% !important;
-                min-width: 0 !important;
-                white-space: normal !important;
-                line-height: 1.25 !important;
-            }
-            #quizModal #btnModelLeadGen,
-            #quizModal #btnModelEcom {
-                padding: 11px 8px !important;
-                font-size: 0.72rem !important;
-            }
-            #quizModal #calcVerdictBox > div:last-child {
-                grid-template-columns: 1fr !important;
-            }
-            #quizModal #thankYouScreen {
-                padding: 40px 20px !important;
-                min-height: auto !important;
-            }
-            .assistant-chat-row { grid-template-columns: 1fr; }
-            .assistant-chip { flex: 1 1 auto; }
-        }
-        @media (max-width: 480px) {
-            #quizModal .modal-window {
-                max-width: 360px !important;
-                margin: 12px 0 !important;
-            }
-            #quizModal.modal-overlay {
-                justify-content: flex-start !important;
-                padding-left: 12px !important;
             }
         }
     </style>
@@ -1217,228 +1119,137 @@
         </div>
     </div>
 
-    <!-- QUIZ MODAL HTML (MAGIC DASHBOARD) -->
+    <!-- QUIZ MODAL HTML (MULTI-STEP EDITORIAL) -->
     <div class="modal-overlay" id="quizModal">
-        <div class="modal-window" style="max-width: 900px;"> <!-- Wider modal for 2 columns -->
-            <button class="modal-close" onclick="closeQuiz()">✕</button>
-            <div class="modal-content-area" id="quizContainer" style="padding: 0;">
+        <div class="modal-window" style="max-width: 600px; background: var(--bg-paper); border: 2px solid var(--text-ink); padding: 48px; border-radius: 0; box-shadow: 12px 12px 0px rgba(0,0,0,1);">
+            <button class="modal-close" onclick="closeQuiz()" style="background: var(--text-ink); color: var(--bg-paper);">✕</button>
+            <div class="modal-content-area" id="quizContainer">
                 
-                <div class="dashboard-grid" style="display: grid; grid-template-columns: 1fr 1fr; min-height: 500px;">
+                <!-- HEADER -->
+                <div class="quiz-header" style="border-bottom: 3px double var(--text-ink); padding-bottom: 16px; margin-bottom: 32px; text-align: center;">
+                    <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; color: var(--text-muted);">Financial Impact Audit</span>
+                    <h2 style="font-family: var(--font-serif); font-size: 2rem; font-weight: 900; margin: 8px 0 0; color: var(--text-ink);">Preliminary Assessment</h2>
+                </div>
+
+                <!-- STEP 1: Model Selection -->
+                <div class="quiz-step active" id="step1">
+                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 24px;">1. Select Business Model</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                        <button class="btn-editorial-select" onclick="setCalcModel('ecommerce'); nextQuizStep(2);">E-Commerce</button>
+                        <button class="btn-editorial-select" onclick="setCalcModel('leadgen'); nextQuizStep(2);">Lead Gen / B2B</button>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Context -->
+                <div class="quiz-step" id="step2" style="display: none;">
+                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 24px;">2. Market Context</h3>
                     
-                    <!-- LEFT COLUMN: SIMPLE INPUTS -->
-                    <div style="padding: 40px; background: #fff;">
-                        <span class="section-label" style="margin-bottom: 24px;">Strategic Sales Assessment</span>
-                        <h2 style="font-size: 1.8rem; margin-bottom: 8px;">Enter Basic Metrics</h2>
-                        <p style="color: var(--text-gray); margin-bottom: 32px; font-size: 0.95rem;">Fill out these fields to instantly reverse-engineer your required marketing funnel.</p>
-
-                        <div class="assistant-brief-card">
-                            <div class="assistant-eyebrow">PPC Fit Check</div>
-                            <p>Answer a few fields and get a quick PPC diagnosis before sending the brief.</p>
-                            <div class="assistant-chip-row" aria-label="Visitor role">
-                                <button type="button" class="assistant-chip active" data-field="persona" data-value="Business owner" onclick="setAssistantChoice(this)">Business Owner</button>
-                                <button type="button" class="assistant-chip" data-field="persona" data-value="Agency partner" onclick="setAssistantChoice(this)">Agency Partner</button>
-                                <button type="button" class="assistant-chip" data-field="persona" data-value="Hiring manager" onclick="setAssistantChoice(this)">Hiring Manager</button>
-                            </div>
-                            <div class="assistant-chip-row" aria-label="Request type">
-                                <button type="button" class="assistant-chip active" data-field="intent" data-value="Audit request" onclick="setAssistantChoice(this)">Audit</button>
-                                <button type="button" class="assistant-chip" data-field="intent" data-value="Hire specialist" onclick="setAssistantChoice(this)">Hire</button>
-                                <button type="button" class="assistant-chip" data-field="intent" data-value="Collaboration" onclick="setAssistantChoice(this)">Collaboration</button>
-                            </div>
-                        </div>
-
-                        <!-- Toggle Business Model -->
-                        <div class="calc-toggle-row">
-                            <button id="btnModelLeadGen" class="btn btn-ghost" style="flex:1; border:none; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.1);" onclick="setCalcModel('leadgen')">Lead Gen / B2B</button>
-                            <button id="btnModelEcom" class="btn btn-ghost" style="flex:1; border:none; color:var(--text-gray);" onclick="setCalcModel('ecommerce')">E-commerce</button>
-                        </div>
-
-                        <!-- Context Inputs (Niche, Region, Competitors) -->
-                        <div class="calc-input-row">
-                            <div class="quiz-input-group" style="margin-bottom: 0;">
-                                <label class="quiz-label">Niche / Product</label>
-                                <input type="text" id="calcNiche" class="quiz-input" placeholder="e.g. B2B SaaS / Services" oninput="runMagicCalc()" />
-                            </div>
-                            <div class="quiz-input-group" style="margin-bottom: 0;">
-                                <label class="quiz-label">Target Region</label>
-                                <input type="text" id="calcRegion" class="quiz-input" placeholder="e.g. USA / Global" oninput="runMagicCalc()" />
-                            </div>
-                        </div>
-
-                        <!-- Common Inputs -->
-                        <div class="quiz-input-group">
-                            <label class="quiz-label" id="lblTarget">Sales plan per month</label>
-                            <input type="number" id="calcTarget" class="quiz-input" placeholder="Example: 50" oninput="runMagicCalc()" />
-                        </div>
-
-                        <div class="advanced-fields">
-                            <div class="assistant-eyebrow" style="padding: 14px 16px 0; margin-bottom: 10px;">Performance inputs</div>
-                            <div class="advanced-fields-inner">
-                                <div class="quiz-input-group">
-                                    <label class="quiz-label" id="lblAOV">Average check ($)</label>
-                                    <input type="number" id="calcAOV" class="quiz-input" placeholder="Example: 500" oninput="runMagicCalc()" />
-                                </div>
-
-                                <div class="quiz-input-group" id="groupMargin">
-                                    <label class="quiz-label">Gross margin / trade markup (%)</label>
-                                    <input type="number" id="calcMargin" class="quiz-input" placeholder="Example: 30" oninput="runMagicCalc()" value="30" />
-                                    <span class="quiz-hint">Needed to understand how much room there is before ads eat the profit.</span>
-                                </div>
-
-                                <div class="quiz-input-group">
-                                    <label class="quiz-label">Max ad cost from average check (%)</label>
-                                    <input type="number" id="calcAdPct" class="quiz-input" placeholder="Example: 20" oninput="runMagicCalc()" value="20" />
-                                    <span class="quiz-hint" id="calcAdPctHint">This cannot be higher than gross margin. If it is higher, the model caps it by margin.</span>
-                                </div>
-
-                                <div class="quiz-input-group" style="margin-bottom: 0;">
-                                    <label class="quiz-label">Historical conversion to order/client (%)</label>
-                                    <input type="number" id="calcCloseRate" class="quiz-input" placeholder="Leave blank if unknown" oninput="runMagicCalc()" />
-                                    <span class="quiz-hint">If you do not know it, leave blank. I will use a benchmark.</span>
-                                </div>
-
-                                <div class="quiz-input-group" style="margin-bottom: 0;">
-                                    <label class="quiz-label">Main Competitors</label>
-                                    <input type="text" id="calcCompetitors" class="quiz-input" placeholder="Who do you want to beat?" oninput="runMagicCalc()" />
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #f0f0f0;">
-                            <p style="font-size: 0.75rem; color: var(--text-gray); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em;">Where should I send the short diagnosis?</p>
-                            <p style="font-size: 0.78rem; color: var(--text-gray); margin-bottom: 12px; line-height: 1.35;">Leave a phone or email if you want a manual check of the numbers and 1-2 next steps.</p>
-                            <div class="calc-input-row" style="margin-bottom: 0;">
-                                <div class="quiz-input-group" style="margin-bottom: 0;">
-                                    <label class="quiz-label">Your Name</label>
-                                    <input type="text" id="calcName" class="quiz-input" placeholder="What's your name?" oninput="updateAssistantRecommendation()" />
-                                </div>
-                                <div class="quiz-input-group" style="margin-bottom: 0;">
-                                    <label class="quiz-label">Phone or Email</label>
-                                    <input type="text" id="calcContact" class="quiz-input" placeholder="+1... / email" oninput="updateAssistantRecommendation()" />
-                                </div>
-                            </div>
-                        </div>
+                    <div class="editorial-input-group">
+                        <label>Primary Niche / Product</label>
+                        <input type="text" id="calcNiche" placeholder="e.g. B2B SaaS, Grill Equipment">
                     </div>
-
-                    <!-- RIGHT COLUMN: EXPERT OUTPUT -->
-                    <div style="padding: 40px; background: var(--bg-dark); color: #fff;">
-                        <h2 style="font-size: 1.4rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 16px; margin-bottom: 24px; color: #fff;">Quick PPC Diagnosis</h2>
-
-                        <div id="assistantRecommendation" class="assistant-recommendation">
-                            <strong>Diagnosis preview</strong>
-                            This is a preliminary benchmark estimate, not historical account data. Add your monthly sales plan, average check and ad-cost limit to see whether the plan looks possible.
-                        </div>
-
-                        <div class="assistant-chat-row">
-                            <input type="text" id="assistantQuestion" class="assistant-input" placeholder="" onkeydown="handleAssistantKey(event)" />
-                            <button type="button" id="assistantAskBtn" class="assistant-ask" onclick="askGptAssistant()">Explain risk and next step with AI</button>
-                        </div>
-                        <div id="assistantStatus" class="assistant-status" aria-live="polite"></div>
-
-                        <div id="calcEmptyState" style="text-align: center; padding: 40px 0; color: rgba(255,255,255,0.5);">
-                            <div style="font-size: 2rem; margin-bottom: 16px;">📊</div>
-                            <p>Add your monthly sales plan, average check and max ad-cost percentage to get a preliminary benchmark estimate.</p>
-                            <p style="font-size:0.78rem; line-height:1.45; margin-top:10px; color:rgba(255,255,255,0.42);">Clicks and budget are calculated from default assumptions. Historical CPC, CTR and conversion data would make the estimate more accurate.</p>
-                        </div>
-
-                        <div id="calcResultsBox" style="display: none;">
-                            <div id="calcAssumptions" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 14px 16px; border-radius: 6px; margin-bottom: 22px; font-size: 0.8rem; line-height: 1.45; color: rgba(255,255,255,0.68);"></div>
-
-                            <div id="calcVerdictBox" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); padding: 16px; border-radius: 6px; margin-bottom: 22px;">
-                                <div style="display:flex; justify-content:space-between; gap:14px; align-items:flex-start; margin-bottom:12px;">
-                                    <div>
-                                        <span style="display:block; font-size:0.72rem; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px;">Plan verdict</span>
-                                        <strong id="outVerdictTitle" style="display:block; font-size:1rem; color:#fff;">-</strong>
-                                    </div>
-                                    <span id="outVerdictBadge" style="font-size:0.72rem; font-weight:800; text-transform:uppercase; padding:5px 8px; border-radius:999px; background:rgba(255,255,255,0.08); color:#fff;">-</span>
-                                </div>
-                                <p id="outVerdictText" style="font-size:0.82rem; line-height:1.45; color:rgba(255,255,255,0.7); margin:0 0 12px;"></p>
-                                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:0.78rem;">
-                                    <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:9px;">
-                                        <span style="display:block; color:rgba(255,255,255,0.48);">Max CPC to keep economics</span>
-                                        <strong id="outMaxCpc" style="color:#fff;">-</strong>
-                                    </div>
-                                    <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:9px;">
-                                        <span id="outRequiredCrLabel" style="display:block; color:rgba(255,255,255,0.48);">Required conversion at current CPC</span>
-                                        <strong id="outRequiredCr" style="color:#fff;">-</strong>
-                                    </div>
-                                    <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:9px;">
-                                        <span style="display:block; color:rgba(255,255,255,0.48);">Margin buffer after ads</span>
-                                        <strong id="outMarginBuffer" style="color:#fff;">-</strong>
-                                    </div>
-                                    <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:9px;">
-                                        <span style="display:block; color:rgba(255,255,255,0.48);">Next check</span>
-                                        <strong id="outNextCheck" style="color:#fff;">-</strong>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
-                                <div>
-                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Estimated Traffic</span>
-                                    <span id="outClicks" style="display:block; font-size: 1.5rem; font-weight:bold; color: #fff;">-</span>
-                                </div>
-                                <div>
-                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Est. Impressions</span>
-                                    <span id="outImpressions" style="display:block; font-size: 1.5rem; font-weight:bold; color: #fff;">-</span>
-                                </div>
-                                <div id="divOutLeads">
-                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Required Leads</span>
-                                    <span id="outLeads" style="display:block; font-size: 1.5rem; font-weight:bold; color: #fff;">-</span>
-                                </div>
-                                <div>
-                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Sales Plan</span>
-                                    <span id="outSales" style="display:block; font-size: 1.5rem; font-weight:bold; color: var(--accent-brand);">0</span>
-                                </div>
-                                <div>
-                                    <span style="display:block; font-size: 0.8rem; color: rgba(255,255,255,0.6); text-transform:uppercase;">Est. Ad Budget</span>
-                                    <span id="outBudget" style="display:block; font-size: 1.5rem; font-weight:bold; color: #fff;">-</span>
-                                </div>
-                            </div>
-                            
-                            <div style="background: rgba(255,255,255,0.05); padding: 16px; border-radius: 6px; margin-bottom: 24px;">
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                                    <span style="color: rgba(255,255,255,0.7);">Estimated CPA / CAC:</span>
-                                    <span id="outCPA" style="font-weight: bold;">-</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                                    <span style="color: rgba(255,255,255,0.7);">Projected Revenue:</span>
-                                    <span id="outRev" style="font-weight: bold; color: #4ade80;">-</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between;">
-                                    <span style="color: rgba(255,255,255,0.7);">Estimated ROAS:</span>
-                                    <span id="outROAS" style="font-weight: bold;">-</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08);">
-                                    <span style="color: rgba(255,255,255,0.7);">Max CAC by margin/ad limit:</span>
-                                    <span id="outMaxCPA" style="font-weight: bold;">-</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; margin-top: 8px;">
-                                    <span style="color: rgba(255,255,255,0.7);">Economics:</span>
-                                    <span id="outGap" style="font-weight: bold;">-</span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <button id="magicSubmitBtn" onclick="sendMagicForm()" class="btn btn-primary" style="display: block; text-align: center; width: 100%; border: none; background: var(--accent-brand); cursor: pointer; margin-top: 18px;">Send my brief &rarr;</button>
+                    <div class="editorial-input-group">
+                        <label>Target Region</label>
+                        <input type="text" id="calcRegion" placeholder="e.g. USA, UK, Global">
+                    </div>
+                    
+                    <div style="display: flex; gap: 12px; margin-top: 24px;">
+                        <button class="btn-editorial-secondary" onclick="prevQuizStep(1)">&larr; Back</button>
+                        <button class="btn-editorial-primary" style="flex: 1;" onclick="nextQuizStep(3)">Continue &rarr;</button>
                     </div>
                 </div>
 
-                <!-- THANK YOU SCREEN -->
-                <div id="thankYouScreen" style="display:none; padding: 48px 48px; text-align: center; background: var(--bg-dark); color: #fff; min-height: 500px; flex-direction: column; justify-content: center; align-items: center;">
-                    <div style="font-size: 3.5rem; margin-bottom: 16px;">🎯</div>
-                    <h2 style="font-size: 1.9rem; color: #fff; margin-bottom: 12px;">Request Submitted!</h2>
-                    <p style="color: rgba(255,255,255,0.7); font-size: 1rem; max-width: 400px; margin: 0 auto 24px;">I've received your brief and will personally review the numbers. Expect a reply within 24 hours.</p>
-
-
-
-                    <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 16px 24px; margin-bottom: 24px; display: inline-block; text-align: left; max-width: 420px; width: 100%;">
-                        <p style="font-size: 0.75rem; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 8px;">What happens next</p>
-                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 6px;">✓&nbsp;&nbsp;Brief is in Yaroslav's inbox</p>
-                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 6px;">✓&nbsp;&nbsp;Funnel audit within 24 hours</p>
-                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">✓&nbsp;&nbsp;Custom strategy &amp; launch plan</p>
+                <!-- STEP 3: Economics -->
+                <div class="quiz-step" id="step3" style="display: none;">
+                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 24px;">3. Unit Economics</h3>
+                    
+                    <div class="editorial-input-group">
+                        <label>Current Monthly Spend</label>
+                        <input type="number" id="calcSpend" placeholder="$">
                     </div>
-                    <button onclick="closeQuiz()" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); padding: 8px 20px; cursor: pointer; border-radius: 4px; font-size: 0.9rem;">Close</button>
+                    
+                    <!-- ECOM FIELDS -->
+                    <div id="ecomFields" style="display: none;">
+                        <div class="editorial-input-group">
+                            <label>Current ROAS (%)</label>
+                            <input type="number" id="calcCurrentRoas" placeholder="e.g. 250">
+                        </div>
+                        <div class="editorial-input-group">
+                            <label>Target ROAS (%)</label>
+                            <input type="number" id="calcTargetRoas" placeholder="e.g. 350">
+                        </div>
+                    </div>
+
+                    <!-- LEAD GEN FIELDS -->
+                    <div id="leadGenFields" style="display: none;">
+                        <div class="editorial-input-group">
+                            <label>Current Cost Per Lead ($)</label>
+                            <input type="number" id="calcCurrentCpa" placeholder="$">
+                        </div>
+                        <div class="editorial-input-group">
+                            <label>Target Cost Per Lead ($)</label>
+                            <input type="number" id="calcTargetCpa" placeholder="$">
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 12px; margin-top: 24px;">
+                        <button class="btn-editorial-secondary" onclick="prevQuizStep(2)">&larr; Back</button>
+                        <button class="btn-editorial-primary" style="flex: 1;" onclick="nextQuizStep(4)">Continue &rarr;</button>
+                    </div>
                 </div>
+
+                <!-- STEP 4: Request Audit -->
+                <div class="quiz-step" id="step4" style="display: none;">
+                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 24px;">4. Final Verification</h3>
+                    <p style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; line-height: 1.5;">To generate the AI diagnosis and calculate the financial impact, please provide contact info for the detailed breakdown.</p>
+
+                    <div class="editorial-input-group">
+                        <label>Your Name</label>
+                        <input type="text" id="calcName" placeholder="...">
+                    </div>
+                    <div class="editorial-input-group">
+                        <label>Phone / Email</label>
+                        <input type="text" id="calcContact" placeholder="...">
+                    </div>
+
+                    <div style="display: flex; gap: 12px; margin-top: 24px;">
+                        <button class="btn-editorial-secondary" onclick="prevQuizStep(3)">&larr; Back</button>
+                        <button class="btn-editorial-primary" id="magicSubmitBtn" style="flex: 1;" onclick="submitEditorialQuiz()">Generate Report &rarr;</button>
+                    </div>
+                </div>
+
+                <!-- STEP 5: Results & GPT Diagnosis -->
+                <div class="quiz-step" id="step5" style="display: none;">
+                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 16px; text-align: center;">Audit Results</h3>
+                    
+                    <div style="border: 1px solid var(--text-ink); padding: 24px; background: #fff; margin-bottom: 24px;">
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span id="lblResCurrent" style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Current Output</span>
+                            <span id="resCurrent" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span id="lblResTarget" style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Target Output</span>
+                            <span id="resTarget" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row total" style="display: flex; justify-content: space-between; border-top: 2px solid var(--text-ink); padding-top: 12px;">
+                            <span id="lblResLoss" style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Cost of Inaction<br><span style="font-size: 0.65rem; color: var(--text-muted);">(Monthly Loss)</span></span>
+                            <span id="resLoss" style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 900; color: var(--accent-red);">-$0</span>
+                        </div>
+                    </div>
+
+                    <div style="border-top: 1px solid #ccc; padding-top: 24px;">
+                        <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin-bottom: 12px; display: block;">AI Diagnosis</span>
+                        <div id="assistantRecommendation" style="font-family: var(--font-serif); font-size: 1rem; line-height: 1.6; color: var(--text-ink);">
+                            <span style="color: var(--text-muted); font-style: italic;">Analyzing data...</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 32px; text-align: center;">
+                        <p style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--text-muted);">This brief has been sent to Iaroslav. You will be contacted within 24 hours.</p>
+                        <button class="btn-editorial-secondary" style="margin-top: 12px;" onclick="closeQuiz()">Close Window</button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -1483,69 +1294,84 @@
             if (typeof gtag === 'function') { gtag('event', event, params); }
         }
 
-        // Magic Dashboard Calculator Logic
-        let calcModel = 'leadgen'; // default
-        const assistantDefaults = {
-            persona: 'Business owner',
-            intent: 'Audit request'
-        };
-        let assistantState = Object.assign({}, assistantDefaults);
-        let assistantRecommendationSent = false;
-        let calculatorProgressSent = {};
+        // Multi-Step Editorial Quiz Logic
+        let calcModel = 'ecommerce'; // default
+        let currentQuizStep = 1;
 
         function startQuiz() {
-            resetAssistantChoices();
-            document.getElementById('calcTarget').value = '';
-            document.getElementById('calcAOV').value = '';
-            document.getElementById('calcAdPct').value = '20';
-            document.getElementById('calcCloseRate').value = '';
-            document.getElementById('calcNiche').value = '';
-            document.getElementById('calcRegion').value = '';
-            document.getElementById('calcCompetitors').value = '';
-            document.getElementById('calcName').value = '';
-            document.getElementById('calcContact').value = '';
-            calculatorProgressSent = {};
-            setCalcModel('leadgen');
-            runMagicCalc();
-            updateAssistantRecommendation();
             document.getElementById('quizModal').classList.add('active');
             document.body.style.overflow = 'hidden';
+            
+            // Reset fields
+            document.getElementById('calcNiche').value = '';
+            document.getElementById('calcRegion').value = '';
+            document.getElementById('calcSpend').value = '';
+            document.getElementById('calcCurrentRoas').value = '';
+            document.getElementById('calcTargetRoas').value = '';
+            document.getElementById('calcCurrentCpa').value = '';
+            document.getElementById('calcTargetCpa').value = '';
+            document.getElementById('calcName').value = '';
+            document.getElementById('calcContact').value = '';
+            document.getElementById('assistantRecommendation').innerHTML = '<span style="color: var(--text-muted); font-style: italic;">Analyzing data...</span>';
 
-            // GA4 Micro-conversion: Open Calculator
-            gta('open_calculator', {
-                'event_category': 'engagement'
-            });
+            currentQuizStep = 1;
+            updateQuizSteps();
+            setCalcModel('ecommerce'); // reset default
+            
+            gta('open_calculator', { 'event_category': 'engagement' });
         }
+
         function closeQuiz() {
             document.getElementById('quizModal').classList.remove('active');
             document.body.style.overflow = '';
-            // Reset thank-you screen on next open
-            document.getElementById('thankYouScreen').style.display = 'none';
-            document.getElementById('thankYouScreen').style.flexDirection = '';
-            document.querySelector('.dashboard-grid').style.display = 'grid';
+            // Reset to step 1 for next open
+            currentQuizStep = 1;
+            updateQuizSteps();
             const btn = document.getElementById('magicSubmitBtn');
-            if (btn) { btn.disabled = false; btn.innerText = 'Send my brief →'; }
+            if (btn) { btn.disabled = false; btn.innerText = 'Generate Report →'; }
         }
 
-        function resetAssistantChoices() {
-            assistantState = Object.assign({}, assistantDefaults);
-            assistantRecommendationSent = false;
-            document.querySelectorAll('.assistant-chip').forEach(function(chip) {
-                chip.classList.toggle('active', chip.dataset.value === assistantState[chip.dataset.field]);
-            });
+        function updateQuizSteps() {
+            for (let i = 1; i <= 5; i++) {
+                const el = document.getElementById('step' + i);
+                if (el) {
+                    if (i === currentQuizStep) {
+                        el.style.display = 'block';
+                        el.classList.add('active');
+                    } else {
+                        el.style.display = 'none';
+                        el.classList.remove('active');
+                    }
+                }
+            }
         }
 
-        function setAssistantChoice(btn) {
-            const field = btn.dataset.field;
-            if (!field) { return; }
-            assistantState[field] = btn.dataset.value;
-            document.querySelectorAll('.assistant-chip[data-field="' + field + '"]').forEach(function(chip) {
-                chip.classList.toggle('active', chip === btn);
-            });
-            updateAssistantRecommendation();
-            gta(field === 'persona' ? 'assistant_persona_select' : 'assistant_intent_select', {
+        function nextQuizStep(stepNum) {
+            currentQuizStep = stepNum;
+            updateQuizSteps();
+            gta('calculator_progress', {
                 'event_category': 'engagement',
-                'value': assistantState[field]
+                'step': stepNum
+            });
+        }
+
+        function prevQuizStep(stepNum) {
+            currentQuizStep = stepNum;
+            updateQuizSteps();
+        }
+
+        function setCalcModel(model) {
+            calcModel = model;
+            if (model === 'ecommerce') {
+                document.getElementById('ecomFields').style.display = 'block';
+                document.getElementById('leadGenFields').style.display = 'none';
+            } else {
+                document.getElementById('ecomFields').style.display = 'none';
+                document.getElementById('leadGenFields').style.display = 'block';
+            }
+            gta('switch_calc_model', {
+                'event_category': 'engagement',
+                'model': model
             });
         }
 
@@ -1555,248 +1381,67 @@
             return location.hostname.indexOf('github.io') !== -1 ? '' : '/api/assistant';
         }
 
-        function getFieldValue(id) {
-            const el = document.getElementById(id);
-            return el ? el.value.trim() : '';
-        }
-
-        function getFieldText(id) {
-            const el = document.getElementById(id);
-            return el ? el.innerText.trim() : '';
-        }
-
-        function getAssistantContext() {
-            return {
-                page_language: 'en',
-                persona: assistantState.persona,
-                intent: assistantState.intent,
-                calculator_model: calcModel,
-                niche: getFieldValue('calcNiche'),
-                region: getFieldValue('calcRegion'),
-                competitors: getFieldValue('calcCompetitors'),
-                target: getFieldValue('calcTarget'),
-                average_check: getFieldValue('calcAOV'),
-                max_ad_cost_percent: getFieldValue('calcAdPct'),
-                close_rate: getFieldValue('calcCloseRate'),
-                forecast: {
-                    traffic: getFieldText('outClicks'),
-                    leads: getFieldText('outLeads'),
-                    sales: getFieldText('outSales'),
-                    budget: getFieldText('outBudget'),
-                    cpa: getFieldText('outCPA'),
-                    max_allowed_cac: getFieldText('outMaxCPA'),
-                    economics: getFieldText('outGap'),
-                    revenue: getFieldText('outRev'),
-                    roas: getFieldText('outROAS')
-                }
-            };
-        }
-
-        function setAssistantStatus(message) {
-            const status = document.getElementById('assistantStatus');
-            if (status) { status.innerText = message || ''; }
-        }
-
-        function renderAssistantNote(title, note) {
-            const box = document.getElementById('assistantRecommendation');
-            if (!box) { return; }
-            box.innerHTML = '<strong>' + title + '</strong>';
-            box.appendChild(document.createTextNode(note));
-        }
-
-        function renderAssistantHtml(title, html) {
-            const box = document.getElementById('assistantRecommendation');
-            if (!box) { return; }
-            box.innerHTML = '<strong>' + title + '</strong>' + html;
-        }
-
-        function renderFitProgress(items, label) {
-            const doneCount = items.filter(function(item) { return item.done; }).length;
-            const percent = Math.round((doneCount / items.length) * 100);
-            return '<div class="fit-progress">' +
-                '<div class="fit-progress-head"><span>' + label + '</span><span>' + doneCount + '/' + items.length + '</span></div>' +
-                '<div class="fit-progress-bar"><div class="fit-progress-fill" style="width:' + percent + '%"></div></div>' +
-                '<div class="fit-checklist">' +
-                    items.map(function(item) {
-                        return '<span class="fit-step ' + (item.done ? 'done' : '') + '">' + item.label + '</span>';
-                    }).join('') +
-                '</div>' +
-            '</div>';
-        }
-
-        function trackCalculatorProgress(doneCount, totalCount) {
-            const percent = Math.round((doneCount / totalCount) * 100);
-            [25, 50, 75, 100].forEach(function(mark) {
-                if (percent >= mark && !calculatorProgressSent[mark]) {
-                    calculatorProgressSent[mark] = true;
-                    gta('calculator_progress_' + mark, {
-                        'event_category': 'engagement',
-                        'progress_percent': mark,
-                        'fields_completed': doneCount,
-                        'fields_total': totalCount,
-                        'model': calcModel
-                    });
-                }
-            });
-        }
-
-        function handleAssistantKey(event) {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                askGptAssistant();
-            }
-        }
-
-        async function askGptAssistant() {
-            const input = document.getElementById('assistantQuestion');
-            const btn = document.getElementById('assistantAskBtn');
-            const message = (input && input.value.trim()) || 'Explain these PPC economics from the portfolio calculator. Compare estimated CAC with max allowed CAC, name the first risk, and give one next step.';
-            const endpoint = getAssistantApiEndpoint();
-
-            if (!endpoint) {
-                renderAssistantNote('GPT setup pending', 'The GPT backend is ready in the repository, but this GitHub Pages domain still needs a Vercel API URL. The brief builder continues to work.');
-                setAssistantStatus('Add window.IAROSLAV_ASSISTANT_API_URL after deploying /api/assistant to Vercel.');
-                return;
-            }
-
-            if (btn) {
-                btn.disabled = true;
-                btn.innerText = 'Checking...';
-            }
-            setAssistantStatus('Preparing diagnosis...');
-            renderAssistantNote('Quick diagnosis', 'Reading your role, intent and PPC context...');
-
-            try {
-                const response = await fetch(endpoint, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        message: message,
-                        context: getAssistantContext()
-                    })
-                });
-                const data = await response.json().catch(function() { return {}; });
-                if (!response.ok || !data.answer) {
-                    throw new Error(data.error || 'Assistant endpoint is unavailable');
-                }
-
-                renderAssistantNote('Quick diagnosis', data.answer);
-                setAssistantStatus('Diagnosis generated.');
-                gta('assistant_gpt_answer', {
-                    'event_category': 'engagement',
-                    'model': calcModel,
-                    'persona': assistantState.persona,
-                    'intent': assistantState.intent
-                });
-            } catch (err) {
-                console.warn('GPT assistant error', err);
-                updateAssistantRecommendation();
-                setAssistantStatus('Live GPT needs the Vercel /api/assistant backend. The brief builder still works.');
-                gta('assistant_gpt_error', {
-                    'event_category': 'engagement',
-                    'error_message': String(err.message || err).slice(0, 120)
-                });
-            } finally {
-                if (btn) {
-                    btn.disabled = false;
-                    btn.innerText = 'Explain risk and next step with AI';
-                }
-            }
-        }
-
-        function updateAssistantRecommendation() {
-            const box = document.getElementById('assistantRecommendation');
-            if (!box) { return; }
-
-            const niche = document.getElementById('calcNiche').value.trim();
-            const region = document.getElementById('calcRegion').value.trim();
-            const target = document.getElementById('calcTarget').value.trim();
-            const aov = document.getElementById('calcAOV').value.trim();
-            const margin = document.getElementById('calcMargin').value.trim();
-            const adPct = document.getElementById('calcAdPct').value.trim();
-            const contact = document.getElementById('calcContact').value.trim();
-            const progressItems = [
-                { label: 'Niche', done: !!niche },
-                { label: 'Region', done: !!region },
-                { label: 'Sales plan', done: !!target },
-                { label: 'Average check', done: !!aov },
-                { label: 'Margin', done: !!margin },
-                { label: 'Ad-cost %', done: !!adPct },
-                { label: 'Contact', done: !!contact }
-            ];
-            const progressHtml = renderFitProgress(progressItems, 'Progress');
-            trackCalculatorProgress(progressItems.filter(function(item) { return item.done; }).length, progressItems.length);
-            const missing = [];
-
-            if (!niche) { missing.push('niche'); }
-            if (!region) { missing.push('region'); }
-            if (!target) { missing.push('sales plan'); }
-            if (!aov) { missing.push('average check'); }
-            if (!margin) { missing.push('margin'); }
-            if (!adPct) { missing.push('max ad-cost percent'); }
-
-            if (missing.length) {
-                assistantRecommendationSent = false;
-                renderAssistantHtml('Can this sales plan work?', '<p style="margin:0 0 10px;">Fill in the sales plan and unit economics. The calculator will estimate traffic, budget and CAC from benchmark assumptions.</p><p style="margin:0 0 6px;">Historical CPC, CTR and conversion data would make this more precise.</p>' + progressHtml);
-                return;
-            }
-
-            const cpaText = document.getElementById('outCPA').innerText || '-';
-            const maxCpaText = document.getElementById('outMaxCPA').innerText || '-';
-            const gapText = document.getElementById('outGap').innerText || '-';
-            const isGood = !gapText.includes('Too high');
-            const verdict = isGood ? 'This plan looks possible' : 'This plan looks risky';
-            const advice = isGood
-                ? 'Next step: check whether there is enough search demand and whether conversion tracking is clean.'
-                : 'Next step: check if conversion rate, average check, margin or target CPA can be improved before spending.';
-
-            renderAssistantHtml('Can this sales plan work?',
-                '<p style="margin:0 0 10px; color:' + (isGood ? '#4ade80' : '#f87171') + '; font-weight:700;">' + verdict + '</p>' +
-                '<p style="margin:0 0 6px;">Estimated CAC: <b>' + cpaText + '</b></p>' +
-                '<p style="margin:0 0 6px;">Max CAC allowed by margin/ad-cost limit: <b>' + maxCpaText + '</b></p>' +
-                '<p style="margin:0 0 10px;">Gap: <b>' + gapText + '</b></p>' +
-                '<p style="margin:0;">' + advice + '</p>' +
-                progressHtml
-            );
-            if (!assistantRecommendationSent) {
-                gta('assistant_recommendation_ready', {
-                    'event_category': 'engagement',
-                    'model': calcModel,
-                    'persona': assistantState.persona,
-                    'intent': assistantState.intent
-                });
-                assistantRecommendationSent = true;
-            }
-        }
-
-        function sendMagicForm() {
+        function submitEditorialQuiz() {
             const btn = document.getElementById('magicSubmitBtn');
-            btn.disabled = true;
-            btn.innerText = 'Sending...';
+            const name = document.getElementById('calcName').value.trim();
+            const contact = document.getElementById('calcContact').value.trim();
 
-            const name        = document.getElementById('calcName').value || 'Not specified';
-            const contactEl    = document.getElementById('calcContact');
-            const contact     = contactEl.value.trim() || 'Not specified';
-            const niche       = document.getElementById('calcNiche').value || 'Not specified';
-            const region      = document.getElementById('calcRegion').value || 'Not specified';
-            const competitors = document.getElementById('calcCompetitors').value || 'Not specified';
-            const target      = document.getElementById('calcTarget').value || '—';
-            const aov         = document.getElementById('calcAOV').value || '—';
-            const adPct       = document.getElementById('calcAdPct').value || '—';
-            const cr          = document.getElementById('calcCloseRate').value || 'benchmark';
-            const budget      = document.getElementById('outBudget').innerText || '—';
-            const roas        = document.getElementById('outROAS').innerText || '—';
-            const revenue     = document.getElementById('outRev').innerText || '—';
-            const maxCpa      = document.getElementById('outMaxCPA').innerText || '—';
-            const economics   = document.getElementById('outGap').innerText || '—';
-
-            if (contact === 'Not specified') {
-                btn.disabled = false;
-                btn.innerText = 'Send my brief →';
-                contactEl.focus();
-                alert('Please leave a phone number or email so Iaroslav can reply.');
+            if (!name || !contact) {
+                alert('Please enter your name and phone/email to proceed.');
                 return;
             }
+
+            btn.disabled = true;
+            btn.innerText = 'Calculating...';
+
+            // 1. Math Calculation
+            let spend = parseFloat(document.getElementById('calcSpend').value) || 0;
+            let currentOutput, targetOutput, loss, currentStr, targetStr, lossStr;
+
+            if (calcModel === 'ecommerce') {
+                let currentRoas = parseFloat(document.getElementById('calcCurrentRoas').value) || 0;
+                let targetRoas = parseFloat(document.getElementById('calcTargetRoas').value) || 0;
+                
+                currentOutput = spend * (currentRoas / 100);
+                targetOutput = spend * (targetRoas / 100);
+                loss = targetOutput - currentOutput; // potential upside missed
+
+                currentStr = '$' + Math.round(currentOutput).toLocaleString();
+                targetStr = '$' + Math.round(targetOutput).toLocaleString();
+                lossStr = loss > 0 ? '-$' + Math.round(loss).toLocaleString() : '+$' + Math.round(Math.abs(loss)).toLocaleString();
+
+                document.getElementById('lblResCurrent').innerText = 'Current Rev (M)';
+                document.getElementById('lblResTarget').innerText = 'Target Rev (M)';
+                document.getElementById('lblResLoss').innerHTML = 'Cost of Inaction<br><span style="font-size: 0.65rem; color: var(--text-muted);">(Monthly Revenue Loss)</span>';
+
+            } else {
+                let currentCpa = parseFloat(document.getElementById('calcCurrentCpa').value) || 1;
+                let targetCpa = parseFloat(document.getElementById('calcTargetCpa').value) || 1;
+
+                currentOutput = Math.floor(spend / currentCpa);
+                targetOutput = Math.floor(spend / targetCpa);
+                loss = targetOutput - currentOutput; // potential upside missed
+
+                currentStr = currentOutput.toLocaleString() + ' leads';
+                targetStr = targetOutput.toLocaleString() + ' leads';
+                lossStr = loss > 0 ? '-' + Math.round(loss).toLocaleString() + ' leads' : '+' + Math.round(Math.abs(loss)).toLocaleString() + ' leads';
+
+                document.getElementById('lblResCurrent').innerText = 'Current Leads (M)';
+                document.getElementById('lblResTarget').innerText = 'Target Leads (M)';
+                document.getElementById('lblResLoss').innerHTML = 'Cost of Inaction<br><span style="font-size: 0.65rem; color: var(--text-muted);">(Monthly Lead Loss)</span>';
+            }
+
+            document.getElementById('resCurrent').innerText = currentStr;
+            document.getElementById('resTarget').innerText = targetStr;
+            document.getElementById('resLoss').innerText = lossStr;
+            document.getElementById('resLoss').style.color = loss > 0 ? 'var(--accent-red)' : '#4ade80';
+
+            // Move to Step 5
+            nextQuizStep(5);
+
+            // 2. Web3Forms submission
+            const niche = document.getElementById('calcNiche').value.trim() || 'Not specified';
+            const region = document.getElementById('calcRegion').value.trim() || 'Not specified';
 
             const message = [
                 '=== CONTACT ===',
@@ -1804,25 +1449,15 @@
                 'Phone/Email: ' + contact,
                 '',
                 '=== CONTEXT ===',
-                'Persona: ' + assistantState.persona,
-                'Intent: ' + assistantState.intent,
                 'Niche: ' + niche,
                 'Region: ' + region,
-                'Competitors: ' + competitors,
-                '',
-                '=== MODEL: ' + calcModel.toUpperCase() + ' ===',
-                'Target: ' + target,
-                'Avg Check: $' + aov,
-                'Max ad cost from avg check: ' + adPct + '%',
-                'Close Rate: ' + cr + '%',
+                'Model: ' + calcModel.toUpperCase(),
+                'Spend: $' + spend,
                 '',
                 '=== FORECAST ===',
-                'Traffic needed: ' + document.getElementById('outClicks').innerText,
-                'Recommended Budget: ' + budget,
-                'Max allowed CAC: ' + maxCpa,
-                'Economics: ' + economics,
-                'Projected Revenue: ' + revenue,
-                'Estimated ROAS: ' + roas
+                'Current Output: ' + currentStr,
+                'Target Output: ' + targetStr,
+                'Cost of Inaction (Loss): ' + lossStr
             ].join('\n');
 
             fetch('https://api.web3forms.com/submit', {
@@ -1830,276 +1465,54 @@
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify({
                     access_key: '024929c9-3c2f-471f-8ec3-bd5cbaf34070',
-                    subject: 'Funnel Brief 🎯 ' + (name !== 'Not specified' ? name + ' — ' : '') + niche + ' | ' + region,
-                    from_name: 'Portfolio Calculator',
+                    subject: 'Financial Impact Audit 🎯 ' + name + ' — ' + niche,
+                    from_name: 'Financial Impact Model',
                     message: message
                 })
-            })
-            .then(function(r) {
-                return r.json().then(function(data) {
-                    if (!r.ok || data.success === false) {
-                        throw new Error(data.message || 'Web3Forms rejected the request');
-                    }
-                    return data;
-                });
-            })
-            .then(function(data) {
-                showThankYou();
-                // GA4 Micro-conversion: Submit Brief
-                gta('submit_brief_success', {
-                    'event_category': 'lead',
-                    'model': calcModel,
-                    'persona': assistantState.persona,
-                    'intent': assistantState.intent,
-                    'niche': niche
-                });
-            })
-            .catch(function(err) {
-                console.warn('Web3Forms error', err);
-                btn.disabled = false;
-                btn.innerText = 'Send my brief →';
-                gta('submit_brief_error', {
-                    'event_category': 'lead',
-                    'error_message': String(err.message || err).slice(0, 120)
-                });
-                alert('Sorry, the request did not send. Please message me on Telegram or email.');
-            });
-        }
-
-        function showThankYou() {
-            document.querySelector('.dashboard-grid').style.display = 'none';
-            const screen = document.getElementById('thankYouScreen');
-            screen.style.display = 'flex';
-        }
-
-        function setCalcModel(model) {
-            calcModel = model;
+            }).catch(e => console.warn('Form submission error', e));
             
-            // GA4 Micro-conversion: Switch Model
-            gta('switch_calc_model', {
-                'event_category': 'engagement',
-                'model': model
+            gta('submit_brief_success', {
+                'event_category': 'lead',
+                'model': calcModel,
+                'niche': niche
             });
 
-            const btnLg = document.getElementById('btnModelLeadGen');
-            const btnEc = document.getElementById('btnModelEcom');
-            const lblTarget = document.getElementById('lblTarget');
-            const lblAOV = document.getElementById('lblAOV');
-            const grpMargin = document.getElementById('groupMargin');
-            const divOutLeads = document.getElementById('divOutLeads');
-            const calcCloseRate = document.getElementById('calcCloseRate');
-
-            if (model === 'leadgen') {
-                btnLg.style.background = '#fff';
-                btnLg.style.color = '#000';
-                btnLg.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
-                btnEc.style.background = 'transparent';
-                btnEc.style.color = 'var(--text-gray)';
-                btnEc.style.boxShadow = 'none';
-
-                lblTarget.innerText = 'Monthly sales plan';
-                document.getElementById('calcTarget').placeholder = 'Example: 50';
-                lblAOV.innerText = 'Average check per client ($)';
-                grpMargin.style.display = 'block';
-                divOutLeads.style.display = 'block';
-                calcCloseRate.previousElementSibling.innerText = 'Historical close rate: lead to client (%)';
-                calcCloseRate.nextElementSibling.innerText = 'If unknown, leave blank. Used as an assumption. Benchmark: 20%';
-            } else {
-                btnEc.style.background = '#fff';
-                btnEc.style.color = '#000';
-                btnEc.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
-                btnLg.style.background = 'transparent';
-                btnLg.style.color = 'var(--text-gray)';
-                btnLg.style.boxShadow = 'none';
-
-                lblTarget.innerText = 'Monthly sales plan';
-                document.getElementById('calcTarget').placeholder = 'Example: 50';
-                lblAOV.innerText = 'Average order value ($)';
-                grpMargin.style.display = 'block';
-                divOutLeads.style.display = 'none';
-                calcCloseRate.previousElementSibling.innerText = 'Historical website conversion to order (%)';
-                calcCloseRate.nextElementSibling.innerText = 'If unknown, leave blank. Used as an assumption. Benchmark: 1.5%';
-            }
-            runMagicCalc();
-            updateAssistantRecommendation();
+            // 3. Ask GPT Assistant
+            askGptAssistant(spend, currentStr, targetStr, lossStr);
         }
 
-        function runMagicCalc() {
-            const emptyState = document.getElementById('calcEmptyState');
-            const resultsBox = document.getElementById('calcResultsBox');
-
-            let target = parseFloat(document.getElementById('calcTarget').value);
-            let aov = parseFloat(document.getElementById('calcAOV').value);
-            let adPctLimit = parseFloat(document.getElementById('calcAdPct').value);
-            let marginPct = parseFloat(document.getElementById('calcMargin').value);
-            let userCR = parseFloat(document.getElementById('calcCloseRate').value);
-
-            if (isNaN(target) || target <= 0 || isNaN(aov) || aov <= 0 || isNaN(adPctLimit) || adPctLimit <= 0 || isNaN(marginPct) || marginPct <= 0) {
-                emptyState.style.display = 'block';
-                resultsBox.style.display = 'none';
-                updateAssistantRecommendation();
+        async function askGptAssistant(spend, currentStr, targetStr, lossStr) {
+            const endpoint = getAssistantApiEndpoint();
+            const recBox = document.getElementById('assistantRecommendation');
+            
+            if (!endpoint) {
+                recBox.innerHTML = '<p><em>GPT backend pending deployment.</em> Based on the math, you are losing <strong>' + lossStr + '</strong> monthly by not hitting the target efficiency. I will manually review your brief and send a full breakdown.</p>';
                 return;
             }
 
-            emptyState.style.display = 'none';
-            resultsBox.style.display = 'block';
+            try {
+                const aiMessage = `Act as an expert Wall Street Journal analyst doing a strict, no-nonsense financial diagnosis. 
+                Analyze this PPC Financial Impact. Model: ${calcModel}. Monthly spend: $${spend}. 
+                Current output: ${currentStr}. Target output: ${targetStr}. Opportunity loss (Cost of Inaction): ${lossStr}.
+                Give a strict, 2-sentence diagnosis on why they must act immediately to stop the bleed.`;
 
-            // Hidden Industry Benchmarks
-            let avgCPC = 1.20; // $1.20 per click average
-            let ctrBenchmark = 0.05; // 5% CTR benchmark
-            let siteToLeadCR = 0.05; // 5% site to lead
-            let leadToClientCR = isNaN(userCR) ? 0.20 : (userCR / 100); // 20% default
-            let ecomSiteCR = isNaN(userCR) ? 0.015 : (userCR / 100); // 1.5% ecom default
-
-            let clicks, leads, sales, budget, rev, cpa, roas, impressions;
-
-            if (calcModel === 'leadgen') {
-                // Forward math for Lead Gen based on sales plan
-                sales = target;
-                leads = Math.ceil(sales / leadToClientCR);
-                clicks = Math.ceil(leads / siteToLeadCR);
-                budget = clicks * avgCPC;
-                rev = sales * aov;
-                cpa = budget / sales;
-                roas = (rev / budget) * 100;
-
-                document.getElementById('outLeads').innerText = '~' + leads.toLocaleString();
-            } else {
-                // Top-down reverse math for E-com based on orders plan
-                sales = target;
-                clicks = Math.ceil(sales / ecomSiteCR);
-                avgCPC = 0.80; // slightly cheaper generic shopping ads
-                ctrBenchmark = 0.03; // broader shopping/PMax benchmark
-                budget = clicks * avgCPC;
-                rev = sales * aov;
-                cpa = budget / sales;
-                roas = (rev / budget) * 100;
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: aiMessage,
+                        context: { page_language: 'en', calculator_model: calcModel }
+                    })
+                });
+                
+                const data = await response.json();
+                if (!response.ok || !data.answer) throw new Error(data.error || 'Failed to get answer');
+                
+                recBox.innerHTML = '<p>' + data.answer + '</p>';
+            } catch (err) {
+                console.warn('GPT error', err);
+                recBox.innerHTML = '<p>Based on the math, you are losing <strong>' + lossStr + '</strong> monthly by not hitting the target efficiency. I will manually review your brief and send a full breakdown.</p>';
             }
-
-            impressions = Math.ceil(clicks / ctrBenchmark);
-            const effectiveAdPctLimit = Math.min(adPctLimit, marginPct);
-            const adLimitWarning = adPctLimit > marginPct
-                ? ' Your ad-cost limit is higher than gross margin, so the model caps it at <b>' + marginPct + '%</b>.'
-                : '';
-            const adPctHint = document.getElementById('calcAdPctHint');
-            if (adPctHint) {
-                adPctHint.innerHTML = adPctLimit > marginPct
-                    ? 'Ad cost cannot exceed gross margin. Model uses <b>' + marginPct + '%</b> instead of ' + adPctLimit + '%.'
-                    : 'This cannot be higher than gross margin. If it is higher, the model caps it by margin.';
-                adPctHint.style.color = adPctLimit > marginPct ? '#C00000' : '';
-            }
-
-            const assumptionsBox = document.getElementById('calcAssumptions');
-            if (assumptionsBox) {
-                const crText = calcModel === 'leadgen'
-                    ? (isNaN(userCR) ? 'lead-to-client close rate benchmark: 20%' : 'your historical lead-to-client close rate: ' + userCR + '%')
-                    : (isNaN(userCR) ? 'website conversion benchmark: 1.5%' : 'your historical website conversion: ' + userCR + '%');
-                const funnelText = calcModel === 'leadgen'
-                    ? 'Traffic is estimated from a 5% site-to-lead benchmark, then leads are converted into clients.'
-                    : 'Traffic is estimated from website conversion to orders.';
-                assumptionsBox.innerHTML =
-                    '<strong style="display:block; color:#fff; margin-bottom:6px;">Preliminary benchmark estimate</strong>' +
-                    '<span>This is not pulled from historical account data. Impressions, clicks and budget are calculated from assumptions: CTR benchmark <b>' + Math.round(ctrBenchmark * 100) + '%</b>, CPC benchmark <b>$' + avgCPC.toFixed(2) + '</b>, ' + crText + '. ' + funnelText + adLimitWarning + ' If you have historical CPC, CTR and conversion data, the forecast can be recalculated more accurately.</span>';
-            }
-
-            document.getElementById('outSales').innerText = sales.toLocaleString();
-            document.getElementById('outImpressions').innerText = '~' + impressions.toLocaleString();
-            document.getElementById('outClicks').innerText = '~' + clicks.toLocaleString();
-            document.getElementById('outBudget').innerText = '$' + Math.round(budget).toLocaleString();
-            document.getElementById('outCPA').innerText = '$' + Math.round(cpa).toLocaleString();
-            document.getElementById('outRev').innerText = '$' + Math.round(rev).toLocaleString();
-            document.getElementById('outROAS').innerText = Math.round(roas) + '%';
-            const maxCpa = aov * (effectiveAdPctLimit / 100);
-            const gap = maxCpa - cpa;
-            const gapEl = document.getElementById('outGap');
-            document.getElementById('outMaxCPA').innerText = '$' + Math.round(maxCpa).toLocaleString();
-            gapEl.innerText = gap >= 0 ? 'Fits, +' + '$' + Math.round(gap).toLocaleString() : 'Too high, -' + '$' + Math.abs(Math.round(gap)).toLocaleString();
-            gapEl.style.color = gap >= 0 ? '#4ade80' : '#f87171';
-
-            const totalConversionRate = calcModel === 'leadgen' ? (siteToLeadCR * leadToClientCR) : ecomSiteCR;
-            const maxCpc = maxCpa * totalConversionRate;
-            const requiredCr = maxCpa > 0 ? (avgCPC / maxCpa) * 100 : 0;
-            const marginBuffer = marginPct - effectiveAdPctLimit;
-            const budgetShare = rev > 0 ? (budget / rev) * 100 : 0;
-            const hasHealthyBuffer = marginBuffer >= 8;
-            const isEconomicsFit = gap >= 0;
-            const verdictTitle = document.getElementById('outVerdictTitle');
-            const verdictBadge = document.getElementById('outVerdictBadge');
-            const verdictText = document.getElementById('outVerdictText');
-            const maxCpcEl = document.getElementById('outMaxCpc');
-            const requiredCrEl = document.getElementById('outRequiredCr');
-            const requiredCrLabel = document.getElementById('outRequiredCrLabel');
-            const marginBufferEl = document.getElementById('outMarginBuffer');
-            const nextCheckEl = document.getElementById('outNextCheck');
-            if (verdictTitle && verdictBadge && verdictText) {
-                if (isEconomicsFit && hasHealthyBuffer) {
-                    verdictTitle.innerText = 'The plan looks workable on benchmark math';
-                    verdictBadge.innerText = 'Workable';
-                    verdictBadge.style.background = 'rgba(74,222,128,0.16)';
-                    verdictBadge.style.color = '#4ade80';
-                    verdictText.innerText = 'The estimated CPA stays inside your allowed ad-cost limit and leaves margin after ads. The next step is to validate CPC, CTR and conversion against real account data.';
-                } else if (isEconomicsFit) {
-                    verdictTitle.innerText = 'The plan fits, but the margin buffer is thin';
-                    verdictBadge.innerText = 'Tight';
-                    verdictBadge.style.background = 'rgba(250,204,21,0.16)';
-                    verdictBadge.style.color = '#facc15';
-                    verdictText.innerText = 'The CPA is inside the limit, but almost all available margin is reserved for ads. This needs careful testing before scaling.';
-                } else {
-                    verdictTitle.innerText = 'The plan does not fit the current assumptions';
-                    verdictBadge.innerText = 'Risk';
-                    verdictBadge.style.background = 'rgba(248,113,113,0.16)';
-                    verdictBadge.style.color = '#f87171';
-                    verdictText.innerText = 'At the benchmark CPC and conversion rate, acquisition cost is above the allowed level. The plan needs lower CPC, better conversion, higher average check, or a lower sales target.';
-                }
-            }
-            if (maxCpcEl) maxCpcEl.innerText = '$' + maxCpc.toFixed(2);
-            if (requiredCrLabel) requiredCrLabel.innerText = calcModel === 'leadgen' ? 'Required click-to-client conversion at current CPC' : 'Required website conversion at current CPC';
-            if (requiredCrEl) requiredCrEl.innerText = requiredCr.toFixed(2) + '%';
-            if (marginBufferEl) {
-                marginBufferEl.innerText = marginBuffer.toFixed(1) + '% left before operating costs';
-                marginBufferEl.style.color = marginBuffer >= 8 ? '#4ade80' : (marginBuffer > 0 ? '#facc15' : '#f87171');
-            }
-            if (nextCheckEl) {
-                nextCheckEl.innerText = budgetShare > effectiveAdPctLimit ? 'Check CPC / conversion first' : 'Validate with real CPC and CTR';
-                nextCheckEl.style.color = isEconomicsFit ? '#fff' : '#facc15';
-            }
-
-            compileMagicEmail(target, aov, userCR, budget, roas);
-            updateAssistantRecommendation();
-        }
-
-        function compileMagicEmail(target, aov, cr, budget, roas) {
-            let niche = document.getElementById('calcNiche').value || 'Not specified';
-            let region = document.getElementById('calcRegion').value || 'Not specified';
-            let competitors = document.getElementById('calcCompetitors').value || 'Not specified';
-
-            let subject = "Funnel Calculation: Request for Custom Strategy";
-            let bodyText = `Hi Iaroslav,\n\nI just ran the math on your site. Here are my baseline targets:\n\n`;
-            
-            bodyText += `-- CONTEXT --\n`;
-            bodyText += `Niche/Product: ${niche}\n`;
-            bodyText += `Target Region: ${region}\n`;
-            bodyText += `Main Competitors: ${competitors}\n\n`;
-            bodyText += `-- ASSISTANT CONTEXT --\n`;
-            bodyText += `Persona: ${assistantState.persona}\n`;
-            bodyText += `Intent: ${assistantState.intent}\n\n`;
-
-            bodyText += `-- MODEL: ${calcModel.toUpperCase()} --\n`;
-            if (calcModel === 'leadgen') {
-                bodyText += `Target Leads/month: ${target}\n`;
-            } else {
-                bodyText += `Target Revenue/month: $${target}\n`;
-            }
-            bodyText += `Average Check: $${aov}\n`;
-            bodyText += `Close Rate: ${isNaN(cr) ? 'Not specified (used benchmark)' : cr+'%'}\n`;
-            
-            bodyText += `\n-- FORECAST GENERATED --\n`;
-            bodyText += `Recommended Ad Budget: $${Math.round(budget)}\n`;
-            bodyText += `Estimated ROAS: ${Math.round(roas)}%\n\n`;
-            
-            bodyText += `Please verify this calculation and prepare a detailed digital strategy for me.\n\nBest regards,`;
-            
-            document.getElementById('magicMailtoBtn').href = `mailto:yaroslav.zhakun@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
         }
     </script>
 
