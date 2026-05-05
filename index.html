@@ -370,6 +370,69 @@
 
         .quiz-step { animation: fadeIn 0.3s ease-out; }
         .quiz-step.active { display: block; }
+        #quizModal .modal-window {
+            width: min(1100px, calc(100vw - 40px));
+            min-height: min(860px, calc(100vh - 40px));
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+        }
+        #quizModal .modal-content-area {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+        }
+        .quiz-progress {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 22px;
+        }
+        .quiz-progress-item {
+            height: 6px;
+            background: #ddd;
+        }
+        .quiz-progress-item.active {
+            background: #000;
+        }
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 24px;
+        }
+        .quiz-note {
+            border: 1px solid #000;
+            padding: 16px;
+            background: #fafafa;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            line-height: 1.55;
+            color: #333;
+        }
+        .quiz-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .quiz-hint {
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            color: #666;
+            line-height: 1.4;
+            margin-top: 4px;
+            display: block;
+        }
+        @media (max-width: 900px) {
+            #quizModal .modal-window {
+                width: calc(100vw - 16px);
+                min-height: calc(100vh - 16px);
+                margin: 8px;
+                padding: 20px 16px;
+                box-shadow: 4px 4px 0 rgba(0,0,0,1);
+            }
+            .quiz-grid { grid-template-columns: 1fr; }
+            .quiz-actions { flex-direction: column; }
+        }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Premium Layout Components */
@@ -1119,92 +1182,106 @@
         </div>
     </div>
 
-    <!-- QUIZ MODAL HTML (MULTI-STEP EDITORIAL) -->
+    <!-- QUIZ MODAL HTML (3-SCREEN FLOW) -->
     <div class="modal-overlay" id="quizModal">
-        <div class="modal-window" style="max-width: 600px; background: var(--bg-paper); border: 2px solid var(--text-ink); padding: 48px; border-radius: 0; box-shadow: 12px 12px 0px rgba(0,0,0,1);">
+        <div class="modal-window" style="background: var(--bg-paper); border: 2px solid var(--text-ink); padding: 32px; border-radius: 0; box-shadow: 12px 12px 0px rgba(0,0,0,1);">
             <button class="modal-close" onclick="closeQuiz()" style="background: var(--text-ink); color: var(--bg-paper);">✕</button>
             <div class="modal-content-area" id="quizContainer">
                 
                 <!-- HEADER -->
-                <div class="quiz-header" style="border-bottom: 3px double var(--text-ink); padding-bottom: 16px; margin-bottom: 32px; text-align: center;">
+                <div class="quiz-header" style="border-bottom: 3px double var(--text-ink); padding-bottom: 16px; margin-bottom: 22px; text-align: center;">
                     <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; color: var(--text-muted);">Financial Impact Audit</span>
-                    <h2 style="font-family: var(--font-serif); font-size: 2rem; font-weight: 900; margin: 8px 0 0; color: var(--text-ink);">Preliminary Assessment</h2>
+                    <h2 style="font-family: var(--font-serif); font-size: 2rem; font-weight: 900; margin: 8px 0 0; color: var(--text-ink);">Preliminary E-commerce Check</h2>
+                </div>
+                <div class="quiz-progress" aria-hidden="true">
+                    <div class="quiz-progress-item active" id="quizProgress1"></div>
+                    <div class="quiz-progress-item" id="quizProgress2"></div>
+                    <div class="quiz-progress-item" id="quizProgress3"></div>
                 </div>
 
-                <!-- STEP 1: Model Selection -->
+                <!-- STEP 1 -->
                 <div class="quiz-step active" id="step1">
-                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 24px;">1. Select Business Model</h3>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                        <button class="btn-editorial-select" onclick="setCalcModel('ecommerce'); nextQuizStep(2);">E-Commerce</button>
-                        <button class="btn-editorial-select" onclick="setCalcModel('leadgen'); nextQuizStep(2);">Lead Gen / B2B</button>
+                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 14px;">1. How this estimate works</h3>
+                    <div class="quiz-grid">
+                        <div>
+                            <p style="font-size:1rem; margin-bottom:12px;">This calculator gives a preliminary PPC forecast based on your assumptions. It does not pull live ad account history.</p>
+                            <p style="font-size:1rem; margin-bottom:0;">You will get projected clicks, orders, CPA, ROAS, and target budget ranges.</p>
+                        </div>
+                        <aside class="quiz-note">
+                            <strong style="display:block; margin-bottom:8px;">Prepare before filling</strong>
+                            1) Monthly budget plan<br>
+                            2) Average order value (AOV)<br>
+                            3) Margin and max ad share<br>
+                            4) Historical CR/CPC if available
+                        </aside>
+                    </div>
+                    <div class="quiz-actions">
+                        <button class="btn-editorial-primary" style="flex:1;" onclick="nextQuizStep(2)">Continue →</button>
                     </div>
                 </div>
 
-                <!-- STEP 2: Context -->
+                <!-- STEP 2 -->
                 <div class="quiz-step" id="step2" style="display: none;">
-                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 24px;">2. Market Context</h3>
-                    
-                    <div class="editorial-input-group">
-                        <label>Primary Niche / Product</label>
-                        <input type="text" id="calcNiche" placeholder="e.g. B2B SaaS, Grill Equipment">
+                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 18px;">2. Fill your assumptions</h3>
+                    <div class="quiz-grid">
+                        <div>
+                            <div class="editorial-input-group">
+                                <label>Monthly Sales Plan (UAH)</label>
+                                <input type="number" id="calcSalesPlan" placeholder="500000">
+                                <span class="quiz-hint">Optional planning reference.</span>
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Monthly Ad Budget (UAH)</label>
+                                <input type="number" id="calcBudget" placeholder="200000">
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Average CPC (UAH)</label>
+                                <input type="number" id="calcCpc" placeholder="6">
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Site Conversion Rate to Order (%)</label>
+                                <input type="number" id="calcCr" placeholder="1">
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Average Order Value (AOV, UAH)</label>
+                                <input type="number" id="calcAov" placeholder="2500">
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Gross Margin (%)</label>
+                                <input type="number" id="calcMargin" placeholder="30">
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Max Ad Share from AOV (%)</label>
+                                <input type="number" id="calcAdShare" placeholder="20">
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Target Orders per Month (optional)</label>
+                                <input type="number" id="calcTargetOrders" placeholder="80">
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Primary Niche / Product</label>
+                                <input type="text" id="calcNiche" placeholder="e.g. Home goods">
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Target Region</label>
+                                <input type="text" id="calcRegion" placeholder="e.g. Ukraine">
+                            </div>
+                        </div>
+                        <aside class="quiz-note">
+                            <strong style="display:block; margin-bottom:8px;">Important</strong>
+                            CTR, clicks, and orders are modelled from your assumptions, not auto-fetched from ad platforms.
+                        </aside>
                     </div>
-                    <div class="editorial-input-group">
-                        <label>Target Region</label>
-                        <input type="text" id="calcRegion" placeholder="e.g. USA, UK, Global">
-                    </div>
-                    
-                    <div style="display: flex; gap: 12px; margin-top: 24px;">
+                    <div class="quiz-actions">
                         <button class="btn-editorial-secondary" onclick="prevQuizStep(1)">&larr; Back</button>
-                        <button class="btn-editorial-primary" style="flex: 1;" onclick="nextQuizStep(3)">Continue &rarr;</button>
+                        <button class="btn-editorial-primary" style="flex: 1;" onclick="nextQuizStep(3)">Continue →</button>
                     </div>
                 </div>
 
-                <!-- STEP 3: Economics -->
+                <!-- STEP 3 -->
                 <div class="quiz-step" id="step3" style="display: none;">
-                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 24px;">3. E-commerce Unit Economics</h3>
-
-                    <div class="editorial-input-group">
-                        <label>Monthly Ad Budget</label>
-                        <input type="number" id="calcBudget" placeholder="200000">
-                        <span class="quiz-hint">Planned Google Ads spend per month.</span>
-                    </div>
-                    <div class="editorial-input-group">
-                        <label>Average CPC</label>
-                        <input type="number" id="calcCpc" placeholder="6">
-                        <span class="quiz-hint">Average cost per click in Shopping/PMax.</span>
-                    </div>
-                    <div class="editorial-input-group">
-                        <label>CR to Order (%)</label>
-                        <input type="number" id="calcCr" placeholder="1">
-                        <span class="quiz-hint">Share of clicks that end in purchase.</span>
-                    </div>
-                    <div class="editorial-input-group">
-                        <label>Average Order Value (AOV)</label>
-                        <input type="number" id="calcAov" placeholder="2500">
-                    </div>
-                    <div class="editorial-input-group">
-                        <label>Gross Margin (%)</label>
-                        <input type="number" id="calcMargin" placeholder="30">
-                    </div>
-                    <div class="editorial-input-group">
-                        <label>Share of Margin Allowed for Ads (%)</label>
-                        <input type="number" id="calcAdShare" placeholder="70">
-                    </div>
-                    <div class="editorial-input-group">
-                        <label>Target Orders per Month (optional)</label>
-                        <input type="number" id="calcTargetOrders" placeholder="80">
-                    </div>
-
-                    <div style="display: flex; gap: 12px; margin-top: 24px;">
-                        <button class="btn-editorial-secondary" onclick="prevQuizStep(2)">&larr; Back</button>
-                        <button class="btn-editorial-primary" style="flex: 1;" onclick="nextQuizStep(4)">Continue &rarr;</button>
-                    </div>
-                </div>
-
-                <!-- STEP 4: Request Audit -->
-                <div class="quiz-step" id="step4" style="display: none;">
-                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 24px;">4. Final Verification</h3>
-                    <p style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; line-height: 1.5;">To generate the AI diagnosis and calculate the financial impact, please provide contact info for the detailed breakdown.</p>
+                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 16px;">3. Results and next step</h3>
+                    <p style="font-family: var(--font-sans); font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5;">Enter contacts and run estimate. You will receive GPT diagnosis + report by message.</p>
 
                     <div class="editorial-input-group">
                         <label>Your Name</label>
@@ -1215,15 +1292,13 @@
                         <input type="text" id="calcContact" placeholder="...">
                     </div>
 
-                    <div style="display: flex; gap: 12px; margin-top: 24px;">
-                        <button class="btn-editorial-secondary" onclick="prevQuizStep(3)">&larr; Back</button>
-                        <button class="btn-editorial-primary" id="magicSubmitBtn" style="flex: 1;" onclick="submitEditorialQuiz()">Generate Report &rarr;</button>
+                    <div class="quiz-actions">
+                        <button class="btn-editorial-secondary" onclick="prevQuizStep(2)">&larr; Back</button>
+                        <button class="btn-editorial-primary" id="magicSubmitBtn" style="flex: 1;" onclick="submitEditorialQuiz()">Generate Report →</button>
                     </div>
-                </div>
 
-                <!-- STEP 5: Results & GPT Diagnosis -->
-                <div class="quiz-step" id="step5" style="display: none;">
-                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 16px; text-align: center;">E-commerce Forecast</h3>
+                    <div id="step3Results" style="display:none; margin-top:18px;">
+                    <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 16px; text-align: center;">E-commerce Forecast</h3>
                     
                     <div style="border: 1px solid var(--text-ink); padding: 24px; background: #fff; margin-bottom: 24px;">
                         <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
@@ -1283,6 +1358,7 @@
                         <p style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--text-muted);">This brief has been sent to Iaroslav. You will be contacted within 24 hours.</p>
                         <button class="btn-editorial-secondary" style="margin-top: 12px;" onclick="closeQuiz()">Close Window</button>
                     </div>
+                    </div>
                 </div>
 
             </div>
@@ -1330,7 +1406,7 @@
         }
 
         // Multi-Step Editorial Quiz Logic
-        let calcModel = 'ecommerce'; // fixed for this flow
+        let calcModel = 'ecommerce';
         let currentQuizStep = 1;
 
         function startQuiz() {
@@ -1338,6 +1414,8 @@
             document.body.style.overflow = 'hidden';
             
             // Reset fields
+            const salesPlanEl = document.getElementById('calcSalesPlan');
+            if (salesPlanEl) salesPlanEl.value = '';
             document.getElementById('calcNiche').value = '';
             document.getElementById('calcRegion').value = '';
             document.getElementById('calcBudget').value = '';
@@ -1349,11 +1427,13 @@
             document.getElementById('calcTargetOrders').value = '';
             document.getElementById('calcName').value = '';
             document.getElementById('calcContact').value = '';
+            const resultsWrap = document.getElementById('step3Results');
+            if (resultsWrap) resultsWrap.style.display = 'none';
             document.getElementById('assistantRecommendation').innerHTML = '<span style="color: var(--text-muted); font-style: italic;">Analyzing data...</span>';
 
             currentQuizStep = 1;
             updateQuizSteps();
-            setCalcModel('ecommerce'); // reset default
+            setCalcModel('ecommerce');
             
             gta('open_calculator', { 'event_category': 'engagement' });
         }
@@ -1364,12 +1444,14 @@
             // Reset to step 1 for next open
             currentQuizStep = 1;
             updateQuizSteps();
+            const resultsWrap = document.getElementById('step3Results');
+            if (resultsWrap) resultsWrap.style.display = 'none';
             const btn = document.getElementById('magicSubmitBtn');
             if (btn) { btn.disabled = false; btn.innerText = 'Generate Report →'; }
         }
 
         function updateQuizSteps() {
-            for (let i = 1; i <= 5; i++) {
+            for (let i = 1; i <= 3; i++) {
                 const el = document.getElementById('step' + i);
                 if (el) {
                     if (i === currentQuizStep) {
@@ -1380,6 +1462,10 @@
                         el.classList.remove('active');
                     }
                 }
+            }
+            for (let i = 1; i <= 3; i++) {
+                const p = document.getElementById('quizProgress' + i);
+                if (p) p.classList.toggle('active', i <= currentQuizStep);
             }
         }
 
@@ -1477,8 +1563,8 @@
             document.getElementById('resBudgetByCr').innerText = targetOrders > 0 ? (fmt(budgetByCr) + ' UAH') : 'n/a';
             document.getElementById('resBudgetByAllowableCpa').innerText = targetOrders > 0 ? (fmt(budgetByAllowableCpa) + ' UAH') : 'n/a';
 
-            // Move to Step 5
-            nextQuizStep(5);
+            const resultsWrap = document.getElementById('step3Results');
+            if (resultsWrap) resultsWrap.style.display = 'block';
 
             // 2. Web3Forms submission
             const niche = document.getElementById('calcNiche').value.trim() || 'Not specified';
