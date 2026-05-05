@@ -1161,35 +1161,38 @@
 
                 <!-- STEP 3: Economics -->
                 <div class="quiz-step" id="step3" style="display: none;">
-                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 24px;">3. Unit Economics</h3>
-                    
-                    <div class="editorial-input-group">
-                        <label>Current Monthly Spend</label>
-                        <input type="number" id="calcSpend" placeholder="$">
-                    </div>
-                    
-                    <!-- ECOM FIELDS -->
-                    <div id="ecomFields" style="display: none;">
-                        <div class="editorial-input-group">
-                            <label>Current ROAS (%)</label>
-                            <input type="number" id="calcCurrentRoas" placeholder="e.g. 250">
-                        </div>
-                        <div class="editorial-input-group">
-                            <label>Target ROAS (%)</label>
-                            <input type="number" id="calcTargetRoas" placeholder="e.g. 350">
-                        </div>
-                    </div>
+                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 24px;">3. E-commerce Unit Economics</h3>
 
-                    <!-- LEAD GEN FIELDS -->
-                    <div id="leadGenFields" style="display: none;">
-                        <div class="editorial-input-group">
-                            <label>Current Cost Per Lead ($)</label>
-                            <input type="number" id="calcCurrentCpa" placeholder="$">
-                        </div>
-                        <div class="editorial-input-group">
-                            <label>Target Cost Per Lead ($)</label>
-                            <input type="number" id="calcTargetCpa" placeholder="$">
-                        </div>
+                    <div class="editorial-input-group">
+                        <label>Monthly Ad Budget</label>
+                        <input type="number" id="calcBudget" placeholder="200000">
+                        <span class="quiz-hint">Planned Google Ads spend per month.</span>
+                    </div>
+                    <div class="editorial-input-group">
+                        <label>Average CPC</label>
+                        <input type="number" id="calcCpc" placeholder="6">
+                        <span class="quiz-hint">Average cost per click in Shopping/PMax.</span>
+                    </div>
+                    <div class="editorial-input-group">
+                        <label>CR to Order (%)</label>
+                        <input type="number" id="calcCr" placeholder="1">
+                        <span class="quiz-hint">Share of clicks that end in purchase.</span>
+                    </div>
+                    <div class="editorial-input-group">
+                        <label>Average Order Value (AOV)</label>
+                        <input type="number" id="calcAov" placeholder="2500">
+                    </div>
+                    <div class="editorial-input-group">
+                        <label>Gross Margin (%)</label>
+                        <input type="number" id="calcMargin" placeholder="30">
+                    </div>
+                    <div class="editorial-input-group">
+                        <label>Share of Margin Allowed for Ads (%)</label>
+                        <input type="number" id="calcAdShare" placeholder="70">
+                    </div>
+                    <div class="editorial-input-group">
+                        <label>Target Orders per Month (optional)</label>
+                        <input type="number" id="calcTargetOrders" placeholder="80">
                     </div>
 
                     <div style="display: flex; gap: 12px; margin-top: 24px;">
@@ -1220,20 +1223,52 @@
 
                 <!-- STEP 5: Results & GPT Diagnosis -->
                 <div class="quiz-step" id="step5" style="display: none;">
-                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 16px; text-align: center;">Audit Results</h3>
+                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 16px; text-align: center;">E-commerce Forecast</h3>
                     
                     <div style="border: 1px solid var(--text-ink); padding: 24px; background: #fff; margin-bottom: 24px;">
                         <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
-                            <span id="lblResCurrent" style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Current Output</span>
-                            <span id="resCurrent" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Clicks</span>
+                            <span id="resClicks" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
                         </div>
                         <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
-                            <span id="lblResTarget" style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Target Output</span>
-                            <span id="resTarget" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Orders (Forecast)</span>
+                            <span id="resOrders" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">CPA</span>
+                            <span id="resCpa" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Revenue</span>
+                            <span id="resRevenue" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">ROAS</span>
+                            <span id="resRoas" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Gross Margin (UAH)</span>
+                            <span id="resGrossMargin" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Allowed Ad Spend</span>
+                            <span id="resAllowedSpend" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Allowable CPA</span>
+                            <span id="resAllowableCpa" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Break-even ROAS</span>
+                            <span id="resBreakEvenRoas" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Budget for Target (CPC+CR)</span>
+                            <span id="resBudgetByCr" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
                         </div>
                         <div class="fm-row total" style="display: flex; justify-content: space-between; border-top: 2px solid var(--text-ink); padding-top: 12px;">
-                            <span id="lblResLoss" style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Cost of Inaction<br><span style="font-size: 0.65rem; color: var(--text-muted);">(Monthly Loss)</span></span>
-                            <span id="resLoss" style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 900; color: var(--accent-red);">-$0</span>
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Budget for Target (Allowable CPA)</span>
+                            <span id="resBudgetByAllowableCpa" style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 900; color: var(--text-dark);">-</span>
                         </div>
                     </div>
 
@@ -1295,7 +1330,7 @@
         }
 
         // Multi-Step Editorial Quiz Logic
-        let calcModel = 'ecommerce'; // default
+        let calcModel = 'ecommerce'; // fixed for this flow
         let currentQuizStep = 1;
 
         function startQuiz() {
@@ -1305,11 +1340,13 @@
             // Reset fields
             document.getElementById('calcNiche').value = '';
             document.getElementById('calcRegion').value = '';
-            document.getElementById('calcSpend').value = '';
-            document.getElementById('calcCurrentRoas').value = '';
-            document.getElementById('calcTargetRoas').value = '';
-            document.getElementById('calcCurrentCpa').value = '';
-            document.getElementById('calcTargetCpa').value = '';
+            document.getElementById('calcBudget').value = '';
+            document.getElementById('calcCpc').value = '';
+            document.getElementById('calcCr').value = '';
+            document.getElementById('calcAov').value = '';
+            document.getElementById('calcMargin').value = '';
+            document.getElementById('calcAdShare').value = '';
+            document.getElementById('calcTargetOrders').value = '';
             document.getElementById('calcName').value = '';
             document.getElementById('calcContact').value = '';
             document.getElementById('assistantRecommendation').innerHTML = '<span style="color: var(--text-muted); font-style: italic;">Analyzing data...</span>';
@@ -1362,12 +1399,16 @@
 
         function setCalcModel(model) {
             calcModel = model;
-            if (model === 'ecommerce') {
-                document.getElementById('ecomFields').style.display = 'block';
-                document.getElementById('leadGenFields').style.display = 'none';
-            } else {
-                document.getElementById('ecomFields').style.display = 'none';
-                document.getElementById('leadGenFields').style.display = 'block';
+            const ecomBtn = document.querySelector('.btn-editorial-select[onclick*="ecommerce"]');
+            const leadBtn = document.querySelector('.btn-editorial-select[onclick*="leadgen"]');
+            if (ecomBtn) {
+                ecomBtn.style.background = '#fff';
+                ecomBtn.style.color = '#111';
+                ecomBtn.style.borderColor = '#111';
+            }
+            if (leadBtn) {
+                leadBtn.style.opacity = '0.45';
+                leadBtn.style.pointerEvents = 'none';
             }
             gta('switch_calc_model', {
                 'event_category': 'engagement',
@@ -1395,46 +1436,46 @@
             btn.innerText = 'Calculating...';
 
             // 1. Math Calculation
-            let spend = parseFloat(document.getElementById('calcSpend').value) || 0;
-            let currentOutput, targetOutput, loss, currentStr, targetStr, lossStr;
+            const budget = parseFloat(document.getElementById('calcBudget').value) || 0;
+            const cpc = parseFloat(document.getElementById('calcCpc').value) || 0;
+            const crPct = parseFloat(document.getElementById('calcCr').value) || 0;
+            const aov = parseFloat(document.getElementById('calcAov').value) || 0;
+            const marginPct = parseFloat(document.getElementById('calcMargin').value) || 0;
+            const adSharePct = parseFloat(document.getElementById('calcAdShare').value) || 0;
+            const targetOrders = parseFloat(document.getElementById('calcTargetOrders').value) || 0;
 
-            if (calcModel === 'ecommerce') {
-                let currentRoas = parseFloat(document.getElementById('calcCurrentRoas').value) || 0;
-                let targetRoas = parseFloat(document.getElementById('calcTargetRoas').value) || 0;
-                
-                currentOutput = spend * (currentRoas / 100);
-                targetOutput = spend * (targetRoas / 100);
-                loss = targetOutput - currentOutput; // potential upside missed
-
-                currentStr = '$' + Math.round(currentOutput).toLocaleString();
-                targetStr = '$' + Math.round(targetOutput).toLocaleString();
-                lossStr = loss > 0 ? '-$' + Math.round(loss).toLocaleString() : '+$' + Math.round(Math.abs(loss)).toLocaleString();
-
-                document.getElementById('lblResCurrent').innerText = 'Current Rev (M)';
-                document.getElementById('lblResTarget').innerText = 'Target Rev (M)';
-                document.getElementById('lblResLoss').innerHTML = 'Cost of Inaction<br><span style="font-size: 0.65rem; color: var(--text-muted);">(Monthly Revenue Loss)</span>';
-
-            } else {
-                let currentCpa = parseFloat(document.getElementById('calcCurrentCpa').value) || 1;
-                let targetCpa = parseFloat(document.getElementById('calcTargetCpa').value) || 1;
-
-                currentOutput = Math.floor(spend / currentCpa);
-                targetOutput = Math.floor(spend / targetCpa);
-                loss = targetOutput - currentOutput; // potential upside missed
-
-                currentStr = currentOutput.toLocaleString() + ' leads';
-                targetStr = targetOutput.toLocaleString() + ' leads';
-                lossStr = loss > 0 ? '-' + Math.round(loss).toLocaleString() + ' leads' : '+' + Math.round(Math.abs(loss)).toLocaleString() + ' leads';
-
-                document.getElementById('lblResCurrent').innerText = 'Current Leads (M)';
-                document.getElementById('lblResTarget').innerText = 'Target Leads (M)';
-                document.getElementById('lblResLoss').innerHTML = 'Cost of Inaction<br><span style="font-size: 0.65rem; color: var(--text-muted);">(Monthly Lead Loss)</span>';
+            if (!budget || !cpc || !crPct || !aov || !marginPct || !adSharePct) {
+                alert('Please fill: Budget, CPC, CR, AOV, Margin, and Ad Share.');
+                btn.disabled = false;
+                btn.innerText = 'Generate Report →';
+                return;
             }
 
-            document.getElementById('resCurrent').innerText = currentStr;
-            document.getElementById('resTarget').innerText = targetStr;
-            document.getElementById('resLoss').innerText = lossStr;
-            document.getElementById('resLoss').style.color = loss > 0 ? 'var(--accent-red)' : '#4ade80';
+            // Excel-equivalent formulas
+            const clicks = cpc > 0 ? budget / cpc : 0;
+            const orders = clicks * (crPct / 100);
+            const cpa = orders > 0 ? budget / orders : 0;
+            const revenue = orders * aov;
+            const roas = budget > 0 ? revenue / budget : 0;
+            const grossMarginUah = revenue * (marginPct / 100);
+            const allowedAdSpend = grossMarginUah * (adSharePct / 100);
+            const allowableCpa = orders > 0 ? allowedAdSpend / orders : 0;
+            const breakEvenRoas = (marginPct > 0 && adSharePct > 0) ? (1 / ((marginPct / 100) * (adSharePct / 100))) : 0;
+            const budgetByCr = (targetOrders > 0 && crPct > 0) ? ((targetOrders / (crPct / 100)) * cpc) : 0;
+            const budgetByAllowableCpa = targetOrders > 0 ? (targetOrders * allowableCpa) : 0;
+
+            const fmt = (v) => Math.round(v).toLocaleString();
+            document.getElementById('resClicks').innerText = fmt(clicks);
+            document.getElementById('resOrders').innerText = fmt(orders);
+            document.getElementById('resCpa').innerText = fmt(cpa) + ' UAH';
+            document.getElementById('resRevenue').innerText = fmt(revenue) + ' UAH';
+            document.getElementById('resRoas').innerText = roas.toFixed(2) + 'x';
+            document.getElementById('resGrossMargin').innerText = fmt(grossMarginUah) + ' UAH';
+            document.getElementById('resAllowedSpend').innerText = fmt(allowedAdSpend) + ' UAH';
+            document.getElementById('resAllowableCpa').innerText = fmt(allowableCpa) + ' UAH';
+            document.getElementById('resBreakEvenRoas').innerText = breakEvenRoas.toFixed(2) + 'x';
+            document.getElementById('resBudgetByCr').innerText = targetOrders > 0 ? (fmt(budgetByCr) + ' UAH') : 'n/a';
+            document.getElementById('resBudgetByAllowableCpa').innerText = targetOrders > 0 ? (fmt(budgetByAllowableCpa) + ' UAH') : 'n/a';
 
             // Move to Step 5
             nextQuizStep(5);
@@ -1452,12 +1493,18 @@
                 'Niche: ' + niche,
                 'Region: ' + region,
                 'Model: ' + calcModel.toUpperCase(),
-                'Spend: $' + spend,
+                'Budget (UAH): ' + budget,
                 '',
                 '=== FORECAST ===',
-                'Current Output: ' + currentStr,
-                'Target Output: ' + targetStr,
-                'Cost of Inaction (Loss): ' + lossStr
+                'Clicks: ' + fmt(clicks),
+                'Orders: ' + fmt(orders),
+                'CPA: ' + fmt(cpa),
+                'Revenue: ' + fmt(revenue),
+                'ROAS: ' + roas.toFixed(2) + 'x',
+                'Allowable CPA: ' + fmt(allowableCpa),
+                'Break-even ROAS: ' + breakEvenRoas.toFixed(2) + 'x',
+                'Budget for Target (CPC+CR): ' + (targetOrders > 0 ? fmt(budgetByCr) : 'n/a'),
+                'Budget for Target (Allowable CPA): ' + (targetOrders > 0 ? fmt(budgetByAllowableCpa) : 'n/a')
             ].join('\n');
 
             fetch('https://api.web3forms.com/submit', {
@@ -1478,23 +1525,38 @@
             });
 
             // 3. Ask GPT Assistant
-            askGptAssistant(spend, currentStr, targetStr, lossStr);
+            askGptAssistant({
+                budget: budget,
+                clicks: clicks,
+                orders: orders,
+                cpa: cpa,
+                revenue: revenue,
+                roas: roas,
+                allowableCpa: allowableCpa,
+                breakEvenRoas: breakEvenRoas,
+                budgetByCr: budgetByCr,
+                budgetByAllowableCpa: budgetByAllowableCpa,
+                targetOrders: targetOrders
+            });
         }
 
-        async function askGptAssistant(spend, currentStr, targetStr, lossStr) {
+        async function askGptAssistant(calc) {
             const endpoint = getAssistantApiEndpoint();
             const recBox = document.getElementById('assistantRecommendation');
             
             if (!endpoint) {
-                recBox.innerHTML = '<p><em>GPT backend pending deployment.</em> Based on the math, you are losing <strong>' + lossStr + '</strong> monthly by not hitting the target efficiency. I will manually review your brief and send a full breakdown.</p>';
+                recBox.innerHTML = '<p><em>GPT backend pending deployment.</em> Current ROAS is <strong>' + calc.roas.toFixed(2) + 'x</strong>, break-even is <strong>' + calc.breakEvenRoas.toFixed(2) + 'x</strong>. If ROAS is below break-even, this plan is not sustainable without better CR/CPC.</p>';
                 return;
             }
 
             try {
-                const aiMessage = `Act as an expert Wall Street Journal analyst doing a strict, no-nonsense financial diagnosis. 
-                Analyze this PPC Financial Impact. Model: ${calcModel}. Monthly spend: $${spend}. 
-                Current output: ${currentStr}. Target output: ${targetStr}. Opportunity loss (Cost of Inaction): ${lossStr}.
-                Give a strict, 2-sentence diagnosis on why they must act immediately to stop the bleed.`;
+                const aiMessage = `Analyze this ecommerce PPC model in 2 short sentences.
+                Budget: ${Math.round(calc.budget)} UAH.
+                Clicks: ${Math.round(calc.clicks)}, Orders: ${Math.round(calc.orders)}, CPA: ${Math.round(calc.cpa)} UAH.
+                Revenue: ${Math.round(calc.revenue)} UAH, ROAS: ${calc.roas.toFixed(2)}x.
+                Allowable CPA: ${Math.round(calc.allowableCpa)} UAH, Break-even ROAS: ${calc.breakEvenRoas.toFixed(2)}x.
+                If target orders provided (${Math.round(calc.targetOrders)}), compare budgetByCr=${Math.round(calc.budgetByCr)} and budgetByAllowableCpa=${Math.round(calc.budgetByAllowableCpa)}.
+                Give one main risk and one next action.`;
 
                 const response = await fetch(endpoint, {
                     method: 'POST',
@@ -1511,7 +1573,7 @@
                 recBox.innerHTML = '<p>' + data.answer + '</p>';
             } catch (err) {
                 console.warn('GPT error', err);
-                recBox.innerHTML = '<p>Based on the math, you are losing <strong>' + lossStr + '</strong> monthly by not hitting the target efficiency. I will manually review your brief and send a full breakdown.</p>';
+                recBox.innerHTML = '<p>Quick diagnosis: compare your <strong>ROAS</strong> with <strong>break-even ROAS</strong>. If actual ROAS is lower, fix conversion rate and product economics first, then scale budget.</p>';
             }
         }
     </script>
