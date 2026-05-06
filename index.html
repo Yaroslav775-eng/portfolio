@@ -1279,16 +1279,16 @@
                     <div class="quiz-grid">
                         <div>
                             <div class="editorial-input-group">
-                                <label>Monthly Sales Plan (UAH)</label>
+                                <label>Monthly Sales Plan (USD)</label>
                                 <input type="number" id="calcSalesPlan" placeholder="500000">
                                 <span class="quiz-hint">Optional planning reference.</span>
                             </div>
                             <div class="editorial-input-group">
-                                <label>Monthly Ad Budget (UAH)</label>
+                                <label>Monthly Ad Budget (USD)</label>
                                 <input type="number" id="calcBudget" placeholder="200000">
                             </div>
                             <div class="editorial-input-group">
-                                <label>Average CPC (UAH)</label>
+                                <label>Average CPC (USD)</label>
                                 <input type="number" id="calcCpc" placeholder="6">
                             </div>
                             <div class="editorial-input-group">
@@ -1296,7 +1296,7 @@
                                 <input type="number" id="calcCr" placeholder="1">
                             </div>
                             <div class="editorial-input-group">
-                                <label>Average Order Value (AOV, UAH)</label>
+                                <label>Average Order Value (AOV, USD)</label>
                                 <input type="number" id="calcAov" placeholder="2500">
                             </div>
                             <div class="editorial-input-group">
@@ -1321,8 +1321,8 @@
                             </div>
                         </div>
                         <aside class="quiz-note">
-                            <strong style="display:block; margin-bottom:8px;">Important</strong>
-                            CTR, clicks, and orders are modelled from your assumptions, not auto-fetched from ad platforms.
+                            <strong style="display:block; margin-bottom:8px;">What each field means</strong>
+                            Budget = how much you spend per month. CPC = average click cost. CR = how many clicks become orders. AOV = average order value. Margin + Ad Share = your safe ad spend limit.
                             <div class="quiz-live-line" id="liveExplainPrimary">Start with budget + CPC, and I will estimate clicks in real time.</div>
                             <div class="quiz-live-line" id="liveExplainSecondary">Then add CR and AOV to see projected orders, revenue, and ROAS logic.</div>
                             <div class="quiz-health-chip" id="liveHealthChip">Health: pending</div>
@@ -1386,7 +1386,7 @@
                             <span id="resRoas" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
                         </div>
                         <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
-                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Gross Margin (UAH)</span>
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Gross Margin (USD)</span>
                             <span id="resGrossMargin" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
                         </div>
                         <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
@@ -1412,9 +1412,9 @@
                     </div>
 
                     <div style="border-top: 1px solid #ccc; padding-top: 24px;">
-                        <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin-bottom: 12px; display: block;">AI Diagnosis</span>
+                        <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin-bottom: 12px; display: block;">Quick Summary</span>
                         <div id="assistantRecommendation" style="font-family: var(--font-serif); font-size: 1rem; line-height: 1.6; color: var(--text-ink);">
-                            <span style="color: var(--text-muted); font-style: italic;">Analyzing data...</span>
+                            <span style="color: var(--text-muted); font-style: italic;">Fill values and click Generate Report.</span>
                         </div>
                     </div>
 
@@ -1483,7 +1483,7 @@
             document.getElementById('calcContact').value = '';
             const resultsWrap = document.getElementById('step3Results');
             if (resultsWrap) resultsWrap.style.display = 'none';
-            document.getElementById('assistantRecommendation').innerHTML = '<span style="color: var(--text-muted); font-style: italic;">Analyzing data...</span>';
+            document.getElementById('assistantRecommendation').innerHTML = '<span style="color: var(--text-muted); font-style: italic;">Fill values and click Generate Report.</span>';
 
             currentQuizStep = 1;
             updateQuizSteps();
@@ -1614,11 +1614,11 @@
 
             const fmt = (v) => Math.round(v).toLocaleString();
             line1.textContent = (budget > 0 && cpc > 0)
-                ? `With budget ${fmt(budget)} UAH and CPC ${cpc}, estimated traffic is ${fmt(clicks)} clicks.`
+                ? `With budget ${fmt(budget)} USD and CPC ${cpc}, estimated traffic is ${fmt(clicks)} clicks.`
                 : 'Start with budget + CPC, and I will estimate clicks in real time.';
 
             line2.textContent = (crPct > 0 && aov > 0 && budget > 0 && cpc > 0)
-                ? `At CR ${crPct}% and AOV ${fmt(aov)} UAH: ~${fmt(orders)} orders, revenue ~${fmt(revenue)} UAH, ROAS ${roas.toFixed(2)}x.`
+                ? `At CR ${crPct}% and AOV ${fmt(aov)} USD: ~${fmt(orders)} orders, revenue ~${fmt(revenue)} USD, ROAS ${roas.toFixed(2)}x.`
                 : 'Then add CR and AOV to see projected orders, revenue, and ROAS logic.';
 
             if (!marginPct || !adSharePct) {
@@ -1636,7 +1636,7 @@
             if (!safe) {
                 healthChip.className = 'quiz-health-chip health-risk';
                 healthChip.textContent = 'Health: high risk';
-                line3.textContent = `Status: risky baseline. Max ad spend per order ${fmt(maxAdFromAov)} UAH is above gross margin ${fmt(grossPerOrder)} UAH.`;
+                line3.textContent = `Status: risky baseline. Max ad spend per order ${fmt(maxAdFromAov)} USD is above gross margin ${fmt(grossPerOrder)} USD.`;
                 line4.textContent = 'Next: reduce ad share or increase margin/AOV before scaling budget.';
             } else if (moderateRisk) {
                 healthChip.className = 'quiz-health-chip health-warn';
@@ -1646,7 +1646,7 @@
             } else {
                 healthChip.className = 'quiz-health-chip health-good';
                 healthChip.textContent = 'Health: feasible';
-                line3.textContent = `Status: feasible baseline. Max ad spend per order ~${fmt(maxAdFromAov)} UAH is within gross margin ${fmt(grossPerOrder)} UAH.`;
+                line3.textContent = `Status: feasible baseline. Max ad spend per order ~${fmt(maxAdFromAov)} USD is within gross margin ${fmt(grossPerOrder)} USD.`;
                 line4.textContent = 'Next: run controlled scaling and watch CR stability by traffic source.';
             }
 
@@ -1711,8 +1711,8 @@
             const cpa = orders > 0 ? budget / orders : 0;
             const revenue = orders * aov;
             const roas = budget > 0 ? revenue / budget : 0;
-            const grossMarginUah = revenue * (marginPct / 100);
-            const allowedAdSpend = grossMarginUah * (adSharePct / 100);
+            const grossMarginUsd = revenue * (marginPct / 100);
+            const allowedAdSpend = grossMarginUsd * (adSharePct / 100);
             const allowableCpa = orders > 0 ? allowedAdSpend / orders : 0;
             const breakEvenRoas = (marginPct > 0 && adSharePct > 0) ? (1 / ((marginPct / 100) * (adSharePct / 100))) : 0;
             const budgetByCr = (targetOrders > 0 && crPct > 0) ? ((targetOrders / (crPct / 100)) * cpc) : 0;
@@ -1721,15 +1721,15 @@
             const fmt = (v) => Math.round(v).toLocaleString();
             document.getElementById('resClicks').innerText = fmt(clicks);
             document.getElementById('resOrders').innerText = fmt(orders);
-            document.getElementById('resCpa').innerText = fmt(cpa) + ' UAH';
-            document.getElementById('resRevenue').innerText = fmt(revenue) + ' UAH';
+            document.getElementById('resCpa').innerText = fmt(cpa) + ' USD';
+            document.getElementById('resRevenue').innerText = fmt(revenue) + ' USD';
             document.getElementById('resRoas').innerText = roas.toFixed(2) + 'x';
-            document.getElementById('resGrossMargin').innerText = fmt(grossMarginUah) + ' UAH';
-            document.getElementById('resAllowedSpend').innerText = fmt(allowedAdSpend) + ' UAH';
-            document.getElementById('resAllowableCpa').innerText = fmt(allowableCpa) + ' UAH';
+            document.getElementById('resGrossMargin').innerText = fmt(grossMarginUsd) + ' USD';
+            document.getElementById('resAllowedSpend').innerText = fmt(allowedAdSpend) + ' USD';
+            document.getElementById('resAllowableCpa').innerText = fmt(allowableCpa) + ' USD';
             document.getElementById('resBreakEvenRoas').innerText = breakEvenRoas.toFixed(2) + 'x';
-            document.getElementById('resBudgetByCr').innerText = targetOrders > 0 ? (fmt(budgetByCr) + ' UAH') : 'n/a';
-            document.getElementById('resBudgetByAllowableCpa').innerText = targetOrders > 0 ? (fmt(budgetByAllowableCpa) + ' UAH') : 'n/a';
+            document.getElementById('resBudgetByCr').innerText = targetOrders > 0 ? (fmt(budgetByCr) + ' USD') : 'n/a';
+            document.getElementById('resBudgetByAllowableCpa').innerText = targetOrders > 0 ? (fmt(budgetByAllowableCpa) + ' USD') : 'n/a';
 
             const resultsWrap = document.getElementById('step3Results');
             if (resultsWrap) resultsWrap.style.display = 'block';
@@ -1747,7 +1747,7 @@
                 'Niche: ' + niche,
                 'Region: ' + region,
                 'Model: ' + calcModel.toUpperCase(),
-                'Budget (UAH): ' + budget,
+                'Budget (USD): ' + budget,
                 '',
                 '=== FORECAST ===',
                 'Clicks: ' + fmt(clicks),
@@ -1778,20 +1778,10 @@
                 'niche': niche
             });
 
-            // 3. Ask GPT Assistant
-            askGptAssistant({
-                budget: budget,
-                clicks: clicks,
-                orders: orders,
-                cpa: cpa,
-                revenue: revenue,
-                roas: roas,
-                allowableCpa: allowableCpa,
-                breakEvenRoas: breakEvenRoas,
-                budgetByCr: budgetByCr,
-                budgetByAllowableCpa: budgetByAllowableCpa,
-                targetOrders: targetOrders
-            });
+            const summary = `Forecast: ${fmt(orders)} orders, ROAS ${roas.toFixed(2)}x. ` +
+                `Break-even ROAS ${breakEvenRoas.toFixed(2)}x. ` +
+                `Focus first on ${roas < breakEvenRoas ? 'improving CR / lowering CPC' : 'careful scaling with control'}.`;
+            document.getElementById('assistantRecommendation').innerText = summary;
         }
 
         async function askGptAssistant(calc) {
