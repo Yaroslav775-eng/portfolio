@@ -1273,6 +1273,9 @@
                 <!-- STEP 2 -->
                 <div class="quiz-step" id="step2" style="display: none;">
                     <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 18px;">2. Fill your assumptions</h3>
+                    <p style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+                        We prefilled a starter template. Just adjust values to your reality.
+                    </p>
                     <div class="quiz-grid">
                         <div>
                             <div class="editorial-input-group">
@@ -1333,6 +1336,7 @@
                         </aside>
                     </div>
                     <div class="quiz-actions">
+                        <button class="btn-editorial-secondary" type="button" onclick="applyTemplateValues()">Use Starter Template</button>
                         <button class="btn-editorial-secondary" onclick="prevQuizStep(1)">&larr; Back</button>
                         <button class="btn-editorial-primary" style="flex: 1;" onclick="nextQuizStep(3)">Continue →</button>
                     </div>
@@ -1474,17 +1478,7 @@
             document.body.style.overflow = 'hidden';
             
             // Reset fields
-            const salesPlanEl = document.getElementById('calcSalesPlan');
-            if (salesPlanEl) salesPlanEl.value = '';
-            document.getElementById('calcNiche').value = '';
-            document.getElementById('calcRegion').value = '';
-            document.getElementById('calcBudget').value = '';
-            document.getElementById('calcCpc').value = '';
-            document.getElementById('calcCr').value = '';
-            document.getElementById('calcAov').value = '';
-            document.getElementById('calcMargin').value = '';
-            document.getElementById('calcAdShare').value = '';
-            document.getElementById('calcTargetOrders').value = '';
+            applyTemplateValues();
             document.getElementById('calcName').value = '';
             document.getElementById('calcContact').value = '';
             const resultsWrap = document.getElementById('step3Results');
@@ -1510,6 +1504,25 @@
             if (resultsWrap) resultsWrap.style.display = 'none';
             const btn = document.getElementById('magicSubmitBtn');
             if (btn) { btn.disabled = false; btn.innerText = 'Generate Report →'; }
+        }
+
+        function applyTemplateValues() {
+            const defaults = {
+                calcSalesPlan: 500000,
+                calcBudget: 120000,
+                calcCpc: 8,
+                calcCr: 1.2,
+                calcAov: 2500,
+                calcMargin: 35,
+                calcAdShare: 20,
+                calcTargetOrders: 120,
+                calcNiche: 'E-commerce',
+                calcRegion: 'Ukraine'
+            };
+            Object.keys(defaults).forEach((id) => {
+                const el = document.getElementById(id);
+                if (el) el.value = defaults[id];
+            });
         }
 
         function updateQuizSteps() {
