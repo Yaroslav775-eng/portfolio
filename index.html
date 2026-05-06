@@ -418,6 +418,34 @@
             color: #222;
             line-height: 1.45;
         }
+        .quiz-health-chip {
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border: 1px solid #bbb;
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            background: #fff;
+        }
+        .quiz-health-chip::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #888;
+            display: inline-block;
+        }
+        .quiz-health-chip.health-good { border-color: #2e7d32; color: #2e7d32; }
+        .quiz-health-chip.health-good::before { background: #2e7d32; }
+        .quiz-health-chip.health-warn { border-color: #b26a00; color: #8a5300; }
+        .quiz-health-chip.health-warn::before { background: #d48900; }
+        .quiz-health-chip.health-risk { border-color: #b00020; color: #8e0018; }
+        .quiz-health-chip.health-risk::before { background: #c30024; }
         .quiz-actions {
             display: flex;
             gap: 12px;
@@ -1281,7 +1309,9 @@
                             CTR, clicks, and orders are modelled from your assumptions, not auto-fetched from ad platforms.
                             <div class="quiz-live-line" id="liveExplainPrimary">Start with budget + CPC, and I will estimate clicks in real time.</div>
                             <div class="quiz-live-line" id="liveExplainSecondary">Then add CR and AOV to see projected orders, revenue, and ROAS logic.</div>
+                            <div class="quiz-health-chip" id="liveHealthChip">Health: pending</div>
                             <div class="quiz-live-line" id="liveExplainStatus">Status: waiting for core inputs.</div>
+                            <div class="quiz-live-line" id="liveExplainNext">Next: enter core inputs to unlock recommendation.</div>
                         </aside>
                     </div>
                     <div class="quiz-actions">
@@ -1544,7 +1574,9 @@
             const line1 = document.getElementById('liveExplainPrimary');
             const line2 = document.getElementById('liveExplainSecondary');
             const line3 = document.getElementById('liveExplainStatus');
-            if (!line1 || !line2 || !line3) return;
+            const line4 = document.getElementById('liveExplainNext');
+            const healthChip = document.getElementById('liveHealthChip');
+            if (!line1 || !line2 || !line3 || !line4 || !healthChip) return;
 
             const fmt = (v) => Math.round(v).toLocaleString();
             line1.textContent = (budget > 0 && cpc > 0)
@@ -1557,12 +1589,29 @@
 
             if (!marginPct || !adSharePct) {
                 line3.textContent = 'Status: add margin and ad share to check if the model is economically safe.';
+                line4.textContent = 'Next: fill Margin and Max Ad Share to get a practical recommendation.';
+                healthChip.className = 'quiz-health-chip';
+                healthChip.textContent = 'Health: pending';
                 return;
             }
             const safe = maxAdFromAov <= grossPerOrder;
-            line3.textContent = safe
-                ? `Status: feasible baseline. Max ad spend per order ~${fmt(maxAdFromAov)} UAH is within gross margin ${fmt(grossPerOrder)} UAH.`
-                : `Status: risky baseline. Max ad spend per order ${fmt(maxAdFromAov)} UAH is above gross margin ${fmt(grossPerOrder)} UAH.`;
+            const moderateRisk = safe && roas > 0 && roas < 2;
+            if (!safe) {
+                healthChip.className = 'quiz-health-chip health-risk';
+                healthChip.textContent = 'Health: high risk';
+                line3.textContent = `Status: risky baseline. Max ad spend per order ${fmt(maxAdFromAov)} UAH is above gross margin ${fmt(grossPerOrder)} UAH.`;
+                line4.textContent = 'Next: reduce ad share or increase margin/AOV before scaling budget.';
+            } else if (moderateRisk) {
+                healthChip.className = 'quiz-health-chip health-warn';
+                healthChip.textContent = 'Health: watch closely';
+                line3.textContent = `Status: feasible but fragile. Unit economics pass, but projected ROAS ${roas.toFixed(2)}x is still thin.`;
+                line4.textContent = 'Next: improve CR or lower CPC first, then increase budget gradually.';
+            } else {
+                healthChip.className = 'quiz-health-chip health-good';
+                healthChip.textContent = 'Health: feasible';
+                line3.textContent = `Status: feasible baseline. Max ad spend per order ~${fmt(maxAdFromAov)} UAH is within gross margin ${fmt(grossPerOrder)} UAH.`;
+                line4.textContent = 'Next: run controlled scaling and watch CR stability by traffic source.';
+            }
         }
 
         function getAssistantApiEndpoint() {
