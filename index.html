@@ -409,6 +409,15 @@
             line-height: 1.55;
             color: #333;
         }
+        .quiz-live-line {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #bbb;
+            font-family: var(--font-sans);
+            font-size: 0.82rem;
+            color: #222;
+            line-height: 1.45;
+        }
         .quiz-actions {
             display: flex;
             gap: 12px;
@@ -1270,6 +1279,9 @@
                         <aside class="quiz-note">
                             <strong style="display:block; margin-bottom:8px;">Important</strong>
                             CTR, clicks, and orders are modelled from your assumptions, not auto-fetched from ad platforms.
+                            <div class="quiz-live-line" id="liveExplainPrimary">Start with budget + CPC, and I will estimate clicks in real time.</div>
+                            <div class="quiz-live-line" id="liveExplainSecondary">Then add CR and AOV to see projected orders, revenue, and ROAS logic.</div>
+                            <div class="quiz-live-line" id="liveExplainStatus">Status: waiting for core inputs.</div>
                         </aside>
                     </div>
                     <div class="quiz-actions">
@@ -1434,6 +1446,8 @@
             currentQuizStep = 1;
             updateQuizSteps();
             setCalcModel('ecommerce');
+            initLiveExplainer();
+            updateLiveExplainer();
             
             gta('open_calculator', { 'event_category': 'engagement' });
         }
@@ -1500,6 +1514,55 @@
                 'event_category': 'engagement',
                 'model': model
             });
+        }
+
+        function initLiveExplainer() {
+            const fields = ['calcBudget', 'calcCpc', 'calcCr', 'calcAov', 'calcMargin', 'calcAdShare', 'calcTargetOrders'];
+            fields.forEach((id) => {
+                const el = document.getElementById(id);
+                if (!el || el.dataset.liveBound === '1') return;
+                el.addEventListener('input', updateLiveExplainer);
+                el.dataset.liveBound = '1';
+            });
+        }
+
+        function updateLiveExplainer() {
+            const budget = parseFloat(document.getElementById('calcBudget')?.value) || 0;
+            const cpc = parseFloat(document.getElementById('calcCpc')?.value) || 0;
+            const crPct = parseFloat(document.getElementById('calcCr')?.value) || 0;
+            const aov = parseFloat(document.getElementById('calcAov')?.value) || 0;
+            const marginPct = parseFloat(document.getElementById('calcMargin')?.value) || 0;
+            const adSharePct = parseFloat(document.getElementById('calcAdShare')?.value) || 0;
+
+            const clicks = cpc > 0 ? budget / cpc : 0;
+            const orders = clicks * (crPct / 100);
+            const revenue = orders * aov;
+            const roas = budget > 0 ? revenue / budget : 0;
+            const maxAdFromAov = aov > 0 ? (aov * (adSharePct / 100)) : 0;
+            const grossPerOrder = aov > 0 ? (aov * (marginPct / 100)) : 0;
+
+            const line1 = document.getElementById('liveExplainPrimary');
+            const line2 = document.getElementById('liveExplainSecondary');
+            const line3 = document.getElementById('liveExplainStatus');
+            if (!line1 || !line2 || !line3) return;
+
+            const fmt = (v) => Math.round(v).toLocaleString();
+            line1.textContent = (budget > 0 && cpc > 0)
+                ? `With budget ${fmt(budget)} UAH and CPC ${cpc}, estimated traffic is ${fmt(clicks)} clicks.`
+                : 'Start with budget + CPC, and I will estimate clicks in real time.';
+
+            line2.textContent = (crPct > 0 && aov > 0 && budget > 0 && cpc > 0)
+                ? `At CR ${crPct}% and AOV ${fmt(aov)} UAH: ~${fmt(orders)} orders, revenue ~${fmt(revenue)} UAH, ROAS ${roas.toFixed(2)}x.`
+                : 'Then add CR and AOV to see projected orders, revenue, and ROAS logic.';
+
+            if (!marginPct || !adSharePct) {
+                line3.textContent = 'Status: add margin and ad share to check if the model is economically safe.';
+                return;
+            }
+            const safe = maxAdFromAov <= grossPerOrder;
+            line3.textContent = safe
+                ? `Status: feasible baseline. Max ad spend per order ~${fmt(maxAdFromAov)} UAH is within gross margin ${fmt(grossPerOrder)} UAH.`
+                : `Status: risky baseline. Max ad spend per order ${fmt(maxAdFromAov)} UAH is above gross margin ${fmt(grossPerOrder)} UAH.`;
         }
 
         function getAssistantApiEndpoint() {
