@@ -418,6 +418,19 @@
             color: #222;
             line-height: 1.45;
         }
+        .quiz-scenarios {
+            margin-top: 10px;
+            border-top: 1px dashed #bbb;
+            padding-top: 10px;
+            display: grid;
+            gap: 6px;
+        }
+        .quiz-scenario-item {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            line-height: 1.4;
+            color: #222;
+        }
         .quiz-health-chip {
             margin-top: 10px;
             display: inline-flex;
@@ -1312,6 +1325,11 @@
                             <div class="quiz-health-chip" id="liveHealthChip">Health: pending</div>
                             <div class="quiz-live-line" id="liveExplainStatus">Status: waiting for core inputs.</div>
                             <div class="quiz-live-line" id="liveExplainNext">Next: enter core inputs to unlock recommendation.</div>
+                            <div class="quiz-scenarios">
+                                <div class="quiz-scenario-item" id="scenarioConservative">Conservative: waiting for data.</div>
+                                <div class="quiz-scenario-item" id="scenarioBase">Base: waiting for data.</div>
+                                <div class="quiz-scenario-item" id="scenarioAggressive">Aggressive: waiting for data.</div>
+                            </div>
                         </aside>
                     </div>
                     <div class="quiz-actions">
@@ -1576,7 +1594,10 @@
             const line3 = document.getElementById('liveExplainStatus');
             const line4 = document.getElementById('liveExplainNext');
             const healthChip = document.getElementById('liveHealthChip');
-            if (!line1 || !line2 || !line3 || !line4 || !healthChip) return;
+            const scnConservative = document.getElementById('scenarioConservative');
+            const scnBase = document.getElementById('scenarioBase');
+            const scnAggressive = document.getElementById('scenarioAggressive');
+            if (!line1 || !line2 || !line3 || !line4 || !healthChip || !scnConservative || !scnBase || !scnAggressive) return;
 
             const fmt = (v) => Math.round(v).toLocaleString();
             line1.textContent = (budget > 0 && cpc > 0)
@@ -1592,6 +1613,9 @@
                 line4.textContent = 'Next: fill Margin and Max Ad Share to get a practical recommendation.';
                 healthChip.className = 'quiz-health-chip';
                 healthChip.textContent = 'Health: pending';
+                scnConservative.textContent = 'Conservative: waiting for full core inputs.';
+                scnBase.textContent = 'Base: waiting for full core inputs.';
+                scnAggressive.textContent = 'Aggressive: waiting for full core inputs.';
                 return;
             }
             const safe = maxAdFromAov <= grossPerOrder;
@@ -1611,6 +1635,25 @@
                 healthChip.textContent = 'Health: feasible';
                 line3.textContent = `Status: feasible baseline. Max ad spend per order ~${fmt(maxAdFromAov)} UAH is within gross margin ${fmt(grossPerOrder)} UAH.`;
                 line4.textContent = 'Next: run controlled scaling and watch CR stability by traffic source.';
+            }
+
+            if (budget > 0 && cpc > 0 && crPct > 0 && aov > 0) {
+                const scenario = (cpcFactor, crFactor, label) => {
+                    const scpc = cpc * cpcFactor;
+                    const scr = crPct * crFactor;
+                    const sclicks = budget / scpc;
+                    const sorders = sclicks * (scr / 100);
+                    const srev = sorders * aov;
+                    const sroas = srev / budget;
+                    return `${label}: ~${fmt(sorders)} orders, ROAS ${sroas.toFixed(2)}x`;
+                };
+                scnConservative.textContent = scenario(1.2, 0.85, 'Conservative');
+                scnBase.textContent = scenario(1.0, 1.0, 'Base');
+                scnAggressive.textContent = scenario(0.9, 1.2, 'Aggressive');
+            } else {
+                scnConservative.textContent = 'Conservative: add Budget, CPC, CR, AOV.';
+                scnBase.textContent = 'Base: add Budget, CPC, CR, AOV.';
+                scnAggressive.textContent = 'Aggressive: add Budget, CPC, CR, AOV.';
             }
         }
 
