@@ -695,7 +695,7 @@
                     </div>
                     <button class="btn-text case-cta">Читати стратегічний звіт <span>&rarr;</span></button>
                 </div>
-                <div class="case-card" onclick="openModal('case-3')">
+                <div class="case-card" onclick="window.location.href='#detail-case-3'" style="cursor: pointer;">
                     <div class="case-title">B2B: Логістика<span class="case-tag">Лідогенерація</span></div>
                     <p class="case-before">До: об'єм є, якість катастрофічна &mdash; телефонує не та аудиторія</p>
                     <p class="case-teaser">Ставилися до ключових слів як до фільтра трафіку, а не джерела. Аудит мінус-слів усунув споживчі запити. DSA виявив реальний B2B-інтент.</p>
@@ -705,7 +705,7 @@
                     </div>
                     <button class="btn-text case-cta">Системний огляд <span>&rarr;</span></button>
                 </div>
-                <div class="case-card" onclick="openModal('case-4')">
+                <div class="case-card" onclick="window.location.href='#detail-case-4'" style="cursor: pointer;">
                     <div class="case-title">E-commerce: Електроніка<span class="case-tag">Технічний</span></div>
                     <p class="case-before">До: тисячі SKU, рівний бюджет, нульова логіка пріоритетів</p>
                     <p class="case-teaser">Розділили каталог на 3 рівні ефективності. PMax — на пріоритетні сегменти. Брендовий Search захищено від канібалізації PMax.</p>
@@ -725,7 +725,7 @@
                     </div>
                     <button class="btn-text case-cta">Читати стратегічний звіт <span>&rarr;</span></button>
                 </div>
-                <div class="case-card" onclick="openModal('case-6')">
+                <div class="case-card" onclick="window.location.href='#detail-case-6'" style="cursor: pointer;">
                     <div class="case-title">Industrial B2B: Обладнання<span class="case-tag">Стратегія</span></div>
                     <p class="case-before">До: ліди є, але всі від неправильної аудиторії</p>
                     <p class="case-teaser">Перебудували навколо supply-chain інтенту. Визначили мову профійних закупників. Ремаркетинг на відвідувачів сторінок специфікацій. Форми B2B відстежено як мікро-конверсії.</p>
@@ -916,8 +916,11 @@
             <p style="font-family: var(--font-sans); font-size: 0.85rem; color: #999;">&copy; 2026 Ярослав Жакун. Google Ads Architecture & Performance.</p>
         </div>
     </footer>
-    <div style="display: none;">
-        <div id="data-case-3">
+    <section id="case-details-ua" class="section-cases" style="padding-top: 30px;">
+        <div class="container">
+            <span class="section-label">Детальні розбори</span>
+            <h2 class="section-title">Системні кейси (повна версія)</h2>
+        <div id="detail-case-3" style="background: #fff; border: 1px solid var(--accent-muted); padding: 28px; margin-bottom: 20px;">
             <h2 style="margin-bottom: 8px;">B2B: Логістика</h2>
             <div class="highlight-box">Компанія отримувала кліки та заявки, але значна частина запитів приходила від приватних осіб та дрібних операторів, а не від комерційних клієнтів, яких реально міг закрити відділ продажів.</div>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Що ми зробили</h4>
@@ -936,7 +939,7 @@
             </div>
         </div>
 
-        <div id="data-case-4">
+        <div id="detail-case-4" style="background: #fff; border: 1px solid var(--accent-muted); padding: 28px; margin-bottom: 20px;">
             <h2 style="margin-bottom: 8px;">E-commerce: Електроніка</h2>
             <div class="highlight-box">Каталог мав понад 2,000 SKU, але бюджет розподілявся без логіки пріоритетів. Високомаржинальні товари конкурували з аксесуарами, а загальний ROAS не показував справжню прибутковість.</div>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Що ми зробили</h4>
@@ -951,7 +954,7 @@
             </div>
         </div>
 
-        <div id="data-case-6">
+        <div id="detail-case-6" style="background: #fff; border: 1px solid var(--accent-muted); padding: 28px; margin-bottom: 20px;">
             <h2 style="margin-bottom: 8px;">Industrial B2B: Обладнання</h2>
             <div class="highlight-box">Ліди були, але частина звернень приходила від неправильної аудиторії. Потрібно було відділити професійний закупівельний інтент від роздрібного шуму.</div>
             <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Що ми зробили</h4>
@@ -965,7 +968,8 @@
                 <div class="modal-metric"><span class="modal-metric-val">€14.4k</span><span class="modal-metric-lbl">Витрати</span></div>
             </div>
         </div>
-    </div>
+        </div>
+    </section>
     <!-- MODAL OVERLAY -->
     <div id="caseModal" class="modal-overlay" onclick="closeCaseModal(event)">
         <div class="modal-window" onclick="event.stopPropagation()">
@@ -1136,7 +1140,7 @@
         }
 
         function openModal(caseId) {
-            const dataElement = document.getElementById('data-' + caseId);
+            const dataElement = document.getElementById('data-' + caseId) || document.getElementById('detail-' + caseId);
             if (!dataElement) return;
             document.getElementById('modalContentInner').innerHTML = dataElement.innerHTML;
             document.getElementById('caseModal').classList.add('active');
