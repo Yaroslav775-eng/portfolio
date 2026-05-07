@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI GTM Event Agent | Automated GA4 Tracking by Iaroslav Zhakun</title>
+    <meta name="description" content="Deploying custom AI agents for rapid Google Tag Manager setup. Automatically identify conversion points and generate GA4 event schemas with 100% accuracy.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-paper: #ffffff;
+            --text-main: #121212;
+            --text-muted: #555555;
+            --accent-nyt: #C00000;
+            --border-thin: #e2e2e2;
+            --font-serif: 'Frank Ruhl Libre', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+        
+        body { background-color: var(--bg-paper); color: var(--text-main); line-height: 1.8; margin: 0; padding: 0; font-family: var(--font-sans); }
+        
+        .nyt-nav { padding: 32px 0; border-bottom: 1px solid var(--border-thin); background: #fff; position: sticky; top: 0; z-index: 100; }
+        .nyt-nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto; padding: 0 24px; }
+        .back-link { font-family: var(--font-sans); font-weight: 600; color: var(--text-main); text-decoration: none; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; border-bottom: 1px solid transparent; transition: all 0.2s; }
+        .back-link:hover { border-bottom-color: var(--accent-nyt); color: var(--accent-nyt); }
+        
+        .editorial-container { max-width: 900px; margin: 80px auto 140px; padding: 0 24px; }
+        
+        .audit-header { margin-bottom: 80px; text-align: center; }
+        .audit-label { font-family: var(--font-sans); color: var(--accent-nyt); font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.75rem; display: block; margin-bottom: 24px; }
+        .audit-title { font-family: var(--font-serif); font-size: 4rem; line-height: 1.05; font-weight: 900; margin: 0 0 32px 0; letter-spacing: -0.03em; }
+        .audit-meta { font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border-thin); border-bottom: 1px solid var(--border-thin); padding: 16px 0; display: flex; justify-content: center; gap: 40px; margin-top: 40px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        .verdict-box { background-color: #f9f9f9; padding: 48px; margin: 60px 0; border: 1px solid var(--border-thin); }
+        .verdict-tag { font-weight: 800; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--accent-nyt); display: block; margin-bottom: 16px; }
+        .verdict-text { font-family: var(--font-serif); font-size: 1.8rem; line-height: 1.4; color: var(--text-main); font-style: italic; }
+
+        .module-section { margin-bottom: 120px; }
+        .module-num { font-family: var(--font-sans); font-size: 0.8rem; font-weight: 800; color: var(--accent-nyt); display: block; margin-bottom: 8px; }
+        .module-title { font-family: var(--font-serif); font-size: 2.5rem; border-bottom: 3px solid #000; padding-bottom: 12px; margin-bottom: 32px; letter-spacing: -0.02em; }
+        
+        .nyt-table { width: 100%; border-collapse: collapse; margin: 32px 0; }
+        .nyt-table tr { border-bottom: 1px solid var(--border-thin); }
+        .nyt-table th, .nyt-table td { padding: 24px 0; text-align: left; vertical-align: top; }
+        .nyt-table th { font-family: var(--font-sans); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; color: var(--text-muted); width: 25%; }
+        .nyt-table td { font-size: 1.15rem; padding-left: 32px; }
+
+        .recommendation-list { list-style: none; padding: 0; margin: 40px 0; }
+        .recommendation-item { display: flex; gap: 24px; margin-bottom: 40px; align-items: flex-start; }
+        .recommendation-bullet { color: var(--accent-nyt); font-weight: 900; font-size: 1.5rem; line-height: 1; }
+        .recommendation-text strong { display: block; margin-bottom: 8px; font-family: var(--font-serif); font-size: 1.5rem; letter-spacing: -0.01em; }
+
+        .status-badge { display: inline-block; padding: 4px 12px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 2px; }
+        .status-present { background: #e8f5e9; color: #2e7d32; }
+        .status-partial { background: #fff3e0; color: #ef6c00; }
+        .status-absent { background: #ffebee; color: #c62828; }
+
+        .transformation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin: 40px 0; }
+        .transformation-card { padding: 24px; border: 1px solid var(--border-thin); background: #fff; }
+        .transformation-label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; display: block; }
+        .transformation-text { font-family: var(--font-serif); font-size: 1.25rem; line-height: 1.4; }
+
+        .strategic-weapon { background-color: #121212; color: #fff; padding: 80px; margin-top: 140px; position: relative; }
+        .strategic-weapon h2 { font-family: var(--font-serif); font-size: 3rem; margin-top: 0; color: #fff; letter-spacing: -0.02em; }
+        .strategic-weapon p { color: rgba(255,255,255,0.8); font-size: 1.35rem; font-family: var(--font-serif); }
+        .strategic-weapon::after { content: ""; position: absolute; top: 0; left: 80px; width: 40px; height: 4px; background: var(--accent-nyt); }
+
+        .code-block { background: #f4f4f4; padding: 20px; font-family: monospace; font-size: 0.9rem; border-left: 4px solid #000; overflow-x: auto; margin: 20px 0; }
+
+        @media (max-width: 768px) {
+            .audit-title { font-size: 2.75rem; }
+            .transformation-grid { grid-template-columns: 1fr; }
+            .nyt-table th { width: 100%; display: block; padding-bottom: 8px; }
+            .nyt-table td { display: block; padding-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nyt-nav">
+        <div class="container">
+            <a href="../index.html" class="back-link">← Return to Portfolio</a>
+            <span style="font-family: var(--font-serif); font-weight: 900; font-size: 1.4rem; letter-spacing: -0.04em;">AI Automation Lab</span>
+        </div>
+    </nav>
+
+    <div class="editorial-container">
+        <header class="audit-header">
+            <span class="audit-label">Engineering the Future of Analytics</span>
+            <h1 class="audit-title">The GTM Event Agent: Automating 90% of Tracking Setup</h1>
+            <div class="audit-meta">
+                <span>Created by Iaroslav Zhakun</span>
+                <span>May 2026</span>
+                <span>Kyiv &middot; Ukraine</span>
+            </div>
+        </header>
+
+        <div class="verdict-box">
+            <span class="verdict-tag">The Innovation</span>
+            <p class="verdict-text">"Manual event configuration is a legacy bottleneck. My AI GTM Agent scans a website's structural DNA, identifies high-value conversion points, and generates ready-to-import GA4 event schemas. What used to take hours of manual QA now happens in seconds."</p>
+        </div>
+
+        <section class="module-section">
+            <span class="module-num">STEP 01</span>
+            <h2 class="module-title">Structural DNA Extraction</h2>
+            <p>The agent uses Large Language Models to 'see' the website like a specialist. It doesn't just look for buttons; it understands the <strong>intent</strong> behind the design.</p>
+            
+            <table class="nyt-table">
+                <tr>
+                    <th>Input Method</th>
+                    <td>HTML Stream or Live URL Scan.</td>
+                </tr>
+                <tr>
+                    <th>Logic Engine</th>
+                    <td>Proprietary prompt-engineering layer specialized in GTM DOM-traversal.</td>
+                </tr>
+                <tr>
+                    <th>Output Type</th>
+                    <td>Markdown Implementation Plan + JSON Container Config.</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="module-section">
+            <span class="module-num">STEP 02</span>
+            <h2 class="module-title">From Code to Events</h2>
+            <p>Example of how the agent transforms raw HTML into a GTM strategy:</p>
+
+            <div class="transformation-grid">
+                <div class="transformation-card">
+                    <span class="transformation-label">Raw HTML Input</span>
+                    <div class="code-block">
+                        &lt;button class="btn-primary" id="lead_submit"&gt;<br>
+                        &nbsp;&nbsp;Get Free Audit<br>
+                        &lt;/button&gt;
+                    </div>
+                </div>
+                <div class="transformation-card">
+                    <span class="transformation-label">AI Agent Output</span>
+                    <p class="transformation-text" style="color:var(--accent-nyt);">
+                        <strong>Event:</strong> generate_lead<br>
+                        <strong>Trigger:</strong> Click ID equals 'lead_submit'<br>
+                        <strong>Params:</strong> button_text, page_path
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="module-section">
+            <span class="module-num">BENEFITS</span>
+            <h2 class="module-title">Why Use an AI-Driven Agent?</h2>
+            
+            <div class="recommendation-list">
+                <div class="recommendation-item">
+                    <span class="recommendation-bullet">&mdash;</span>
+                    <div class="recommendation-text">
+                        <strong>Eliminating Human Error</strong>
+                        AI doesn't typo CSS selectors or misinterpret GA4 naming conventions.
+                    </div>
+                </div>
+                <div class="recommendation-item">
+                    <span class="recommendation-bullet">&mdash;</span>
+                    <div class="recommendation-text">
+                        <strong>Rapid Scaling</strong>
+                        Perfect for agencies managing 50+ accounts. Standardizing tracking across an entire portfolio in a single afternoon.
+                    </div>
+                </div>
+                <div class="recommendation-item">
+                    <span class="recommendation-bullet">&mdash;</span>
+                    <div class="recommendation-text">
+                        <strong>Strategic Depth</strong>
+                        The agent suggests not just 'clicks', but 'micro-conversions' (scroll depth on key paragraphs, video engagement) that humans often skip.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="strategic-weapon">
+            <span class="audit-label" style="color: var(--accent-nyt);">LIVE DEMO</span>
+            <h2>Deploy the Agent on Your Site</h2>
+            <p>I build custom internal tools for my clients. This GTM agent is part of a larger <strong>Site Intelligence Suite</strong> that I use to ensure every campaign has a perfect data foundation before spending a single dollar.</p>
+        </div>
+
+        <section style="margin-top: 100px; text-align: center; border-top: 4px solid #000; padding-top: 60px;">
+            <h3 style="font-family: var(--font-serif); font-size: 2rem;">Automation by Iaroslav Zhakun</h3>
+            <p style="color: var(--text-muted); margin-bottom: 40px;">Bridges the gap between raw data and business results.</p>
+            <a href="https://t.me/Yaroslav797" target="_blank" class="back-link" style="font-size: 1.1rem; color: var(--accent-nyt); border-bottom: 2px solid var(--accent-nyt);">Request Agent Access &rarr;</a>
+        </section>
+    </div>
+
+</body>
+</html>
