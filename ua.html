@@ -358,48 +358,38 @@
         .editorial-input-group label { display: block; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 8px; }
         .editorial-input-group input { width: 100%; border: none; border-bottom: 2px dotted var(--text-ink); background: transparent; font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; padding: 4px 0 8px; outline: none; color: var(--text-ink); border-radius: 0; transition: border-bottom-style 0.2s; }
         .editorial-input-group input:focus { border-bottom-style: solid; }
-
         .btn-editorial-primary { background: var(--text-ink); color: var(--bg-paper); font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; padding: 16px 24px; border: none; cursor: pointer; transition: background 0.2s; font-size: 0.85rem; width: 100%; }
         .btn-editorial-primary:hover { background: var(--accent-red); }
-
         .btn-editorial-secondary { background: transparent; color: var(--text-ink); border: 1px solid var(--text-ink); font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; padding: 16px 24px; cursor: pointer; transition: all 0.2s; font-size: 0.85rem; }
         .btn-editorial-secondary:hover { background: #eee; }
-
-        .btn-editorial-select { background: #fff; border: 1px solid #ccc; padding: 24px; font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; cursor: pointer; transition: all 0.2s; text-align: center; color: var(--text-muted); }
-        .btn-editorial-select:hover { border-color: var(--text-ink); color: var(--text-ink); box-shadow: 4px 4px 0px rgba(0,0,0,0.1); }
-
         .quiz-step { animation: fadeIn 0.3s ease-out; }
         .quiz-step.active { display: block; }
+        #quizModal .modal-window { width: min(1100px, calc(100vw - 40px)); min-height: min(860px, calc(100vh - 40px)); margin: 20px auto; display: flex; flex-direction: column; }
+        #quizModal .modal-content-area { display: flex; flex-direction: column; min-height: 100%; }
+        .quiz-progress { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 22px; }
+        .quiz-progress-item { height: 6px; background: #ddd; }
+        .quiz-progress-item.active { background: #000; }
+        .quiz-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; }
+        .quiz-note { border: 1px solid #000; padding: 16px; background: #fafafa; font-family: var(--font-sans); font-size: 0.85rem; line-height: 1.55; color: #333; }
+        .quiz-live-line { margin-top: 8px; padding-top: 8px; border-top: 1px dashed #bbb; font-family: var(--font-sans); font-size: 0.82rem; color: #222; line-height: 1.45; }
+        .quiz-scenarios { margin-top: 10px; border-top: 1px dashed #bbb; padding-top: 10px; display: grid; gap: 6px; }
+        .quiz-scenario-item { font-family: var(--font-sans); font-size: 0.8rem; line-height: 1.4; color: #222; }
+        .quiz-health-chip { margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border: 1px solid #bbb; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; background: #fff; }
+        .quiz-health-chip::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #888; display: inline-block; }
+        .quiz-health-chip.health-good { border-color: #2e7d32; color: #2e7d32; }
+        .quiz-health-chip.health-good::before { background: #2e7d32; }
+        .quiz-health-chip.health-warn { border-color: #b26a00; color: #8a5300; }
+        .quiz-health-chip.health-warn::before { background: #d48900; }
+        .quiz-health-chip.health-risk { border-color: #b00020; color: #8e0018; }
+        .quiz-health-chip.health-risk::before { background: #c30024; }
+        .quiz-actions { display: flex; gap: 12px; margin-top: 24px; }
+        .quiz-hint { font-family: var(--font-sans); font-size: 0.78rem; color: #666; line-height: 1.4; margin-top: 4px; display: block; }
+        @media (max-width: 900px) {
+            #quizModal .modal-window { width: calc(100vw - 16px); min-height: calc(100vh - 16px); margin: 8px; padding: 20px 16px; box-shadow: 4px 4px 0 rgba(0,0,0,1); }
+            .quiz-grid { grid-template-columns: 1fr; }
+            .quiz-actions { flex-direction: column; }
+        }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Premium Layout Components */
-        .tool-strip { 
-            margin-top: 48px; 
-            padding-top: 32px; 
-            border-top: 1px solid var(--accent-muted); 
-            overflow: hidden;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-        }
-        .tool-strip-content {
-            display: inline-flex;
-            animation: marquee-rtl 25s linear infinite;
-        }
-        .tool-strip-content:hover { animation-play-state: paused; }
-        @keyframes marquee-rtl {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .diagnostic-box { background: var(--bg-dark); color: #fff; padding: 24px; margin-top: 24px; border-left: 4px solid var(--accent-brand); }
-        .diagnostic-val { font-size: 1.5rem; font-weight: 700; color: var(--accent-brand); display: block; margin-bottom: 4px; }
-        .diagnostic-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.8; }
-
-        .trust-badge { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: var(--text-gray); margin-top: 24px; justify-content: center; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; }
-        
-        .quiz-footer { margin-top: 32px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--accent-muted); padding-top: 24px;}
-        .quiz-progress { font-size: 0.85rem; color: var(--text-gray); }
 
         /* Premium Layout Components */
         .tool-strip { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--accent-muted); }
@@ -787,11 +777,6 @@
                     <h3>Архітектура E-commerce</h3>
                     <p>Побудова прибуткових структур акаунтів, які масштабують бюджет без втрати ROAS. Модульні кампанії для модульного росту.</p>
                 </a>
-                <a href="solutions/gtm-event-setup-agent.html" class="solution-card">
-                    <span class="solution-tag">Автоматизація</span>
-                    <h3>AI GTM Event Agent</h3>
-                    <p>Власна AI-система, яка сканує ваш сайт і за лічені секунди створює повний план відстеження GTM/GA4. Без помилок ручного налаштування.</p>
-                </a>
                 <a href="solutions/ua-click-fraud-protection.html" class="solution-card">
                     <span class="solution-tag">Безпека та Захист</span>
                     <h3>Захист від скликивання</h3>
@@ -989,138 +974,113 @@
         </div>
     </div>
 
-    <!-- QUIZ MODAL HTML (MAGIC DASHBOARD) -->
-    <!-- NEW EDITORIAL QUIZ MODAL -->
+    <!-- QUIZ MODAL HTML (3-SCREEN FLOW) -->
     <div class="modal-overlay" id="quizModal">
-        <div class="modal-window" style="max-width: 700px; padding: 60px; background: var(--bg-paper);">
-            <button class="modal-close" onclick="closeQuiz()" style="top: 24px; right: 24px; color: var(--text-ink);">✕</button>
-            
-            <div id="quizContainer">
-                <div style="margin-bottom: 48px; border-bottom: 1px solid var(--text-ink); padding-bottom: 16px;">
-                    <span style="font-family: var(--font-sans); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-red);">Конфіденційний аудит</span>
-                    <h2 style="font-family: var(--font-serif); font-size: 2.25rem; color: var(--text-ink); margin-top: 8px;">Фінансовий аудит впливу</h2>
-                    <p style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Аналіз "вартості бездіяльності" &middot; Версія 2.0</p>
+        <div class="modal-window" style="background: var(--bg-paper); border: 2px solid var(--text-ink); padding: 32px; border-radius: 0; box-shadow: 12px 12px 0px rgba(0,0,0,1);">
+            <button class="modal-close" onclick="closeQuiz()" style="background: var(--text-ink); color: var(--bg-paper);">✕</button>
+            <div class="modal-content-area" id="quizContainer">
+                <div class="quiz-header" style="border-bottom: 3px double var(--text-ink); padding-bottom: 16px; margin-bottom: 22px; text-align: center;">
+                    <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; color: var(--text-muted);">PPC Попередня Діагностика</span>
+                    <h2 style="font-family: var(--font-serif); font-size: 2rem; font-weight: 900; margin: 8px 0 0; color: var(--text-ink);">Швидка E-commerce Оцінка</h2>
+                </div>
+                <div class="quiz-progress" aria-hidden="true">
+                    <div class="quiz-progress-item active" id="quizProgress1"></div>
+                    <div class="quiz-progress-item" id="quizProgress2"></div>
+                    <div class="quiz-progress-item" id="quizProgress3"></div>
                 </div>
 
-                <!-- STEP 1: BUSINESS MODEL -->
-                <div class="quiz-step" id="step1">
-                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 24px;">1. Виберіть бізнес-модель</h3>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        <button class="btn-editorial-select" onclick="setCalcModel('ecommerce'); nextQuizStep(2);">
-                            E-COMMERCE
-                            <span style="display:block; font-size: 0.75rem; font-weight: 400; margin-top: 8px; font-family: var(--font-sans); opacity: 0.7;">Прямі продажі на сайті</span>
-                        </button>
-                        <button class="btn-editorial-select" onclick="setCalcModel('leadgen'); nextQuizStep(2);">
-                            LEAD GEN / B2B
-                            <span style="display:block; font-size: 0.75rem; font-weight: 400; margin-top: 8px; font-family: var(--font-sans); opacity: 0.7;">Заявки, дзвінки, послуги</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- STEP 2: CONTEXT -->
-                <div class="quiz-step" id="step2" style="display:none;">
-                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 24px;">2. Ринковий контекст</h3>
-                    <div class="editorial-input-group">
-                        <label>Ваша ніша / продукт</label>
-                        <input type="text" id="calcNiche" placeholder="Напр.: Зоотовари, SaaS, Оренда">
-                    </div>
-                    <div class="editorial-input-group">
-                        <label>Регіон реклами</label>
-                        <input type="text" id="calcRegion" placeholder="Напр.: Україна, США, Європа">
-                    </div>
-                    <button class="btn-editorial-primary" onclick="nextQuizStep(3)">Продовжити &rarr;</button>
-                </div>
-
-                <!-- STEP 3: FINANCIALS -->
-                <div class="quiz-step" id="step3" style="display:none;">
-                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 24px;">3. Економіка маркетингу</h3>
-                    <div class="editorial-input-group">
-                        <label>Поточний рекламний бюджет/міс ($)</label>
-                        <input type="number" id="calcSpend" placeholder="2000">
-                    </div>
-                    
-                    <div id="ecomFields" style="display:none;">
-                        <div class="editorial-input-group">
-                            <label>Поточний ROAS (%)</label>
-                            <input type="number" id="calcCurrentRoas" placeholder="250">
+                <div class="quiz-step active" id="step1">
+                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 14px;">1. Як працює ця оцінка</h3>
+                    <div class="quiz-grid">
+                        <div>
+                            <p style="font-size:1rem; margin-bottom:12px;">Калькулятор дає попередній PPC-прогноз на основі ваших цифр. Дані з рекламного кабінету автоматично не підтягуються.</p>
+                            <p style="font-size:1rem; margin-bottom:0;">Ви отримаєте прогноз кліків, замовлень, CPA, ROAS та діапазон бюджету для цілі.</p>
                         </div>
-                        <div class="editorial-input-group">
-                            <label>Цільовий ROAS (%)</label>
-                            <input type="number" id="calcTargetRoas" placeholder="400">
-                        </div>
+                        <aside class="quiz-note">
+                            <strong style="display:block; margin-bottom:8px;">Що підготувати</strong>
+                            1) Місячний бюджет<br>
+                            2) Середній чек (AOV)<br>
+                            3) Маржу і частку на рекламу<br>
+                            4) Історичні CR/CPC (якщо є)
+                        </aside>
                     </div>
-
-                    <div id="leadGenFields" style="display:none;">
-                        <div class="editorial-input-group">
-                            <label>Поточна ціна ліда (CPA, $)</label>
-                            <input type="number" id="calcCurrentCpa" placeholder="15">
-                        </div>
-                        <div class="editorial-input-group">
-                            <label>Цільова ціна ліда (CPA, $)</label>
-                            <input type="number" id="calcTargetCpa" placeholder="10">
-                        </div>
+                    <div class="quiz-actions">
+                        <button class="btn-editorial-primary" style="flex:1;" onclick="nextQuizStep(2)">Далі →</button>
                     </div>
-                    <button class="btn-editorial-primary" onclick="nextQuizStep(4)">Аналізувати &rarr;</button>
                 </div>
 
-                <!-- STEP 4: CONTACTS -->
-                <div class="quiz-step" id="step4" style="display:none;">
-                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 24px;">4. Фінальна верифікація</h3>
-                    <p style="font-size: 0.9rem; margin-bottom: 24px; color: var(--text-muted);">Залиште дані для отримання повної копії аудиту та AI-діагнозу.</p>
-                    <div class="editorial-input-group">
-                        <label>Ваше ім'я</label>
-                        <input type="text" id="calcName" placeholder="Олександр">
-                    </div>
-                    <div class="editorial-input-group">
-                        <label>Telegram або Email</label>
-                        <input type="text" id="calcContact" placeholder="@username / email">
-                    </div>
-                    <button class="btn-editorial-primary" id="magicSubmitBtn" onclick="submitEditorialQuiz()">Отримати результати &rarr;</button>
-                </div>
-
-                <!-- STEP 5: RESULTS -->
-                <div class="quiz-step" id="step5" style="display:none;">
-                    <div id="quiz-results-area">
-                        <h3 style="font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 8px;">Результати аудиту</h3>
-                        <p id="resSummary" style="font-size: 0.95rem; margin-bottom: 32px; border-bottom: 1px solid var(--text-ink); padding-bottom: 16px;">Попередній розрахунок "вартості бездіяльності".</p>
-                        
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 40px;">
-                            <div>
-                                <span id="lblResLoss" style="font-family: var(--font-sans); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--accent-red);">Вартість бездіяльності</span>
-                                <div id="resLoss" style="font-family: var(--font-serif); font-size: 2rem; font-weight: 700; margin-top: 4px;">-</div>
-                                <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Місячний недоотриманий дохід</p>
+                <div class="quiz-step" id="step2" style="display: none;">
+                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 8px;">2. Введіть ваші цифри</h3>
+                    <p style="font-family: var(--font-sans); font-size: 0.88rem; color: #111; margin-bottom: 10px; font-weight: 700;">2 хвилини -> отримаєте реалістичний бюджет і рівень ризику.</p>
+                    <p style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">Ми вже підставили стартовий шаблон. Просто скоригуйте під свій бізнес.</p>
+                    <div class="quiz-grid">
+                        <div>
+                            <div class="editorial-input-group">
+                                <label>План продажів на місяць (USD)</label>
+                                <input type="number" id="calcSalesPlan" placeholder="500000">
+                                <span class="quiz-hint">Необов’язково, для планування.</span>
                             </div>
-                            <div style="display: flex; flex-direction: column; gap: 12px;">
-                                <div>
-                                    <span id="lblResCurrent" style="font-family: var(--font-sans); font-size: 0.65rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted);">Поточний результат</span>
-                                    <div id="resCurrent" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</div>
+                            <div class="editorial-input-group">
+                                <label>Місячний рекламний бюджет (USD)</label>
+                                <input type="number" id="calcBudget" placeholder="200000">
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Середній CPC (USD)</label>
+                                <input type="number" id="calcCpc" placeholder="6">
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>CR сайту в замовлення (%)</label>
+                                <input type="number" id="calcCr" placeholder="1">
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Середній чек (AOV, USD)</label>
+                                <input type="number" id="calcAov" placeholder="2500">
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Торгова націнка / маржа (%)</label>
+                                <input type="number" id="calcMargin" placeholder="30">
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Макс. частка від чека на рекламу (%)</label>
+                                <input type="number" id="calcAdShare" placeholder="20">
+                            </div>
+                            <details style="margin-top: 8px;">
+                                <summary style="font-family: var(--font-sans); font-size: 0.8rem; font-weight: 700; cursor: pointer;">Додатково (необов’язково)</summary>
+                                <div class="editorial-input-group" style="margin-top: 10px;">
+                                    <label>Ціль замовлень на місяць</label>
+                                    <input type="number" id="calcTargetOrders" placeholder="80">
                                 </div>
-                                <div>
-                                    <span id="lblResTarget" style="font-family: var(--font-sans); font-size: 0.65rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted);">Цільовий результат</span>
-                                    <div id="resTarget" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</div>
+                                <div class="editorial-input-group">
+                                    <label>Ніша / продукт</label>
+                                    <input type="text" id="calcNiche" placeholder="напр. Home goods">
                                 </div>
-                            </div>
+                                <div class="editorial-input-group">
+                                    <label>Регіон</label>
+                                    <input type="text" id="calcRegion" placeholder="напр. Ukraine">
+                                </div>
+                            </details>
                         </div>
-
-                        <div id="ai-diagnosis" style="background: #fdfdfd; border: 1px solid var(--text-ink); padding: 24px; margin-bottom: 32px; position: relative;">
-                            <span style="position: absolute; top: -10px; left: 20px; background: var(--bg-paper); padding: 0 10px; font-family: var(--font-sans); font-size: 0.65rem; font-weight: 800; text-transform: uppercase;">AI-діагноз від Ярослава</span>
-                            <div id="assistantRecommendation" style="font-family: var(--font-serif); font-style: italic; color: var(--text-ink); line-height: 1.6;">
-                                <span style="color: var(--text-muted);">Аналізую дані...</span>
+                        <aside class="quiz-note">
+                            <strong style="display:block; margin-bottom:8px;">Що означають поля</strong>
+                            Budget = витрати в місяць. CPC = ціна кліку. CR = частка кліків у замовлення. AOV = середній чек. Margin + Ad Share = безпечна межа витрат.
+                            <div class="quiz-live-line" id="liveExplainPrimary">Почніть з Budget + CPC: одразу покажу прогноз кліків.</div>
+                            <div class="quiz-live-line" id="liveExplainSecondary">Далі додайте CR і AOV: побачите замовлення, виручку та ROAS.</div>
+                            <div class="quiz-health-chip" id="liveHealthChip">Статус: очікування</div>
+                            <div class="quiz-live-line" id="liveExplainStatus">Статус: введіть ключові дані.</div>
+                            <div class="quiz-live-line" id="liveExplainNext">Наступний крок: заповніть Margin та Ad Share.</div>
+                            <div class="quiz-scenarios">
+                                <div class="quiz-scenario-item" id="scenarioConservative">Консервативний: очікування даних.</div>
+                                <div class="quiz-scenario-item" id="scenarioBase">Базовий: очікування даних.</div>
+                                <div class="quiz-scenario-item" id="scenarioAggressive">Агресивний: очікування даних.</div>
                             </div>
-                        </div>
-
-                        <button class="btn-editorial-secondary" style="width: 100%;" onclick="closeQuiz()">Закрити & повернутися до портфоліо</button>
+                        </aside>
+                    </div>
+                    <div class="quiz-actions">
+                        <button class="btn-editorial-secondary" type="button" onclick="applyTemplateValues()">Взяти стартовий шаблон</button>
+                        <button class="btn-editorial-secondary" onclick="prevQuizStep(1)">&larr; Назад</button>
+                        <button class="btn-editorial-primary" style="flex: 1;" onclick="nextQuizStep(3)">Далі →</button>
                     </div>
                 </div>
-
-                <!-- Footer Navigation -->
-                <div id="quiz-nav" style="margin-top: 32px; display: flex; justify-content: space-between; align-items: center;">
-                    <span id="quiz-progress-text" style="font-family: var(--font-sans); font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Крок 1 з 5</span>
-                    <button id="btn-back" style="background:none; border:none; font-family: var(--font-sans); font-size: 0.7rem; font-weight: 800; text-transform: uppercase; cursor: pointer; display: none;" onclick="prevQuizStep(currentQuizStep - 1)">← Назад</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
                 <div class="quiz-step" id="step3" style="display: none;">
                     <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 16px;">3. Результат і наступний крок</h3>
@@ -1419,328 +1379,5 @@
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-
-        // Modal Logic
-        function openModal(caseId) {
-            const dataElement = document.getElementById('data-' + caseId);
-            if (!dataElement) return;
-            document.getElementById('modalContentInner').innerHTML = dataElement.innerHTML;
-            document.getElementById('caseModal').classList.add('active');
-            document.body.style.overflow = 'hidden'; 
-            
-            // GA4 Micro-conversion: View Case
-            gtag('event', 'view_case_study', {
-                'event_category': 'engagement',
-                'event_label': caseId
-            });
-        }
-        function closeModal(event, force = false) {
-            if (force || event.target === document.getElementById('caseModal')) {
-                document.getElementById('caseModal').classList.remove('active');
-                document.body.style.overflow = ''; 
-            }
-        }
-
-        // NEW EDITORIAL QUIZ LOGIC
-        let currentQuizStep = 1;
-        let currentCalcModel = 'leadgen';
-
-        function openQuiz() {
-            document.getElementById('quizModal').classList.add('active');
-            startQuiz();
-        }
-
-        function closeQuiz() {
-            document.getElementById('quizModal').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function startQuiz() {
-            currentQuizStep = 1;
-            // Reset fields
-            const fields = ['calcNiche', 'calcRegion', 'calcSpend', 'calcCurrentRoas', 'calcTargetRoas', 'calcCurrentCpa', 'calcTargetCpa', 'calcName', 'calcContact'];
-            fields.forEach(f => {
-                const el = document.getElementById(f);
-                if(el) el.value = '';
-            });
-            updateQuizSteps();
-        }
-
-        function setCalcModel(model) {
-            currentCalcModel = model;
-            document.getElementById('ecomFields').style.display = model === 'ecommerce' ? 'block' : 'none';
-            document.getElementById('leadGenFields').style.display = model === 'leadgen' ? 'block' : 'none';
-        }
-
-        function nextQuizStep(step) {
-            currentQuizStep = step;
-            updateQuizSteps();
-        }
-
-        function prevQuizStep(step) {
-            currentQuizStep = step;
-            updateQuizSteps();
-        }
-
-        function updateQuizSteps() {
-            document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
-            const stepEl = document.getElementById('step' + currentQuizStep);
-            if(stepEl) stepEl.style.display = 'block';
-            
-            // Progress text
-            const progText = document.getElementById('quiz-progress-text');
-            if(progText) progText.innerText = `Крок ${currentQuizStep} з 5`;
-            
-            // Back button
-            const btnBack = document.getElementById('btn-back');
-            if(btnBack) btnBack.style.display = (currentQuizStep > 1 && currentQuizStep < 5) ? 'block' : 'none';
-        }
-        async function submitEditorialQuiz() {
-            const btn = document.getElementById('magicSubmitBtn');
-            if(btn) {
-                btn.disabled = true;
-                btn.innerText = 'Аналізую...';
-            }
-
-            const name = document.getElementById('calcName').value;
-            const contact = document.getElementById('calcContact').value;
-            const spend = parseFloat(document.getElementById('calcSpend').value) || 0;
-            const niche = document.getElementById('calcNiche').value;
-            const region = document.getElementById('calcRegion').value;
-
-            let currentOutput, targetOutput, loss;
-            
-            if (currentCalcModel === 'ecommerce') {
-                currentOutput = parseFloat(document.getElementById('calcCurrentRoas').value) || 0;
-                targetOutput = parseFloat(document.getElementById('calcTargetRoas').value) || 0;
-                loss = spend * (targetOutput - currentOutput) / 100;
-                
-                const resCurrent = document.getElementById('resCurrent');
-                const resTarget = document.getElementById('resTarget');
-                if(resCurrent) resCurrent.innerText = currentOutput + '% ROAS';
-                if(resTarget) resTarget.innerText = targetOutput + '% ROAS';
-            } else {
-                currentOutput = parseFloat(document.getElementById('calcCurrentCpa').value) || 0;
-                targetOutput = parseFloat(document.getElementById('calcTargetCpa').value) || 0;
-                
-                const currentLeads = currentOutput > 0 ? spend / currentOutput : 0;
-                const targetLeads = targetOutput > 0 ? spend / targetOutput : 0;
-                loss = (targetLeads - currentLeads) * (spend / (currentLeads || 1));
-                
-                const resCurrent = document.getElementById('resCurrent');
-                const resTarget = document.getElementById('resTarget');
-                if(resCurrent) resCurrent.innerText = '$' + currentOutput + ' CPA';
-                if(resTarget) resTarget.innerText = '$' + targetOutput + ' CPA';
-            }
-
-            const resLoss = document.getElementById('resLoss');
-            if(resLoss) resLoss.innerText = '$' + Math.round(loss).toLocaleString();
-            
-            const resSummary = document.getElementById('resSummary');
-            if(resSummary) resSummary.innerText = `Прогноз для ${niche} (${region})`;
-
-            // Web3Forms
-            const message = `
-                === NEW EDITORIAL QUIZ (UA) ===
-                Name: ${name}
-                Contact: ${contact}
-                Model: ${currentCalcModel}
-                Niche: ${niche}
-                Region: ${region}
-                Spend: $${spend}
-                Current: ${currentOutput}
-                Target: ${targetOutput}
-                Calculated Monthly Loss: $${loss}
-                Page: ua.html
-            `;
-
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    access_key: '024929c9-3c2f-471f-8ec3-bd5cbaf34070',
-                    subject: `Editorial Audit (UA): ${niche}`,
-                    from_name: 'Portfolio Quiz',
-                    message: message
-                })
-            });
-
-            nextQuizStep(5);
-            askGptAssistant(niche, region, spend, currentOutput, targetOutput, currentCalcModel);
-        }
-
-        async function askGptAssistant(niche, region, spend, current, target, model) {
-            const endpoint = window.IAROSLAV_ASSISTANT_API_URL;
-            const area = document.getElementById('assistantRecommendation');
-            
-            if (!endpoint) {
-                if(area) area.innerHTML = "Для отримання персоналізованого AI-діагнозу, будь ласка, зв'яжіться зі мною в Telegram. Система готова до інтеграції API.";
-                return;
-            }
-
-            try {
-                const prompt = `You are a Wall Street Journal financial analyst. Analyze this PPC data for a Ukrainian business:
-                Niche: ${niche}, Region: ${region}, Monthly Spend: $${spend}.
-                Model: ${model}. Current ${model === 'ecommerce' ? 'ROAS' : 'CPA'}: ${current}. 
-                Target ${model === 'ecommerce' ? 'ROAS' : 'CPA'}: ${target}.
-                Provide a 2-sentence diagnostic in Ukrainian about the 'cost of inaction' and one critical lever to fix it.`;
-
-                const response = await fetch(endpoint, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: prompt })
-                });
-                const data = await response.json();
-                if(area) area.innerHTML = data.answer || "Діагноз готовий. Зв'яжіться для обговорення деталей.";
-            } catch (e) {
-                if(area) area.innerHTML = "AI аналіз тимчасово недоступний, але ваші дані вже у Ярослава. Очікуйте повідомлення.";
-            }
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- GA4 Event Tracking: Conversions & Engagement -->
-
-
-        // ── 1. TELEGRAM CTA CLICKS ────────────────────────────────────
-        document.querySelectorAll('a[href*="t.me/Yaroslav797"]').forEach(function(el) {
-            el.addEventListener('click', function() {
-                // Determine which button was clicked by parent context
-                var label = 'telegram_generic';
-                if (el.closest('nav'))            label = 'navbar_lets_talk';
-                else if (el.closest('.hero-section')) label = 'hero_message_telegram';
-                else if (el.closest('.cta-section'))  label = 'footer_cta';
-                else if (el.textContent.includes('AUDIT')) label = 'dual_audience_audit';
-                else if (el.textContent.includes('COLLAB')) label = 'dual_audience_collab';
-                else if (el.closest('.floating-cta')) label = 'floating_button';
-
-                gta('cta_click', {
-                    event_category: 'conversion',
-                    event_label: label,
-                    method: 'telegram'
-                });
-            });
-        });
-
-        // ── 2. LINKEDIN CLICKS ────────────────────────────────────────
-        document.querySelectorAll('a[href*="linkedin.com"]').forEach(function(el) {
-            el.addEventListener('click', function() {
-                gta('linkedin_click', {
-                    event_category: 'engagement',
-                    event_label: el.textContent.trim() || 'linkedin_link'
-                });
-            });
-        });
-
-        // ── 3. PHONE CLICKS ───────────────────────────────────────────
-        document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
-            el.addEventListener('click', function() {
-                gta('phone_click', {
-                    event_category: 'conversion',
-                    phone_number: el.href.replace('tel:', '')
-                });
-            });
-        });
-
-        // ── 4. CASE STUDY MODAL OPENS ─────────────────────────────────
-        document.querySelectorAll('.btn-text.case-cta').forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                // Get case title from the parent card
-                var card = btn.closest('.case-card');
-                var titleEl = card ? card.querySelector('.case-title') : null;
-                var caseName = titleEl ? titleEl.textContent.trim().replace(/\s+/g, ' ').substring(0, 60) : 'unknown_case';
-
-                gta('case_study_open', {
-                    event_category: 'engagement',
-                    event_label: caseName,
-                    case_name: caseName
-                });
-            });
-        });
-
-        // ── 5. SCROLL DEPTH MILESTONES ────────────────────────────────
-        var scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
-        window.addEventListener('scroll', function() {
-            var scrollTop = window.scrollY || document.documentElement.scrollTop;
-            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            var pct = Math.round((scrollTop / docHeight) * 100);
-
-            [25, 50, 75, 100].forEach(function(m) {
-                if (!scrollMilestones[m] && pct >= m) {
-                    scrollMilestones[m] = true;
-                    gta('scroll_depth', {
-                        event_category: 'engagement',
-                        event_label: m + '%',
-                        scroll_percent: m
-                    });
-                }
-            });
-        }, { passive: true });
-
-        // ── 6. LANGUAGE SWITCH ────────────────────────────────────────
-        document.querySelectorAll('a[href="ua.html"], a[href="index.html"]').forEach(function(el) {
-            el.addEventListener('click', function() {
-                gta('language_switch', {
-                    event_category: 'navigation',
-                    target_language: el.href.includes('ua.html') ? 'uk' : 'en'
-                });
-            });
-        });
-
-        // GA4 Global Interaction Tracking
-        document.addEventListener('click', function(e) {
-            const el = e.target.closest('a');
-            if (!el) return;
-
-            // Track Messenger Clicks
-            if (el.href.includes('t.me/')) {
-                gtag('event', 'click_messenger', { 'platform': 'telegram', 'location': el.closest('.footer') ? 'footer' : 'content' });
-            } else if (el.href.includes('wa.me/')) {
-                gtag('event', 'click_messenger', { 'platform': 'whatsapp', 'location': el.closest('.footer') ? 'footer' : 'content' });
-            } else if (el.href.includes('mailto:')) {
-                gtag('event', 'click_email', { 'location': 'contact' });
-            }
-
-            // Track Language Switch
-            if (el.textContent.includes('EN') || el.textContent.includes('UA')) {
-                gtag('event', 'language_switch', { 'target_lang': el.textContent.trim() });
-            }
-        });
-        // ── 7. TIME ON PAGE ───────────────────────────────────────
-        [{ s:30, l:'30s' },{ s:60, l:'60s' },{ s:120, l:'2min' },{ s:300, l:'5min' }]
-        .forEach(function(t) {
-            setTimeout(function() {
-                gtag('event', 'time_on_page', { page_language:'ua', time_milestone: t.l });
-            }, t.s * 1000);
-        });
-
-        // ── 8. CV LINK CLICKS ────────────────────────────────────────
-        document.addEventListener('click', function(e) {
-            var a = e.target.closest('a');
-            if (a && (a.href.includes('cv_eng') || a.href.includes('cv_ua'))) {
-                var lang = a.href.includes('cv_ua') ? 'ua' : 'en';
-                gtag('event', 'cv_link_click', { page_language:'ua', cv_version: lang });
-            }
-        });
-    </script>
-</body>
+    </script></body>
 </html>
