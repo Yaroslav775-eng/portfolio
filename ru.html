@@ -1,468 +1,1970 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z52JJMBTQM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z52JJMBTQM');
+    </script>
     <title>Специалист Google Ads | Ярослав Жакун</title>
-    <meta name="description" content="Специалист Google Ads для e-commerce и lead generation. Аудит, масштабирование, структура аккаунта, аналитика и рост прибыли без хаоса в рекламе.">
-    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+    <meta name="description" content="Специалист Google Ads. Веду рекламные кампании для интернет-магазинов и lead generation. Стабильный рост продаж и контроль расходов.">
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="EvOFymPrt8Zer-zsX7SXsKvs1UxBecDuDjKQyoLmk7s" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Google Ads, PPC, Performance Marketing, Google Ads Specialist, Iaroslav Zhakun">
+    <link rel="sitemap" type="application/xml" href="/portfolio/sitemap.xml">
     <link rel="canonical" href="https://yaroslav775-eng.github.io/portfolio/ru.html">
+    <link rel="alternate" hreflang="en" href="https://yaroslav775-eng.github.io/portfolio/">
+    <link rel="alternate" hreflang="ru" href="https://yaroslav775-eng.github.io/portfolio/ru.html">
+    <meta name="author" content="Iaroslav Zhakun">
+    <meta name="robots" content="index, follow">
+    <script src="assistant-config.js"></script>
+    
+    <!-- Open Graph for LinkedIn / Twitter sharing -->
+    <meta property="og:title" content="Ярослав Жакун | Специалист по Google Ads">
+    <meta property="og:description" content="Снижаю рекламные расходы и увеличиваю доход. Опыт в маркетинге с 2013 года.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Chifra:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- JSON-LD Microdata -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Iaroslav Zhakun",
+      "jobTitle": "Google Ads Specialist",
+      "url": "https://yaroslav775-eng.github.io/portfolio/",
+      "sameAs": [
+        "https://t.me/Yaroslav797",
+        "mailto:yaroslav.zhakun@gmail.com"
+      ],
+      "knowsAbout": ["Google Ads", "Performance Marketing", "PPC Architecture", "Lead Generation", "E-commerce Growth"]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Google Ads Management",
+      "provider": {
+        "@type": "Person",
+        "name": "Iaroslav Zhakun"
+      },
+      "description": "Проектирование эффективных Google Ads архитектур с интеграцией кастомных AI/LLM automation flows."
+    }
+    </script>
     <style>
         :root {
-            --bg-light: #f5f4f0;
-            --bg-panel: #fbfaf7;
-            --text-dark: #161616;
-            --text-muted: #5e5a54;
-            --accent-brand: #b80000;
-            --accent-line: #ded8ce;
-            --bg-dark: #141414;
-            --font-serif: 'Frank Ruhl Libre', serif;
-            --font-sans: 'Inter', sans-serif;
+            /* NYT Editorial Palette */
+            --bg-white: #FFFFFF;
+            --bg-offwhite: #F9F9F9;
+            --bg-tint: #F0F0F0;
+            --bg-dark: #000000;
+            
+            --text-dark: #000000;
+            --text-gray: #4A4A4A;
+            --text-light: #FFFFFF;
+            
+            --accent-muted: #D3D3D3;
+            --accent-brand: #C00000; /* Editorial Red */
+            
+            --font-heading: 'Frank Ruhl Libre', serif;
+            --font-main: 'Merriweather', serif;
+            --font-sans: 'Inter', -apple-system, system-ui, sans-serif;
+            
+            --radius-md: 0px; /* Zero radius for print feel */
+            --shadow-soft: none;
+            --shadow-btn: none;
         }
-        body {
-            background:
-                radial-gradient(circle at top right, rgba(184,0,0,0.06), transparent 24%),
-                linear-gradient(180deg, #f6f3ee 0%, #f1ede6 100%);
-            color: var(--text-dark);
-            margin: 0;
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        ::selection { background: #000; color: #fff; }
+        body { font-family: var(--font-main); color: var(--text-dark); background-color: var(--bg-white); line-height: 1.7; -webkit-font-smoothing: antialiased; letter-spacing: -0.01em; }
+        
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
+        @media (max-width: 768px) { .container { padding: 0 24px; } }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .ru-nav {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: rgba(251, 250, 247, 0.94);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--accent-line);
+        .animate-fade { opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+
+        /* Typography */
+        h1, h2, h3, h4, .font-heading { font-family: var(--font-heading); font-weight: 700; letter-spacing: 0; color: var(--text-dark); }
+        p { color: var(--text-gray); }
+
+        .case-teaser { font-size: 1.05rem; line-height: 1.65; color: var(--text-gray); margin-bottom: 0; }
+
+        .section-title { font-size: 3rem; margin-bottom: 48px; border-bottom: 3px double #000; padding-bottom: 16px; }
+        @media (max-width: 768px) { .section-title { font-size: 2.25rem; } }
+        
+        .section-label { font-size: 0.75rem; font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-dark); margin-bottom: 16px; display: block; font-weight: 600; }
+
+        /* Hero */
+        .hero-section { background-color: var(--bg-white); padding: 100px 0 60px; border-bottom: 4px solid var(--text-dark); border-top: 1px solid var(--text-dark); }
+        .hero-grid { display: grid; grid-template-columns: 1fr; gap: 0px; align-items: start; max-width: 800px; margin: 0 auto; text-align: center;}
+        
+        .hero-content h1 { font-size: clamp(3rem, 6vw, 5rem); line-height: 1.05; margin-bottom: 24px; margin-top: 16px; font-weight: 700;}
+        .hero-content h1 i { font-style: italic; color: var(--text-dark); font-weight: 400; }
+        .hero-content p { font-size: 1.15rem; max-width: 700px; margin: 0 auto 40px; font-weight: 400; }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; border-radius: 0; font-family: var(--font-sans); font-weight: 600; font-size: 0.85rem; text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.2s; cursor: pointer; border: 1px solid var(--text-dark); }
+        .btn-primary { background: var(--text-dark); color: var(--bg-white); }
+        .btn-primary:hover { background: var(--bg-white); color: var(--text-dark); }
+        .btn-ghost { background-color: transparent; color: var(--text-dark); }
+        .btn-ghost:hover { background-color: var(--text-dark); color: var(--bg-white); }
+        .btn-outline { border: 1px solid var(--text-dark); color: var(--text-dark); background: transparent; font-weight: 700; }
+        .btn-outline:hover { background: var(--bg-offwhite); }
+
+        .cert-pill { display: inline-flex; align-items: center; gap: 8px; border-bottom: 2px solid #000; padding: 4px 8px; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-dark); margin-bottom: 16px;}
+
+        /* Cases Grid & Cards (Fact-Dense) */
+        .section-cases { background-color: var(--bg-white); padding: 80px 0; border-top: 4px solid #000;}
+        .section-white { background-color: var(--bg-white); padding: 80px 0; border-top: 4px solid #000; }
+        .cred-section { padding: 100px 0; background: var(--bg-white); border-top: 4px solid #000; }
+        .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; padding-top: 32px; }
+        @media (max-width: 900px) { .cases-grid { grid-template-columns: 1fr; } }
+        
+        .case-card { 
+            background-color: var(--bg-white); 
+            padding: 32px; 
+            display: flex; 
+            flex-direction: column; 
+            border: 1px solid #ECECEC; 
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            height: 100%;
+            cursor: pointer;
         }
-        .ru-nav-inner {
-            max-width: 1240px;
+        .case-card:hover { 
+            border-color: var(--text-dark); 
+            box-shadow: 20px 20px 0px rgba(0,0,0,0.05); 
+            transform: translateY(-4px);
+        }
+        .case-card:hover .case-cta { color: var(--accent-brand); }
+
+        /* Expert Solutions Hub */
+        .section-solutions { background-color: var(--bg-tint); padding: 80px 0; border-top: 4px solid #000; }
+        .solutions-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 24px; 
+            padding-top: 32px; 
+            max-width: 900px; 
             margin: 0 auto;
-            padding: 14px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            font-family: var(--font-sans);
         }
-        .ru-brand {
+        @media (max-width: 900px) { 
+            .solutions-grid { grid-template-columns: 1fr; } 
+        }
+        
+        .solution-card { 
+            background-color: var(--bg-white); 
+            padding: 40px; 
+            border: 1px solid #000;
             display: flex;
             flex-direction: column;
-            gap: 2px;
-        }
-        .ru-brand strong {
-            font-size: 0.78rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-        .ru-brand span {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-        }
-        .ru-nav-links {
-            display: flex;
             gap: 16px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .ru-nav-links a {
-            color: var(--text-dark);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
             text-decoration: none;
-            font-size: 0.82rem;
-            font-weight: 600;
+            color: inherit;
         }
-        .ru-nav-links a:hover { color: var(--accent-brand); }
-        .ru-hero {
-            max-width: 1240px;
-            margin: 0 auto;
-            padding: 72px 24px 36px;
+        .solution-card:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 15px 15px 0px rgba(0,0,0,0.03);
+            border-color: var(--accent-brand);
         }
-        .ru-kicker {
-            display: inline-block;
+        .solution-card h3 { font-size: 1.5rem; margin: 0; }
+        .solution-card p { font-size: 0.95rem; margin: 0; color: var(--text-gray); }
+        .solution-tag { font-family: var(--font-sans); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--accent-brand); letter-spacing: 0.05em; }
+        
+        /* Reset browser button default — used for System View inline links */
+        .btn-text { background: none; border: none; padding: 0; margin: 0; cursor: pointer; width: auto; display: inline-flex; align-items: center; gap: 6px; }
+
+        .case-cta {
+            margin-top: 24px;
             font-family: var(--font-sans);
-            font-size: 0.76rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--accent-brand);
-            margin-bottom: 18px;
-        }
-        .ru-hero h1 {
-            max-width: 980px;
-            font-family: var(--font-serif);
-            font-size: clamp(3rem, 7vw, 5.6rem);
-            line-height: 0.98;
-            margin: 0 0 22px;
-            letter-spacing: -0.03em;
-        }
-        .ru-hero p {
-            max-width: 820px;
-            font-family: var(--font-sans);
-            font-size: 1.1rem;
-            line-height: 1.75;
-            color: #2e2d2b;
-            margin: 0 0 28px;
-        }
-        .ru-hero-actions {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-        .ru-facts {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 16px;
-        }
-        .ru-fact {
-            background: rgba(255,255,255,0.6);
-            border: 1px solid var(--accent-line);
-            padding: 18px 18px 20px;
-        }
-        .ru-fact strong {
-            display: block;
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-        }
-        .ru-fact span {
-            font-family: var(--font-sans);
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 700;
-        }
-        .ru-section {
-            max-width: 1240px;
-            margin: 0 auto;
-            padding: 48px 24px;
-        }
-        .ru-section-head {
-            margin-bottom: 28px;
-        }
-        .ru-section-head span {
-            display: inline-block;
-            font-family: var(--font-sans);
-            font-size: 0.76rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--accent-brand);
-            margin-bottom: 12px;
-        }
-        .ru-section-head h2 {
-            font-family: var(--font-serif);
-            font-size: clamp(2rem, 4vw, 3rem);
-            line-height: 1.05;
-            margin: 0;
-            border-bottom: 2px solid var(--text-dark);
-            padding-bottom: 14px;
-        }
-        .ru-cases {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 18px;
-        }
-        .ru-case {
-            background: var(--bg-panel);
-            border: 1px solid var(--accent-line);
-            padding: 22px;
-            display: flex;
-            flex-direction: column;
-            min-height: 260px;
-        }
-        .ru-case-top {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            align-items: flex-start;
-            margin-bottom: 16px;
-        }
-        .ru-case h3 {
-            margin: 0;
-            font-family: var(--font-serif);
-            font-size: 1.45rem;
-            line-height: 1.1;
-        }
-        .ru-tag {
-            white-space: nowrap;
-            font-family: var(--font-sans);
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 700;
-            color: var(--accent-brand);
-        }
-        .ru-case p {
-            margin: 0 0 16px;
-            font-family: var(--font-sans);
-            font-size: 0.98rem;
-            line-height: 1.65;
-            color: #2f2d2a;
-        }
-        .ru-case-metrics {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-top: auto;
-        }
-        .ru-chip {
-            border: 1px solid #c9c1b5;
-            padding: 7px 10px;
-            font-family: var(--font-sans);
-            font-size: 0.76rem;
-            font-weight: 700;
-            background: #fff;
-        }
-        .ru-grid-two {
-            display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: 22px;
-        }
-        .ru-panel {
-            background: var(--bg-panel);
-            border: 1px solid var(--accent-line);
-            padding: 24px;
-        }
-        .ru-panel h3 {
-            margin: 0 0 16px;
-            font-family: var(--font-serif);
-            font-size: 1.55rem;
-            line-height: 1.12;
-        }
-        .ru-panel p, .ru-panel li {
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #2f2d2a;
-        }
-        .ru-panel ul {
-            margin: 0;
-            padding-left: 18px;
-        }
-        .ru-process {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 18px;
-        }
-        .ru-step {
-            background: #fff;
-            border-top: 3px solid var(--accent-brand);
-            border-left: 1px solid var(--accent-line);
-            border-right: 1px solid var(--accent-line);
-            border-bottom: 1px solid var(--accent-line);
-            padding: 22px;
-        }
-        .ru-step strong {
-            display: block;
-            margin-bottom: 10px;
-            font-family: var(--font-sans);
-            font-size: 0.78rem;
+            font-size: 0.85rem;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--accent-brand);
+            color: var(--text-dark);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .ru-step h3 {
-            margin: 0 0 12px;
-            font-family: var(--font-serif);
-            font-size: 1.45rem;
+
+        /* STICKY HEADER & GLASS */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: #ffffff;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border-bottom: 1px solid #e0e0e0;
+            border-top: 3px solid #C00000;
+            transition: all 0.3s;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
         }
-        .ru-step p {
-            margin: 0;
-            font-family: var(--font-sans);
-            line-height: 1.65;
-            color: #2f2d2a;
-        }
-        .ru-cta {
-            max-width: 1240px;
-            margin: 8px auto 90px;
-            padding: 0 24px;
-        }
-        .ru-cta-box {
-            background: var(--bg-dark);
+        
+        /* FLOATING CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            background: #24A1DE;
             color: #fff;
-            padding: 34px;
-            border-left: 4px solid var(--accent-brand);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(36,161,222,0.4);
+            text-decoration: none;
+            transition: transform 0.3s;
+            animation: pulse-tg 2s infinite;
         }
-        .ru-cta-box h2 {
-            margin: 0 0 14px;
-            font-family: var(--font-serif);
-            font-size: clamp(2rem, 4vw, 3rem);
-            line-height: 1;
+        .floating-cta:hover { transform: scale(1.1); }
+        @keyframes pulse-tg {
+            0% { box-shadow: 0 0 0 0 rgba(36,161,222, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(36,161,222, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(36,161,222, 0); }
         }
-        .ru-cta-box p {
-            margin: 0 0 22px;
-            max-width: 760px;
+        
+        .case-meta { 
+            font-family: var(--font-sans); 
+            font-size: 0.75rem; 
+            color: #888; 
+            margin-bottom: 12px; 
+            text-transform: uppercase; 
+            letter-spacing: 0.05em; 
+        }
+        .case-title { font-size: 1.5rem; margin-bottom: 20px; font-family: var(--font-heading); line-height: 1.25; color: var(--text-dark); display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+        .case-tag { font-family: var(--font-sans); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; background: var(--accent-brand); padding: 3px 8px; flex-shrink: 0; align-self: flex-start; margin-top: 6px; }
+        
+        .case-bullets { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0 0 24px 0; 
+            flex-grow: 1;
+        }
+        .case-bullets li { 
+            position: relative; 
+            padding-left: 20px; 
+            margin-bottom: 12px; 
+            font-size: 0.95rem; 
+            color: var(--text-dark); 
+            line-height: 1.5; 
+        }
+        .case-bullets li::before { 
+            content: "—";
+            position: absolute; 
+            left: 0; 
+            color: var(--text-dark); 
+            font-weight: bold; 
+        }
+
+        .case-result-box { 
+            background-color: #F0F7FF; 
+            padding: 20px; 
+            margin-bottom: 24px; 
+            font-size: 0.95rem; 
+            line-height: 1.5;
+            border-left: 4px solid #0056b3;
+        }
+        .case-result-box strong { color: #0056b3; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.05em; margin-right: 8px; }
+
+        .case-footer { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 16px; 
+            padding-top: 20px; 
+            border-top: 1px solid #EEE; 
+            font-family: var(--font-sans); 
+            font-size: 0.8rem; 
+            color: #666; 
+        }
+        .case-footer span strong { color: var(--text-dark); font-weight: 700; margin-right: 4px; }
+
+        /* Scale Proof Card (Black) */
+        .scale-proof-card { background-color: var(--bg-dark); color: var(--text-light); border: none; padding: 40px; }
+        .scale-proof-card .case-meta { color: #555; }
+        .scale-proof-card .case-title { color: var(--text-light); font-size: 1.75rem; }
+        .scale-proof-card .case-footer { border-top-color: #333; color: #888; }
+        .scale-proof-card .case-footer span strong { color: var(--text-light); }
+        .scale-proof-card .case-bullets li { color: #CCC; }
+        
+        .scale-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+        .scale-chip { background: #222; border: 1px solid #444; padding: 10px 16px; font-size: 0.85rem; font-weight: 600; font-family: var(--font-sans); }
+
+        /* Metric chips — editorial stat style */
+        .metrics-chips { display: flex; gap: 48px; margin-top: auto; padding-top: 20px; border-top: 2px solid #000; }
+        .chip { display: inline-flex; flex-direction: column; align-items: flex-start; font-family: var(--font-sans); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-gray); font-weight: 600; }
+        .chip strong { font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--text-dark); line-height: 1; display: block; margin-bottom: 6px; }
+        .chip-accent strong { color: var(--text-dark); }
+
+        /* Case "Before" situation line — quiet, editorial */
+        .case-before { font-size: 0.72rem; color: #aaa; font-family: var(--font-sans); font-weight: 500; margin-bottom: 10px; font-style: italic; text-transform: none; letter-spacing: 0; }
+
+        /* Dark CTA Section */
+        .cta-section { background-color: var(--bg-dark); color: var(--text-light); padding: 120px 0; text-align: center; }
+        .cta-section .section-label { color: #8A92A3; }
+        .cta-section h2 { font-size: 3rem; margin-bottom: 24px; color: var(--text-light); line-height: 1.1; max-width: 800px; margin-inline: auto;}
+        .cta-section p { font-size: 1.25rem; color: #A1A8B8; margin-bottom: 40px; max-width: 600px; margin-inline: auto;}
+
+        /* Modal Styles */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(4px); display: flex; align-items: flex-start; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; overflow-y: auto;}
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-window { background: var(--bg-white); width: 100%; max-width: 800px; border: 1px solid #000; margin-top: 40px; margin-bottom: 40px; position: relative; box-shadow: 10px 10px 0px rgba(0,0,0,1); padding: 64px; }
+        #quizModal, #quizModal * { box-sizing: border-box; }
+        @media (max-width: 768px) { .modal-window { padding: 40px 24px; margin: 20px; box-shadow: 4px 4px 0px rgba(0,0,0,1); } }
+        .modal-close { position: absolute; top: 16px; right: 16px; background: #000; color: #fff; border: none; width: 32px; height: 32px; cursor: pointer; font-family: var(--font-sans); display: flex; align-items: center; justify-content: center; transition: all 0.2s;}
+        .modal-close:hover { background: var(--accent-brand); }
+        
+        .modal-content-area h4 { font-family: var(--font-heading); font-size: 1.4rem; color: var(--text-dark); margin-bottom: 12px; margin-top: 40px; border-bottom: 1px solid #000; padding-bottom: 8px;}
+        .modal-content-area h2 { font-size: 2.5rem; margin-bottom: 16px; margin-top: 0; font-family: var(--font-heading);}
+        .modal-content-area p { margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6; color: var(--text-dark); }
+        .modal-content-area .highlight-box { background: var(--bg-offwhite); border-left: 4px solid var(--accent-brand); padding: 24px 32px; margin: 32px 0; font-size: 1.1rem; font-style: italic; font-family: var(--font-heading); color: var(--text-dark);}
+        .modal-content-area ul { list-style: none; margin-bottom: 32px; }
+        .modal-content-area ul li { padding-left: 20px; position: relative; margin-bottom: 12px; font-size: 1.1rem; color: var(--text-dark);}
+        .modal-content-area ul li::before { content: "—"; position: absolute; left: 0; color: var(--accent-brand); font-weight: bold;}
+        
+        .modal-metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 24px; margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--accent-muted);}
+        .modal-metric { display: flex; flex-direction: column; }
+        .modal-metric-val { font-size: 2rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; font-family: var(--font-heading);}
+        .modal-metric-lbl { font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); letter-spacing: 0.05em;}
+
+        /* Editorial Quiz Specifics */
+        .editorial-input-group { margin-bottom: 20px; }
+        .editorial-input-group label { display: block; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 8px; }
+        .editorial-input-group input { width: 100%; border: none; border-bottom: 2px dotted var(--text-ink); background: transparent; font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; padding: 4px 0 8px; outline: none; color: var(--text-ink); border-radius: 0; transition: border-bottom-style 0.2s; }
+        .editorial-input-group input:focus { border-bottom-style: solid; }
+
+        .btn-editorial-primary { background: var(--text-ink); color: var(--bg-paper); font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; padding: 16px 24px; border: none; cursor: pointer; transition: background 0.2s; font-size: 0.85rem; width: 100%; }
+        .btn-editorial-primary:hover { background: var(--accent-red); }
+
+        .btn-editorial-secondary { background: transparent; color: var(--text-ink); border: 1px solid var(--text-ink); font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; padding: 16px 24px; cursor: pointer; transition: all 0.2s; font-size: 0.85rem; }
+        .btn-editorial-secondary:hover { background: #eee; }
+
+        .btn-editorial-select { background: #fff; border: 1px solid #ccc; padding: 24px; font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; cursor: pointer; transition: all 0.2s; text-align: center; color: var(--text-muted); }
+        .btn-editorial-select:hover { border-color: var(--text-ink); color: var(--text-ink); box-shadow: 4px 4px 0px rgba(0,0,0,0.1); }
+
+        .quiz-step { animation: fadeIn 0.3s ease-out; }
+        .quiz-step.active { display: block; }
+        #quizModal .modal-window {
+            width: min(1100px, calc(100vw - 40px));
+            min-height: min(860px, calc(100vh - 40px));
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+        }
+        #quizModal .modal-content-area {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+        }
+        .quiz-progress {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 22px;
+        }
+        .quiz-progress-item {
+            height: 6px;
+            background: #ddd;
+        }
+        .quiz-progress-item.active {
+            background: #000;
+        }
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 24px;
+        }
+        .quiz-note {
+            border: 1px solid #000;
+            padding: 16px;
+            background: #fafafa;
             font-family: var(--font-sans);
-            font-size: 1.04rem;
-            line-height: 1.75;
-            color: rgba(255,255,255,0.86);
+            font-size: 0.85rem;
+            line-height: 1.55;
+            color: #333;
         }
-        .ru-footer {
-            border-top: 1px solid var(--accent-line);
-            padding: 24px;
-            text-align: center;
+        .quiz-live-line {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #bbb;
             font-family: var(--font-sans);
             font-size: 0.82rem;
-            color: var(--text-muted);
+            color: #222;
+            line-height: 1.45;
         }
-        @media (max-width: 980px) {
-            .ru-facts, .ru-cases, .ru-process, .ru-grid-two {
-                grid-template-columns: 1fr;
+        .quiz-scenarios {
+            margin-top: 10px;
+            border-top: 1px dashed #bbb;
+            padding-top: 10px;
+            display: grid;
+            gap: 6px;
+        }
+        .quiz-scenario-item {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            line-height: 1.4;
+            color: #222;
+        }
+        .quiz-health-chip {
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border: 1px solid #bbb;
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            background: #fff;
+        }
+        .quiz-health-chip::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #888;
+            display: inline-block;
+        }
+        .quiz-health-chip.health-good { border-color: #2e7d32; color: #2e7d32; }
+        .quiz-health-chip.health-good::before { background: #2e7d32; }
+        .quiz-health-chip.health-warn { border-color: #b26a00; color: #8a5300; }
+        .quiz-health-chip.health-warn::before { background: #d48900; }
+        .quiz-health-chip.health-risk { border-color: #b00020; color: #8e0018; }
+        .quiz-health-chip.health-risk::before { background: #c30024; }
+        .quiz-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .quiz-hint {
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            color: #666;
+            line-height: 1.4;
+            margin-top: 4px;
+            display: block;
+        }
+        @media (max-width: 900px) {
+            #quizModal .modal-window {
+                width: calc(100vw - 16px);
+                min-height: calc(100vh - 16px);
+                margin: 8px;
+                padding: 20px 16px;
+                box-shadow: 4px 4px 0 rgba(0,0,0,1);
+            }
+            .quiz-grid { grid-template-columns: 1fr; }
+            .quiz-actions { flex-direction: column; }
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Premium Layout Components */
+        .tool-strip { 
+            margin-top: 48px; 
+            padding-top: 32px; 
+            border-top: 1px solid var(--accent-muted); 
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+        .tool-strip-content {
+            display: inline-flex;
+            animation: marquee-rtl 25s linear infinite;
+        }
+        .tool-strip-content:hover { animation-play-state: paused; }
+        @keyframes marquee-rtl {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .tool-icon { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; color: var(--text-dark); opacity: 0.7; transition: opacity 0.2s; padding: 0 40px; }
+        .tool-icon:hover { opacity: 1; }
+        .tool-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-brand); flex-shrink: 0; }
+
+        .compare-table { width: 100%; border-collapse: collapse; margin: 48px 0; border: 1px solid var(--text-dark); font-family: var(--font-sans); }
+        .compare-table th { background: var(--bg-white); padding: 20px; text-align: left; border-bottom: 2px solid var(--text-dark); border-right: 1px solid #ddd; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.08em; font-weight: 700; }
+        .compare-table th:first-child { background: var(--bg-offwhite); }
+        .compare-table td { padding: 16px 20px; border-bottom: 1px solid #eee; border-right: 1px solid #eee; font-size: 0.95rem; vertical-align: top; color: var(--text-gray); }
+        .compare-table td:first-child { color: var(--text-dark); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; background: var(--bg-offwhite); }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table .val-plus { color: var(--accent-brand); font-weight: bold; }
+
+        .philosophy-banner { background-color: var(--bg-tint); padding: 60px 40px; margin: 80px auto 0; border-left: 6px solid var(--text-dark); max-width: 1000px; }
+        .philosophy-banner h3 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; color: var(--text-gray); font-family: var(--font-main); }
+        .philosophy-banner p { font-size: 1.5rem; line-height: 1.4; color: var(--text-dark); font-family: var(--font-heading); font-style: italic; font-weight: 500; }
+        @media(max-width:768px) { .philosophy-banner p { font-size: 1.25rem; } .philosophy-banner { padding: 32px 24px; } }
+
+        .methodology-flow { display: flex; gap: 20px; margin-top: 48px; flex-wrap: wrap; }
+        .flow-step { flex: 1; min-width: 250px; background: var(--bg-white); border: 1px solid var(--text-dark); padding: 32px; position: relative; }
+        .flow-num { position: absolute; top: -15px; left: 20px; background: var(--text-dark); color: #fff; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem; }
+        .flow-step h4 { margin-top: 8px; margin-bottom: 12px; }
+
+        .reveal-on-scroll { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-on-scroll.active { opacity: 1; transform: translateY(0); }
+
+        /* Credential Section Redesign */
+        .cred-section { padding: 100px 0; background: var(--bg-white); }
+        .cred-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        @media (max-width: 900px) { .cred-grid { grid-template-columns: 1fr; gap: 48px; } }
+        
+        .cred-item { margin-bottom: 24px; display: flex; gap: 20px; align-items: flex-start; }
+        .cred-icon { width: 48px; height: 48px; background: var(--bg-tint); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; }
+        .cred-info h4 { font-size: 1.05rem; margin-bottom: 4px; line-height: 1.3; }
+        .cred-info p { font-size: 0.9rem; color: var(--text-gray); line-height: 1.5; }
+
+        .stack-group { margin-top: 32px; }
+        .stack-group h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-gray); margin-bottom: 16px; border-bottom: 1px solid var(--accent-muted); padding-bottom: 8px; }
+        .stack-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .stack-tag { padding: 6px 12px; background: var(--bg-offwhite); border: 1px solid var(--accent-muted); font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600; color: var(--text-dark); }
+        
+        .section-white { background-color: var(--bg-white); padding: 80px 0; }
+
+        /* MOBILE NAV — hide socials, keep phone + CTA */
+        @media (max-width: 640px) {
+            .nav-socials { display: none !important; }
+            .nav-phone { font-size: 0.78rem !important; }
+        }
+        @media (max-width: 768px) {
+            #quizModal .modal-window {
+                width: calc(100vw - 24px) !important;
+                margin: 12px auto !important;
+                padding: 24px !important;
+            }
+            #quizModal.modal-overlay {
+                justify-content: center !important;
+                align-items: flex-start !important;
+            }
+            #quizModal .modal-close {
+                top: 10px !important;
+                right: 10px !important;
             }
         }
     </style>
 </head>
 <body>
-    <nav class="ru-nav">
-        <div class="ru-nav-inner">
-            <div class="ru-brand">
-                <strong>Ярослав Жакун</strong>
-                <span>Google Ads Specialist</span>
+
+    <!-- STICKY TOP BAR -->
+    <nav class="sticky-nav">
+        <div class="container" style="max-width: 1400px; padding: 10px 24px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; flex-wrap: wrap; gap: 16px;">
+            <div style="display: flex; gap: 12px; align-items: center;">
+                <a href="index.html" style="color: #999; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#999'">EN</a>
+                <span style="color: #ccc;">|</span>
+                <a href="ua.html" style="color: #999; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#000'" onmouseout="this.style.color='#999'">UA</a>
+                <span style="color: #ccc;">|</span>
+                <span style="color: #000; text-decoration: underline; text-underline-offset: 3px;">RU</span>
             </div>
-            <div class="ru-nav-links">
-                <a href="tel:+380505580953">+38 050 558 09 53</a>
-                <a href="https://t.me/Yaroslav797" target="_blank">Telegram</a>
-                <a href="https://www.linkedin.com/in/iaroslav-zhakun-399550271/" target="_blank">LinkedIn</a>
+            <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+                <!-- PHONE -->
+                <a class="nav-phone" href="tel:+380505580953" title="Russian Language Page" style="color: #222; text-decoration: none; font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 5px; padding: 4px 12px; transition: color 0.2s; border-right: 1px solid #e0e0e0; padding-right: 18px; margin-right: 4px;" onmouseover="this.style.color='#C00000'" onmouseout="this.style.color='#222'">
+                    <span style="font-size: 1rem;">🇷🇺</span> +38 050 558 09 53
+                </a>
+                <!-- SOCIALS -->
+                <div class="nav-socials" style="display: flex; gap: 12px; align-items: center;">
+                <a href="https://t.me/Yaroslav797" target="_blank" style="color: #333; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: color 0.2s;" onmouseover="this.style.color='#C00000'" onmouseout="this.style.color='#333'" title="Telegram">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.69-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.35-.49.96-.75 3.78-1.65 6.31-2.74 7.58-3.27 3.61-1.51 4.35-1.77 4.84-1.78.11 0 .35.03.51.16.13.11.17.22.19.33.02.13.02.26.01.39z"/></svg>
+                    Telegram
+                </a>
+                <a href="https://www.linkedin.com/in/iaroslav-zhakun-399550271/" target="_blank" style="color: #333; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: color 0.2s;" onmouseover="this.style.color='#C00000'" onmouseout="this.style.color='#333'" title="LinkedIn">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+                </div>
+                <a href="#" onclick="startQuiz(); return false;" style="background: #C00000; color: #fff; text-decoration: none; padding: 7px 16px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; transition: background 0.2s;" onmouseover="this.style.background='#990000'" onmouseout="this.style.background='#C00000'">Зв’язатися &rarr;</a>
             </div>
         </div>
     </nav>
 
-    <header class="ru-hero">
-        <span class="ru-kicker">Отдельная русскоязычная страница</span>
-        <h1>Google Ads для e-commerce и lead generation без хаоса в бюджете и отчетности.</h1>
-        <p>Я беру аккаунт в работу, перестраиваю структуру, убираю слабые места в трафике и показываю результат на языке бизнеса: выручка, стоимость заявки, масштабирование, окупаемость. Без перегруза техническими деталями, но с полным контролем над цифрами.</p>
-        <div class="ru-hero-actions">
-            <a href="https://t.me/Yaroslav797" target="_blank" class="btn btn-primary">Обсудить проект</a>
-            <a href="#cases-ru" class="btn btn-ghost">Посмотреть кейсы</a>
-        </div>
-        <div class="ru-facts">
-            <div class="ru-fact">
-                <strong>10+ лет</strong>
-                <span>Опыт в маркетинге</span>
+    <!-- HERO -->
+    <header class="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="cert-pill animate-fade">&#10003; Открыт к новым проектам &middot; Специалист Google Ads</span>
+                <span class="section-label animate-fade" style="margin-bottom: 8px; font-size: 0.95rem; color: var(--text-dark);">Ярослав Жакун &mdash; Специалист Google Ads</span>
+                <h1 class="animate-fade delay-1">Превращаю рекламные бюджеты в предсказуемый и измеримый доход</h1>
+                <p class="animate-fade delay-2" style="max-width: 800px;">Работаю с агентствами и прямыми клиентами. Беру аккаунт в работу, выстраиваю систему и отчитываюсь языком бизнес-цифр, а не кликов и CTR. Без необходимости в постоянном контроле.</p>
+                <div class="hero-buttons animate-fade delay-3">
+            <a href="#" onclick="startQuiz(); return false;" class="btn btn-primary" style="font-weight: 700;">Получить PPC-диагностику и план инвестиций &darr;</a>
+                    <a href="https://t.me/Yaroslav797" target="_blank" class="btn btn-ghost" style="margin-left: 12px;">Обсудить сотрудничество &rarr;</a>
+
+                </div>
             </div>
-            <div class="ru-fact">
-                <strong>80+ проектов</strong>
-                <span>Запущено с нуля</span>
+            
+            <!-- DETAILED FACTUAL BLOCK (HIRING MANAGER VIEW) -->
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--accent-muted); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; text-align: left;" class="animate-fade delay-3">
+                <div class="fact-mini">
+                    <strong style="display: block; font-size: 1.5rem; color: var(--accent-brand);">10+ Years</strong>
+                    <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); font-weight: 600;">Опыт в маркетинге</span>
+                </div>
+                <div class="fact-mini">
+                    <strong style="display: block; font-size: 1.5rem; color: var(--text-dark);">80+ Projects</strong>
+                    <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); font-weight: 600;">Проектов с нуля</span>
+                </div>
+                <div class="fact-mini">
+                    <strong style="display: block; font-size: 1.5rem; color: var(--text-dark);">$5k &ndash; $50k+</strong>
+                    <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); font-weight: 600;">Месячные бюджеты под управлением</span>
+                </div>
+                <div class="fact-mini">
+                    <strong style="display: block; font-size: 1.5rem; color: var(--text-dark);">5 &ndash; 10</strong>
+                    <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-gray); font-weight: 600;">Параллельных проектов</span>
+                </div>
             </div>
-            <div class="ru-fact">
-                <strong>$5k-$50k+</strong>
-                <span>Бюджеты под управлением</span>
-            </div>
-            <div class="ru-fact">
-                <strong>5-10</strong>
-                <span>Проектов одновременно</span>
+            
+            <div class="tool-strip animate-fade delay-3">
+                <div class="tool-strip-content">
+                    <!-- Set 1 -->
+                    <div class="tool-icon"><div class="tool-dot"></div>Google Ads</div>
+                    <div class="tool-icon"><div class="tool-dot"></div>GA4 / GTM</div>
+                    <div class="tool-icon"><div class="tool-dot"></div>Merchant Center</div>
+                    <div class="tool-icon"><div class="tool-dot"></div>Looker Studio</div>
+                    <div class="tool-icon"><div class="tool-dot"></div>Salesforce / CRM</div>
+                    <!-- Set 2 (for seamless looping left-to-right) -->
+                    <div class="tool-icon"><div class="tool-dot"></div>Google Ads</div>
+                    <div class="tool-icon"><div class="tool-dot"></div>GA4 / GTM</div>
+                    <div class="tool-icon"><div class="tool-dot"></div>Merchant Center</div>
+                    <div class="tool-icon"><div class="tool-dot"></div>Looker Studio</div>
+                    <div class="tool-icon"><div class="tool-dot"></div>Salesforce / CRM</div>
+                </div>
             </div>
         </div>
     </header>
 
-    <section class="ru-section" id="cases-ru">
-        <div class="ru-section-head">
-            <span>Кейсы и подход</span>
-            <h2>Примеры того, как я работаю с результатом</h2>
+    <!-- CASES (MOVED UP FOR IMMEDIATE PROOF) -->
+    <section id="cases" class="section-cases">
+        <div class="container">
+            <span class="section-label">Опыт и подтвержденные результаты</span>
+            <h2 class="section-title">Избранные кейсы</h2>
+            <div class="cases-grid">
+                <div class="case-card" onclick="window.location.href='cases/ua-pet-supplies-scaling.html'" style="cursor: pointer;">
+                    <div class="case-title">E-commerce: зоотовары<span class="case-tag">Архитектура</span></div>
+                    <p class="case-before">До: ROAS застрял на 150%, бюджет сгорал без понимания, что работает</p>
+                    <p class="case-teaser">Перестроили аккаунт вокруг одного правила: одна кампания — одна задача. Разделили Search, Shopping и PMax на отдельные слои спроса, чтобы вернуть предсказуемый ROI.</p>
+                    <div class="metrics-chips">
+                        <span class="chip chip-accent"><strong>800-1200%</strong> ROAS</span>
+                        <span class="chip"><strong>&euro;4.35</strong> CPA</span>
+                    </div>
+                    <button class="btn-text case-cta">Читать стратегический разбор <span>&rarr;</span></button>
+                </div>
+                <div class="case-card" onclick="window.location.href='cases/ua-bbq-grills-scaling.html'" style="cursor: pointer;">
+                    <div class="case-title">E-commerce: товары для гриля<span class="case-tag">Масштабирование</span></div>
+                    <p class="case-before">До: 400+ SKU в одной плоской кампании, пик сезона был упущен</p>
+                    <p class="case-teaser">Перестроили аккаунт вокруг маржинальных уровней. Премиальные грили получили отдельные PMax. DSA забирал длинный сезонный спрос. GA4 был перенастроен для точной стоимости покупки.</p>
+                    <div class="metrics-chips">
+                        <span class="chip chip-accent"><strong>679%</strong> ROAS</span>
+                        <span class="chip"><strong>&euro;13.7</strong> CPA</span>
+                    </div>
+                    <button class="btn-text case-cta">Читать стратегический разбор <span>&rarr;</span></button>
+                </div>
+                <div class="case-card" onclick="openModal('case-3')">
+                    <div class="case-title">B2B: логистика<span class="case-tag">Лидогенерация</span></div>
+                    <p class="case-before">До: объем есть, качество катастрофическое &mdash; звонит не та аудитория</p>
+                    <p class="case-teaser">Мы использовали ключевые слова как фильтр трафика, а не как его источник. Аудит минус-слов убрал потребительские запросы, а DSA помог найти реальный B2B-интент.</p>
+                    <div class="metrics-chips">
+                        <span class="chip chip-accent"><strong>&euro;11.5</strong> Целевой CPL</span>
+                        <span class="chip"><strong>1,090</strong> Лиды</span>
+                    </div>
+                    <button class="btn-text case-cta">Системный обзор <span>&rarr;</span></button>
+                </div>
+                <div class="case-card" onclick="openModal('case-4')">
+                    <div class="case-title">E-commerce: электроника<span class="case-tag">Технический</span></div>
+                    <p class="case-before">До: тысячи SKU, одинаковый бюджет и нулевая логика приоритетов</p>
+                    <p class="case-teaser">Разделили каталог на 3 уровня эффективности. PMax направили на приоритетные сегменты. Брендовый Search защитили от каннибализации со стороны PMax.</p>
+                    <div class="metrics-chips">
+                        <span class="chip chip-accent"><strong>653%</strong> ROAS</span>
+                        <span class="chip"><strong>&euro;6.7</strong> CPA</span>
+                    </div>
+                    <button class="btn-text case-cta">Системный обзор <span>&rarr;</span></button>
+                </div>
+                <div class="case-card" onclick="window.location.href='cases/ua-repair-service-efficiency.html'" style="cursor: pointer;">
+                    <div class="case-title">Услуги: ремонт<span class="case-tag">Эффективность</span></div>
+                    <p class="case-before">До: &euro;350+ CPA, оплата кликов от людей из трех соседних городов</p>
+                    <p class="case-teaser">Точная радиусная стратегия: жесткие гео-зоны, Call-Only кампании, полная перестройка минус-слов. Ставки были настроены под пиковые окна бронирований.</p>
+                    <div class="metrics-chips">
+                        <span class="chip chip-accent"><strong>&euro;12</strong> Ср. CPA</span>
+                        <span class="chip"><strong>850</strong> Звонки</span>
+                    </div>
+                    <button class="btn-text case-cta">Читать стратегический разбор <span>&rarr;</span></button>
+                </div>
+                <div class="case-card" onclick="openModal('case-6')">
+                    <div class="case-title">Industrial B2B: оборудование<span class="case-tag">Стратегия</span></div>
+                    <p class="case-before">До: лиды есть, но все от неправильной аудитории</p>
+                    <p class="case-teaser">Перестроили кампании вокруг supply-chain интента. Определили язык профессиональных закупщиков. Запустили ремаркетинг на посетителей страниц со спецификациями. B2B-формы отслеживались как микро-конверсии.</p>
+                    <div class="metrics-chips">
+                        <span class="chip chip-accent"><strong>320</strong> Лиды</span>
+                        <span class="chip"><strong>&euro;45</strong> CPA</span>
+                    </div>
+                    <button class="btn-text case-cta">Системный обзор <span>&rarr;</span></button>
+                </div>
         </div>
-        <div class="ru-cases">
-            <article class="ru-case">
-                <div class="ru-case-top">
-                    <h3>E-commerce: зоотовары</h3>
-                    <span class="ru-tag">Архитектура</span>
-                </div>
-                <p>Аккаунт был перестроен вокруг логики спроса: отдельно Search, отдельно Shopping, отдельно PMax. Это позволило перестать “смешивать” трафик и вернуть управляемый ROI.</p>
-                <div class="ru-case-metrics">
-                    <span class="ru-chip">ROAS 800-1200%</span>
-                    <span class="ru-chip">CPA €4.35</span>
-                </div>
-            </article>
-            <article class="ru-case">
-                <div class="ru-case-top">
-                    <h3>E-commerce: грили</h3>
-                    <span class="ru-tag">Масштабирование</span>
-                </div>
-                <p>Сегментация по маржинальности, очистка поискового интента и точечная работа с SKU позволили сместить бюджет в прибыльные категории и удержать экономику в сезон.</p>
-                <div class="ru-case-metrics">
-                    <span class="ru-chip">ROAS 679%</span>
-                    <span class="ru-chip">Revenue €157k</span>
-                </div>
-            </article>
-            <article class="ru-case">
-                <div class="ru-case-top">
-                    <h3>B2B: логистика</h3>
-                    <span class="ru-tag">Лидогенерация</span>
-                </div>
-                <p>Ключевые слова были использованы как фильтр трафика. Убрали нерелевантные запросы, отделили B2B-интент и получили более качественные лиды при адекватной стоимости.</p>
-                <div class="ru-case-metrics">
-                    <span class="ru-chip">CPL €11.5</span>
-                    <span class="ru-chip">1,090 лидов</span>
-                </div>
-            </article>
+        <!-- WHO I WORK WITH -->
+        <div style="margin-top: 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0; border: 2px solid var(--text-dark);">
+            <!-- AGENCIES -->
+            <div style="padding: 40px; border-right: 1px solid var(--text-dark);">
+                <div style="font-family: var(--font-sans); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-brand); margin-bottom: 16px;">&#9642; Для агентств</div>
+                <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 20px; line-height: 1.2;">Нужен специалист, который ведет аккаунты самостоятельно?</h3>
+                <ul style="list-style: none; padding: 0; margin: 0 0 28px;">
+                    <li style="padding: 10px 0; border-bottom: 1px solid var(--accent-muted); font-size: 0.95rem; color: var(--text-dark);">&#10003;&nbsp; Беру аккаунты без долгого онбординга &mdash; аудит уже в первую неделю</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid var(--accent-muted); font-size: 0.95rem; color: var(--text-dark);">&#10003;&nbsp; Отчеты для клиента на языке бизнеса, а не CTR</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid var(--accent-muted); font-size: 0.95rem; color: var(--text-dark);">&#10003;&nbsp; Самостоятельно вел бюджеты $5k &ndash; $50k+/мес</li>
+                    <li style="padding: 10px 0; font-size: 0.95rem; color: var(--text-dark);">&#10003;&nbsp; Коммуницирую на уровне ROI, а не интерфейсных метрик</li>
+                </ul>
+                <a href="https://t.me/Yaroslav797" target="_blank" style="display: inline-block; background: var(--text-dark); color: #fff; text-decoration: none; padding: 12px 24px; font-family: var(--font-sans); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; transition: background 0.2s;" onmouseover="this.style.background='#333'" onmouseout="this.style.background='var(--text-dark)'">Обсудить сотрудничество &rarr;</a>
+            </div>
+            <!-- DIRECT CLIENTS -->
+            <div style="padding: 40px; background: var(--bg-offwhite);">
+                <div style="font-family: var(--font-sans); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-gray); margin-bottom: 16px;">&#9642; Для прямых клиентов</div>
+                <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 20px; line-height: 1.2;">Тратите на рекламу, но не понимаете, куда уходят деньги?</h3>
+                <ul style="list-style: none; padding: 0; margin: 0 0 28px;">
+                    <li style="padding: 10px 0; border-bottom: 1px solid var(--accent-muted); font-size: 0.95rem; color: var(--text-dark);">&#10003;&nbsp; Объясняю все без технического жаргона</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid var(--accent-muted); font-size: 0.95rem; color: var(--text-dark);">&#10003;&nbsp; Начинаем с бесплатного аудита &mdash; вы видите состояние аккаунта до оплаты</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid var(--accent-muted); font-size: 0.95rem; color: var(--text-dark);">&#10003;&nbsp; Фиксированная ответственность &mdash; я отвечаю за результат, а не только за список задач</li>
+                    <li style="padding: 10px 0; font-size: 0.95rem; color: var(--text-dark);">&#10003;&nbsp; Вы всегда понимаете, что происходит и почему</li>
+                </ul>
+                <a href="#" onclick="startQuiz(); return false;" style="display: inline-block; background: #C00000; color: #fff; text-decoration: none; padding: 12px 24px; font-family: var(--font-sans); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; transition: background 0.2s;" onmouseover="this.style.background='#990000'" onmouseout="this.style.background='#C00000'">Запросить бесплатный аудит &rarr;</a>
+            </div>
         </div>
     </section>
 
-    <section class="ru-section">
-        <div class="ru-section-head">
-            <span>С чем обращаются</span>
-            <h2>Когда эта страница особенно кстати</h2>
+    <!-- STRATEGIC SOLUTIONS (EXPERT HUB) -->
+    <section id="solutions" class="section-solutions">
+        <div class="container" style="text-align: center;">
+            <span class="section-label">Экспертный подход</span>
+            <h2 class="section-title">Примеры системных решений</h2>
+            <div class="solutions-grid">
+                <a href="cases/ua-pet-supplies-scaling.html" class="solution-card">
+                    <span class="solution-tag">Масштабирование и ROI</span>
+                    <h3>Архитектура E-commerce</h3>
+                    <p>Построение прибыльных структур аккаунта, которые масштабируют бюджет без потери ROAS. Модульные кампании для модульного роста.</p>
+                </a>
+                <a href="solutions/gtm-event-setup-agent.html" class="solution-card">
+                    <span class="solution-tag">Автоматизация</span>
+                    <h3>AI-агент для GTM-событий</h3>
+                    <p>Собственная AI-система, которая сканирует сайт и за секунды формирует полный план GTM/GA4. Меньше ручных ошибок в трекинге.</p>
+                </a>
+                <a href="solutions/click-fraud-protection.html" class="solution-card">
+                    <span class="solution-tag">Эффективность</span>
+                    <h3>Защита от скликивания</h3>
+                    <p>Многоуровневая техническая защита от ботов и конкурентных скликиваний в нишах с высоким CPC.</p>
+                </a>
+            </div>
         </div>
-        <div class="ru-grid-two">
-            <div class="ru-panel">
-                <h3>Для бизнеса</h3>
-                <ul>
-                    <li>Реклама идет, но неясно, какие кампании реально приносят прибыль.</li>
-                    <li>При увеличении бюджета продажи не растут пропорционально.</li>
-                    <li>Много кликов и активности, но мало понятного результата по деньгам.</li>
-                    <li>Нужен аудит аккаунта перед масштабированием или сменой подрядчика.</li>
+    </section>
+
+    <!-- THE PROFESSIONAL STANDARD (COMPARISON) -->
+    <section style="background-color: var(--bg-white); padding: 80px 0;">
+        <div class="container">
+            <span class="section-label">Системное преимущество</span>
+            <h2 class="section-title">Обычный специалист vs. системный подход</h2>
+            <p style="font-size: 1.1rem; color: var(--text-gray); max-width: 600px; margin-bottom: 24px;">Почему системный подход сильнее обычной закупки медиа: он работает не только с рекламой, но и с инфраструктурой роста.</p>
+            
+            <table class="compare-table reveal-on-scroll">
+                <thead>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Стандартное управление</th>
+                        <th>Системная архитектура</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Главная цель</strong></td>
+                        <td>Максимум трафика</td>
+                        <td style="font-weight:700; color: var(--text-dark);">Максимум инкрементальной прибыли</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Стратегия PMax</strong></td>
+                        <td>Автоматизация как «черный ящик»</td>
+                        <td style="font-weight:700; color: var(--text-dark);">Стратегическое управление и изоляция бренда</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Трекинг</strong></td>
+                        <td>Поверхностные конверсии</td>
+                        <td style="font-weight:700; color: var(--text-dark);">GTM / server-side / на основе маржи</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Масштабирование</strong></td>
+                        <td>Повышение ставок «по ощущению»</td>
+                        <td style="font-weight:700; color: var(--text-dark);">Масштабирование по данным и уровням ROAS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Коммуникация</strong></td>
+                        <td>Интерфейсные метрики (CTR/CPC)</td>
+                        <td style="font-weight:700; color: var(--text-dark);">Бизнес-метрики (ROI / POAS / CAC)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- CREDENTIALS & TRACK RECORD -->
+    <section class="cred-section">
+        <div class="container">
+            <div class="cred-grid">
+                <!-- Left: Bio & Buttons -->
+                <div>
+                    <span class="section-label">Профессиональное резюме</span>
+                    <h2 class="section-title" style="font-size: 2.5rem; border-bottom: none; margin-bottom: 24px; padding-bottom: 0;">Опыт и квалификация</h2>
+                    <p style="font-size: 1.15rem; color: var(--text-dark); line-height: 1.7; margin-bottom: 40px;">Ярослав Жакун — специалист по Google Ads с базовым образованием экономиста-менеджера. Начал карьеру в digital-маркетинге в 2013 году, а с 2017-го глубоко специализируюсь на архитектуре Google Ads и performance-оптимизации. За это время вел более 80 проектов в B2C e-commerce и B2B lead generation.</p>
+                    
+                    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                        <a href="https://t.me/Yaroslav797" target="_blank" class="btn btn-primary" style="text-decoration: none;">Написать в Telegram</a>
+                        <a href="cv_eng.html" class="btn btn-outline" style="border: 1px solid #000; color: #000; background: transparent; text-decoration: none; font-weight: 700;">Посмотреть полное CV →</a>
+                    </div>
+                </div>
+
+                <!-- Right: Credentials List -->
+                <div>
+                    <!-- Education & Status -->
+                    <div style="margin-bottom: 48px;">
+                        <div class="cred-item reveal-on-scroll">
+                            <div class="cred-icon">🎓</div>
+                            <div class="cred-info">
+                                <h4>MBA Professional Certificate</h4>
+                                <p>Management & Strategy — The Open University (UK)</p>
+                            </div>
+                        </div>
+                        <div class="cred-item reveal-on-scroll">
+                            <div class="cred-icon">📜</div>
+                            <div class="cred-info">
+                                <h4>Сертифицированный специалист Google</h4>
+                                <p>Search, Shopping и архитектура Performance Max</p>
+                            </div>
+                        </div>
+                        <div class="cred-item reveal-on-scroll">
+                            <div class="cred-icon">⚡</div>
+                            <div class="cred-info">
+                                <h4>Программа Product Manager</h4>
+                                <p>Системное продуктовое мышление — Skillsetter.io</p>
+                            </div>
+                        </div>
+                        <div class="cred-item reveal-on-scroll">
+                            <div class="cred-icon">🏛️</div>
+                            <div class="cred-info">
+                                <h4>Высшее образование</h4>
+                                <p>Менеджер-экономист — Херсонский государственный университет</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack & Tools -->
+                    <div class="stack-group">
+                        <h4>Технологический стек и инструменты</h4>
+                        <div class="stack-tags reveal-on-scroll">
+                            <span class="stack-tag">Google Ads</span>
+                            <span class="stack-tag">GMC</span>
+                            <span class="stack-tag">GA4</span>
+                            <span class="stack-tag">GTM</span>
+                            <span class="stack-tag">Looker Studio</span>
+                            <span class="stack-tag">Clarity</span>
+                            <span class="stack-tag">Salesforce</span>
+                            <span class="stack-tag">HTML/CSS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFESSIONAL EXPERIENCE TIMELINE -->
+    <section style="background-color: var(--bg-offwhite); padding: 80px 0;">
+        <div class="container">
+            <span class="section-label">Профессиональный опыт</span>
+            <h2 class="section-title">Карьерный путь</h2>
+            
+            <div style="border-left: 2px solid var(--accent-muted); padding-left: 40px; margin-left: 10px;">
+                <!-- Item 1 -->
+                <div style="position: relative; margin-bottom: 48px;">
+                    <div style="position: absolute; left: -51px; top: 0; width: 20px; height: 20px; background: var(--accent-brand); border: 4px solid var(--bg-offwhite);"></div>
+                    <div style="font-family: var(--font-sans); font-size: 0.85rem; font-weight: 700; color: var(--text-gray); text-transform: uppercase; margin-bottom: 8px;">Aug 2025 – Sep 2025</div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 4px;">Channel Factory</h3>
+                    <div style="font-weight: 600; font-size: 1rem; color: var(--text-dark); margin-bottom: 12px;">AdOps Manager для международных брендов | YouTube Ads</div>
+                    <p style="font-size: 1rem; color: var(--text-gray); max-width: 700px;">Поддерживал QA- и AdOps-процессы для международных YouTube- и Google Ads-кампаний. Работал с Brand Safety, Salesforce и программатик-процессами через Ads Editor.</p>
+                </div>
+
+                <!-- Item 2 -->
+                <div style="position: relative; margin-bottom: 48px;">
+                    <div style="position: absolute; left: -51px; top: 0; width: 20px; height: 20px; background: var(--text-dark); border: 4px solid var(--bg-offwhite);"></div>
+                    <div style="font-family: var(--font-sans); font-size: 0.85rem; font-weight: 700; color: var(--text-gray); text-transform: uppercase; margin-bottom: 8px;">Feb 2025 – Aug 2025</div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 4px;">Locomotive.ua</h3>
+                    <div style="font-weight: 600; font-size: 1rem; color: var(--text-dark); margin-bottom: 12px;">PPC-специалист</div>
+                    <p style="font-size: 1rem; color: var(--text-gray); max-width: 700px;">Управлял и оптимизировал кампании Performance Max и Google Shopping для e-commerce. Настраивал GA4, GTM и Merchant Center для глубокого трекинга и UX/CRO-анализа.</p>
+                </div>
+
+                <!-- Item 3 -->
+                <div style="position: relative; margin-bottom: 48px;">
+                    <div style="position: absolute; left: -51px; top: 0; width: 20px; height: 20px; background: var(--text-dark); border: 4px solid var(--bg-offwhite);"></div>
+                    <div style="font-family: var(--font-sans); font-size: 0.85rem; font-weight: 700; color: var(--text-gray); text-transform: uppercase; margin-bottom: 8px;">2015 – настоящее время</div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 4px;">Cifra Internet</h3>
+                    <div style="font-weight: 600; font-size: 1rem; color: var(--text-dark); margin-bottom: 12px;">Руководитель performance-маркетинга / Media Buyer</div>
+                    <p style="font-size: 1rem; color: var(--text-gray); max-width: 700px;">Вел performance-маркетинг для 50+ проектов с нуля. Управлял портфелями с месячными бюджетами $50k+, стабильно сокращая неэффективные расходы на 30%.</p>
+                </div>
+
+                <!-- Item 4 -->
+                <div style="position: relative; margin-bottom: 48px;">
+                    <div style="position: absolute; left: -51px; top: 0; width: 20px; height: 20px; background: var(--text-dark); border: 4px solid var(--bg-offwhite);"></div>
+                    <div style="font-family: var(--font-sans); font-size: 0.85rem; font-weight: 700; color: var(--text-gray); text-transform: uppercase; margin-bottom: 8px;">2016 – 2023</div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 4px;">Royal Canin Ukraine</h3>
+                    <div style="font-weight: 600; font-size: 1rem; color: var(--text-dark); margin-bottom: 12px;">E-commerce менеджер</div>
+                    <p style="font-size: 1rem; color: var(--text-gray); max-width: 700px;">Разрабатывал и внедрял стратегии роста e-commerce для глобального бренда. Увеличил годовые продажи среди закрепленных клиентов на 15% благодаря data-driven инициативам.</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; text-align: center;">
+                <a href="cv_eng.html" style="color: var(--accent-brand); font-family: var(--font-sans); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; text-decoration: none; border-bottom: 2px solid var(--accent-brand); padding-bottom: 4px;">Смотреть полное CV и историю кейсов →</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- METHODOLOGY -->
+    <section class="section-white">
+        <div class="container">
+            <div class="methodology-flow">
+                <div class="flow-step reveal-on-scroll">
+                    <div class="flow-num">1</div>
+                    <h4>Анализ ситуации</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">GTM-аудит и карта спроса. Определяем, где живет коммерческое намерение и где скрывается брендовый трафик.</p>
+                </div>
+                <div class="flow-step reveal-on-scroll">
+                    <div class="flow-num">2</div>
+                    <h4>Построение системы</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">Жестко разделяем типы спроса. Убираем пересечения намерений и строим прозрачную, управляемую архитектуру.</p>
+                </div>
+                <div class="flow-step reveal-on-scroll">
+                    <div class="flow-num">3</div>
+                    <h4>Масштабирование с контролем</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">Тестируем инкрементальность и расширяем бюджет на основе юнит-экономики и маржинальной прибыльности.</p>
+                </div>
+            </div>
+
+            <!-- PHILOSOPHY BANNER -->
+            <div class="philosophy-banner">
+                <h3>Стратегический подход</h3>
+                <p>«Автоматизированные системы вроде Performance Max требуют стратегического управления, если вы хотите защитить маржу. Изолируя брендовый спрос и интегрируя офлайн-конверсии, мы заставляем алгоритм приносить инкрементальный рост, а не просто каннибализировать существующий спрос.»</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CROSS-CHANNEL CAPABILITIES -->
+    <section style="background-color: var(--bg-white); padding: 0 0 120px;">
+        <div class="container">
+            <span class="section-label">Карта экспертизы</span>
+            <h2 class="section-title">За пределами рекламного кабинета</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+                <div style="padding: 32px; border: 1px solid var(--accent-muted); background: var(--bg-offwhite);">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 12px; color: var(--accent-brand);">E-commerce и стратегия фида</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-dark);">Настройка сложных Google Merchant Center с custom labels и ставками на основе маржи для масштабируемой прибыльности.</p>
+                </div>
+                <div style="padding: 32px; border: 1px solid var(--text-dark); background: var(--bg-white);">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 12px; color: var(--text-dark);">Техническая инфраструктура</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-gray);">Внедрение детерминированного трекинга через GTM и GA4: микро-конверсии, server-side тегирование и интеграция CRM-данных.</p>
+                </div>
+                <div style="padding: 32px; border: 1px solid var(--accent-muted); background: var(--bg-offwhite);">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 12px; color: var(--accent-brand);">B2B привлечение лидов</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-dark);">Проектирование Search-структур для длинных циклов продаж: точные библиотеки минус-слов и фильтрация качества лидов.</p>
+                </div>
+                <div style="padding: 32px; border: 1px solid var(--accent-muted); background: var(--bg-offwhite);">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 12px; color: var(--accent-brand);">Отчетность и аналитика данных</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-dark);">Построение дашбордов в Looker Studio с фокусом на бизнес-KPI: Blended CAC, Net Margin и инкрементальность канала.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADJACENT CAPABILITIES STRIP -->
+    <section style="background-color: var(--bg-tint); padding: 48px 0; border-top: 1px solid var(--accent-muted);">
+        <div class="container">
+            <span class="section-label" style="margin-bottom: 16px; display: block;">Смежные компетенции</span>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
+                <div style="display: flex; gap: 16px; align-items: flex-start;">
+                    <span style="font-size: 1.5rem; flex-shrink: 0;">🗺️</span>
+                    <div>
+                        <strong style="font-family: var(--font-heading); font-size: 1rem; display: block; margin-bottom: 4px;">Go-to-market стратегия</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-gray); margin: 0; line-height: 1.5;">Анализ рынка, конкурентное позиционирование и планирование полной воронки до запуска кампаний.</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; align-items: flex-start;">
+                    <span style="font-size: 1.5rem; flex-shrink: 0;">🤖</span>
+                    <div>
+                        <strong style="font-family: var(--font-heading); font-size: 1rem; display: block; margin-bottom: 4px; color: var(--accent-brand);">LLM и API-автоматизация</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-gray); margin: 0; line-height: 1.5;">Python-скрипты и LLM-сценарии для загрузки офлайн-конверсий и автоматического управления кампаниями.</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; align-items: flex-start;">
+                    <span style="font-size: 1.5rem; flex-shrink: 0;">📍</span>
+                    <div>
+                        <strong style="font-family: var(--font-heading); font-size: 1rem; display: block; margin-bottom: 4px;">Локальное SEO (Map Pack)</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-gray); margin: 0; line-height: 1.5;">Синхронизация Google Business Profile с границами платного поиска для захвата локального трафика с высоким намерением.</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; align-items: flex-start;">
+                    <span style="font-size: 1.5rem; flex-shrink: 0;">🤝</span>
+                    <div>
+                        <strong style="font-family: var(--font-heading); font-size: 1rem; display: block; margin-bottom: 4px;">Управление проектами</strong>
+                        <p style="font-size: 0.88rem; color: var(--text-gray); margin: 0; line-height: 1.5;">Выступаю центральным узлом между разработчиками, дизайнерами и C-level, чтобы запускать кампании без задержек.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMPLOYER FIT SECTION -->
+    <div style="background-color: var(--bg-offwhite);">
+        <div class="container split-grid">
+            <div>
+                <span class="section-label">Зона ответственности</span>
+                <h2 class="section-title">Что я даю команде</h2>
+                <ul class="clean-list">
+                    <li><span><strong>Прозрачная аналитика:</strong> Настраиваю точный трекинг (GA4, GTM) и атрибуцию для принятия решений на основе данных.</span></li>
+                    <li><span><strong>Контролируемое масштабирование:</strong> Перевожу рекламные аккаунты от хаотичных расходов к предсказуемому, ROI-позитивному расширению бюджета.</span></li>
+                    <li><span><strong>Кросс-функциональность:</strong> Формирую технические задания для разработчиков, дизайнеров и аналитиков данных.</span></li>
+                    <li><span><strong>Понятная отчетность:</strong> Строю дашборды в Looker Studio, которые делают сложные метрики понятными для C-level.</span></li>
                 </ul>
             </div>
-            <div class="ru-panel">
-                <h3>Для агентств</h3>
-                <ul>
-                    <li>Нужен специалист, который ведет аккаунты самостоятельно и не требует постоянного контроля.</li>
-                    <li>Нужен человек, который умеет работать не только в интерфейсе, но и в логике бизнеса.</li>
-                    <li>Нужны отчеты и объяснения для клиента без воды и без языка “CTR ради CTR”.</li>
+
+            <div>
+                <span class="section-label">Форматы работы</span>
+                <h2 class="section-title">Кого я ищу</h2>
+                <ul class="clean-list">
+                    <li><span><strong>In-house команды:</strong> E-commerce проекты (B2C) с широкими каталогами или B2B-компании со сложными циклами продаж.</span></li>
+                    <li><span><strong>Performance-агентства:</strong> Готов присоединиться к сильной команде для работы с пулом клиентов.</span></li>
+                    <li><span><strong>Стартапы:</strong> Которым нужен выделенный специалист для полного контроля над Paid Search-привлечением.</span></li>
+                    <li><span><strong>Цель:</strong> Долгосрочное сотрудничество, где я могу глубоко погрузиться в продукт и его метрики.</span></li>
                 </ul>
             </div>
         </div>
-    </section>
-
-    <section class="ru-section">
-        <div class="ru-section-head">
-            <span>Как строится работа</span>
-            <h2>Не просто запуск, а управляемая система</h2>
-        </div>
-        <div class="ru-process">
-            <div class="ru-step">
-                <strong>Шаг 01</strong>
-                <h3>Аудит</h3>
-                <p>Смотрю структуру аккаунта, спрос, семантику, товарный слой, аналитику и то, как реклама влияет на бизнес-метрики.</p>
-            </div>
-            <div class="ru-step">
-                <strong>Шаг 02</strong>
-                <h3>Перестройка</h3>
-                <p>Разделяю роли кампаний, убираю пересечения, вычищаю шум, усиливаю прибыльные сегменты и возвращаю управляемость бюджету.</p>
-            </div>
-            <div class="ru-step">
-                <strong>Шаг 03</strong>
-                <h3>Масштабирование</h3>
-                <p>Дальше растим то, что выдерживает экономику: по категориям, спросу, маржинальности и реальной отдаче, а не по ощущению.</p>
+    </div>
+    <!-- DISCOVERY ENGAGEMENT (LEAD MAGNET) -->
+    <section class="section-audit" style="background-color: var(--bg-tint); padding: 80px 0; border-top: 2px solid #000;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; align-items: start;">
+                <div>
+                    <span class="section-label" style="margin-bottom: 16px;">Следующий шаг</span>
+                    <h2 style="font-family: var(--font-heading); font-size: 2.2rem; color: var(--text-dark); margin-bottom: 24px; line-height: 1.1;">Ищете системного PPC-специалиста?</h2>
+                    <p style="font-size: 1.15rem; color: var(--text-dark); line-height: 1.7; margin-bottom: 16px;">Открыт к новым возможностям и готов присоединиться к вашей команде в формате full-time, part-time или проектного сотрудничества.</p>
+                    <p style="font-size: 1.15rem; color: var(--text-dark); line-height: 1.7;">Моя цель — взять ответственность за ваш Paid Search, построить прозрачную систему и говорить с бизнесом исключительно языком цифр и окупаемости.</p>
+                </div>
+                <div style="border: 1px solid var(--text-dark); background: var(--bg-white); padding: 48px;">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 24px; text-align: center;">Назначить встречу</h3>
+                    <p style="text-align: center; margin-bottom: 32px; font-size: 1.05rem;">Напишите мне в Telegram или на email, чтобы договориться о вводном созвоне и обсудить ваши текущие маркетинговые задачи.</p>
+                    <a href="https://t.me/Yaroslav797" class="btn btn-primary" style="width: 100%; border: none; font-size: 1.1rem; padding: 18px; text-decoration: none;">Написать в Telegram</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="ru-cta">
-        <div class="ru-cta-box">
-            <h2>Если реклама работает, но не дает ясности, это уже повод посмотреть глубже.</h2>
-            <p>Я могу помочь как с полным ведением аккаунта, так и с точечным аудитом. Если хочешь, начнем с разбора текущей ситуации и поймем, где именно теряются деньги или масштаб.</p>
-            <a href="https://t.me/Yaroslav797" target="_blank" class="btn btn-primary">Написать в Telegram</a>
+    <!-- CTA: FINAL DIALOGUE -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <span class="section-label" style="color: #8A92A3;">Следующие шаги</span>
+            <h2>Начнем профессиональный диалог</h2>
+            <p>Открыт к разговору о том, как мой системный подход может усилить вашу команду. Давайте обсудим текущие задачи и возможные точки пересечения.</p>
+            
+            <div style="display: flex; gap: 16px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
+                <a href="mailto:yaroslav.zhakun@gmail.com" class="btn-primary btn" style="text-decoration: none;">Написать на email</a>
+                <a href="https://t.me/Yaroslav797" target="_blank" class="btn-ghost btn" style="border-color: rgba(255,255,255,0.3); color: #fff;">Telegram</a>
+            </div>
         </div>
     </section>
 
-    <footer class="ru-footer">
-        Ярослав Жакун • Google Ads Specialist • Отдельная русскоязычная страница
+    <footer style="padding: 40px 0; text-align: center; background-color: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <p style="font-size: 0.85rem; color: #5C6270;; margin-bottom: 16px;">&copy; 2026 Ярослав Жакун. Все права защищены.</p>
+        </div>
     </footer>
+
+    <div style="display: none;">
+        <div id="data-case-1">
+            <h2 style="margin-bottom: 8px;">E-commerce: зоотовары</h2>
+            <div class="highlight-box">В аккаунте одновременно работали десятки кампаний, но никто не мог объяснить, какие из них действительно генерируют прибыль, а какие тихо сжигают бюджет. Клиент тратил на масштабе, но вслепую.</div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Что мы сделали</h4>
+            <p>Мы перестроили аккаунт с нуля вокруг одного принципа: <strong>у каждой кампании должна быть одна задача.</strong> Search забирал пользователей, готовых купить. Shopping отвечал за видимость каталога. PMax — за инкрементальный охват, но только после изоляции брендовых запросов, которые раздували цифры.</p>
+            <p style="margin-top: 12px;">Затем мы разделили категории собак и кошек на отдельные кластеры кампаний, чтобы бюджет следовал реальным паттернам спроса, а не усреднялся по всему ассортименту.</p>
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">Архитектура акаунту</span>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 100%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 65%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #C00000; width: 25%; height: 100%;"></div></div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">Search (бренд) / Search (категория) / PMax (расширение)</p>
+            </div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результат</h4>
+            <p>Когда каждый слой начал выполнять свою роль, оптимизация стала предсказуемой. ROAS стабилизировался, а CPA снизился до уровня, при котором масштабирование стало простым, а не рискованным.</p>
+            <div class="modal-metrics-grid">
+                <div class="modal-metric"><span class="modal-metric-val">800–1200%</span><span class="modal-metric-lbl">ROAS</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€4.35</span><span class="modal-metric-lbl">Средний CPA</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">34,923</span><span class="modal-metric-lbl">Конверсий</span></div>
+            </div>
+        </div>
+        <div id="data-case-2">
+            <h2 style="margin-bottom: 8px;">E-commerce: товары для гриля</h2>
+            <div class="highlight-box">Клиент вошел в пик BBQ-сезона с одной плоской Shopping-кампанией на 400+ SKU. Бюджет распределялся одинаково между премиальными грилями и низкомаржинальными аксессуарами, поэтому лучшие товары не получали инвестиций, которых заслуживали.</div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Что мы сделали</h4>
+            <p>Мы перестроили аккаунт вокруг <strong>уровней маржинальности</strong>. Дорогие грили получили выделенные PMax-кампании, оптимизированные под выручку. Аксессуары работали в Shopping с более низким приоритетом, чтобы не конкурировать за тот же бюджет.</p>
+            <p style="margin-top: 12px;">DSA-кампании ловили длиннохвостые сезонные запросы, которые стандартное исследование ключевых слов обычно пропускает, — именно те формулировки, которые люди пишут, когда уже готовы купить. Трекинг GA4 перенастроили так, чтобы алгоритм ставок работал на чистых данных о стоимости покупки.</p>
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">Динамика выручки (сезонное окно)</span>
+                <div style="display: flex; align-items: flex-end; gap: 8px; height: 60px;">
+                    <div style="flex: 1; background: #eee; height: 30%;"></div>
+                    <div style="flex: 1; background: #ccc; height: 50%;"></div>
+                    <div style="flex: 1; background: #999; height: 75%;"></div>
+                    <div style="flex: 1; background: #000; height: 100%;"></div>
+                </div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">Рост месяц к месяцу во время оптимизации</p>
+            </div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результат</h4>
+            <p>Пик сезона дал €157.6k отслеживаемых продаж при €23.2k рекламных расходов — с максимальным ROAS на премиальных товарах, там, где это было важнее всего.</p>
+            <div class="modal-metrics-grid">
+                <div class="modal-metric"><span class="modal-metric-val">679%</span><span class="modal-metric-lbl">ROAS</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€13.7</span><span class="modal-metric-lbl">Средний CPA</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€157.6k</span><span class="modal-metric-lbl">Выручка</span></div>
+            </div>
+        </div>
+        <div id="data-case-3">
+            <h2 style="margin-bottom: 8px;">B2B: логистика</h2>
+            <div class="highlight-box">Компания получала клики и заявки, но большинство из них приходило от частных лиц и мелких операторов, а не от коммерческих клиентов, которых отдел продаж действительно мог закрыть. На бумаге объем был, по факту качество — катастрофическое.</div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Что мы сделали</h4>
+            <p>Мы подошли к стратегии ключевых слов как к <strong>фильтру трафика</strong>, а не как к его источнику. Большой аудит минус-слов убрал из аккаунта весь потребительский шум. Брендовые термины изолировали в отдельную кампанию, чтобы PMax не присваивал органический спрос.</p>
+            <p style="margin-top: 12px;">Затем DSA-кампании обнаружили длиннохвостые B2B-запросы, которые ручное исследование постоянно пропускает: перевалка, экспресс-груз, оптовые тарифы. Именно они начали приводить в формы людей, которым действительно нужен логистический партнер.</p>
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">Архитектура лид-воронки</span>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 100%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 65%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #C00000; width: 25%; height: 100%;"></div></div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">B2B Search / DSA по услугам / защита бренда</p>
+            </div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результат</h4>
+            <p>1,090 квалифицированных бизнес-запросов по €11.5 за лид. Отдел продаж перестал жаловаться на качество лидов.</p>
+            <div class="modal-metrics-grid">
+                <div class="modal-metric"><span class="modal-metric-val">€11.5</span><span class="modal-metric-lbl">Стоимость лида</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">1,090</span><span class="modal-metric-lbl">Квал. лидов</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€10.3k</span><span class="modal-metric-lbl">Расходы на рекламу</span></div>
+            </div>
+        </div>
+        <div id="data-case-4">
+            <h2 style="margin-bottom: 8px;">E-commerce: электроника</h2>
+            <div class="highlight-box">Крупный ритейлер электроники с тысячами SKU распределял бюджет по всему каталогу равномерно — без логики приоритетов и без учета маржинальности. Дорогие товары с высоким спросом получали тот же бюджет, что и слабые позиции.</div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Что мы сделали</h4>
+            <p>Мы провели аудит ассортимента и разделили каталог на <strong>три уровня эффективности</strong>: приоритетные товары (высокая маржа, высокий спрос), стандартные товары и защита бренда. Каждый уровень получил собственный тип кампаний и свою бюджетную логику.</p>
+            <p style="margin-top: 12px;">PMax направили на приоритетные сегменты с кастомными аудиториями на основе прошлых покупок. Стандартные товары работали в Smart Shopping с консервативными целями. Брендовые термины изолировали, чтобы PMax не каннибализировал органические конверсии.</p>
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">Архитектура приоритетов ассортимента</span>
+                <div style="display: flex; align-items: flex-end; gap: 8px; height: 60px;">
+                    <div style="flex: 1; background: #eee; height: 30%;"></div>
+                    <div style="flex: 1; background: #ccc; height: 50%;"></div>
+                    <div style="flex: 1; background: #999; height: 75%;"></div>
+                    <div style="flex: 1; background: #000; height: 100%;"></div>
+                </div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">Распределение бюджета по маржинальному приоритету</p>
+            </div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результат</h4>
+            <p>€51.6k выручки при €7.9k расходов за 90 дней — и бизнес наконец увидел, какие группы товаров действительно двигают рост, после чего скорректировал решения по ассортименту.</p>
+            <div class="modal-metrics-grid">
+                <div class="modal-metric"><span class="modal-metric-val">653%</span><span class="modal-metric-lbl">ROAS</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€6.7</span><span class="modal-metric-lbl">Средний CPA</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€51.6k</span><span class="modal-metric-lbl">Выручка</span></div>
+            </div>
+        </div>
+        <div id="data-case-5">
+            <h2 style="margin-bottom: 8px;">Услуги: ремонт</h2>
+            <div class="highlight-box">Сервис ремонта платил €350+ за каждый заказ через Google Ads, и CPA рос каждый месяц. Локальный аукцион перегрелся, а стратегия широкого соответствия означала оплату кликов от людей из трех разных городов.</div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Что мы сделали</h4>
+            <p>Перешли на <strong>точную радиусную стратегию</strong>: жесткие геозоны, Call-Only кампании для мобильных пользователей в рабочие часы и полную перестройку минус-слов. Корректировки ставок настроили на максимальный охват в пиковые окна бронирований, выявленные по данным конверсий.</p>
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">Слои захвата локального интента</span>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 100%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 65%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #C00000; width: 25%; height: 100%;"></div></div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">Радиусные зоны / Call-Only на мобильных / ставки по часам</p>
+            </div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результат</h4>
+            <p>CPA упал с €350 до €12. 850 забронированных звонков при расходах €10.2k. Кампания стабилизировалась, и клиент перестал сомневаться, стоит ли вообще запускать Google Ads.</p>
+            <div class="modal-metrics-grid">
+                <div class="modal-metric"><span class="modal-metric-val">€12</span><span class="modal-metric-lbl">Средний CPA</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€10.2k</span><span class="modal-metric-lbl">Расходы на рекламу</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">850</span><span class="modal-metric-lbl">Звонков</span></div>
+            </div>
+        </div>
+        <div id="data-case-6">
+            <h2 style="margin-bottom: 8px;">Industrial B2B: инструменты и оборудование</h2>
+            <div class="highlight-box">Оптовый поставщик инструментов генерировал лиды, но они приходили от конечных потребителей, а не от закупщиков и подрядчиков. Розничный шум заглушал серьезных покупателей.</div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Что мы сделали</h4>
+            <p>Всю кампанию перестроили вокруг <strong>supply-chain поискового интента</strong>. Мы определили язык, которым действительно пользуются профессиональные закупщики: оптовые цены, крупные заказы, технические спецификации — и построили кластеры ключевых слов исключительно вокруг этих терминов.</p>
+            <p style="margin-top: 12px;">Ремаркетинг-кампании нацелили на пользователей, которые посещали страницы цен и спецификаций, — это сильный сигнал закупочного интента. B2B-формы отслеживались как микро-конверсии, чтобы алгоритм учился распознавать качественный лид.</p>
+            <div style="margin: 32px 0; padding: 24px; background: #f9f9f9; border: 1px solid #000;">
+                <span class="section-label" style="margin-bottom: 12px; display:block;">Архитектура фильтрации B2B-интента</span>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 100%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #000; width: 65%; height: 100%;"></div></div>
+                <div style="height: 12px; background: #eee; width: 100%; margin-bottom: 4px; position: relative;"><div style="background: #C00000; width: 25%; height: 100%;"></div></div>
+                <p style="font-size: 0.8rem; margin-top: 12px; font-weight: bold; text-transform: uppercase;">Закупочный поиск / ремаркетинг / трекинг форм</p>
+            </div>
+            <h4 style="color:var(--text-dark); border-bottom: 2px solid var(--accent-muted); padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px;">Результат</h4>
+            <p>320 квалифицированных оптовых запросов при контролируемом CPA €45. Воронка продаж превратилась из захламленной в управляемую.</p>
+            <div class="modal-metrics-grid">
+                <div class="modal-metric"><span class="modal-metric-val">320</span><span class="modal-metric-lbl">Квал. лидов</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€45</span><span class="modal-metric-lbl">Целевой CPA</span></div>
+                <div class="modal-metric"><span class="modal-metric-val">€14.4k</span><span class="modal-metric-lbl">Расходы на рекламу</span></div>
+            </div>
+        </div></div>
+    <!-- MODAL POPUP HTML -->
+    <div class="modal-overlay" id="caseModal" onclick="closeModal(event)">
+        <div class="modal-window">
+            <button class="modal-close" onclick="closeModal(event, true)">✕</button>
+            <div class="modal-content-area" id="modalContentInner"></div>
+        </div>
+    </div>
+
+    <!-- QUIZ MODAL HTML (3-SCREEN FLOW) -->
+    <div class="modal-overlay" id="quizModal">
+        <div class="modal-window" style="background: var(--bg-paper); border: 2px solid var(--text-ink); padding: 32px; border-radius: 0; box-shadow: 12px 12px 0px rgba(0,0,0,1);">
+            <button class="modal-close" onclick="closeQuiz()" style="background: var(--text-ink); color: var(--bg-paper);">✕</button>
+            <div class="modal-content-area" id="quizContainer">
+                
+                <!-- HEADER -->
+                <div class="quiz-header" style="border-bottom: 3px double var(--text-ink); padding-bottom: 16px; margin-bottom: 22px; text-align: center;">
+                    <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; color: var(--text-muted);">Финансовая диагностика</span>
+                    <h2 style="font-family: var(--font-serif); font-size: 2rem; font-weight: 900; margin: 8px 0 0; color: var(--text-ink);">Предварительная оценка e-commerce</h2>
+                </div>
+                <div class="quiz-progress" aria-hidden="true">
+                    <div class="quiz-progress-item active" id="quizProgress1"></div>
+                    <div class="quiz-progress-item" id="quizProgress2"></div>
+                    <div class="quiz-progress-item" id="quizProgress3"></div>
+                </div>
+
+                <!-- STEP 1 -->
+                <div class="quiz-step active" id="step1">
+                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 14px;">1. Как работает эта оценка</h3>
+                    <div class="quiz-grid">
+                        <div>
+                            <p style="font-size:1rem; margin-bottom:12px;">Этот калькулятор дает предварительный PPC-прогноз на основе ваших вводных. Он не подтягивает историю рекламного кабинета автоматически.</p>
+                            <p style="font-size:1rem; margin-bottom:0;">Вы получите прогноз по кликам, заказам, CPA, ROAS и ориентиру по бюджету.</p>
+                        </div>
+                        <aside class="quiz-note">
+                            <strong style="display:block; margin-bottom:8px;">Что подготовить</strong>
+                            1) Месячный бюджет<br>
+                            2) Средний чек (AOV)<br>
+                            3) Маржу и допустимую долю рекламы<br>
+                            4) Исторические CR/CPC, если они есть
+                        </aside>
+                    </div>
+                    <div class="quiz-actions">
+                        <button class="btn-editorial-primary" style="flex:1;" onclick="nextQuizStep(2)">Далее →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="quiz-step" id="step2" style="display: none;">
+                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 8px;">2. Введите ваши данные</h3>
+                    <p style="font-family: var(--font-sans); font-size: 0.88rem; color: #111; margin-bottom: 10px; font-weight: 700;">
+                        2 минуты -> и вы получите реалистичный диапазон бюджета и уровень риска.
+                    </p>
+                    <p style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+                        Мы уже подставили стартовый шаблон. Просто скорректируйте цифры под свою ситуацию.
+                    </p>
+                    <div class="quiz-grid">
+                        <div>
+                            <div class="editorial-input-group">
+                                <label>План продаж в месяц (USD)</label>
+                                <input type="number" id="calcSalesPlan" placeholder="500000">
+                                <span class="quiz-hint">Необязательный ориентир для планирования.</span>
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Месячный рекламный бюджет (USD)</label>
+                                <input type="number" id="calcBudget" placeholder="200000">
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Средний CPC (USD)</label>
+                                <input type="number" id="calcCpc" placeholder="6">
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Конверсия сайта в заказ (%)</label>
+                                <input type="number" id="calcCr" placeholder="1">
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Средний чек (AOV, USD)</label>
+                                <input type="number" id="calcAov" placeholder="2500">
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Валовая маржа (%)</label>
+                                <input type="number" id="calcMargin" placeholder="30">
+                            </div>
+                            <div class="editorial-input-group">
+                                <label>Максимальная доля рекламы от чека (%)</label>
+                                <input type="number" id="calcAdShare" placeholder="20">
+                            </div>
+                            <details style="margin-top: 8px;">
+                                <summary style="font-family: var(--font-sans); font-size: 0.8rem; font-weight: 700; cursor: pointer;">Дополнительно (необязательно)</summary>
+                                <div class="editorial-input-group" style="margin-top: 10px;">
+                                    <label>Целевые заказы в месяц (необязательно)</label>
+                                    <input type="number" id="calcTargetOrders" placeholder="80">
+                                </div>
+                                <div class="editorial-input-group">
+                                    <label>Основная ниша / продукт</label>
+                                    <input type="text" id="calcNiche" placeholder="например, товары для дома">
+                                </div>
+                                <div class="editorial-input-group">
+                                    <label>Целевой регион</label>
+                                    <input type="text" id="calcRegion" placeholder="например, Украина">
+                                </div>
+                            </details>
+                        </div>
+                        <aside class="quiz-note">
+                            <strong style="display:block; margin-bottom:8px;">Что означает каждое поле</strong>
+                            Бюджет = сколько вы тратите в месяц. CPC = средняя стоимость клика. CR = сколько кликов становятся заказами. AOV = средний чек. Маржа + доля рекламы = ваш безопасный предел по расходам.
+                            <div class="quiz-live-line" id="liveExplainPrimary">Начните с бюджета и CPC, и я сразу оценю объем трафика.</div>
+                            <div class="quiz-live-line" id="liveExplainSecondary">Затем добавьте CR и AOV, чтобы увидеть прогноз по заказам, выручке и ROAS.</div>
+                            <div class="quiz-health-chip" id="liveHealthChip">Статус: ожидание</div>
+                            <div class="quiz-live-line" id="liveExplainStatus">Статус: ждем ключевые вводные.</div>
+                            <div class="quiz-live-line" id="liveExplainNext">Дальше: заполните основные поля, чтобы получить рекомендацию.</div>
+                            <div class="quiz-scenarios">
+                                <div class="quiz-scenario-item" id="scenarioКонсервативный">Консервативный сценарий: ждем данные.</div>
+                                <div class="quiz-scenario-item" id="scenarioБазовый">Базовый сценарий: ждем данные.</div>
+                                <div class="quiz-scenario-item" id="scenarioАгрессивный">Агрессивный сценарий: ждем данные.</div>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="quiz-actions">
+                        <button class="btn-editorial-secondary" type="button" onclick="applyTemplateValues()">Использовать стартовый шаблон</button>
+                        <button class="btn-editorial-secondary" onclick="prevQuizStep(1)">&larr; Назад</button>
+                        <button class="btn-editorial-primary" style="flex: 1;" onclick="nextQuizStep(3)">Далее →</button>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="quiz-step" id="step3" style="display: none;">
+                    <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 16px;">3. Результаты и следующий шаг</h3>
+                    <p style="font-family: var(--font-sans); font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5;">Оставьте контакт и запустите расчет. Вы сразу увидите итог и получите разбор.</p>
+
+                    <div class="editorial-input-group">
+                        <label>Ваше имя</label>
+                        <input type="text" id="calcName" placeholder="...">
+                    </div>
+                    <div class="editorial-input-group">
+                        <label>Телефон / Email</label>
+                        <input type="text" id="calcContact" placeholder="...">
+                    </div>
+
+                    <div class="quiz-actions">
+                        <button class="btn-editorial-secondary" onclick="prevQuizStep(2)">&larr; Назад</button>
+                        <button class="btn-editorial-primary" id="magicSubmitBtn" style="flex: 1;" onclick="submitEditorialQuiz()">Показать мой план →</button>
+                    </div>
+                    <p style="font-family: var(--font-sans); font-size: 0.78rem; color: var(--text-muted); margin-top: 8px;">Без спама. Только практичные расчеты.</p>
+
+                    <div id="step3Results" style="display:none; margin-top:18px;">
+                    <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 16px; text-align: center;">Прогноз по e-commerce</h3>
+                    
+                    <div style="border: 1px solid var(--text-ink); padding: 24px; background: #fff; margin-bottom: 24px;">
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Клики</span>
+                            <span id="resКлики" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Заказы (прогноз)</span>
+                            <span id="resOrders" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">CPA</span>
+                            <span id="resCpa" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Выручка</span>
+                            <span id="resВыручка" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">ROAS</span>
+                            <span id="resRoas" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Валовая маржа (USD)</span>
+                            <span id="resGrossMargin" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Допустимые расходы на рекламу</span>
+                            <span id="resAllowedSpend" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Допустимый CPA</span>
+                            <span id="resAllowableCpa" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Точка безубыточности по ROAS</span>
+                            <span id="resBreakEvenRoas" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row" style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding-bottom: 8px; margin-bottom: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Бюджет для цели (CPC+CR)</span>
+                            <span id="resBudgetByCr" style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700;">-</span>
+                        </div>
+                        <div class="fm-row total" style="display: flex; justify-content: space-between; border-top: 2px solid var(--text-ink); padding-top: 12px;">
+                            <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700;">Бюджет для цели (допустимый CPA)</span>
+                            <span id="resBudgetByAllowableCpa" style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 900; color: var(--text-dark);">-</span>
+                        </div>
+                    </div>
+
+                    <div style="border-top: 1px solid #ccc; padding-top: 24px;">
+                        <span style="font-family: var(--font-sans); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin-bottom: 12px; display: block;">Краткий итог</span>
+                        <div id="assistantRecommendation" style="font-family: var(--font-serif); font-size: 1rem; line-height: 1.6; color: var(--text-ink);">
+                            <span style="color: var(--text-muted); font-style: italic;">Заполните поля и нажмите «Показать мой план».</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 32px; text-align: center;">
+                        <p style="font-family: var(--font-sans); font-size: 0.8rem; color: var(--text-muted);">Этот бриф отправлен Ярославу. Ответ — в течение 24 часов.</p>
+                        <button class="btn-editorial-secondary" style="margin-top: 12px;" onclick="closeQuiz()">Закрыть окно</button>
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN JS Logic -->
+    <script>
+        // Intersection Observer for reveal-on-scroll
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+        // Modal Logic
+        function openModal(caseId) {
+            const dataElement = document.getElementById('data-' + caseId);
+            if (!dataElement) return;
+            document.getElementById('modalContentInner').innerHTML = dataElement.innerHTML;
+            document.getElementById('caseModal').classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+            
+            // GA4 Micro-conversion: View Case
+            gta('view_case_study', {
+                'event_category': 'engagement',
+                'event_label': caseId
+            });
+        }
+        function closeModal(event, force = false) {
+            if (force || event.target === document.getElementById('caseModal')) {
+                document.getElementById('caseModal').classList.remove('active');
+                document.body.style.overflow = ''; 
+            }
+        }
+
+        // GA4 Helper shim (must be before any function that calls gta)
+        function gta(event, params) {
+            if (typeof gtag === 'function') { gtag('event', event, params); }
+        }
+
+        // Multi-Step Editorial Quiz Logic
+        let calcModel = 'ecommerce';
+        let currentQuizStep = 1;
+
+        function startQuiz() {
+            document.getElementById('quizModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Reset fields
+            applyTemplateValues();
+            document.getElementById('calcName').value = '';
+            document.getElementById('calcContact').value = '';
+            const resultsWrap = document.getElementById('step3Results');
+            if (resultsWrap) resultsWrap.style.display = 'none';
+            document.getElementById('assistantRecommendation').innerHTML = '<span style="color: var(--text-muted); font-style: italic;">Заполните поля и нажмите «Показать мой план».</span>';
+
+            currentQuizStep = 1;
+            updateQuizSteps();
+            setCalcModel('ecommerce');
+            initLiveExplainer();
+            updateLiveExplainer();
+            
+            gta('open_calculator', { 'event_category': 'engagement' });
+        }
+
+        function closeQuiz() {
+            document.getElementById('quizModal').classList.remove('active');
+            document.body.style.overflow = '';
+            // Reset to step 1 for next open
+            currentQuizStep = 1;
+            updateQuizSteps();
+            const resultsWrap = document.getElementById('step3Results');
+            if (resultsWrap) resultsWrap.style.display = 'none';
+            const btn = document.getElementById('magicSubmitBtn');
+            if (btn) { btn.disabled = false; btn.innerText = 'Показать мой план →'; }
+        }
+
+        function applyTemplateValues() {
+            const defaults = {
+                calcSalesPlan: 500000,
+                calcBudget: 120000,
+                calcCpc: 8,
+                calcCr: 1.2,
+                calcAov: 2500,
+                calcMargin: 35,
+                calcAdShare: 20,
+                calcTargetOrders: 120,
+                calcNiche: 'E-commerce',
+                calcRegion: 'Украина'
+            };
+            Object.keys(defaults).forEach((id) => {
+                const el = document.getElementById(id);
+                if (el) el.value = defaults[id];
+            });
+        }
+
+        function updateQuizSteps() {
+            for (let i = 1; i <= 3; i++) {
+                const el = document.getElementById('step' + i);
+                if (el) {
+                    if (i === currentQuizStep) {
+                        el.style.display = 'block';
+                        el.classList.add('active');
+                    } else {
+                        el.style.display = 'none';
+                        el.classList.remove('active');
+                    }
+                }
+            }
+            for (let i = 1; i <= 3; i++) {
+                const p = document.getElementById('quizProgress' + i);
+                if (p) p.classList.toggle('active', i <= currentQuizStep);
+            }
+        }
+
+        function nextQuizStep(stepNum) {
+            currentQuizStep = stepNum;
+            updateQuizSteps();
+            gta('calculator_progress', {
+                'event_category': 'engagement',
+                'step': stepNum
+            });
+        }
+
+        function prevQuizStep(stepNum) {
+            currentQuizStep = stepNum;
+            updateQuizSteps();
+        }
+
+        function setCalcModel(model) {
+            calcModel = model;
+            const ecomBtn = document.querySelector('.btn-editorial-select[onclick*="ecommerce"]');
+            const leadBtn = document.querySelector('.btn-editorial-select[onclick*="leadgen"]');
+            if (ecomBtn) {
+                ecomBtn.style.background = '#fff';
+                ecomBtn.style.color = '#111';
+                ecomBtn.style.borderColor = '#111';
+            }
+            if (leadBtn) {
+                leadBtn.style.opacity = '0.45';
+                leadBtn.style.pointerEvents = 'none';
+            }
+            gta('switch_calc_model', {
+                'event_category': 'engagement',
+                'model': model
+            });
+        }
+
+        function initLiveExplainer() {
+            const fields = ['calcBudget', 'calcCpc', 'calcCr', 'calcAov', 'calcMargin', 'calcAdShare', 'calcTargetOrders'];
+            fields.forEach((id) => {
+                const el = document.getElementById(id);
+                if (!el || el.dataset.liveBound === '1') return;
+                el.addEventListener('input', updateLiveExplainer);
+                el.dataset.liveBound = '1';
+            });
+        }
+
+        function updateLiveExplainer() {
+            const budget = parseFloat(document.getElementById('calcBudget')?.value) || 0;
+            const cpc = parseFloat(document.getElementById('calcCpc')?.value) || 0;
+            const crPct = parseFloat(document.getElementById('calcCr')?.value) || 0;
+            const aov = parseFloat(document.getElementById('calcAov')?.value) || 0;
+            const marginPct = parseFloat(document.getElementById('calcMargin')?.value) || 0;
+            const adSharePct = parseFloat(document.getElementById('calcAdShare')?.value) || 0;
+
+            const clicks = cpc > 0 ? budget / cpc : 0;
+            const orders = clicks * (crPct / 100);
+            const revenue = orders * aov;
+            const roas = budget > 0 ? revenue / budget : 0;
+            const maxAdFromAov = aov > 0 ? (aov * (adSharePct / 100)) : 0;
+            const grossPerOrder = aov > 0 ? (aov * (marginPct / 100)) : 0;
+
+            const line1 = document.getElementById('liveExplainPrimary');
+            const line2 = document.getElementById('liveExplainSecondary');
+            const line3 = document.getElementById('liveExplainStatus');
+            const line4 = document.getElementById('liveExplainNext');
+            const healthChip = document.getElementById('liveHealthChip');
+            const scnКонсервативный = document.getElementById('scenarioКонсервативный');
+            const scnБазовый = document.getElementById('scenarioБазовый');
+            const scnАгрессивный = document.getElementById('scenarioАгрессивный');
+            if (!line1 || !line2 || !line3 || !line4 || !healthChip || !scnКонсервативный || !scnБазовый || !scnАгрессивный) return;
+
+            const fmt = (v) => Math.round(v).toLocaleString();
+            line1.textContent = (budget > 0 && cpc > 0)
+                ? `При бюджете ${fmt(budget)} USD и CPC ${cpc} прогнозный трафик составит около ${fmt(clicks)} кликов.`
+                : 'Начните с бюджета и CPC, и я сразу оценю объем трафика.';
+
+            line2.textContent = (crPct > 0 && aov > 0 && budget > 0 && cpc > 0)
+                ? `При CR ${crPct}% и среднем чеке ${fmt(aov)} USD: около ${fmt(orders)} заказов, выручка примерно ${fmt(revenue)} USD, ROAS ${roas.toFixed(2)}x.`
+                : 'Затем добавьте CR и AOV, чтобы увидеть прогноз по заказам, выручке и ROAS.';
+
+            if (!marginPct || !adSharePct) {
+                line3.textContent = 'Статус: добавьте маржу и долю рекламы, чтобы проверить экономическую устойчивость модели.';
+                line4.textContent = 'Следующий шаг: заполните маржу и максимальную долю рекламы, чтобы получить практическую рекомендацию.';
+                healthChip.className = 'quiz-health-chip';
+                healthChip.textContent = 'Статус: ожидание';
+                scnКонсервативный.textContent = 'Консервативный: ждем заполнения ключевых полей.';
+                scnБазовый.textContent = 'Базовый: ждем заполнения ключевых полей.';
+                scnАгрессивный.textContent = 'Агрессивный: ждем заполнения ключевых полей.';
+                return;
+            }
+            const safe = maxAdFromAov <= grossPerOrder;
+            const moderateRisk = safe && roas > 0 && roas < 2;
+            if (!safe) {
+                healthChip.className = 'quiz-health-chip health-risk';
+                healthChip.textContent = 'Состояние: высокий риск';
+                line3.textContent = `Статус: рискованная модель. Максимально допустимые расходы на рекламу с заказа ${fmt(maxAdFromAov)} USD выше валовой маржи ${fmt(grossPerOrder)} USD.`;
+                line4.textContent = 'Следующий шаг: снизьте долю рекламы или увеличьте маржу/средний чек перед масштабированием бюджета.';
+            } else if (moderateRisk) {
+                healthChip.className = 'quiz-health-chip health-warn';
+                healthChip.textContent = 'Состояние: под наблюдением';
+                line3.textContent = `Статус: модель рабочая, но хрупкая. Юнит-экономика проходит, однако прогнозный ROAS ${roas.toFixed(2)}x пока слишком тонкий.`;
+                line4.textContent = 'Следующий шаг: сначала улучшите CR или снизьте CPC, а затем увеличивайте бюджет постепенно.';
+            } else {
+                healthChip.className = 'quiz-health-chip health-good';
+                healthChip.textContent = 'Состояние: рабочая модель';
+                line3.textContent = `Статус: базовая модель выглядит устойчивой. Допустимые расходы на рекламу с заказа ~${fmt(maxAdFromAov)} USD укладываются в валовую маржу ${fmt(grossPerOrder)} USD.`;
+                line4.textContent = 'Следующий шаг: масштабируйтесь постепенно и следите за стабильностью CR по источникам трафика.';
+            }
+
+            if (budget > 0 && cpc > 0 && crPct > 0 && aov > 0) {
+                const scenario = (cpcFactor, crFactor, label) => {
+                    const scpc = cpc * cpcFactor;
+                    const scr = crPct * crFactor;
+                    const sclicks = budget / scpc;
+                    const sorders = sclicks * (scr / 100);
+                    const srev = sorders * aov;
+                    const sroas = srev / budget;
+                    return `${label}: ~${fmt(sorders)} заказов, ROAS ${sroas.toFixed(2)}x`;
+                };
+                scnКонсервативный.textContent = scenario(1.2, 0.85, 'Консервативный');
+                scnБазовый.textContent = scenario(1.0, 1.0, 'Базовый');
+                scnАгрессивный.textContent = scenario(0.9, 1.2, 'Агрессивный');
+            } else {
+                scnКонсервативный.textContent = 'Консервативный: добавьте бюджет, CPC, CR и средний чек.';
+                scnБазовый.textContent = 'Базовый: добавьте бюджет, CPC, CR и средний чек.';
+                scnАгрессивный.textContent = 'Агрессивный: добавьте бюджет, CPC, CR и средний чек.';
+            }
+        }
+
+        function getAssistantApiEndpoint() {
+            const configured = window.IAROSLAV_ASSISTANT_API_URL || '';
+            if (configured) { return configured; }
+            return location.hostname.indexOf('github.io') !== -1 ? '' : '/api/assistant';
+        }
+
+        function submitEditorialQuiz() {
+            const btn = document.getElementById('magicSubmitBtn');
+            const name = document.getElementById('calcName').value.trim();
+            const contact = document.getElementById('calcContact').value.trim();
+
+            if (!name || !contact) {
+                alert('Пожалуйста, укажите имя и телефон/email, чтобы продолжить.');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerText = 'Рассчитываем...';
+
+            // 1. Math Calculation
+            const budget = parseFloat(document.getElementById('calcBudget').value) || 0;
+            const cpc = parseFloat(document.getElementById('calcCpc').value) || 0;
+            const crPct = parseFloat(document.getElementById('calcCr').value) || 0;
+            const aov = parseFloat(document.getElementById('calcAov').value) || 0;
+            const marginPct = parseFloat(document.getElementById('calcMargin').value) || 0;
+            const adSharePct = parseFloat(document.getElementById('calcAdShare').value) || 0;
+            const targetOrders = parseFloat(document.getElementById('calcTargetOrders').value) || 0;
+
+            if (!budget || !cpc || !crPct || !aov || !marginPct || !adSharePct) {
+                alert('Пожалуйста, заполните: бюджет, CPC, CR, AOV, маржу и долю рекламы.');
+                btn.disabled = false;
+                btn.innerText = 'Показать мой план →';
+                return;
+            }
+
+            // Excel-equivalent formulas
+            const clicks = cpc > 0 ? budget / cpc : 0;
+            const orders = clicks * (crPct / 100);
+            const cpa = orders > 0 ? budget / orders : 0;
+            const revenue = orders * aov;
+            const roas = budget > 0 ? revenue / budget : 0;
+            const grossMarginUsd = revenue * (marginPct / 100);
+            const allowedAdSpend = grossMarginUsd * (adSharePct / 100);
+            const allowableCpa = orders > 0 ? allowedAdSpend / orders : 0;
+            const breakEvenRoas = (marginPct > 0 && adSharePct > 0) ? (1 / ((marginPct / 100) * (adSharePct / 100))) : 0;
+            const budgetByCr = (targetOrders > 0 && crPct > 0) ? ((targetOrders / (crPct / 100)) * cpc) : 0;
+            const budgetByAllowableCpa = targetOrders > 0 ? (targetOrders * allowableCpa) : 0;
+
+            const fmt = (v) => Math.round(v).toLocaleString();
+            document.getElementById('resКлики').innerText = fmt(clicks);
+            document.getElementById('resOrders').innerText = fmt(orders);
+            document.getElementById('resCpa').innerText = fmt(cpa) + ' USD';
+            document.getElementById('resВыручка').innerText = fmt(revenue) + ' USD';
+            document.getElementById('resRoas').innerText = roas.toFixed(2) + 'x';
+            document.getElementById('resGrossMargin').innerText = fmt(grossMarginUsd) + ' USD';
+            document.getElementById('resAllowedSpend').innerText = fmt(allowedAdSpend) + ' USD';
+            document.getElementById('resAllowableCpa').innerText = fmt(allowableCpa) + ' USD';
+            document.getElementById('resBreakEvenRoas').innerText = breakEvenRoas.toFixed(2) + 'x';
+            document.getElementById('resBudgetByCr').innerText = targetOrders > 0 ? (fmt(budgetByCr) + ' USD') : 'н/д';
+            document.getElementById('resBudgetByAllowableCpa').innerText = targetOrders > 0 ? (fmt(budgetByAllowableCpa) + ' USD') : 'н/д';
+
+            const resultsWrap = document.getElementById('step3Results');
+            if (resultsWrap) resultsWrap.style.display = 'block';
+
+            // 2. Web3Forms submission
+            const niche = document.getElementById('calcNiche').value.trim() || 'Не указано';
+            const region = document.getElementById('calcRegion').value.trim() || 'Не указано';
+
+            const message = [
+                '=== КОНТАКТ ===',
+                'Имя: ' + name,
+                'Телефон/Email: ' + contact,
+                '',
+                '=== КОНТЕКСТ ===',
+                'Ниша: ' + niche,
+                'Регион: ' + region,
+                'Модель: ' + calcModel.toUpperCase(),
+                'Бюджет (USD): ' + budget,
+                '',
+                '=== ПРОГНОЗ ===',
+                'Клики: ' + fmt(clicks),
+                'Заказы: ' + fmt(orders),
+                'CPA: ' + fmt(cpa),
+                'Выручка: ' + fmt(revenue),
+                'ROAS: ' + roas.toFixed(2) + 'x',
+                'Допустимый CPA: ' + fmt(allowableCpa),
+                'Точка безубыточности по ROAS: ' + breakEvenRoas.toFixed(2) + 'x',
+                'Бюджет для цели (CPC+CR): ' + (targetOrders > 0 ? fmt(budgetByCr) : 'н/д'),
+                'Бюджет для цели (допустимый CPA): ' + (targetOrders > 0 ? fmt(budgetByAllowableCpa) : 'н/д')
+            ].join('\n');
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    access_key: '024929c9-3c2f-471f-8ec3-bd5cbaf34070',
+                    subject: 'Финансовая диагностика 🎯 ' + name + ' — ' + niche,
+                    from_name: 'Финансовая диагностика',
+                    message: message
+                })
+            }).catch(e => console.warn('Form submission error', e));
+            
+            gta('submit_brief_success', {
+                'event_category': 'lead',
+                'model': calcModel,
+                'niche': niche
+            });
+
+            const summary = `Прогноз: ${fmt(orders)} заказов, ROAS ${roas.toFixed(2)}x. ` +
+                `Точка безубыточности по ROAS ${breakEvenRoas.toFixed(2)}x. ` +
+                `Сначала сфокусируйтесь на ${roas < breakEvenRoas ? 'росте CR / снижении CPC' : 'аккуратном масштабировании под контролем'}.`;
+            document.getElementById('assistantRecommendation').innerText = summary;
+        }
+
+        async function askGptAssistant(calc) {
+            const endpoint = getAssistantApiEndpoint();
+            const recBox = document.getElementById('assistantRecommendation');
+            
+            if (!endpoint) {
+                recBox.innerHTML = '<p><em>GPT-бэкенд еще не развернут.</em> Текущий ROAS: <strong>' + calc.roas.toFixed(2) + 'x</strong>, точка безубыточности: <strong>' + calc.breakEvenRoas.toFixed(2) + 'x</strong>. Если ROAS ниже этого уровня, модель неустойчива без улучшения CR или снижения CPC.</p>';
+                return;
+            }
+
+            try {
+                const aiMessage = `Проанализируй эту PPC-модель e-commerce в 2 коротких предложениях.
+                Budget: ${Math.round(calc.budget)} USD.
+                Клики: ${Math.round(calc.clicks)}, Заказы: ${Math.round(calc.orders)}, CPA: ${Math.round(calc.cpa)} USD.
+                Выручка: ${Math.round(calc.revenue)} USD, ROAS: ${calc.roas.toFixed(2)}x.
+                Допустимый CPA: ${Math.round(calc.allowableCpa)} USD, точка безубыточности по ROAS: ${calc.breakEvenRoas.toFixed(2)}x.
+                Если указана цель по заказам (${Math.round(calc.targetOrders)}), сравни budgetByCr=${Math.round(calc.budgetByCr)} и budgetByAllowableCpa=${Math.round(calc.budgetByAllowableCpa)}.
+                Дай один главный риск и один следующий шаг.`;
+
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: aiMessage,
+                        context: { page_language: 'ru', calculator_model: calcModel }
+                    })
+                });
+                
+                const data = await response.json();
+                if (!response.ok || !data.answer) throw new Error(data.error || 'Failed to get answer');
+                
+                recBox.innerHTML = '<p>' + data.answer + '</p>';
+            } catch (err) {
+                console.warn('GPT error', err);
+                recBox.innerHTML = '<p>Быстрая диагностика: сравните ваш <strong>ROAS</strong> с <strong>точкой безубыточности по ROAS</strong>. Если текущий ROAS ниже, сначала исправьте конверсию и экономику продукта, а уже потом масштабируйте бюджет.</p>';
+            }
+        }
+    </script>
+
+    <!-- GA4 Event Tracking: Conversions & Engagement -->
+    <script>
+        // ── HELPERS ──────────────────────────────────────────────────
+        function gta(event, params) {
+            if (typeof gtag === 'function') {
+                gtag('event', event, params);
+            }
+        }
+
+        // ── 1. TELEGRAM CTA CLICKS ────────────────────────────────────
+        document.querySelectorAll('a[href*="t.me/Yaroslav797"]').forEach(function(el) {
+            el.addEventListener('click', function() {
+                // Determine which button was clicked by parent context
+                var label = 'telegram_generic';
+                if (el.closest('nav'))            label = 'navbar_lets_talk';
+                else if (el.closest('.hero-section')) label = 'hero_message_telegram';
+                else if (el.closest('.cta-section'))  label = 'footer_cta';
+                else if (el.textContent.includes('AUDIT')) label = 'dual_audience_audit';
+                else if (el.textContent.includes('COLLAB')) label = 'dual_audience_collab';
+                else if (el.closest('.floating-cta')) label = 'floating_button';
+
+                gta('cta_click', {
+                    event_category: 'conversion',
+                    event_label: label,
+                    method: 'telegram'
+                });
+            });
+        });
+
+        // ── 2. LINKEDIN CLICKS ────────────────────────────────────────
+        document.querySelectorAll('a[href*="linkedin.com"]').forEach(function(el) {
+            el.addEventListener('click', function() {
+                gta('linkedin_click', {
+                    event_category: 'engagement',
+                    event_label: el.textContent.trim() || 'linkedin_link'
+                });
+            });
+        });
+
+        // ── 3. PHONE CLICKS ───────────────────────────────────────────
+        document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+            el.addEventListener('click', function() {
+                gta('phone_click', {
+                    event_category: 'conversion',
+                    phone_number: el.href.replace('tel:', '')
+                });
+            });
+        });
+
+        // ── 4. CASE STUDY MODAL OPENS ─────────────────────────────────
+        document.querySelectorAll('.btn-text.case-cta').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                // Get case title from the parent card
+                var card = btn.closest('.case-card');
+                var titleEl = card ? card.querySelector('.case-title') : null;
+                var caseName = titleEl ? titleEl.textContent.trim().replace(/\s+/g, ' ').substring(0, 60) : 'unknown_case';
+
+                gta('case_study_open', {
+                    event_category: 'engagement',
+                    event_label: caseName,
+                    case_name: caseName
+                });
+            });
+        });
+
+        // ── 5. SCROLL DEPTH MILESTONES ────────────────────────────────
+        var scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
+        window.addEventListener('scroll', function() {
+            var scrollTop = window.scrollY || document.documentElement.scrollTop;
+            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            var pct = Math.round((scrollTop / docHeight) * 100);
+
+            [25, 50, 75, 100].forEach(function(m) {
+                if (!scrollMilestones[m] && pct >= m) {
+                    scrollMilestones[m] = true;
+                    gta('scroll_depth', {
+                        event_category: 'engagement',
+                        event_label: m + '%',
+                        scroll_percent: m
+                    });
+                }
+            });
+        }, { passive: true });
+
+        // ── 6. LANGUAGE SWITCH ────────────────────────────────────────
+        document.querySelectorAll('a[href="ua.html"], a[href="index.html"]').forEach(function(el) {
+            el.addEventListener('click', function() {
+                gta('language_switch', {
+                    event_category: 'navigation',
+                    target_language: el.href.includes('ua.html') ? 'uk' : 'en'
+                });
+            });
+        });
+
+        // GA4 Global Interaction Tracking
+        document.addEventListener('click', function(e) {
+            const el = e.target.closest('a');
+            if (!el) return;
+
+            // Track Messenger Клики
+            if (el.href.includes('t.me/')) {
+                gta('click_messenger', { 'platform': 'telegram', 'location': el.closest('.footer') ? 'footer' : 'content' });
+            } else if (el.href.includes('wa.me/')) {
+                gta('click_messenger', { 'platform': 'whatsapp', 'location': el.closest('.footer') ? 'footer' : 'content' });
+            } else if (el.href.includes('mailto:')) {
+                gta('click_email', { 'location': 'contact' });
+            }
+
+            // Track Language Switch
+            if (el.textContent.includes('EN') || el.textContent.includes('UA')) {
+                gta('language_switch', { 'target_lang': el.textContent.trim() });
+            }
+        });
+        // ── 7. TIME ON PAGE ───────────────────────────────────────
+        [{ s:30, l:'30s' },{ s:60, l:'60s' },{ s:120, l:'2min' },{ s:300, l:'5min' }]
+        .forEach(function(t) {
+            setTimeout(function() {
+                gta('time_on_page', { page_language:'en', time_milestone: t.l });
+            }, t.s * 1000);
+        });
+
+        // ── 8. CV LINK CLICKS ────────────────────────────────────────
+        document.addEventListener('click', function(e) {
+            var a = e.target.closest('a');
+            if (a && (a.href.includes('cv_eng') || a.href.includes('cv_ua'))) {
+                var lang = a.href.includes('cv_ua') ? 'ua' : 'en';
+                gta('cv_link_click', { page_language:'en', cv_version: lang });
+            }
+        });
+    </script>
 </body>
 </html>
