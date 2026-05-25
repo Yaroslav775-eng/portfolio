@@ -832,7 +832,7 @@
                     
                     <div style="display: flex; gap: 16px; flex-wrap: wrap;">
                         <a href="https://t.me/Yaroslav797" target="_blank" class="btn btn-primary" style="text-decoration: none;">Написать в Telegram</a>
-                        <a href="cv_eng.html" class="btn btn-outline" style="border: 1px solid #000; color: #000; background: transparent; text-decoration: none; font-weight: 700;">Посмотреть полное CV →</a>
+                        <a href="cv_ru.html" class="btn btn-outline" style="border: 1px solid #000; color: #000; background: transparent; text-decoration: none; font-weight: 700;">Посмотреть полное CV →</a>
                     </div>
                 </div>
 
@@ -934,7 +934,7 @@
             </div>
             
             <div style="margin-top: 40px; text-align: center;">
-                <a href="cv_eng.html" style="color: var(--accent-brand); font-family: var(--font-sans); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; text-decoration: none; border-bottom: 2px solid var(--accent-brand); padding-bottom: 4px;">Смотреть полное CV и историю кейсов →</a>
+                <a href="cv_ru.html" style="color: var(--accent-brand); font-family: var(--font-sans); font-weight: 700; text-transform: uppercase; font-size: 0.9rem; text-decoration: none; border-bottom: 2px solid var(--accent-brand); padding-bottom: 4px;">Смотреть полное CV и историю кейсов →</a>
             </div>
         </div>
     </section>
@@ -1941,16 +1941,16 @@
         [{ s:30, l:'30s' },{ s:60, l:'60s' },{ s:120, l:'2min' },{ s:300, l:'5min' }]
         .forEach(function(t) {
             setTimeout(function() {
-                gta('time_on_page', { page_language:'en', time_milestone: t.l });
+                gta('time_on_page', { page_language:'ru', time_milestone: t.l });
             }, t.s * 1000);
         });
 
         // ── 8. CV LINK CLICKS ────────────────────────────────────────
         document.addEventListener('click', function(e) {
             var a = e.target.closest('a');
-            if (a && (a.href.includes('cv_eng') || a.href.includes('cv_ua'))) {
-                var lang = a.href.includes('cv_ua') ? 'ua' : 'en';
-                gta('cv_link_click', { page_language:'en', cv_version: lang });
+            if (a && (a.href.includes('cv_eng') || a.href.includes('cv_ua') || a.href.includes('cv_ru'))) {
+                var lang = a.href.includes('cv_ua') ? 'ua' : (a.href.includes('cv_ru') ? 'ru' : 'en');
+                gta('cv_link_click', { page_language:'ru', cv_version: lang });
             }
         });
     </script>
