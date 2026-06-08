@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кейс: як ми очистили B2B-логістику у Великій Британії та подвоїли обсяг цільових звернень | Ярослав Жакун</title>
+    <meta name="description" content="B2B Google Ads кейс для логістики у Великій Британії: авіадоставка та морська доставка з Китаю, Search + DSA + PMax, CRM feedback loop, антифрод, €11.5 CPL та 1,090 кваліфікованих бізнес-запитів.">
+    <meta name="robots" content="index, follow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../index.css">
+
+    <style>
+        :root {
+            --bg-light: #f4f5f7;
+            --text-dark: #12141d;
+            --text-muted: #5C6270;
+            --accent-brand: #C00000;
+            --bg-dark: #12141D;
+            --accent-muted: #e2e8f0;
+            --font-serif: 'Frank Ruhl Libre', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; margin: 0; padding: 0; }
+        .report-nav { padding: 24px 0; border-bottom: 2px solid var(--text-dark); background: #fff; position: sticky; top: 0; z-index: 100; }
+        .report-nav .container { display: flex; justify-content: space-between; align-items: center; max-width: 800px; margin: 0 auto; padding: 0 24px; }
+        .back-link { font-family: var(--font-sans); font-weight: 600; color: var(--text-dark); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em; }
+        .back-link:hover { color: var(--accent-brand); }
+        .report-article { max-width: 800px; margin: 60px auto 120px; padding: 0 24px; }
+        .report-header { margin-bottom: 60px; }
+        .report-category { font-family: var(--font-sans); color: var(--accent-brand); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; display: block; margin-bottom: 16px; }
+        .report-title { font-family: var(--font-serif); font-size: 3.5rem; line-height: 1.1; font-weight: 900; margin: 0 0 24px 0; letter-spacing: -0.02em; }
+        .ai-summary { font-family: var(--font-sans); font-size: 1.1rem; color: var(--text-muted); border-left: 4px solid var(--accent-brand); padding-left: 24px; margin: 32px 0 0 0; font-style: italic; }
+        .context-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 44px 0 0; }
+        .context-item { background: #fff; border: 1px solid var(--accent-muted); padding: 18px 20px; }
+        .context-label { display: block; font-family: var(--font-sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+        .context-value { display: block; font-family: var(--font-serif); font-size: 1.12rem; font-weight: 700; line-height: 1.35; color: var(--text-dark); }
+        .editorial-table { width: 100%; border-collapse: collapse; margin: 60px 0; border-top: 2px solid var(--text-dark); border-bottom: 2px solid var(--text-dark); }
+        .editorial-table th, .editorial-table td { padding: 24px 16px; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .editorial-table th { font-family: var(--font-sans); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-muted); width: 25%; }
+        .editorial-table td { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; }
+        .report-body h2 { font-family: var(--font-serif); font-size: 2rem; margin: 48px 0 24px 0; line-height: 1.2; }
+        .report-body p { font-size: 1.1rem; margin-bottom: 24px; font-family: var(--font-sans); color: #333; }
+        .architecture-box { background-color: var(--bg-dark); color: #fff; padding: 40px; margin: 48px 0; }
+        .architecture-box h3 { font-family: var(--font-serif); font-size: 1.5rem; margin-top: 0; margin-bottom: 24px; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 12px; }
+        .architecture-box ul { list-style: none; padding: 0; margin: 0; }
+        .architecture-box li { font-family: var(--font-sans); margin-bottom: 16px; padding-left: 24px; position: relative; font-size: 1.05rem; color: rgba(255,255,255,0.9); }
+        .architecture-box li::before { content: "→"; color: var(--accent-brand); position: absolute; left: 0; top: 0; font-weight: bold; }
+        .insight-box { background: #fff; border-left: 4px solid var(--accent-brand); padding: 28px 32px; margin: 48px 0; box-shadow: 0 10px 30px rgba(18,20,29,0.06); }
+        .insight-box h3 { font-family: var(--font-serif); font-size: 1.55rem; margin: 0 0 12px; }
+        .insight-box p { margin-bottom: 0; }
+        .learning-list { margin: 20px 0 0; padding: 0; list-style: none; counter-reset: learning; }
+        .learning-list li { font-family: var(--font-sans); color: #333; padding: 14px 0 14px 28px; border-top: 1px solid var(--accent-muted); position: relative; }
+        .learning-list li::before { content: "0" counter(learning); counter-increment: learning; position: absolute; left: 0; top: 14px; color: var(--accent-brand); font-weight: 700; font-size: 0.78rem; }
+        .report-cta { margin-top: 80px; padding: 60px 40px; background-color: #f4f4f4; text-align: center; border: 1px solid #ddd; }
+        .report-cta h2 { font-family: var(--font-serif); font-size: 2.25rem; margin-bottom: 16px; margin-top: 0; }
+        @media (max-width: 768px) {
+            .report-title { font-size: 2.5rem; }
+            .context-grid { grid-template-columns: 1fr; }
+            .editorial-table th, .editorial-table td { padding: 16px 8px; font-size: 1rem; }
+            .report-nav { padding: 16px 0; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="report-nav">
+        <div class="container">
+            <a href="../ua.html" class="back-link">← Портфоліо</a>
+            <a href="https://t.me/Yaroslav797" target="_blank" class="back-link" style="color: var(--accent-brand);">Консультація ↗</a>
+        </div>
+    </nav>
+
+    <article class="report-article">
+        <header class="report-header">
+            <span class="report-category">B2B Лідогенерація</span>
+            <h1 class="report-title">Як ми очистили B2B-логістику у Великій Британії та подвоїли обсяг цільових звернень.</h1>
+            <div class="ai-summary">
+                <strong>Короткий висновок:</strong> B2B-клієнт у сфері міжнародної логістики працював із попитом на авіадоставку та морську доставку з Китаю до Великої Британії. На старті акаунт давав мало лідів, звернення були дорогими, трекінг був неповним, а частина бюджету йшла на нецільову та бот-аудиторію. За 6 місяців ми перебудували структуру навколо B2B Search, DSA, PMax, офлайн-конверсій із CRM і технічного очищення трафіку. У результаті обсяг цільових звернень виріс приблизно вдвічі без зростання CPL, а ключове звітне вікно дало 1,090 кваліфікованих бізнес-запитів по €11.5 за лід.
+            </div>
+
+            <div class="context-grid">
+                <div class="context-item">
+                    <span class="context-label">Ринок</span>
+                    <span class="context-value">Велика Британія</span>
+                </div>
+                <div class="context-item">
+                    <span class="context-label">Модель</span>
+                    <span class="context-value">B2B логістика</span>
+                </div>
+                <div class="context-item">
+                    <span class="context-label">Послуги</span>
+                    <span class="context-value">Авіадоставка та морська доставка з Китаю</span>
+                </div>
+                <div class="context-item">
+                    <span class="context-label">Період роботи</span>
+                    <span class="context-value">6 місяців</span>
+                </div>
+                <div class="context-item">
+                    <span class="context-label">Канали</span>
+                    <span class="context-value">Search, DSA, PMax, display creatives</span>
+                </div>
+                <div class="context-item">
+                    <span class="context-label">Основа оцінки</span>
+                    <span class="context-value">Google Ads + CRM / offline conversion feedback</span>
+                </div>
+            </div>
+        </header>
+
+        <table class="editorial-table">
+            <tbody>
+                <tr>
+                    <th>Проблема</th>
+                    <td>Мало лідів, дорогі звернення, неповний трекінг та неякісний трафік, який заважав продажам.</td>
+                </tr>
+                <tr>
+                    <th>Рішення</th>
+                    <td>Перебудова Search / DSA / PMax, креативи, CRM feedback loop, офлайн-конверсії та очищення трафіку.</td>
+                </tr>
+                <tr>
+                    <th>Ключове вікно</th>
+                    <td>1,090 кваліфікованих бізнес-запитів</td>
+                </tr>
+                <tr>
+                    <th>Вартість ліда</th>
+                    <td>€11.5</td>
+                </tr>
+                <tr>
+                    <th>Витрати</th>
+                    <td>~€10.3k</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="report-body">
+            <h2>Проблема: трафік був, але продажі не довіряли його якості</h2>
+            <p>Клієнт працював у складній B2B-ніші, де реклама мала приводити не просто форми, а компанії, яким реально потрібен логістичний партнер для міжнародної доставки. На старті акаунт не давав стабільного потоку якісних звернень: лідів було мало, частина з них коштувала дорого, а відділ продажів не бачив достатньо прозорої картини, які кампанії дійсно приводять комерційно цінний попит.</p>
+            <p>Окремою проблемою був трекінг. Система фіксувала сам факт звернення, але не давала достатньо сильного сигналу, які ліди дійсно мають цінність для бізнесу. Додатково періодично з’являвся неякісний трафік: нецільові звернення, склікування та бот-активність, які спотворювали картину та розмивали бюджет.</p>
+
+            <div class="insight-box">
+                <h3>Ключовий зсув</h3>
+                <p>Завдання було не просто “додати ще трафіку”. Потрібно було побудувати систему, яка відокремлює B2B-попит від шуму, навчає алгоритми на реальній цінності ліда і дає продажам потік звернень, з якими можна працювати.</p>
+            </div>
+
+            <h2>Що було змінено</h2>
+            <p>Робота тривала 6 місяців і йшла не в одному напрямку, а одразу по кількох шарах: структура кампаній, семантика, креативи, трекінг, CRM і технічне очищення трафіку.</p>
+
+            <div class="architecture-box">
+                <h3>Нова робоча модель</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-bottom: 24px;">Акаунт був перебудований так, щоб кожен шар виконував чітку роль: збір гарячого попиту, захоплення довгих B2B-запитів, розширення охоплення та зворотний зв’язок від CRM.</p>
+                <ul>
+                    <li><strong>B2B Search як фільтр, а не як широке охоплення.</strong> Семантика була очищена від споживчих і змішаних запитів. Search почав працювати як точний шар для комерційного B2B-інтенту.</li>
+                    <li><strong>Масштабний аудит мінус-слів.</strong> Це прибрало частину нецільових звернень і знизило витрати на аудиторію, яка не відповідала профілю клієнта.</li>
+                    <li><strong>DSA для довгого хвоста.</strong> DSA підхопив запити, які складно зібрати вручну: вузькі формулювання, пов’язані з перевезеннями, типами доставки та комерційними сценаріями.</li>
+                    <li><strong>PMax і медійна частина.</strong> Performance Max та креативи допомогли розширити присутність у релевантній B2B-аудиторії, а не лише працювати з уже сформованим попитом.</li>
+                    <li><strong>CRM feedback loop і офлайн-конверсії.</strong> Оптимізація почала спиратися не лише на відправлену форму, а на більш цінний сигнал — чи є цей лід реально цільовим для бізнесу.</li>
+                    <li><strong>Очищення трафіку.</strong> Склікування, бот-активність і частина неякісних джерел були прибрані, щоб бюджет працював на бізнес-попит, а не на шум.</li>
+                </ul>
+            </div>
+
+            <h2>Чому зв’язка з CRM була критичною</h2>
+            <p>Без зв’язки з CRM кампанії в B2B часто оптимізуються в бік найдешевших форм, а не в бік найцінніших звернень. Після налагодження передачі офлайн-конверсій Google Ads почав навчатися на сигналі, який був ближчим до реальної якості ліда. Це дозволило поступово підняти релевантність звернень без втрати керованості за CPL.</p>
+            <p>Саме цей блок зробив акаунт більш дорослим: реклама перестала жити сама по собі, а стала частиною системи, де є зв’язок між кліком, формою, перевіркою ліда і бізнес-результатом.</p>
+
+            <h2>Результат: більше цільових звернень без роздування вартості ліда</h2>
+            <p>У ключовому звітному вікні кампанії дали 1,090 кваліфікованих бізнес-запитів по €11.5 за лід при витратах близько €10.3k. Але ще важливіший підсумок за весь період у 6 місяців: обсяг цільових звернень відчутно виріс — приблизно вдвічі — при цьому вартість ліда не збільшилася.</p>
+            <p>Для продажів це означало не просто більшу кількість форм, а набагато чистішу воронку. Команда перестала витрачати час на нецільові контакти, а реклама почала стабільно приводити аудиторію, яка відповідала профілю бізнесу.</p>
+
+            <div class="insight-box">
+                <h3>Що довів цей кейс</h3>
+                <ul class="learning-list">
+                    <li><strong>B2B-логістика потребує не просто охоплення, а точного фільтра попиту.</strong></li>
+                    <li><strong>DSA і PMax працюють краще, коли їх підпирає чиста семантика і зрозуміла структура ролей.</strong></li>
+                    <li><strong>CRM та офлайн-конверсії — це не “додатковий плюс”, а ключ до якісної оптимізації в B2B.</strong></li>
+                    <li><strong>Очищення від ботів і склікування може бути не менш важливим, ніж робота з креативами чи ставками.</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="report-cta">
+            <h2>Ваш B2B Google Ads приводить обсяг чи реальних клієнтів?</h2>
+            <p style="font-family: var(--font-sans); font-size: 1.1rem; color: #555; margin-bottom: 32px;">Якщо у вас є кліки й форми, але sales не задоволений якістю звернень, проблема часто не в бюджеті, а в архітектурі попиту, CRM-сигналах і якості трафіку.</p>
+            <a href="https://t.me/Yaroslav797" target="_blank" class="btn-text case-cta" style="font-size: 1.1rem; border-bottom: 1px solid #000; padding-bottom: 4px;">Обговорити B2B аудит <span>&rarr;</span></a>
+        </section>
+    </article>
+</body>
+</html>
