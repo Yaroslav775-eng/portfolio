@@ -155,6 +155,7 @@
             transform: translateY(-4px);
         }
         .case-card:hover .case-cta { color: var(--accent-brand); }
+        a.case-card { text-decoration: none; color: inherit; }
 
         /* Expert Solutions Hub */
         .section-solutions { background-color: var(--bg-tint); padding: 80px 0; border-top: 4px solid #000; }
@@ -515,6 +516,10 @@
         .compare-table td:first-child { color: var(--text-dark); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; background: var(--bg-offwhite); }
         .compare-table tr:last-child td { border-bottom: none; }
         .compare-table .val-plus { color: var(--accent-brand); font-weight: bold; }
+        @media (max-width: 820px) {
+            .compare-table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .compare-table th, .compare-table td { min-width: 170px; }
+        }
 
         .philosophy-banner { background-color: var(--bg-tint); padding: 60px 40px; margin: 80px auto 0; border-left: 6px solid var(--text-dark); max-width: 1000px; }
         .philosophy-banner h3 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; color: var(--text-gray); font-family: var(--font-main); }
@@ -659,7 +664,7 @@
             <span class="section-label">Track Record & Proof</span>
             <h2 class="section-title">Вибрані кейси</h2>
             <div class="cases-grid">
-                <div class="case-card" onclick="window.location.href='cases/ua-pet-supplies-scaling.html'" style="cursor: pointer;">
+                <a class="case-card" href="cases/ua-pet-supplies-scaling.html">
                     <div class="case-title">E-commerce: Зоотовари<span class="case-tag">Архітектура</span></div>
                     <p class="case-before">До: ROAS застряг на 150%, бюджет горів без розуміння</p>
                     <p class="case-teaser">Перебудували акаунт навколо одного правила: одна кампанія, одне завдання. Ізолювали Search, Shopping та PMax у окремі шари попиту для передбачуваного ROI.</p>
@@ -667,9 +672,8 @@
                         <span class="chip chip-accent"><strong>800-1200%</strong> ROAS</span>
                         <span class="chip"><strong>&euro;4.35</strong> CPA</span>
                     </div>
-                    <button class="btn-text case-cta">Read Strategy Report <span>&rarr;</span></button>
-                </div>
-                <div class="case-card" onclick="window.location.href='cases/ua-bbq-grills-scaling.html'" style="cursor: pointer;">
+                    <span class="btn-text case-cta">Читати стратегічний звіт <span>&rarr;</span></span></a>
+                <a class="case-card" href="cases/ua-bbq-grills-scaling.html">
                     <div class="case-title">E-commerce: Товари для гриля<span class="case-tag">Масштабування</span></div>
                     <p class="case-before">До: 400+ SKU в одній плоскій кампанії, пік сезону змарновано</p>
                     <p class="case-teaser">Перебудували навколо маржинальних рівнів. Преміум-грилі отримали виділені PMax. DSA ловив довгохвостовий сезонний інтент. GA4 переналаштовано для точної вартості покупки.</p>
@@ -677,9 +681,8 @@
                         <span class="chip chip-accent"><strong>679%</strong> ROAS</span>
                         <span class="chip"><strong>&euro;13.7</strong> CPA</span>
                     </div>
-                    <button class="btn-text case-cta">Read Strategy Report <span>&rarr;</span></button>
-                </div>
-                <div class="case-card" onclick="window.location.href='cases/ua-logistics-b2b-uk.html'" style="cursor: pointer;">
+                    <span class="btn-text case-cta">Читати стратегічний звіт <span>&rarr;</span></span></a>
+                <a class="case-card" href="cases/ua-logistics-b2b-uk.html">
                     <div class="case-title">B2B: Логістика<span class="case-tag">Лідогенерація</span></div>
                     <p class="case-before">До: мало лідів, дорогі звернення, слабкий трекінг і занадто вузьке охоплення цільового B2B-попиту</p>
                     <p class="case-teaser">Перебудували акаунт під B2B-логістику у Великій Британії: Search, DSA, PMax, креативи, CRM feedback loop та очищення трафіку від нецільових і бот-звернень.</p>
@@ -687,9 +690,8 @@
                         <span class="chip chip-accent"><strong>&euro;11.5</strong> Цільовий CPL</span>
                         <span class="chip"><strong>1,090</strong> Лідів</span>
                     </div>
-                    <button class="btn-text case-cta">Читати стратегічний звіт <span>&rarr;</span></button>
-                </div>
-                <div class="case-card" onclick="window.location.href='cases/ua-wheel-caps-ecommerce-scaling.html'" style="cursor: pointer;">
+                    <span class="btn-text case-cta">Читати стратегічний звіт <span>&rarr;</span></span></a>
+                <a class="case-card" href="cases/ua-wheel-caps-ecommerce-scaling.html">
                     <div class="case-title">E-commerce: Автоаксесуари<span class="case-tag">Масштабування</span></div>
                     <p class="case-before">До: широкий каталог, фрагментований попит і високий ризик розмити бюджет без логіки пріоритетів</p>
                     <p class="case-teaser">Побудували керовану e-commerce логіку для магазину ковпачків і автоаксесуарів: сегментація каталогу, розведення попиту та масштабування через цінність конверсій, а не просто через обсяг трафіку.</p>
@@ -697,8 +699,7 @@
                         <span class="chip chip-accent"><strong>1034%</strong> ROAS</span>
                         <span class="chip"><strong>8,81 млн грн</strong> Conv. Value</span>
                     </div>
-                    <button class="btn-text case-cta">Читати стратегічний звіт <span>&rarr;</span></button>
-                </div>
+                    <span class="btn-text case-cta">Читати стратегічний звіт <span>&rarr;</span></span></a>
                 <div class="case-card" onclick="openModal('case-4')">
                     <div class="case-title">E-commerce: Електроніка<span class="case-tag">Технічний</span></div>
                     <p class="case-before">До: тисячі SKU, рівний бюджет, нульова логіка пріоритетів</p>
@@ -709,7 +710,7 @@
                     </div>
                     <button class="btn-text case-cta">Системний огляд <span>&rarr;</span></button>
                 </div>
-                <div class="case-card" onclick="window.location.href='cases/ua-repair-service-efficiency.html'" style="cursor: pointer;">
+                <a class="case-card" href="cases/ua-repair-service-efficiency.html">
                     <div class="case-title">Послуги: Ремонт<span class="case-tag">Ефективність</span></div>
                     <p class="case-before">До: &euro;350+ CPA, оплата кліків від людей за три міста</p>
                     <p class="case-teaser">Точна радіусна стратегія: жорсткі гео-зони, Call-Only кампанії, повне перебудування мінус-слів. Ставки налаштовано на пікові вікна бронювань.</p>
@@ -717,8 +718,7 @@
                         <span class="chip chip-accent"><strong>&euro;12</strong> Avg. CPA</span>
                         <span class="chip"><strong>850</strong> Calls</span>
                     </div>
-                    <button class="btn-text case-cta">Read Strategy Report <span>&rarr;</span></button>
-                </div>
+                    <span class="btn-text case-cta">Читати стратегічний звіт <span>&rarr;</span></span></a>
                 <div class="case-card" onclick="openModal('case-6')">
                     <div class="case-title">Industrial B2B: Обладнання<span class="case-tag">Стратегія</span></div>
                     <p class="case-before">До: ліди є, але всі від неправильної аудиторії</p>
